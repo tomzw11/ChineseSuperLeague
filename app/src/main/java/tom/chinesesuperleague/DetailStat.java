@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
+//TODO: change name of file to be DetailFragment and try commented code.
 public class DetailStat extends AppCompatActivity{
 
     @Override

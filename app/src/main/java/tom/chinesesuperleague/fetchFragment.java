@@ -1,13 +1,6 @@
 package tom.chinesesuperleague;
 
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
-
-import org.jsoup.Jsoup;
-import org.jsoup.select.Elements;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,26 +16,12 @@ import android.content.Intent;
 
 public class FetchFragment extends Fragment{
 
-    private ArrayList<ListItem> inputData = new ArrayList<>();
     private CustomListViewAdapter mStatAdapter;
-    private ArrayList<String[]> playerStat = new ArrayList<>();
-
     private String RALF = "61034";
     private String FERNANDO = "168101";
     private String WULEI = "116730";
 
-    Integer[] playerImage = {R.drawable.fernando,R.drawable.ralf2,R.drawable.wulei};
-    String[] playerForm = new String[3];
-
     public FetchFragment(){
-
-    }
-
-    private void updateStat(){
-
-        fetchStatTask statTask = new fetchStatTask();
-        statTask.execute(RALF);
-
     }
 
     @Override
@@ -74,16 +53,13 @@ public class FetchFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        inputData = new ArrayList<>();
+        mStatAdapter = new CustomListViewAdapter(getActivity(),R.layout.fragment_players,new ArrayList<ListItem>());
 
         View rootView = inflater.inflate(R.layout.fragment_players, container, false);
-        final ListView listView = (ListView)getActivity().findViewById(R.id.list);
-
-        mStatAdapter = new CustomListViewAdapter(getContext(),R.layout.fragment_players,inputData);
-
+        ListView listView = (ListView)getActivity().findViewById(R.id.list);
         listView.setAdapter(mStatAdapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -99,54 +75,17 @@ public class FetchFragment extends Fragment{
         return rootView;
     }
 
+    private void updateStat(){
+
+        FetchStatTask statTask = new FetchStatTask(getActivity(),mStatAdapter);
+        statTask.execute(RALF);
+    }
+
     @Override
     public void onStart(){
 
         super.onStart();
         updateStat();
     }
-
-    public class fetchStatTask extends AsyncTask<String,Void,ArrayList<String[]>> {
-
-            @Override
-            protected ArrayList<String[]> doInBackground(String... params) {
-
-                if(params.length==0)return null;
-                Document doc = null;
-                String url = Utility.urlBuilder(params[0]);
-                try {
-                    doc = Jsoup.connect(url).timeout(10 * 1000).get();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                Elements tableContentEles = doc.select("td");
-                int numberOfMatches = tableContentEles.size() / 19 - 1;
-                for (int j = 0; j < numberOfMatches; j++) {
-                    String[] playerMatchStat = new String[19];
-                    for (int i = 0; i < 19; i++) {
-                        playerMatchStat[i] = tableContentEles.get(i + j * 19).text();
-                    }
-                    playerStat.add(playerMatchStat);
-                }
-                return playerStat;
-            }
-
-        @Override
-        protected void onPostExecute(ArrayList<String[]> result){
-
-            if(result!=null){
-                mStatAdapter.clear();
-                inputData.clear();
-
-                for(int i=0;i<playerImage.length;i++){
-                    playerForm[i] = result.get(i)[0];
-                    ListItem ListItem = new ListItem(playerImage[i],playerForm[i]);
-                    inputData.add(ListItem);
-                }
-            }
-
-        }
-        }
 
 }
