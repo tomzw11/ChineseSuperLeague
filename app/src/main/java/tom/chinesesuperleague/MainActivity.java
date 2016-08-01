@@ -3,37 +3,19 @@ package tom.chinesesuperleague;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.ListView;
-import java.util.ArrayList;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CustomListViewAdapter mStatAdapter;
-    ArrayList<listItem> inputData;
-
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Add this line in order for this fragment to handle menu events.
-        //setHasOptionsMenu(true);
         setContentView(R.layout.activity_main);
-
-        Integer[] playerImage = {R.drawable.fernando,R.drawable.ralf2,R.drawable.wulei};
-        String[] playerForm = {"9","8","7"};
-
-        inputData = new ArrayList<>();
-        for(int i=0;i<playerImage.length;i++){
-            listItem listItem = new listItem(playerImage[i],playerForm[i]);
-            inputData.add(listItem);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new fetchFragment())
+                    .commit();
         }
-
-        ListView listView = (ListView) findViewById(R.id.list);
-
-        mStatAdapter = new CustomListViewAdapter(this,R.layout.fragment_players,inputData);
-
-        listView.setAdapter(mStatAdapter);
     }
 
     @Override
