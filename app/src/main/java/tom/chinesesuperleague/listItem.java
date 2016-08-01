@@ -2,11 +2,11 @@ package tom.chinesesuperleague;
 
 //This class is used to store the data for each row in ListView.
 
-public class listItem {
+public class ListItem {
     private int playerId;
     private String playerForm;
 
-    public listItem(int playerId,String playerForm){
+    public ListItem(int playerId, String playerForm){
 
         this.playerForm = playerForm;
         this.playerId = playerId;

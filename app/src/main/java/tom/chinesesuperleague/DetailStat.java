@@ -3,18 +3,10 @@ package tom.chinesesuperleague;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-/**
- * Created by Tom on 7/31/16.
- */
 public class DetailStat extends AppCompatActivity{
 
     @Override
@@ -24,7 +16,6 @@ public class DetailStat extends AppCompatActivity{
 
         Intent intent = this.getIntent();
         if(intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
-
 
             int playerId = intent.getIntExtra(Intent.EXTRA_TEXT, 0);
             TextView textView = (TextView)this.findViewById(R.id.form_detail);
@@ -86,6 +77,5 @@ public class DetailStat extends AppCompatActivity{
 //            return rootView;
 //        }
 //    }
-
 
 }

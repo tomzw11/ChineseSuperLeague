@@ -21,13 +21,9 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 import android.content.Intent;
 
+public class FetchFragment extends Fragment{
 
-/**
- * Created by Tom on 7/31/16.
- */
-public class fetchFragment extends Fragment{
-
-    private ArrayList<listItem> inputData = new ArrayList<>();
+    private ArrayList<ListItem> inputData = new ArrayList<>();
     private CustomListViewAdapter mStatAdapter;
     private ArrayList<String[]> playerStat = new ArrayList<>();
 
@@ -38,7 +34,14 @@ public class fetchFragment extends Fragment{
     Integer[] playerImage = {R.drawable.fernando,R.drawable.ralf2,R.drawable.wulei};
     String[] playerForm = new String[3];
 
-    public fetchFragment(){
+    public FetchFragment(){
+
+    }
+
+    private void updateStat(){
+
+        fetchStatTask statTask = new fetchStatTask();
+        statTask.execute(RALF);
 
     }
 
@@ -62,14 +65,11 @@ public class fetchFragment extends Fragment{
 
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            fetchStatTask statTask = new fetchStatTask();
-            statTask.execute(RALF);
+            updateStat();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,6 +97,13 @@ public class fetchFragment extends Fragment{
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onStart(){
+
+        super.onStart();
+        updateStat();
     }
 
     public class fetchStatTask extends AsyncTask<String,Void,ArrayList<String[]>> {
@@ -133,9 +140,9 @@ public class fetchFragment extends Fragment{
                 inputData.clear();
 
                 for(int i=0;i<playerImage.length;i++){
-                    playerForm[i] = result.get(1)[i];
-                    listItem listItem = new listItem(playerImage[i],playerForm[i]);
-                    inputData.add(listItem);
+                    playerForm[i] = result.get(i)[0];
+                    ListItem ListItem = new ListItem(playerImage[i],playerForm[i]);
+                    inputData.add(ListItem);
                 }
             }
 

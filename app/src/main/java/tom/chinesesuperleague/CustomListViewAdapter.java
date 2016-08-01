@@ -12,12 +12,12 @@ import android.widget.TextView;
 /**
  * Created by Tom on 7/31/16.
  */
-public class CustomListViewAdapter extends ArrayAdapter<listItem>{
+public class CustomListViewAdapter extends ArrayAdapter<ListItem>{
 
     Context context;
 
     public CustomListViewAdapter(Context context, int resourceId,
-                                 List<listItem> items) {
+                                 List<ListItem> items) {
         super(context, resourceId, items);
         this.context = context;
     }
@@ -30,7 +30,7 @@ public class CustomListViewAdapter extends ArrayAdapter<listItem>{
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        listItem listItem = getItem(position);
+        ListItem ListItem = getItem(position);
 
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -43,8 +43,8 @@ public class CustomListViewAdapter extends ArrayAdapter<listItem>{
         } else
             holder = (ViewHolder) convertView.getTag();
 
-        holder.playerForm.setText(listItem.getPlayerForm());
-        holder.playerImage.setImageResource(listItem.getPlayerId());
+        holder.playerForm.setText(ListItem.getPlayerForm());
+        holder.playerImage.setImageResource(ListItem.getPlayerId());
 
         return convertView;
     }
