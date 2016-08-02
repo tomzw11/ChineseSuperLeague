@@ -26,6 +26,10 @@
                 android:value="tom.chinesesuperleague.DetailStat" />
         </activity>
 
+    <provider
+        android:authorities="tom.chinesesuperleague.data"
+        android:name=".data.StatProvider" />
+
 
 
     </application>

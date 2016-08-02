@@ -20,11 +20,12 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_STAT_TABLE = "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
+        final String SQL_CREATE_STAT_TABLE =
+                "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
                 StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
 
-                // the ID of the player entry associated with this weather data
+                StatEntry.COLUMN_PLAYER_KEY + " REAL NOT NULL, " +
                 StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
@@ -47,7 +48,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
                 // Set up the location column as a foreign key to location table.
                 " FOREIGN KEY (" + StatEntry.COLUMN_PLAYER_KEY + ") REFERENCES " +
-                PlayerEntry.TABLE_NAME + " (" + PlayerEntry._ID + "), " +
+                StatEntry.TABLE_NAME + " (" + StatEntry._ID + "), " +
 
                 // To assure the application have just one weather entry per day
                 // per location, it's created a UNIQUE constraint with REPLACE strategy
@@ -65,6 +66,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
         // It does NOT depend on the version number for your application.
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
+
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StatEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);

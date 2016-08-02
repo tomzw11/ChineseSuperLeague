@@ -51,7 +51,7 @@ public class StatProvider extends ContentProvider{
         final String authority = StatContract.CONTENT_AUTHORITY;
 
         // For each type of URI you want to add, create a corresponding code.
-        matcher.addURI(authority, StatContract.PATH_PLAYER, PLAYER);
+        matcher.addURI(authority, StatContract.PATH_DATE, DATE);
 
         return matcher;
     }
@@ -127,15 +127,7 @@ public class StatProvider extends ContentProvider{
         Uri returnUri;
 
         switch (match) {
-            case DATE: {
-                normalizeDate(values);
-                long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, values);
-                if ( _id > 0 )
-                    returnUri = StatContract.StatEntry.buildDateUri(_id);
-                else
-                    throw new android.database.SQLException("Failed to insert row into " + uri);
-                break;
-            }
+
             case PLAYER: {
                 long _id = db.insert(StatContract.PlayerEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
@@ -178,13 +170,6 @@ public class StatProvider extends ContentProvider{
         return rowsDeleted;
     }
 
-    private void normalizeDate(ContentValues values) {
-        // normalize the date value
-        if (values.containsKey(StatContract.StatEntry.COLUMN_DATE)) {
-            long dateValue = values.getAsLong(StatContract.StatEntry.COLUMN_DATE);
-            values.put(StatContract.StatEntry.COLUMN_DATE, StatContract.normalizeDate(dateValue));
-        }
-    }
 
     @Override
     public int update(
@@ -194,11 +179,7 @@ public class StatProvider extends ContentProvider{
         int rowsUpdated;
 
         switch (match) {
-            case DATE:
-                normalizeDate(values);
-                rowsUpdated = db.update(StatContract.StatEntry.TABLE_NAME, values, selection,
-                        selectionArgs);
-                break;
+
             case PLAYER:
                 rowsUpdated = db.update(StatContract.PlayerEntry.TABLE_NAME, values, selection,
                         selectionArgs);
@@ -210,6 +191,33 @@ public class StatProvider extends ContentProvider{
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return rowsUpdated;
+    }
+
+    @Override
+    public int bulkInsert(Uri uri, ContentValues[] values) {
+        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case DATE:
+                db.beginTransaction();
+                int returnCount = 0;
+                try {
+                    for (ContentValues value : values) {
+
+                        long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, value);
+                        if (_id != -1) {
+                            returnCount++;
+                        }
+                    }
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+                getContext().getContentResolver().notifyChange(uri, null);
+                return returnCount;
+            default:
+                return super.bulkInsert(uri, values);
+        }
     }
 
     // You do not need to call this method. This is a method specifically to assist the testing

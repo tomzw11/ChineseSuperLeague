@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-//TODO: change name of file to be DetailFragment and try commented code.
+
 public class DetailStat extends AppCompatActivity{
 
     @Override
@@ -23,11 +23,6 @@ public class DetailStat extends AppCompatActivity{
 
         }
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, new DetailFragment())
-//                    .commit();
-//        }
     }
 
     @Override
@@ -52,30 +47,6 @@ public class DetailStat extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-//    /**
-//     * A placeholder fragment containing a simple view.
-//     */
-//    public static class DetailFragment extends Fragment {
-//
-//        public DetailFragment() {
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//
-//            View rootView = inflater.inflate(R.layout.fragment_details, container, false);
-//
-//            Intent intent = getActivity().getIntent();
-//            if(intent != null && intent.hasExtra(Intent.EXTRA_TEXT)){
-//
-//
-//                int playerId = intent.getIntExtra(Intent.EXTRA_TEXT,0);
-//                ((TextView) rootView.findViewById(R.id.form_detail)).setText(playerId);
-//
-//            }
-//            return rootView;
-//        }
-//    }
+
 
 }
