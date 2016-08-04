@@ -1,10 +1,10 @@
 package tom.chinesesuperleague.data;
 
 import android.provider.BaseColumns;
-import android.text.format.Time;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.content.ContentUris;
+import android.text.format.Time;
 
 public class StatContract {
 
@@ -14,8 +14,6 @@ public class StatContract {
     public static final String PATH_PLAYER = "player";
     public static final String PATH_DATE = "date";
 
-    // To make it easy to query for the exact date, we normalize all dates that go into
-    // the database to the start of the the Julian day at UTC.
     public static long normalizeDate(long startDate) {
         // normalize the start date to the beginning of the (UTC) day
         Time time = new Time();
@@ -23,8 +21,6 @@ public class StatContract {
         int julianDay = Time.getJulianDay(startDate, time.gmtoff);
         return time.setJulianDay(julianDay);
     }
-
-
 
     /*
         Inner class that defines the contents of the location table
@@ -47,10 +43,6 @@ public class StatContract {
 
         public static final String COLUMN_PLAYER_SETTING = "player_setting";
 
-        // Human readable location string, provided by the API.  Because for styling,
-        // "Mountain View" is more recognizable than 94043.
-        public static final String PLAYER_NAME = "player_name";
-
     }
 
     /* Inner class that defines the contents of the stat table */
@@ -60,8 +52,8 @@ public class StatContract {
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_DATE).build();
 
-        public static Uri buildDateUri(long id) {
-            return ContentUris.withAppendedId(CONTENT_URI, id);
+        public static Uri buildWeatherLocation() {
+            return CONTENT_URI.buildUpon().build();
         }
 
         public static final String CONTENT_TYPE =
@@ -95,8 +87,6 @@ public class StatContract {
         public static final String COLUMN_SAVE = "save";
         public static final String COLUMN_YELLOW_CARD = "yellow_card";
         public static final String COLUMN_RED_CARD = "red_card";
-
-
 
     }
 

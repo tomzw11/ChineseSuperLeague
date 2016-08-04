@@ -87,19 +87,6 @@ public class StatProvider extends ContentProvider{
         Cursor retCursor;
         switch (sUriMatcher.match(uri)) {
 
-            case PLAYER: {
-                retCursor = mOpenHelper.getReadableDatabase().query(
-                        StatContract.PlayerEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortOrder
-                );
-                break;
-            }
-
             case DATE: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         StatContract.StatEntry.TABLE_NAME,
@@ -214,6 +201,7 @@ public class StatProvider extends ContentProvider{
                     db.endTransaction();
                 }
                 getContext().getContentResolver().notifyChange(uri, null);
+                System.out.println("inserted url is "+uri);
                 return returnCount;
             default:
                 return super.bulkInsert(uri, values);

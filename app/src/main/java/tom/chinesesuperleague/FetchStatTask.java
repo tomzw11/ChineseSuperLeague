@@ -5,59 +5,51 @@ import android.os.AsyncTask;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
 import android.util.Log;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
-import tom.chinesesuperleague.data.StatContract.PlayerEntry;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class FetchStatTask extends AsyncTask<String,Void,ArrayList<String[]>> {
+public class FetchStatTask extends AsyncTask<String,Void,Void> {
 
         private final String LOG_TAG = FetchStatTask.class.getSimpleName();
-        private CustomListViewAdapter mStatAdapter;
         private ArrayList<String[]> playerStat = new ArrayList<>();
-        private ArrayList<ListItem> inputData = new ArrayList<>();
         private final Context mContext;
-        Integer[] playerImage = {R.drawable.fernando,R.drawable.ralf2,R.drawable.wulei};
-        String[] playerForm = new String[3];
 
-        public FetchStatTask(Context context,CustomListViewAdapter inputAdapter) {
+        public FetchStatTask(Context context) {
         mContext = context;
-        mStatAdapter = inputAdapter;
+
         }
 
-        @Override
-        protected ArrayList<String[]> doInBackground(String... params) {
+    @Override
+    protected Void doInBackground(String... params) {
 
-            String playerId = params[0];
-            if(playerId.length()==0)return null;
-            Document doc = null;
-            String url = Utility.urlBuilder(params[0]);
-            try {
-                doc = Jsoup.connect(url).timeout(10 * 1000).get();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Elements tableContentEles = doc.select("td");
-            int numberOfMatches = tableContentEles.size() / 19 - 1;
-            for (int j = 0; j < numberOfMatches; j++) {
-                String[] playerMatchStat = new String[19];
-                for (int i = 0; i < 19; i++) {
-                    playerMatchStat[i] = tableContentEles.get(i + j * 19).text();
-                }
-                playerStat.add(playerMatchStat);
-            }
-            getPlayerStat(playerStat,playerId);
-            return playerStat;
+        String playerId = params[0];
+        if(playerId.length()==0)return null;
+        Document doc = null;
+        String url = Utility.urlBuilder(params[0]);
+        try {
+            doc = Jsoup.connect(url).timeout(10 * 1000).get();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        Elements tableContentEles = doc.select("td");
+        int numberOfMatches = tableContentEles.size() / 19 - 1;
+        for (int j = 0; j < numberOfMatches; j++) {
+            String[] playerMatchStat = new String[19];
+            for (int i = 0; i < 19; i++) {
+                playerMatchStat[i] = tableContentEles.get(i + j * 19).text();
+            }
+            playerStat.add(playerMatchStat);
+        }
+        getPlayerStat(playerStat,playerId);
+      return null;
+    }
 
     private void getPlayerStat(ArrayList<String[]> playerStat,String playerId){
 
@@ -96,18 +88,5 @@ public class FetchStatTask extends AsyncTask<String,Void,ArrayList<String[]>> {
         Log.d(LOG_TAG, "FetchWeatherTask Complete. " + inserted + " Inserted");
     }
 
-        @Override
-        protected void onPostExecute(ArrayList<String[]> result){
-            if(result!=null && mStatAdapter!=null){
-                mStatAdapter.clear();
-
-                for(int i=0;i<playerImage.length;i++){
-                    playerForm[i] = result.get(i)[0];
-                    ListItem ListItem = new ListItem(playerImage[i],playerForm[i]);
-                    mStatAdapter.add(ListItem);
-                }
-            }
-
-        }
     }
 

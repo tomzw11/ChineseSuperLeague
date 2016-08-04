@@ -1,7 +1,7 @@
 package tom.chinesesuperleague;
 
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
-import java.util.ArrayList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.AdapterView;
-import android.widget.Toast;
-import android.content.Intent;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.net.Uri;
 
-public class FetchFragment extends Fragment{
+import tom.chinesesuperleague.data.StatContract;
 
-    private CustomListViewAdapter mStatAdapter;
+public class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+
+    private StatAdapter mStatAdapter;
+    private static final int STAT_LOADER = 0;
     private String RALF = "61034";
     private String FERNANDO = "168101";
     private String WULEI = "116730";
@@ -54,30 +58,24 @@ public class FetchFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mStatAdapter = new CustomListViewAdapter(getActivity(),R.layout.fragment_players,new ArrayList<ListItem>());
+        mStatAdapter = new StatAdapter(getActivity(),null,0);
 
         View rootView = inflater.inflate(R.layout.fragment_players, container, false);
         ListView listView = (ListView)getActivity().findViewById(R.id.list);
         listView.setAdapter(mStatAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String message = "great player";
-                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-                int playerId = mStatAdapter.getItem(position).getPlayerId();
-                Intent intent = new Intent(getActivity(),DetailStat.class).putExtra(Intent.EXTRA_TEXT,playerId);
-                startActivity(intent);
-            }
-        });
-
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        getLoaderManager().initLoader(STAT_LOADER, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     private void updateStat(){
 
-        FetchStatTask statTask = new FetchStatTask(getActivity(),mStatAdapter);
+        FetchStatTask statTask = new FetchStatTask(getActivity());
         statTask.execute(RALF);
     }
 
@@ -86,6 +84,32 @@ public class FetchFragment extends Fragment{
 
         super.onStart();
         updateStat();
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+
+        // Sort order:  Ascending, by date.
+        String sortOrder = StatContract.StatEntry.COLUMN_DATE + " ASC";
+        Uri weatherForLocationUri = StatContract.StatEntry.buildWeatherLocation();
+
+        return new CursorLoader(getActivity(),
+                weatherForLocationUri,
+                null,
+                null,
+                null,
+                sortOrder);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        mStatAdapter.swapCursor(cursor);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+
+        mStatAdapter.swapCursor(null);
     }
 
 }
