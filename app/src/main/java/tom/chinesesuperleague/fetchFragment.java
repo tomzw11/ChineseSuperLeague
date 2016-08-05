@@ -14,6 +14,8 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
+import android.content.Intent;
+import android.widget.AdapterView;
 
 import tom.chinesesuperleague.data.StatContract;
 
@@ -69,6 +71,23 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         View rootView = inflater.inflate(R.layout.fragment_players, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_stat);
         listView.setAdapter(mStatAdapter);
+
+        // We'll call our MainActivity
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // CursorAdapter returns a cursor at the correct position for getItem(), or null
+                // if it cannot seek to that position.
+                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
+                if (cursor != null) {
+
+                    Intent intent = new Intent(getActivity(), DetailStat.class)
+                            .setData(StatContract.StatEntry.buildPlayerStat());
+                    startActivity(intent);
+                }
+            }
+        });
 
         return rootView;
     }

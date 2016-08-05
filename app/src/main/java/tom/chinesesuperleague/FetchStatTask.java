@@ -9,7 +9,6 @@ import android.content.ContentValues;
 import android.util.Log;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;

@@ -7,7 +7,6 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 
 public class StatProvider extends ContentProvider{
