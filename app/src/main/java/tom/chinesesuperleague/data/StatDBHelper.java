@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
-import tom.chinesesuperleague.data.StatContract.PlayerEntry;
 
 public class StatDBHelper extends SQLiteOpenHelper {
 
@@ -67,7 +66,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
 
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
+        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StatEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

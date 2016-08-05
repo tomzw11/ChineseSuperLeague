@@ -33,13 +33,15 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
         Document doc = null;
         String url = Utility.urlBuilder(params[0]);
         try {
-            doc = Jsoup.connect(url).timeout(10 * 1000).get();
+            doc = Jsoup.connect(url).timeout(60000).get();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Elements tableContentEles = doc.select("td");
         int numberOfMatches = tableContentEles.size() / 19 - 1;
+
         for (int j = 0; j < numberOfMatches; j++) {
             String[] playerMatchStat = new String[19];
             for (int i = 0; i < 19; i++) {
@@ -53,40 +55,44 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
 
     private void getPlayerStat(ArrayList<String[]> playerStat,String playerId){
 
-        ContentValues statValues = new ContentValues();
-        statValues.put(StatEntry.COLUMN_PLAYER_KEY,playerId);
-        statValues.put(StatEntry.COLUMN_DATE,playerStat.get(0)[0]);
-        statValues.put(StatEntry.COLUMN_GAME,playerStat.get(0)[1]);
-        statValues.put(StatEntry.COLUMN_TEAM,playerStat.get(0)[2]);
-        statValues.put(StatEntry.COLUMN_OPPONENT,playerStat.get(0)[3]);
-        statValues.put(StatEntry.COLUMN_HOME_AWAY,playerStat.get(0)[4]);
-        statValues.put(StatEntry.COLUMN_SCORE,playerStat.get(0)[5]);
-        statValues.put(StatEntry.COLUMN_APPREARANCE,playerStat.get(0)[6]);
-        statValues.put(StatEntry.COLUMN_PLAY_TIME,playerStat.get(0)[7]);
-        statValues.put(StatEntry.COLUMN_SHOT,playerStat.get(0)[8]);
-        statValues.put(StatEntry.COLUMN_SHOT_ON_TARGET,playerStat.get(0)[9]);
-        statValues.put(StatEntry.COLUMN_GOAL,playerStat.get(0)[10]);
-        statValues.put(StatEntry.COLUMN_KEY_PASS,playerStat.get(0)[11]);
-        statValues.put(StatEntry.COLUMN_FOUL,playerStat.get(0)[12]);
-        statValues.put(StatEntry.COLUMN_FOULED,playerStat.get(0)[13]);
-        statValues.put(StatEntry.COLUMN_CLEARANCE,playerStat.get(0)[14]);
-        statValues.put(StatEntry.COLUMN_TAKEON,playerStat.get(0)[15]);
-        statValues.put(StatEntry.COLUMN_SAVE,playerStat.get(0)[16]);
-        statValues.put(StatEntry.COLUMN_YELLOW_CARD,playerStat.get(0)[17]);
-        statValues.put(StatEntry.COLUMN_RED_CARD,playerStat.get(0)[18]);
+            Vector<ContentValues> statVector = new Vector<>(playerStat.size());
 
-        Vector<ContentValues> statVector = new Vector<ContentValues>(statValues.size());
-        statVector.add(statValues);
+            for(int i=0;i<playerStat.size();i++){
 
-        // add to database
-        int inserted =0;
-        if ( statVector.size() > 0 ) {
-            ContentValues[] cvArray = new ContentValues[statVector.size()];
-            statVector.toArray(cvArray);
-            inserted = mContext.getContentResolver().bulkInsert(StatEntry.CONTENT_URI, cvArray);
+                ContentValues statValues = new ContentValues();
+
+                statValues.put(StatEntry.COLUMN_PLAYER_KEY,playerId);
+                statValues.put(StatEntry.COLUMN_DATE,playerStat.get(i)[0]);
+                statValues.put(StatEntry.COLUMN_GAME,playerStat.get(i)[1]);
+                statValues.put(StatEntry.COLUMN_TEAM,playerStat.get(i)[2]);
+                statValues.put(StatEntry.COLUMN_OPPONENT,playerStat.get(i)[3]);
+                statValues.put(StatEntry.COLUMN_HOME_AWAY,playerStat.get(i)[4]);
+                statValues.put(StatEntry.COLUMN_SCORE,playerStat.get(i)[5]);
+                statValues.put(StatEntry.COLUMN_APPREARANCE,playerStat.get(i)[6]);
+                statValues.put(StatEntry.COLUMN_PLAY_TIME,playerStat.get(i)[7]);
+                statValues.put(StatEntry.COLUMN_SHOT,playerStat.get(i)[8]);
+                statValues.put(StatEntry.COLUMN_SHOT_ON_TARGET,playerStat.get(i)[9]);
+                statValues.put(StatEntry.COLUMN_GOAL,playerStat.get(i)[10]);
+                statValues.put(StatEntry.COLUMN_KEY_PASS,playerStat.get(i)[11]);
+                statValues.put(StatEntry.COLUMN_FOUL,playerStat.get(i)[12]);
+                statValues.put(StatEntry.COLUMN_FOULED,playerStat.get(i)[13]);
+                statValues.put(StatEntry.COLUMN_CLEARANCE,playerStat.get(i)[14]);
+                statValues.put(StatEntry.COLUMN_TAKEON,playerStat.get(i)[15]);
+                statValues.put(StatEntry.COLUMN_SAVE,playerStat.get(i)[16]);
+                statValues.put(StatEntry.COLUMN_YELLOW_CARD,playerStat.get(i)[17]);
+                statValues.put(StatEntry.COLUMN_RED_CARD,playerStat.get(i)[18]);
+
+                statVector.add(statValues);
+            }
+
+            // add to database
+            int inserted =0;
+            if ( statVector.size() > 0 ) {
+                ContentValues[] cvArray = new ContentValues[statVector.size()];
+                statVector.toArray(cvArray);
+                inserted = mContext.getContentResolver().bulkInsert(StatEntry.CONTENT_URI, cvArray);
+            }
+            Log.d(LOG_TAG, "FetchStatTask Complete. " + inserted + " Inserted");
         }
-        Log.d(LOG_TAG, "FetchWeatherTask Complete. " + inserted + " Inserted");
-    }
-
     }
 

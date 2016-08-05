@@ -25,6 +25,12 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     private String FERNANDO = "168101";
     private String WULEI = "116730";
 
+    private static final String[] STAT_COLUMNS = {
+
+            StatContract.StatEntry.COLUMN_DATE,
+            StatContract.StatEntry._ID,
+    };
+
     public FetchFragment(){
     }
 
@@ -61,7 +67,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         mStatAdapter = new StatAdapter(getActivity(),null,0);
 
         View rootView = inflater.inflate(R.layout.fragment_players, container, false);
-        ListView listView = (ListView)getActivity().findViewById(R.id.list);
+        ListView listView = (ListView) rootView.findViewById(R.id.listview_stat);
         listView.setAdapter(mStatAdapter);
 
         return rootView;
@@ -89,13 +95,11 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
-        // Sort order:  Ascending, by date.
-        String sortOrder = StatContract.StatEntry.COLUMN_DATE + " ASC";
-        Uri weatherForLocationUri = StatContract.StatEntry.buildWeatherLocation();
-
+        String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
+        Uri statForPlayerUri = StatContract.StatEntry.buildPlayerStat();
         return new CursorLoader(getActivity(),
-                weatherForLocationUri,
-                null,
+                statForPlayerUri,
+                STAT_COLUMNS,
                 null,
                 null,
                 sortOrder);
@@ -103,6 +107,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
         mStatAdapter.swapCursor(cursor);
     }
 

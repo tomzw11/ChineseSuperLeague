@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
+import android.database.DatabaseUtils;
 import android.net.Uri;
 
 public class StatProvider extends ContentProvider{
@@ -16,29 +16,7 @@ public class StatProvider extends ContentProvider{
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private StatDBHelper mOpenHelper;
 
-    static final int PLAYER = 100;
     static final int DATE = 300;
-
-    private static final SQLiteQueryBuilder sWeatherByLocationSettingQueryBuilder;
-
-    static{
-        sWeatherByLocationSettingQueryBuilder = new SQLiteQueryBuilder();
-
-        //This is an inner join which looks like
-        //weather INNER JOIN location ON weather.location_id = location._id
-        sWeatherByLocationSettingQueryBuilder.setTables(
-                StatContract.StatEntry.TABLE_NAME + " INNER JOIN " +
-                        StatContract.PlayerEntry.TABLE_NAME +
-                        " ON " + StatContract.StatEntry.TABLE_NAME +
-                        "." + StatContract.StatEntry.COLUMN_PLAYER_KEY +
-                        " = " + StatContract.PlayerEntry.TABLE_NAME +
-                        "." + StatContract.PlayerEntry._ID);
-    }
-
-
-    private static final String sPlayerSettingSelection =
-            StatContract.PlayerEntry.TABLE_NAME+
-                    "." + StatContract.PlayerEntry.COLUMN_PLAYER_SETTING + " = ? ";
 
     static UriMatcher buildUriMatcher() {
         // I know what you're thinking.  Why create a UriMatcher when you can use regular
@@ -70,8 +48,6 @@ public class StatProvider extends ContentProvider{
 
         switch (match) {
 
-            case PLAYER:
-                return StatContract.PlayerEntry.CONTENT_TYPE;
             case DATE:
                 return StatContract.StatEntry.CONTENT_TYPE;
             default:
@@ -85,9 +61,11 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
+        SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        Cursor tc = db.rawQuery("select team from stat",null);
         switch (sUriMatcher.match(uri)) {
 
-            case DATE: {
+           case DATE: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         StatContract.StatEntry.TABLE_NAME,
                         projection,
@@ -104,6 +82,7 @@ public class StatProvider extends ContentProvider{
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
         retCursor.setNotificationUri(getContext().getContentResolver(), uri);
+
         return retCursor;
     }
 
@@ -112,13 +91,13 @@ public class StatProvider extends ContentProvider{
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         Uri returnUri;
-
         switch (match) {
 
-            case PLAYER: {
-                long _id = db.insert(StatContract.PlayerEntry.TABLE_NAME, null, values);
+
+            case DATE: {
+                long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
-                    returnUri = StatContract.PlayerEntry.buildPlayerUri(_id);
+                    returnUri = StatContract.StatEntry.buildPlayerStat();
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 break;
@@ -143,10 +122,6 @@ public class StatProvider extends ContentProvider{
                 rowsDeleted = db.delete(
                         StatContract.StatEntry.TABLE_NAME, selection, selectionArgs);
                 break;
-            case PLAYER:
-                rowsDeleted = db.delete(
-                        StatContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
-                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -157,7 +132,6 @@ public class StatProvider extends ContentProvider{
         return rowsDeleted;
     }
 
-
     @Override
     public int update(
             Uri uri, ContentValues values, String selection, String[] selectionArgs) {
@@ -167,8 +141,8 @@ public class StatProvider extends ContentProvider{
 
         switch (match) {
 
-            case PLAYER:
-                rowsUpdated = db.update(StatContract.PlayerEntry.TABLE_NAME, values, selection,
+            case DATE:
+                rowsUpdated = db.update(StatContract.StatEntry.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
             default:
@@ -201,7 +175,6 @@ public class StatProvider extends ContentProvider{
                     db.endTransaction();
                 }
                 getContext().getContentResolver().notifyChange(uri, null);
-                System.out.println("inserted url is "+uri);
                 return returnCount;
             default:
                 return super.bulkInsert(uri, values);
