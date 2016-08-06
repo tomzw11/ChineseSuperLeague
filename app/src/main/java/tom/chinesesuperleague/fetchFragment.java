@@ -30,8 +30,15 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_DATE,
-            StatContract.StatEntry._ID,
+            StatContract.StatEntry.COLUMN_TEAM,
+            StatContract.StatEntry._ID
     };
+
+
+    static final int COL_STAT_DATE = 0;
+    static final int COL_STAT_TEAM = 1;
+    static final int COL_STAT_ID = 2;
+
 
     public FetchFragment(){
     }
@@ -68,8 +75,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         mStatAdapter = new StatAdapter(getActivity(),null,0);
 
-        View rootView = inflater.inflate(R.layout.fragment_players, container, false);
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_stat);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
         listView.setAdapter(mStatAdapter);
 
         // We'll call our MainActivity

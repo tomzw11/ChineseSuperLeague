@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import tom.chinesesuperleague.data.StatContract;
 
@@ -26,13 +28,13 @@ public class StatAdapter extends CursorAdapter{
         return view;
     }
 
-    private String convertCursorRowToUXFormat(Cursor cursor) {
-        // get row indices for our cursor
-        int idx_date = cursor.getColumnIndex(StatContract.StatEntry.COLUMN_DATE);
-
-
-        return cursor.getString(idx_date);
-    }
+//    private String convertCursorRowToUXFormat(Cursor cursor) {
+//        // get row indices for our cursor
+//        int idx_date = cursor.getColumnIndex(StatContract.StatEntry.COLUMN_DATE);
+//
+//
+//        return cursor.getString(idx_date);
+//    }
 
     /*
         This is where we fill-in the views with the contents of the cursor.
@@ -42,7 +44,16 @@ public class StatAdapter extends CursorAdapter{
         // our view is pretty simple here --- just a text view
         // we'll keep the UI functional with a simple (and slow!) binding.
 
-        TextView tv = (TextView)view;
-        tv.setText(convertCursorRowToUXFormat(cursor));
+        ImageView iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
+        iconView.setImageResource(R.drawable.ralf2);
+
+        String date = cursor.getString(FetchFragment.COL_STAT_DATE);
+        TextView dateView = (TextView)view.findViewById(R.id.listview_stat_date);
+        dateView.setText(date);
+
+        String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
+        TextView teamView = (TextView)view.findViewById(R.id.listview_stat_team);
+        teamView.setText(team);
+
     }
 }

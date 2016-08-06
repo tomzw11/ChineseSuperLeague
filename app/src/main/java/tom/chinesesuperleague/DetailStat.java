@@ -8,8 +8,6 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
-
 
 public class DetailStat extends ActionBarActivity {
 
@@ -33,33 +30,33 @@ public class DetailStat extends ActionBarActivity {
         }
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class DetailFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
-        private static final String LOG_TAG = DetailFragment.class.getSimpleName();
-
-        private static final String FORECAST_SHARE_HASHTAG = " #SunshineApp";
-
-        private ShareActionProvider mShareActionProvider;
         private String mForecast;
 
         private static final int DETAIL_LOADER = 0;
 
         private static final String[] STAT_COLUMNS = {
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,
-                StatEntry.COLUMN_DATE,
-
+                StatEntry.COLUMN_PLAYER_KEY,
+                StatEntry.COLUMN_TEAM,
+                StatEntry.COLUMN_GOAL,
+                StatEntry.COLUMN_PLAY_TIME,
+                StatEntry.COLUMN_KEY_PASS,
+                StatEntry.COLUMN_YELLOW_CARD,
+                StatEntry.COLUMN_RED_CARD
         };
 
         // these constants correspond to the projection defined above, and must change if the
         // projection changes
-        private static final int COL_WEATHER_ID = 0;
-        private static final int COL_WEATHER_DATE = 1;
-        private static final int COL_WEATHER_DESC = 2;
-        private static final int COL_WEATHER_MAX_TEMP = 3;
-        private static final int COL_WEATHER_MIN_TEMP = 4;
+        private static final int COL_STAT_ID = 0;
+        private static final int COL_PLAYER_KEY = 1;
+        private static final int COL_TEAM = 2;
+        private static final int COL_GOAL = 3;
+        private static final int COL_PLAY_TIME = 4;
+        private static final int COL_KEY_PASS = 5;
+        private static final int COL_YELLOW_CARD = 6;
+        private static final int COL_RED_CARD = 7;
 
         public DetailFragment() {
             setHasOptionsMenu(true);
@@ -86,7 +83,6 @@ public class DetailStat extends ActionBarActivity {
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-            Log.v(LOG_TAG, "In onCreateLoader");
             Intent intent = getActivity().getIntent();
             if (intent == null) {
                 return null;
@@ -106,15 +102,29 @@ public class DetailStat extends ActionBarActivity {
 
         @Override
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-            Log.v(LOG_TAG, "In onLoadFinished");
+
             if (!data.moveToFirst()) { return; }
 
+            TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
+            tv_team.setText(getString(R.string.detail_item_name)+ " "+getString(R.string.p61034));
 
-            mForecast = String.format("%s", COL_WEATHER_DATE);
+            TextView tv_name = (TextView)getView().findViewById(R.id.fragment_details_team);
+            tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_TEAM));
 
-            TextView detailTextView = (TextView)getView().findViewById(R.id.fragment_details_textview);
-            detailTextView.setText(mForecast);
+            TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
+            tv_pt.setText(getString(R.string.detail_item_pt)+" "+ data.getString(COL_PLAY_TIME));
 
+            TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
+            tv_goal.setText(getString(R.string.detail_item_goal)+" "+ data.getString(COL_GOAL));
+
+            TextView tv_kp = (TextView)getView().findViewById(R.id.fragment_details_keypass);
+            tv_kp.setText(getString(R.string.detail_item_kp) +" "+ data.getString(COL_KEY_PASS));
+
+            TextView tv_yc = (TextView)getView().findViewById(R.id.fragment_details_yellowcard);
+            tv_yc.setText(getString(R.string.detail_item_yc) +" "+ data.getString(COL_YELLOW_CARD));
+
+            TextView tv_rc = (TextView)getView().findViewById(R.id.fragment_details_redcard);
+            tv_rc.setText(getString(R.string.detail_item_rc) +" "+ data.getString(COL_RED_CARD));
         }
 
         @Override
