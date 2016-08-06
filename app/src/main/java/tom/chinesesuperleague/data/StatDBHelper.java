@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
+import tom.chinesesuperleague.data.StatContract.PlayerEntry;
 
 public class StatDBHelper extends SQLiteOpenHelper {
 
@@ -19,6 +20,12 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+        final String SQL_CREATE_PLAYER_TABLE = "CREATE TABLE " + StatContract.PlayerEntry.TABLE_NAME + " (" +
+                PlayerEntry._ID + " INTEGER PRIMARY KEY," +
+                PlayerEntry.COLUMN_PLAYER_NAME + " TEXT UNIQUE NOT NULL, " +
+                " );";
+        
         final String SQL_CREATE_STAT_TABLE =
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
@@ -47,14 +54,15 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
                 // Set up the location column as a foreign key to location table.
                 " FOREIGN KEY (" + StatEntry.COLUMN_PLAYER_KEY + ") REFERENCES " +
-                StatEntry.TABLE_NAME + " (" + StatEntry._ID + "), " +
+                PlayerEntry.TABLE_NAME + " (" + PlayerEntry._ID + "), " +
 
                 // To assure the application have just one weather entry per day
                 // per location, it's created a UNIQUE constraint with REPLACE strategy
                 " UNIQUE (" + StatEntry.COLUMN_DATE + ", " +
-                StatEntry.COLUMN_PLAYER_KEY + ") ON CONFLICT REPLACE);";
+                PlayerEntry.COLUMN_PLAYER_NAME + ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_PLAYER_TABLE);
     }
 
     @Override
@@ -66,7 +74,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
 
-        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StatEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

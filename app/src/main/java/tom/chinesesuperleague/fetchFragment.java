@@ -34,11 +34,9 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry._ID
     };
 
-
     static final int COL_STAT_DATE = 0;
     static final int COL_STAT_TEAM = 1;
     static final int COL_STAT_ID = 2;
-
 
     public FetchFragment(){
     }
@@ -46,7 +44,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Add this line in order for this fragment to handle menu events.
+        // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
     }
 
@@ -108,7 +106,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     private void updateStat(){
 
         FetchStatTask statTask = new FetchStatTask(getActivity());
-        statTask.execute(RALF);
+        statTask.execute(WULEI);
     }
 
     @Override

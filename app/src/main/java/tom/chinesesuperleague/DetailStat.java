@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.view.MenuItem;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
@@ -68,12 +69,6 @@ public class DetailStat extends ActionBarActivity {
             return inflater.inflate(R.layout.fragment_details, container, false);
         }
 
-        @Override
-        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            inflater.inflate(R.menu.detail_fragment, menu);
-
-        }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {

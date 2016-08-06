@@ -25,6 +25,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tom.chinesesuperleague.DetailStat" />
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tom.chinesesuperleague.MainActivity" />
+        </activity>
 
     <provider
         android:authorities="tom.chinesesuperleague.data"

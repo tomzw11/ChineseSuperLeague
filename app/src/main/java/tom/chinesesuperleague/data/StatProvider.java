@@ -8,18 +8,34 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.database.sqlite.SQLiteQueryBuilder;
 
 public class StatProvider extends ContentProvider{
 
     // The URI Matcher used by this content provider.
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private StatDBHelper mOpenHelper;
+    private static final SQLiteQueryBuilder sWeatherByLocationSettingQueryBuilder;
+
 
     static final int DATE = 300;
+    static final int PLAYER = 100;
+
+    static{
+        sWeatherByLocationSettingQueryBuilder = new SQLiteQueryBuilder();
+
+        //This is an inner join which looks like
+        //weather INNER JOIN location ON weather.location_id = location._id
+        sWeatherByLocationSettingQueryBuilder.setTables(
+                StatContract.StatEntry.TABLE_NAME + " INNER JOIN " +
+                        StatContract.PlayerEntry.TABLE_NAME +
+                        " ON " + StatContract.StatEntry.TABLE_NAME +
+                        "." + StatContract.StatEntry.COLUMN_PLAYER_KEY +
+                        " = " + StatContract.PlayerEntry.TABLE_NAME +
+                        "." + StatContract.PlayerEntry._ID);
+    }
 
     static UriMatcher buildUriMatcher() {
-        // I know what you're thinking.  Why create a UriMatcher when you can use regular
-        // expressions instead?  Because you're not crazy, that's why.
 
         // All paths added to the UriMatcher have a corresponding code to return when a match is
         // found.  The code passed into the constructor represents the code to return for the root
@@ -29,6 +45,7 @@ public class StatProvider extends ContentProvider{
 
         // For each type of URI you want to add, create a corresponding code.
         matcher.addURI(authority, StatContract.PATH_DATE, DATE);
+        matcher.addURI(authority, StatContract.PATH_PLAYER, PLAYER);
 
         return matcher;
     }
@@ -49,6 +66,8 @@ public class StatProvider extends ContentProvider{
 
             case DATE:
                 return StatContract.StatEntry.CONTENT_TYPE;
+            case PLAYER:
+                return StatContract.PlayerEntry.CONTENT_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -60,13 +79,24 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
-        SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-        Cursor tc = db.rawQuery("select team from stat",null);
         switch (sUriMatcher.match(uri)) {
 
            case DATE: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         StatContract.StatEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+
+            case PLAYER: {
+                retCursor = mOpenHelper.getReadableDatabase().query(
+                        StatContract.PlayerEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -102,6 +132,16 @@ public class StatProvider extends ContentProvider{
                 break;
             }
 
+
+            case PLAYER: {
+                long _id = db.insert(StatContract.PlayerEntry.TABLE_NAME, null, values);
+                if ( _id > 0 )
+                    returnUri = StatContract.PlayerEntry.buildPlayerStat();
+                else
+                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                break;
+            }
+
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -120,6 +160,10 @@ public class StatProvider extends ContentProvider{
             case DATE:
                 rowsDeleted = db.delete(
                         StatContract.StatEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            case PLAYER:
+                rowsDeleted = db.delete(
+                        StatContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -142,6 +186,10 @@ public class StatProvider extends ContentProvider{
 
             case DATE:
                 rowsUpdated = db.update(StatContract.StatEntry.TABLE_NAME, values, selection,
+                        selectionArgs);
+                break;
+            case PLAYER:
+                rowsUpdated = db.update(StatContract.PlayerEntry.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
             default:

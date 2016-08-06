@@ -9,22 +9,9 @@ public class StatContract {
     public static final String CONTENT_AUTHORITY = "tom.chinesesuperleague.data";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
     public static final String PATH_DATE = "date";
-
-
-//    /*
-//        Inner class that defines the contents of the location table
-//     */
-//    public static final class PlayerEntry implements BaseColumns {
-//
-//        public static final Uri CONTENT_URI =
-//                BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLAYER).build();
-//
-//        public static Uri buildPlayerUri(long id) {
-//            return ContentUris.withAppendedId(CONTENT_URI, id);
-//        }
-//
-//    }
+    public static final String PATH_PLAYER = "player";
 
     /* Inner class that defines the contents of the stat table */
     public static final class StatEntry implements BaseColumns {
@@ -63,6 +50,31 @@ public class StatContract {
         public static final String COLUMN_SAVE = "save";
         public static final String COLUMN_YELLOW_CARD = "yellow_card";
         public static final String COLUMN_RED_CARD = "red_card";
+
+    }
+
+    /* Inner class that defines the table contents of the location table */
+    public static final class PlayerEntry implements BaseColumns {
+
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLAYER).build();
+
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
+
+        // Table name
+        public static final String TABLE_NAME = "player";
+
+        // The location setting string is what will be sent to openweathermap
+        // as the location query.
+        public static final String COLUMN_PLAYER_NAME = "player_name";
+
+        public static Uri buildPlayerStat() {
+            return CONTENT_URI.buildUpon().build();
+        }
+
 
     }
 
