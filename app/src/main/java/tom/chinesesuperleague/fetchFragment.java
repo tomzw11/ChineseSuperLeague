@@ -15,6 +15,8 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.AdapterView;
 
 import tom.chinesesuperleague.data.StatContract;
@@ -23,9 +25,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private StatAdapter mStatAdapter;
     private static final int STAT_LOADER = 0;
-    private String RALF = "61034";
-    private String FERNANDO = "168101";
-    private String WULEI = "116730";
+    private String player;
+
 
     private static final String[] STAT_COLUMNS = {
 
@@ -61,6 +62,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
+
             updateStat();
             return true;
         }
@@ -105,8 +107,10 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private void updateStat(){
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        player = preferences.getString(getString(R.string.pref_name_key),getString(R.string.pref_player_default));
         FetchStatTask statTask = new FetchStatTask(getActivity());
-        statTask.execute(WULEI);
+        statTask.execute(player);
     }
 
     @Override

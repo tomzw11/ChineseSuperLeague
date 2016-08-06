@@ -28,13 +28,6 @@ public class StatAdapter extends CursorAdapter{
         return view;
     }
 
-//    private String convertCursorRowToUXFormat(Cursor cursor) {
-//        // get row indices for our cursor
-//        int idx_date = cursor.getColumnIndex(StatContract.StatEntry.COLUMN_DATE);
-//
-//
-//        return cursor.getString(idx_date);
-//    }
 
     /*
         This is where we fill-in the views with the contents of the cursor.

@@ -21,11 +21,12 @@ public class StatDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_PLAYER_TABLE = "CREATE TABLE " + StatContract.PlayerEntry.TABLE_NAME + " (" +
+        final String SQL_CREATE_PLAYER_TABLE =
+                "CREATE TABLE " + PlayerEntry.TABLE_NAME + " (" +
                 PlayerEntry._ID + " INTEGER PRIMARY KEY," +
-                PlayerEntry.COLUMN_PLAYER_NAME + " TEXT UNIQUE NOT NULL, " +
-                " );";
-        
+                PlayerEntry.COLUMN_PLAYER_NAME + " REAL NOT NULL" +
+                ");";
+
         final String SQL_CREATE_STAT_TABLE =
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
@@ -59,10 +60,11 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 // To assure the application have just one weather entry per day
                 // per location, it's created a UNIQUE constraint with REPLACE strategy
                 " UNIQUE (" + StatEntry.COLUMN_DATE + ", " +
-                PlayerEntry.COLUMN_PLAYER_NAME + ") ON CONFLICT REPLACE);";
+                StatEntry.COLUMN_PLAYER_KEY+ ") ON CONFLICT REPLACE);";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_PLAYER_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
+
     }
 
     @Override
