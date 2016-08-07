@@ -120,7 +120,6 @@ public class DetailStat extends ActionBarActivity {
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
             if (!data.moveToFirst()) { return; }
-
             //System.out.println("detail stat StatEntry ID: "+ data.getString(COL_TABLE_NAME));
 
             TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
