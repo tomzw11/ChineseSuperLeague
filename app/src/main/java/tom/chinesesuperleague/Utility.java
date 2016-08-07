@@ -1,8 +1,10 @@
 package tom.chinesesuperleague;
 
-/**
- * Created by Tom on 7/30/16.
- */
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.content.Context;
+
 public class Utility {
 
     public static String urlBuilder(String id){
@@ -11,7 +13,11 @@ public class Utility {
         return url;
     }
 
-
+    public static String getPreferredPlayer(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(context.getString(R.string.pref_name_key),
+                context.getString(R.string.pref_player_default));
+    }
 
 
 }

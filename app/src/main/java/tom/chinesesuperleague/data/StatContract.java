@@ -20,8 +20,8 @@ public class StatContract {
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_DATE).build();
 
-        public static Uri buildPlayerStat() {
-            return CONTENT_URI.buildUpon().build();
+        public static Uri buildDateUri(long id) {
+            return CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
         }
 
         public static final String CONTENT_TYPE =
@@ -61,20 +61,21 @@ public class StatContract {
 
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
-        public static final String CONTENT_ITEM_TYPE =
-                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
 
         // Table name
         public static final String TABLE_NAME = "player";
 
-        // The location setting string is what will be sent to openweathermap
-        // as the location query.
+
         public static final String COLUMN_PLAYER_NAME = "player_name";
 
-        public static Uri buildPlayerStat() {
-            return CONTENT_URI.buildUpon().build();
+        public static Uri buildPlayerUri(long id) {
+            return CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
         }
 
+        public static Uri buildPlayerUriWithName(String name){
+
+            return CONTENT_URI.buildUpon().appendPath(name).build();
+        }
 
     }
 

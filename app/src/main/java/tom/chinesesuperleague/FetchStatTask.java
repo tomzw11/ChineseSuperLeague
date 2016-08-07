@@ -8,10 +8,15 @@ import org.jsoup.select.Elements;
 import android.content.ContentValues;
 import android.util.Log;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
+import android.database.Cursor;
+import android.content.ContentUris;
+import android.net.Uri;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import tom.chinesesuperleague.data.StatContract;
 
 public class FetchStatTask extends AsyncTask<String,Void,Void> {
 
@@ -23,6 +28,50 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
         mContext = context;
 
         }
+
+    long addPlayer(String playerSetting, String playerName) {
+
+        long playerId;
+
+        Cursor playerCursor = mContext.getContentResolver().query(
+                StatContract.PlayerEntry.CONTENT_URI,
+                new String[]{StatContract.PlayerEntry._ID},
+                StatContract.PlayerEntry.COLUMN_PLAYER_NAME + " = ?",
+                new String[]{playerSetting},
+                null);
+
+
+        if (playerCursor.moveToFirst()) {
+
+            int playerIdIndex = playerCursor.getColumnIndex(StatContract.PlayerEntry._ID);
+
+            playerId = playerCursor.getLong(playerIdIndex);
+        } else {
+
+            // Now that the content provider is set up, inserting rows of data is pretty simple.
+            // First create a ContentValues object to hold the data you want to insert.
+            ContentValues playerValues = new ContentValues();
+
+            // Then add the data, along with the corresponding name of the data type,
+            // so the content provider knows what kind of value is being inserted.
+            System.out.println("playerName:"+playerName);
+            playerValues.put(StatContract.PlayerEntry.COLUMN_PLAYER_NAME, playerName);
+
+            // Finally, insert location data into the database.
+            Uri insertedUri = mContext.getContentResolver().insert(
+                    StatContract.PlayerEntry.CONTENT_URI,
+                    playerValues
+            );
+            System.out.println("Uri:"+insertedUri);
+
+            // The resulting URI contains the ID for the row.  Extract the locationId from the Uri.
+            playerId = ContentUris.parseId(insertedUri);
+        }
+
+        playerCursor.close();
+        // Wait, that worked?  Yes!
+        return playerId;
+    }
 
     @Override
     protected Void doInBackground(String... params) {
@@ -52,11 +101,14 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
       return null;
     }
 
-    private void getPlayerStat(ArrayList<String[]> playerStat,String playerId){
+    private void getPlayerStat(ArrayList<String[]> playerStat,String playerSetting){
 
             Vector<ContentValues> statVector = new Vector<>(playerStat.size());
 
-            for(int i=0;i<playerStat.size();i++){
+        String playerName = "RALF";
+        long playerId = addPlayer(playerSetting, playerName);
+
+        for(int i=0;i<playerStat.size();i++){
 
                 ContentValues statValues = new ContentValues();
 

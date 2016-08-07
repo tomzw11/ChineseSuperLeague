@@ -90,7 +90,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 if (cursor != null) {
 
                     Intent intent = new Intent(getActivity(), DetailStat.class)
-                            .setData(StatContract.StatEntry.buildPlayerStat());
+                            .setData(StatContract.PlayerEntry.buildPlayerUriWithName(Utility.getPreferredPlayer(getActivity())));
                     startActivity(intent);
                 }
             }
@@ -124,7 +124,9 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-        Uri statForPlayerUri = StatContract.StatEntry.buildPlayerStat();
+        Uri statForPlayerUri = StatContract.PlayerEntry.buildPlayerUriWithName(Utility.getPreferredPlayer(getActivity()));
+        System.out.println("name: "+Utility.getPreferredPlayer(getActivity()));
+        System.out.println("loader Uri:"+statForPlayerUri);
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,

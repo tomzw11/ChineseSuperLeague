@@ -126,7 +126,7 @@ public class StatProvider extends ContentProvider{
             case DATE: {
                 long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
-                    returnUri = StatContract.StatEntry.buildPlayerStat();
+                    returnUri = StatContract.StatEntry.buildDateUri(_id);
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 break;
@@ -136,7 +136,7 @@ public class StatProvider extends ContentProvider{
             case PLAYER: {
                 long _id = db.insert(StatContract.PlayerEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
-                    returnUri = StatContract.PlayerEntry.buildPlayerStat();
+                    returnUri = StatContract.PlayerEntry.buildPlayerUri(_id);
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 break;
