@@ -10,7 +10,6 @@ public class StatContract {
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
-    public static final String PATH_DATE = "date";
     public static final String PATH_PLAYER = "player";
 
     /* Inner class that defines the contents of the stat table */
@@ -18,19 +17,23 @@ public class StatContract {
 
 
         public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendPath(PATH_DATE).build();
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLAYER).build();
 
         public static Uri buildDateUri(long id) {
             return CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
         }
 
+        public static Uri buildStatUriWithName(String name){
+
+            return CONTENT_URI.buildUpon().appendPath(name).build();
+        }
+
         public static final String CONTENT_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_DATE;
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
 
         public static final String TABLE_NAME = "stat";
 
         // Column with the foreign key into the location table.
-        public static final String COLUMN_PLAYER_KEY = "player_name";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_GAME = "game";
         public static final String COLUMN_TEAM = "team";
@@ -50,32 +53,6 @@ public class StatContract {
         public static final String COLUMN_SAVE = "save";
         public static final String COLUMN_YELLOW_CARD = "yellow_card";
         public static final String COLUMN_RED_CARD = "red_card";
-
-    }
-
-    /* Inner class that defines the table contents of the location table */
-    public static final class PlayerEntry implements BaseColumns {
-
-        public static final Uri CONTENT_URI =
-                BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLAYER).build();
-
-        public static final String CONTENT_TYPE =
-                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
-
-        // Table name
-        public static final String TABLE_NAME = "player";
-
-
-        public static final String COLUMN_PLAYER_NAME = "player_name";
-
-        public static Uri buildPlayerUri(long id) {
-            return CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
-        }
-
-        public static Uri buildPlayerUriWithName(String name){
-
-            return CONTENT_URI.buildUpon().appendPath(name).build();
-        }
 
     }
 

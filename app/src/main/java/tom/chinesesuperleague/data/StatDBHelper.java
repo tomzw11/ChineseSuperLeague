@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
-import tom.chinesesuperleague.data.StatContract.PlayerEntry;
 
 public class StatDBHelper extends SQLiteOpenHelper {
 
@@ -21,18 +20,11 @@ public class StatDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_PLAYER_TABLE =
-                "CREATE TABLE " + PlayerEntry.TABLE_NAME + " (" +
-                PlayerEntry._ID + " INTEGER PRIMARY KEY," +
-                PlayerEntry.COLUMN_PLAYER_NAME + " REAL NOT NULL" +
-                ");";
-
         final String SQL_CREATE_STAT_TABLE =
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
                 StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
 
-                StatEntry.COLUMN_PLAYER_KEY + " REAL NOT NULL, " +
                 StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
@@ -51,18 +43,14 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 StatEntry.COLUMN_TAKEON + " REAL NOT NULL, " +
                 StatEntry.COLUMN_SAVE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_YELLOW_CARD + " REAL NOT NULL, " +
-                StatEntry.COLUMN_RED_CARD + " REAL NOT NULL, " +
+                StatEntry.COLUMN_RED_CARD + " REAL NOT NULL," +
+                        // To assure the application have just one weather entry per day
+                        // per location, it's created a UNIQUE constraint with REPLACE strategy
 
-                // Set up the location column as a foreign key to location table.
-                " FOREIGN KEY (" + StatEntry.COLUMN_PLAYER_KEY + ") REFERENCES " +
-                PlayerEntry.TABLE_NAME + " (" + PlayerEntry._ID + "), " +
+                        " UNIQUE (" + StatEntry.COLUMN_DATE +
+                         ") ON CONFLICT REPLACE);";
 
-                // To assure the application have just one weather entry per day
-                // per location, it's created a UNIQUE constraint with REPLACE strategy
-                " UNIQUE (" + StatEntry.COLUMN_DATE + ", " +
-                StatEntry.COLUMN_PLAYER_KEY+ ") ON CONFLICT REPLACE);";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_PLAYER_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
 
     }
@@ -76,7 +64,6 @@ public class StatDBHelper extends SQLiteOpenHelper {
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
 
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StatEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

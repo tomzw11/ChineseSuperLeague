@@ -33,13 +33,10 @@ public class DetailStat extends ActionBarActivity {
 
     public static class DetailFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
-        private String mForecast;
-
         private static final int DETAIL_LOADER = 0;
 
         private static final String[] STAT_COLUMNS = {
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,
-                StatEntry.COLUMN_PLAYER_KEY,
                 StatEntry.COLUMN_TEAM,
                 StatEntry.COLUMN_GOAL,
                 StatEntry.COLUMN_PLAY_TIME,
@@ -51,13 +48,12 @@ public class DetailStat extends ActionBarActivity {
         // these constants correspond to the projection defined above, and must change if the
         // projection changes
         private static final int COL_STAT_ID = 0;
-        private static final int COL_PLAYER_KEY = 1;
-        private static final int COL_TEAM = 2;
-        private static final int COL_GOAL = 3;
-        private static final int COL_PLAY_TIME = 4;
-        private static final int COL_KEY_PASS = 5;
-        private static final int COL_YELLOW_CARD = 6;
-        private static final int COL_RED_CARD = 7;
+        private static final int COL_TEAM = 1;
+        private static final int COL_GOAL = 2;
+        private static final int COL_PLAY_TIME = 3;
+        private static final int COL_KEY_PASS = 4;
+        private static final int COL_YELLOW_CARD = 5;
+        private static final int COL_RED_CARD = 6;
 
         public DetailFragment() {
             setHasOptionsMenu(true);

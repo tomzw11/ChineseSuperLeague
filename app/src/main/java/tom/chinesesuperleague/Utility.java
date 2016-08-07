@@ -3,7 +3,6 @@ package tom.chinesesuperleague;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.content.Context;
 
 public class Utility {
 

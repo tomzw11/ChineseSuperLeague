@@ -8,32 +8,16 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 public class StatProvider extends ContentProvider{
 
     // The URI Matcher used by this content provider.
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private StatDBHelper mOpenHelper;
-    private static final SQLiteQueryBuilder sWeatherByLocationSettingQueryBuilder;
-
 
     static final int DATE = 300;
     static final int PLAYER = 100;
 
-    static{
-        sWeatherByLocationSettingQueryBuilder = new SQLiteQueryBuilder();
-
-        //This is an inner join which looks like
-        //weather INNER JOIN location ON weather.location_id = location._id
-        sWeatherByLocationSettingQueryBuilder.setTables(
-                StatContract.StatEntry.TABLE_NAME + " INNER JOIN " +
-                        StatContract.PlayerEntry.TABLE_NAME +
-                        " ON " + StatContract.StatEntry.TABLE_NAME +
-                        "." + StatContract.StatEntry.COLUMN_PLAYER_KEY +
-                        " = " + StatContract.PlayerEntry.TABLE_NAME +
-                        "." + StatContract.PlayerEntry._ID);
-    }
 
     static UriMatcher buildUriMatcher() {
 
@@ -44,7 +28,6 @@ public class StatProvider extends ContentProvider{
         final String authority = StatContract.CONTENT_AUTHORITY;
 
         // For each type of URI you want to add, create a corresponding code.
-        matcher.addURI(authority, StatContract.PATH_DATE, DATE);
         matcher.addURI(authority, StatContract.PATH_PLAYER, PLAYER);
 
         return matcher;
@@ -66,8 +49,7 @@ public class StatProvider extends ContentProvider{
 
             case DATE:
                 return StatContract.StatEntry.CONTENT_TYPE;
-            case PLAYER:
-                return StatContract.PlayerEntry.CONTENT_TYPE;
+
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -79,37 +61,16 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
-        switch (sUriMatcher.match(uri)) {
 
-           case DATE: {
-                retCursor = mOpenHelper.getReadableDatabase().query(
-                        StatContract.StatEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortOrder
-                );
-                break;
-            }
-
-            case PLAYER: {
-                retCursor = mOpenHelper.getReadableDatabase().query(
-                        StatContract.PlayerEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortOrder
-                );
-                break;
-            }
-
-            default:
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
-        }
+        retCursor = mOpenHelper.getReadableDatabase().query(
+                StatContract.StatEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
         retCursor.setNotificationUri(getContext().getContentResolver(), uri);
 
         return retCursor;
@@ -118,33 +79,15 @@ public class StatProvider extends ContentProvider{
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        final int match = sUriMatcher.match(uri);
+
         Uri returnUri;
-        switch (match) {
 
-
-            case DATE: {
                 long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
                     returnUri = StatContract.StatEntry.buildDateUri(_id);
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
-                break;
-            }
 
-
-            case PLAYER: {
-                long _id = db.insert(StatContract.PlayerEntry.TABLE_NAME, null, values);
-                if ( _id > 0 )
-                    returnUri = StatContract.PlayerEntry.buildPlayerUri(_id);
-                else
-                    throw new android.database.SQLException("Failed to insert row into " + uri);
-                break;
-            }
-
-            default:
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
-        }
         getContext().getContentResolver().notifyChange(uri, null);
         return returnUri;
     }
@@ -161,10 +104,10 @@ public class StatProvider extends ContentProvider{
                 rowsDeleted = db.delete(
                         StatContract.StatEntry.TABLE_NAME, selection, selectionArgs);
                 break;
-            case PLAYER:
-                rowsDeleted = db.delete(
-                        StatContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
-                break;
+//            case PLAYER:
+//                rowsDeleted = db.delete(
+//                        StatContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
+//                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -188,10 +131,7 @@ public class StatProvider extends ContentProvider{
                 rowsUpdated = db.update(StatContract.StatEntry.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
-            case PLAYER:
-                rowsUpdated = db.update(StatContract.PlayerEntry.TABLE_NAME, values, selection,
-                        selectionArgs);
-                break;
+
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
