@@ -3,6 +3,8 @@ package tom.chinesesuperleague;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 public class Utility {
 
@@ -17,6 +19,7 @@ public class Utility {
         return prefs.getString(context.getString(R.string.pref_name_key),
                 context.getString(R.string.pref_player_default));
     }
+
 
 
 }

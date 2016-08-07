@@ -48,5 +48,9 @@ public class StatAdapter extends CursorAdapter{
         TextView teamView = (TextView)view.findViewById(R.id.listview_stat_team);
         teamView.setText(team);
 
+        String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
+        TextView scoreView = (TextView)view.findViewById(R.id.listview_stat_score);
+        scoreView.setText(score);
+
     }
 }

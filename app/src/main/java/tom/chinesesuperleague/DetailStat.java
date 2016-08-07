@@ -11,10 +11,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.ShareActionProvider;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.view.MenuItem;
+import android.support.v4.view.MenuItemCompat;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
@@ -31,15 +33,39 @@ public class DetailStat extends ActionBarActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_detail_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public static class DetailFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
         private static final int DETAIL_LOADER = 0;
 
+        private ShareActionProvider mShareActionProvider;
+        private String mStat;
+
         private static final String[] STAT_COLUMNS = {
+//
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,
                 StatEntry.COLUMN_TEAM,
                 StatEntry.COLUMN_GOAL,
-                StatEntry.COLUMN_PLAY_TIME,
+                StatEntry.COLUMN_SCORE,
                 StatEntry.COLUMN_KEY_PASS,
                 StatEntry.COLUMN_YELLOW_CARD,
                 StatEntry.COLUMN_RED_CARD
@@ -47,10 +73,10 @@ public class DetailStat extends ActionBarActivity {
 
         // these constants correspond to the projection defined above, and must change if the
         // projection changes
-        private static final int COL_STAT_ID = 0;
+        private static final int COL_TABLE_NAME = 0;
         private static final int COL_TEAM = 1;
         private static final int COL_GOAL = 2;
-        private static final int COL_PLAY_TIME = 3;
+        private static final int COL_SCORE = 3;
         private static final int COL_KEY_PASS = 4;
         private static final int COL_YELLOW_CARD = 5;
         private static final int COL_RED_CARD = 6;
@@ -64,7 +90,6 @@ public class DetailStat extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             return inflater.inflate(R.layout.fragment_details, container, false);
         }
-
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
@@ -96,6 +121,8 @@ public class DetailStat extends ActionBarActivity {
 
             if (!data.moveToFirst()) { return; }
 
+            //System.out.println("detail stat StatEntry ID: "+ data.getString(COL_TABLE_NAME));
+
             TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
             tv_team.setText(getString(R.string.detail_item_name)+ " "+getString(R.string.p61034));
 
@@ -103,7 +130,7 @@ public class DetailStat extends ActionBarActivity {
             tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_TEAM));
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
-            tv_pt.setText(getString(R.string.detail_item_pt)+" "+ data.getString(COL_PLAY_TIME));
+            tv_pt.setText(getString(R.string.detail_item_score)+data.getString(COL_SCORE));
 
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(getString(R.string.detail_item_goal)+" "+ data.getString(COL_GOAL));

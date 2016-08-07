@@ -32,11 +32,13 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
             StatContract.StatEntry.COLUMN_DATE,
             StatContract.StatEntry.COLUMN_TEAM,
+            StatContract.StatEntry.COLUMN_SCORE,
             StatContract.StatEntry._ID
     };
 
     static final int COL_STAT_DATE = 0;
     static final int COL_STAT_TEAM = 1;
+    static final int COL_STAT_SCORE = 2;
 
     public FetchFragment(){
     }
@@ -90,6 +92,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity())));
+                    System.out.println("FetchFragment intent uri: "+ StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity())));
                     startActivity(intent);
                 }
             }
@@ -124,7 +127,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-        String selection = "team = 北京国安";
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,

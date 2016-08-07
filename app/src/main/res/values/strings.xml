@@ -16,6 +16,7 @@
     <string name="detail_item_goal">Goal</string>
     <string name="detail_item_kp">Key Pass</string>
     <string name="detail_item_pt">Play Time</string>
+    <string name="detail_item_score">Score</string>
     <string name="detail_item_yc">Yellow Card</string>
     <string name="detail_item_rc">Red Card</string>
     <string name="pref_player_name">Player</string>

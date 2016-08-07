@@ -33,7 +33,7 @@ public class StatContract {
 
         public static final String TABLE_NAME = "stat";
 
-        // Column with the foreign key into the location table.
+        public static final String COLUMN_PLAYER = "player";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_GAME = "game";
         public static final String COLUMN_TEAM = "team";

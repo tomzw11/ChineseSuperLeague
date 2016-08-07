@@ -24,7 +24,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
                 StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-
+                        StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
                 StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
@@ -47,7 +47,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         // To assure the application have just one weather entry per day
                         // per location, it's created a UNIQUE constraint with REPLACE strategy
 
-                        " UNIQUE (" + StatEntry.COLUMN_DATE +
+                        " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_PLAYER +
                          ") ON CONFLICT REPLACE);";
 
 
