@@ -28,6 +28,11 @@ public class StatContract {
             return CONTENT_URI.buildUpon().appendPath(name).build();
         }
 
+
+        public static String getPlayerSettingFromUri(Uri uri) {
+            return uri.getPathSegments().get(1);
+        }
+
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
 

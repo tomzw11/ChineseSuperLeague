@@ -91,7 +91,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 // if it cannot seek to that position.
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
-                    Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));
+                    Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));//cursor.getString(COL_STAT_PLAYER)
                     System.out.println("FetchFragment intent uri: "+ detailUri);
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(detailUri);

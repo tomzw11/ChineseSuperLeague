@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 public class StatProvider extends ContentProvider{
@@ -18,6 +19,9 @@ public class StatProvider extends ContentProvider{
     static final int DATE = 300;
     static final int PLAYER = 100;
 
+    private static final String sPlayerSettingSelection =
+            StatContract.StatEntry.TABLE_NAME+
+                    "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? ";
 
     static UriMatcher buildUriMatcher() {
 
@@ -31,6 +35,29 @@ public class StatProvider extends ContentProvider{
         matcher.addURI(authority, StatContract.PATH_PLAYER, PLAYER);
 
         return matcher;
+    }
+
+    private Cursor getStatByPlayer(Uri uri, String[] projection, String sortOrder) {
+
+        String playerSetting = StatContract.StatEntry.getPlayerSettingFromUri(uri);
+        System.out.println("playerSetting: "+playerSetting);
+
+        String[] selectionArgs;
+        selectionArgs = new String[]{playerSetting};
+
+        String selection = sPlayerSettingSelection;
+
+        System.out.println("player selection: "+selection);
+
+
+        return mOpenHelper.getReadableDatabase().query(StatContract.StatEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
     }
 
     @Override
@@ -61,16 +88,8 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
-
-        retCursor = mOpenHelper.getReadableDatabase().query(
-                StatContract.StatEntry.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder
-        );
+        
+        retCursor = getStatByPlayer(uri,projection,sortOrder);
         retCursor.setNotificationUri(getContext().getContentResolver(), uri);
 
         return retCursor;
