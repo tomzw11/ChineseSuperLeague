@@ -33,12 +33,14 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_DATE,
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_SCORE,
+            StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry._ID
     };
 
     static final int COL_STAT_DATE = 0;
     static final int COL_STAT_TEAM = 1;
     static final int COL_STAT_SCORE = 2;
+    static final int COL_STAT_PLAYER = 3;
 
     public FetchFragment(){
     }
@@ -89,10 +91,10 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 // if it cannot seek to that position.
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
-
+                    Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));
+                    System.out.println("FetchFragment intent uri: "+ detailUri);
                     Intent intent = new Intent(getActivity(), DetailStat.class)
-                            .setData(StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity())));
-                    System.out.println("FetchFragment intent uri: "+ StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity())));
+                            .setData(detailUri);
                     startActivity(intent);
                 }
             }
@@ -109,9 +111,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private void updateStat(){
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        player = preferences.getString(getString(R.string.pref_name_key),getString(R.string.pref_player_default));
         FetchStatTask statTask = new FetchStatTask(getActivity());
+        String player = Utility.getPreferredPlayer(getActivity());
         statTask.execute(player);
     }
 

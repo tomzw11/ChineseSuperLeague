@@ -8,19 +8,19 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarActivity;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.widget.ShareActionProvider;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.view.MenuItem;
-import android.support.v4.view.MenuItemCompat;
 
+import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
-public class DetailStat extends ActionBarActivity {
+public class DetailStat extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +55,20 @@ public class DetailStat extends ActionBarActivity {
 
     public static class DetailFragment extends Fragment implements LoaderCallbacks<Cursor> {
 
-        private static final int DETAIL_LOADER = 0;
+        private static final int DETAIL_LOADER = 1;
 
-        private ShareActionProvider mShareActionProvider;
-        private String mStat;
+        private String mPlayer;
 
         private static final String[] STAT_COLUMNS = {
-//
+
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,
                 StatEntry.COLUMN_TEAM,
                 StatEntry.COLUMN_GOAL,
                 StatEntry.COLUMN_SCORE,
                 StatEntry.COLUMN_KEY_PASS,
                 StatEntry.COLUMN_YELLOW_CARD,
-                StatEntry.COLUMN_RED_CARD
+                StatEntry.COLUMN_RED_CARD,
+                StatEntry.COLUMN_PLAYER
         };
 
         // these constants correspond to the projection defined above, and must change if the
@@ -80,6 +80,8 @@ public class DetailStat extends ActionBarActivity {
         private static final int COL_KEY_PASS = 4;
         private static final int COL_YELLOW_CARD = 5;
         private static final int COL_RED_CARD = 6;
+        private static final int COL_PLAYER = 7;
+
 
         public DetailFragment() {
             setHasOptionsMenu(true);
@@ -88,7 +90,9 @@ public class DetailStat extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_details, container, false);
+            View rootView =  inflater.inflate(R.layout.fragment_details, container, false);
+
+            return rootView;
         }
 
         @Override
@@ -100,6 +104,7 @@ public class DetailStat extends ActionBarActivity {
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
             Intent intent = getActivity().getIntent();
+
             if (intent == null) {
                 return null;
             }
@@ -120,10 +125,10 @@ public class DetailStat extends ActionBarActivity {
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
             if (!data.moveToFirst()) { return; }
-            //System.out.println("detail stat StatEntry ID: "+ data.getString(COL_TABLE_NAME));
+            System.out.println("detail stat StatEntry: "+ data.getString(COL_TEAM));
 
             TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
-            tv_team.setText(getString(R.string.detail_item_name)+ " "+getString(R.string.p61034));
+            tv_team.setText(getString(R.string.detail_item_name)+ " "+data.getString(COL_PLAYER));
 
             TextView tv_name = (TextView)getView().findViewById(R.id.fragment_details_team);
             tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_TEAM));
