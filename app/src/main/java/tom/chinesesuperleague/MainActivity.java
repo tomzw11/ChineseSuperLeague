@@ -31,15 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        System.out.println("settings called"+id+" "+R.id.action_menu_settings);
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_menu_settings) {
 
-            startActivity(new Intent(this, SettingsActivity.class));
-
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

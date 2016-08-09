@@ -32,23 +32,21 @@ public class StatProvider extends ContentProvider{
         final String authority = StatContract.CONTENT_AUTHORITY;
 
         // For each type of URI you want to add, create a corresponding code.
-        matcher.addURI(authority, StatContract.PATH_PLAYER, PLAYER);
-
+        matcher.addURI(authority, StatContract.PATH_PLAYER + "/*", PLAYER);
         return matcher;
     }
 
     private Cursor getStatByPlayer(Uri uri, String[] projection, String sortOrder) {
 
         String playerSetting = StatContract.StatEntry.getPlayerSettingFromUri(uri);
-        System.out.println("playerSetting: "+playerSetting);
+        //System.out.println("playerSetting: "+playerSetting);
 
         String[] selectionArgs;
         selectionArgs = new String[]{playerSetting};
 
         String selection = sPlayerSettingSelection;
 
-        System.out.println("player selection: "+selection);
-
+        //System.out.println("StatProvider player selection: "+selection);
 
         return mOpenHelper.getReadableDatabase().query(StatContract.StatEntry.TABLE_NAME,
                 projection,
@@ -88,10 +86,16 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
-        
-        retCursor = getStatByPlayer(uri,projection,sortOrder);
-        retCursor.setNotificationUri(getContext().getContentResolver(), uri);
 
+        switch (sUriMatcher.match(uri)){
+            case PLAYER:{
+                retCursor = getStatByPlayer(uri,projection,sortOrder);
+                break;
+            }
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+        retCursor.setNotificationUri(getContext().getContentResolver(), uri);
         return retCursor;
     }
 
@@ -123,10 +127,6 @@ public class StatProvider extends ContentProvider{
                 rowsDeleted = db.delete(
                         StatContract.StatEntry.TABLE_NAME, selection, selectionArgs);
                 break;
-//            case PLAYER:
-//                rowsDeleted = db.delete(
-//                        StatContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
-//                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }

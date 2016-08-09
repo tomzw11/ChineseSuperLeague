@@ -15,8 +15,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.widget.AdapterView;
 
 import tom.chinesesuperleague.data.StatContract;
@@ -25,8 +23,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private StatAdapter mStatAdapter;
     private static final int STAT_LOADER = 0;
-    private String player;
-
 
     private static final String[] STAT_COLUMNS = {
 
@@ -66,9 +62,19 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
 
+            System.out.println("settings refresh called");
             updateStat();
             return true;
         }
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_menu_settings) {
+
+            startActivity(new Intent(getActivity(), SettingsActivity.class));
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -92,7 +98,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
                     Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));//cursor.getString(COL_STAT_PLAYER)
-                    System.out.println("FetchFragment intent uri: "+ detailUri);
+                    //System.out.println("FetchFragment intent uri: "+ detailUri);
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(detailUri);
                     startActivity(intent);
@@ -106,6 +112,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         getLoaderManager().initLoader(STAT_LOADER, null, this);
+
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -113,6 +120,9 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         FetchStatTask statTask = new FetchStatTask(getActivity());
         String player = Utility.getPreferredPlayer(getActivity());
+        System.out.println("Update stat player: "+player);
+
+        getLoaderManager().restartLoader(STAT_LOADER,null,this);
         statTask.execute(player);
     }
 
@@ -128,6 +138,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
+        System.out.println("Main Page onCreateLoader uri: "+statForPlayerUri);
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,

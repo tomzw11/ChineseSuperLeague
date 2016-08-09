@@ -96,5 +96,5 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
             Log.d(LOG_TAG, "FetchStatTask Complete. " + inserted + " Inserted");
 
     }
-    }
+}
 
