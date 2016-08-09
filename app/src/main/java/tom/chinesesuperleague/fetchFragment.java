@@ -1,6 +1,7 @@
 package tom.chinesesuperleague;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
@@ -62,7 +63,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
 
-            System.out.println("settings refresh called");
             updateStat();
             return true;
         }
@@ -71,7 +71,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         if (id == R.id.action_menu_settings) {
 
             startActivity(new Intent(getActivity(), SettingsActivity.class));
-
             return true;
         }
 
@@ -139,6 +138,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
         System.out.println("Main Page onCreateLoader uri: "+statForPlayerUri);
+//        SQLiteQueryBuilder sqLiteQueryBuilder = new SQLiteQueryBuilder();
+//        sqLiteQueryBuilder.buildQuery(STAT_COLUMNS,null,null,null,sortOrder,"5");
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,

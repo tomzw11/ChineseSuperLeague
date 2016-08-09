@@ -14,17 +14,54 @@ import tom.chinesesuperleague.data.StatContract;
 
 public class StatAdapter extends CursorAdapter{
 
+
+
+    private static final int VIEW_TYPE_COUNT = 2;
+    private static final int VIEW_TYPE_SUMMARY = 0;
+    private static final int VIEW_TYPE_ITEM = 1;
+
+    public static class ViewHolder {
+        public final ImageView iconView;
+        public final TextView dateView;
+        public final TextView teamView;
+        public final TextView scoreView;
+
+
+        public ViewHolder(View view) {
+            iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
+            dateView = (TextView) view.findViewById(R.id.listview_stat_date);
+            teamView = (TextView) view.findViewById(R.id.listview_stat_team);
+            scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
+        }
+    }
+
     public StatAdapter(Context context, Cursor c, int flags) {
 
         super(context, c, flags);
     }
 
-    /*
-        Remember that these views are reused as needed.
-     */
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.stat_item, parent, false);
+
+    // Choose the layout type
+        int viewType = getItemViewType(cursor.getPosition());
+        int layoutId = -1;
+        switch (viewType) {
+            case VIEW_TYPE_SUMMARY: {
+                layoutId = R.layout.stat_item_summary;
+                break;
+            }
+            case VIEW_TYPE_ITEM: {
+                layoutId = R.layout.stat_item;
+                break;
+            }
+        }
+        View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        view.setTag(viewHolder);
+
         return view;
     }
 
@@ -37,20 +74,27 @@ public class StatAdapter extends CursorAdapter{
         // our view is pretty simple here --- just a text view
         // we'll keep the UI functional with a simple (and slow!) binding.
 
-        ImageView iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
-        iconView.setImageResource(R.drawable.ralf2);
+        ViewHolder viewHolder = (ViewHolder) view.getTag();
+        viewHolder.iconView.setImageResource(R.drawable.ralf2);
 
         String date = cursor.getString(FetchFragment.COL_STAT_DATE);
-        TextView dateView = (TextView)view.findViewById(R.id.listview_stat_date);
-        dateView.setText(date);
+        viewHolder.dateView.setText(date);
 
         String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
-        TextView teamView = (TextView)view.findViewById(R.id.listview_stat_team);
-        teamView.setText(team);
+        viewHolder.teamView.setText(team);
 
         String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
-        TextView scoreView = (TextView)view.findViewById(R.id.listview_stat_score);
-        scoreView.setText(score);
+        viewHolder.scoreView.setText(score);
 
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position == 0 ? VIEW_TYPE_SUMMARY : VIEW_TYPE_ITEM;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return VIEW_TYPE_COUNT;
     }
 }
