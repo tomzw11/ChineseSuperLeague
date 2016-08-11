@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import tom.chinesesuperleague.data.StatContract;
 
 public class StatAdapter extends CursorAdapter{
 
@@ -25,6 +22,7 @@ public class StatAdapter extends CursorAdapter{
         public final TextView dateView;
         public final TextView teamView;
         public final TextView scoreView;
+
 
 
         public ViewHolder(View view) {
@@ -49,7 +47,7 @@ public class StatAdapter extends CursorAdapter{
         int layoutId = -1;
         switch (viewType) {
             case VIEW_TYPE_SUMMARY: {
-                layoutId = R.layout.stat_item_summary;
+                layoutId = R.layout.stat_item_latest;
                 break;
             }
             case VIEW_TYPE_ITEM: {

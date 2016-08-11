@@ -138,8 +138,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
         System.out.println("Main Page onCreateLoader uri: "+statForPlayerUri);
-//        SQLiteQueryBuilder sqLiteQueryBuilder = new SQLiteQueryBuilder();
-//        sqLiteQueryBuilder.buildQuery(STAT_COLUMNS,null,null,null,sortOrder,"5");
+
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,
