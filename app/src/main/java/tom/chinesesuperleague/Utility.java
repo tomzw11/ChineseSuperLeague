@@ -20,6 +20,24 @@ public class Utility {
                 context.getString(R.string.pref_player_default));
     }
 
+    public static String getPlayerName(String playerId){
+
+        switch (playerId){
+
+            case "61034":
+                return "拉尔夫";
+
+            case "168101":
+                return "武磊";
+
+            case "116730":
+                return "费尔南多";
+
+            default:return null;
+
+        }
+    }
+
 
 
 }

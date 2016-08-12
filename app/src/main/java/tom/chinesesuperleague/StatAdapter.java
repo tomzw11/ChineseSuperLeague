@@ -19,17 +19,24 @@ public class StatAdapter extends CursorAdapter{
 
     public static class ViewHolder {
         public final ImageView iconView;
+        public final ImageView playerView;
+        public final TextView nameView;
         public final TextView dateView;
         public final TextView teamView;
         public final TextView scoreView;
+        public final TextView oppoView;
 
 
 
         public ViewHolder(View view) {
             iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
+            playerView = (ImageView) view.findViewById(R.id.listview_stat_player);
+            nameView = (TextView) view.findViewById(R.id.listview_stat_name);
             dateView = (TextView) view.findViewById(R.id.listview_stat_date);
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
+            oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
+
         }
     }
 
@@ -73,7 +80,14 @@ public class StatAdapter extends CursorAdapter{
         // we'll keep the UI functional with a simple (and slow!) binding.
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
-        viewHolder.iconView.setImageResource(R.drawable.ralf2);
+
+
+        viewHolder.playerView.setImageResource(R.drawable.ralf);
+
+        viewHolder.iconView.setImageResource(R.drawable.csl);
+
+        String name = cursor.getString(FetchFragment.COL_STAT_PLAYER);
+        viewHolder.nameView.setText(name);
 
         String date = cursor.getString(FetchFragment.COL_STAT_DATE);
         viewHolder.dateView.setText(date);
@@ -83,6 +97,9 @@ public class StatAdapter extends CursorAdapter{
 
         String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
+
+        String opponent = "vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
+        viewHolder.oppoView.setText(opponent);
 
     }
 

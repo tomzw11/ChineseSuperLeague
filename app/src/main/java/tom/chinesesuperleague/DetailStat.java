@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBarActivity;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.view.MenuItem;
 
-import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
 public class DetailStat extends AppCompatActivity {

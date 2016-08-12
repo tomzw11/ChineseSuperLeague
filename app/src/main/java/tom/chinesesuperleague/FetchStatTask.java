@@ -1,6 +1,7 @@
 package tom.chinesesuperleague;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import org.jsoup.Jsoup;
@@ -8,8 +9,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import android.content.ContentValues;
 import android.util.Log;
-import tom.chinesesuperleague.data.StatContract.StatEntry;
 
+import tom.chinesesuperleague.data.StatContract.StatEntry;
+import tom.chinesesuperleague.data.StatDBHelper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -26,11 +28,14 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
 
         }
 
+
     @Override
     protected Void doInBackground(String... params) {
 
-        playerName = params[0];
-        if(playerName.length()==0)return null;
+        playerName = Utility.getPlayerName(params[0]);
+        System.out.println("playerName"+ playerName);
+
+        if(params[0].length()==0)return null;
         Document doc = null;
         String url = Utility.urlBuilder(params[0]);
         try {

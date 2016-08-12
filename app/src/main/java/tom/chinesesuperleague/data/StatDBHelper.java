@@ -1,8 +1,12 @@
 package tom.chinesesuperleague.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.util.ArrayList;
+import java.util.Vector;
+
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
@@ -23,8 +27,8 @@ public class StatDBHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_STAT_TABLE =
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
-                StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
+                StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        + StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
                 StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
@@ -49,6 +53,18 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
                         " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_PLAYER +
                          ") ON CONFLICT REPLACE);";
+
+//        final String SQL_CREATE_PLAYER_TABLE = "CREATE TABLE " + StatContract.PlayerEntry.TABLE_NAME + " (" +
+//                StatContract.PlayerEntry._ID + " INTEGER PRIMARY KEY," +
+//                StatContract.PlayerEntry.COLUMN_PLAYER_ID + " TEXT UNIQUE NOT NULL, " +
+//                StatContract.PlayerEntry.COLUMN_PLAYER_NAME + " TEXT NOT NULL, " +
+//                " );";
+//
+//
+//        final String SQL_PLAYER_ROSTER = "INSERT INTO player "+ "(" +
+//                StatContract.PlayerEntry.COLUMN_PLAYER_NAME + "," +
+//                StatContract.PlayerEntry.COLUMN_PLAYER_ID + ") VALUES (" +
+//                Ralf + "," + iRalf +");";
 
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);

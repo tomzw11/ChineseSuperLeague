@@ -1,7 +1,6 @@
 package tom.chinesesuperleague;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +30,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_SCORE,
             StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_OPPONENT,
             StatContract.StatEntry._ID
     };
 
@@ -38,6 +38,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     static final int COL_STAT_TEAM = 1;
     static final int COL_STAT_SCORE = 2;
     static final int COL_STAT_PLAYER = 3;
+    static final int COL_STAT_OPPONENT = 4;
+
 
     public FetchFragment(){
     }
@@ -96,7 +98,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 // if it cannot seek to that position.
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
-                    Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));//cursor.getString(COL_STAT_PLAYER)
+                    Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));
                     //System.out.println("FetchFragment intent uri: "+ detailUri);
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(detailUri);
