@@ -123,7 +123,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         FetchStatTask statTask = new FetchStatTask(getActivity());
         String player = Utility.getPreferredPlayer(getActivity());
-        System.out.println("Update stat player: "+player);
+//        System.out.println("Update stat player: "+player);
 
         getLoaderManager().restartLoader(STAT_LOADER,null,this);
         statTask.execute(player);

@@ -8,8 +8,8 @@
     </string-array>
 
     <string-array name="pref_units_values">
-        <item>@string/p61034</item>
-        <item>@string/p116730</item>
-        <item>@string/p168101</item>
+        <item>@string/拉尔夫</item>
+        <item>@string/费尔南多</item>
+        <item>@string/武磊</item>
     </string-array>
 </resources>

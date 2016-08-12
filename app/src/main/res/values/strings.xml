@@ -10,6 +10,9 @@
     <string name="p61034">拉尔夫</string>
     <string name="p168101">武磊</string>
     <string name="p116730">费尔南多</string>
+    <string name="拉尔夫">61034</string>
+    <string name="武磊">168101</string>
+    <string name="费尔南多">116730</string>
     <string name="pref_player_default">61034</string>
     <string name="detail_item_name">Name</string>
     <string name="detail_item_team">Team</string>

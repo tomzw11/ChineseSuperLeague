@@ -1,8 +1,6 @@
 package tom.chinesesuperleague;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,7 +9,6 @@ import android.content.ContentValues;
 import android.util.Log;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
-import tom.chinesesuperleague.data.StatDBHelper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
