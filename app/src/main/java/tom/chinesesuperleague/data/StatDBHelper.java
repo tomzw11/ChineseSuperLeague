@@ -29,6 +29,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
                 StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                         + StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_CNAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                 StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
                 StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
@@ -53,19 +54,6 @@ public class StatDBHelper extends SQLiteOpenHelper {
 
                         " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_PLAYER +
                          ") ON CONFLICT REPLACE);";
-
-//        final String SQL_CREATE_PLAYER_TABLE = "CREATE TABLE " + StatContract.PlayerEntry.TABLE_NAME + " (" +
-//                StatContract.PlayerEntry._ID + " INTEGER PRIMARY KEY," +
-//                StatContract.PlayerEntry.COLUMN_PLAYER_ID + " TEXT UNIQUE NOT NULL, " +
-//                StatContract.PlayerEntry.COLUMN_PLAYER_NAME + " TEXT NOT NULL, " +
-//                " );";
-//
-//
-//        final String SQL_PLAYER_ROSTER = "INSERT INTO player "+ "(" +
-//                StatContract.PlayerEntry.COLUMN_PLAYER_NAME + "," +
-//                StatContract.PlayerEntry.COLUMN_PLAYER_ID + ") VALUES (" +
-//                Ralf + "," + iRalf +");";
-
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
 

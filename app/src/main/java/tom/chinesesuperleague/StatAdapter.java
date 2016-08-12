@@ -86,7 +86,7 @@ public class StatAdapter extends CursorAdapter{
 
         viewHolder.iconView.setImageResource(R.drawable.csl);
 
-        String name = cursor.getString(FetchFragment.COL_STAT_PLAYER);
+        String name = cursor.getString(FetchFragment.COL_STAT_CNAME);
         viewHolder.nameView.setText(name);
 
         String date = cursor.getString(FetchFragment.COL_STAT_DATE);

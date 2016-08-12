@@ -31,6 +31,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_SCORE,
             StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry.COLUMN_OPPONENT,
+            StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry._ID
     };
 
@@ -39,6 +40,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     static final int COL_STAT_SCORE = 2;
     static final int COL_STAT_PLAYER = 3;
     static final int COL_STAT_OPPONENT = 4;
+    static final int COL_STAT_CNAME = 5;
 
 
     public FetchFragment(){
@@ -99,7 +101,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
                 if (cursor != null) {
                     Uri detailUri = StatContract.StatEntry.buildStatUriWithName(cursor.getString(COL_STAT_PLAYER));
-                    //System.out.println("FetchFragment intent uri: "+ detailUri);
+
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(detailUri);
                     startActivity(intent);

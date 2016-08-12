@@ -22,6 +22,7 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
         private ArrayList<String[]> playerStat = new ArrayList<>();
         private final Context mContext;
         private String playerName;
+        private String playerTag;
 
         public FetchStatTask(Context context) {
         mContext = context;
@@ -32,6 +33,7 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
     @Override
     protected Void doInBackground(String... params) {
 
+        playerTag = params[0];
         playerName = Utility.getPlayerName(params[0]);
         System.out.println("playerName"+ playerName);
 
@@ -67,7 +69,8 @@ public class FetchStatTask extends AsyncTask<String,Void,Void> {
 
                 ContentValues statValues = new ContentValues();
 
-                statValues.put(StatEntry.COLUMN_PLAYER,playerName);
+                statValues.put(StatEntry.COLUMN_PLAYER,playerTag);
+                statValues.put(StatEntry.COLUMN_CNAME,playerName);
                 statValues.put(StatEntry.COLUMN_DATE,playerStat.get(i)[0]);
                 statValues.put(StatEntry.COLUMN_GAME,playerStat.get(i)[1]);
                 statValues.put(StatEntry.COLUMN_TEAM,playerStat.get(i)[2]);

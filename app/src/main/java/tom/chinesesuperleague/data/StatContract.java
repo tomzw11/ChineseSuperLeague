@@ -41,6 +41,7 @@ public class StatContract {
 
         public static final String TABLE_NAME = "stat";
 
+        public static final String COLUMN_CNAME = "cname";
         public static final String COLUMN_PLAYER = "player";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_GAME = "game";
