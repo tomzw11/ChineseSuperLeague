@@ -20,6 +20,24 @@ public class Utility {
                 context.getString(R.string.pref_player_default));
     }
 
+    public static int getImageForPlayer(String playerId){
+
+        switch (playerId){
+
+            case "61034":
+                return R.drawable.ralf;
+
+            case "168101":
+                return R.drawable.wulei;
+
+            case "116730":
+                return R.drawable.fernando;
+
+            default:return 0;
+
+        }
+    }
+
     public static String getPlayerName(String playerId){
 
         switch (playerId){

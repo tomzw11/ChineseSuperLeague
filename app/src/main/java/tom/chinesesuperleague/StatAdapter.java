@@ -81,8 +81,7 @@ public class StatAdapter extends CursorAdapter{
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-
-        viewHolder.playerView.setImageResource(R.drawable.ralf);
+        viewHolder.playerView.setImageResource(Utility.getImageForPlayer(cursor.getString(FetchFragment.COL_STAT_PLAYER)));
 
         viewHolder.iconView.setImageResource(R.drawable.csl);
 

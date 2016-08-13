@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MenuItem;
 
@@ -122,13 +123,15 @@ public class DetailStat extends AppCompatActivity {
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
             if (!data.moveToFirst()) { return; }
-            System.out.println("detail stat StatEntry: "+ data.getString(COL_TEAM));
+
+            ImageView tv_image = (ImageView)getView().findViewById(R.id.detail_player_icon);
+            tv_image.setImageResource(Utility.getImageForPlayer(data.getString(COL_PLAYER)));
 
             TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
-            tv_team.setText(getString(R.string.detail_item_name)+ " "+data.getString(COL_PLAYER));
+            tv_team.setText(getString(R.string.detail_item_name)+ " "+data.getString(COL_TEAM));
 
             TextView tv_name = (TextView)getView().findViewById(R.id.fragment_details_team);
-            tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_TEAM));
+            tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_PLAYER));
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(getString(R.string.detail_item_score)+data.getString(COL_SCORE));
