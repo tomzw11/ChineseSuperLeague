@@ -158,7 +158,6 @@ public class FetchActivity extends AppCompatActivity {
 
             FetchStatTask statTask = new FetchStatTask(getActivity());
             String player = Utility.getPreferredPlayer(getActivity());
-//        System.out.println("Update stat player: "+player);
 
             getLoaderManager().restartLoader(STAT_LOADER, null, this);
             statTask.execute(player);

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -88,7 +89,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        final TextView textView = (TextView) rootView.findViewById(R.id.match_stat);
+
+        ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
+        String player = Utility.getPreferredPlayer(getActivity());
+        imageView.setImageResource(Utility.getImageForPlayer(player));
+
+        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
 
         textView.setOnClickListener(new OnClickListener() {
             @Override
