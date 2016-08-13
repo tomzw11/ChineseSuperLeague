@@ -18,10 +18,16 @@ public class StatProvider extends ContentProvider{
 
     static final int DATE = 300;
     static final int PLAYER = 100;
+    static final int PLAYER_WITH_DATE = 101;
 
     private static final String sPlayerSettingSelection =
             StatContract.StatEntry.TABLE_NAME+
                     "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? ";
+
+    private static final String sPlayerSettingAndDateSelection =
+            StatContract.StatEntry.TABLE_NAME+
+                    "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? AND "
+            + StatContract.StatEntry.COLUMN_DATE + " = ? ";
 
     static UriMatcher buildUriMatcher() {
 
@@ -33,6 +39,8 @@ public class StatProvider extends ContentProvider{
 
         // For each type of URI you want to add, create a corresponding code.
         matcher.addURI(authority, StatContract.PATH_PLAYER + "/*", PLAYER);
+        matcher.addURI(authority, StatContract.PATH_PLAYER + "/*/*", PLAYER_WITH_DATE);
+
         return matcher;
     }
 
@@ -47,6 +55,26 @@ public class StatProvider extends ContentProvider{
         String selection = sPlayerSettingSelection;
 
         //System.out.println("StatProvider player selection: "+selection);
+
+        return mOpenHelper.getReadableDatabase().query(StatContract.StatEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
+    }
+
+    private Cursor getStatByPlayerAndDate(Uri uri, String[] projection, String sortOrder) {
+
+        String playerSetting = StatContract.StatEntry.getPlayerSettingFromUri(uri);
+        String dateSetting = StatContract.StatEntry.getDateFromUri(uri);
+
+        String[] selectionArgs;
+        selectionArgs = new String[]{playerSetting,dateSetting};
+
+        String selection = sPlayerSettingAndDateSelection;
 
         return mOpenHelper.getReadableDatabase().query(StatContract.StatEntry.TABLE_NAME,
                 projection,
@@ -75,6 +103,9 @@ public class StatProvider extends ContentProvider{
             case DATE:
                 return StatContract.StatEntry.CONTENT_TYPE;
 
+            case PLAYER_WITH_DATE:
+                return StatContract.StatEntry.CONTENT_TYPE;
+
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -86,10 +117,13 @@ public class StatProvider extends ContentProvider{
         // Here's the switch statement that, given a URI, will determine what kind of request it is,
         // and query the database accordingly.
         Cursor retCursor;
-
         switch (sUriMatcher.match(uri)){
             case PLAYER:{
                 retCursor = getStatByPlayer(uri,projection,sortOrder);
+                break;
+            }
+            case PLAYER_WITH_DATE:{
+                retCursor = getStatByPlayerAndDate(uri,projection,sortOrder);
                 break;
             }
             default:
