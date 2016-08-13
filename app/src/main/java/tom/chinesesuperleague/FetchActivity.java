@@ -126,7 +126,6 @@ public class FetchActivity extends AppCompatActivity {
             ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
             listView.setAdapter(mStatAdapter);
 
-            // We'll call our MainActivity
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override

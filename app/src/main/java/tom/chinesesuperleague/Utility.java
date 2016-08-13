@@ -20,6 +20,16 @@ public class Utility {
                 context.getString(R.string.pref_player_default));
     }
 
+    public static int getImageForTeam(String team){
+
+        switch (team){
+
+            case "北京国安":
+                return R.drawable.beijing_guoan;
+            default:return 0;
+        }
+    }
+
     public static int getImageForPlayer(String playerId){
 
         switch (playerId){
@@ -51,7 +61,7 @@ public class Utility {
             case "116730":
                 return "费尔南多";
 
-            default:return null;
+            default:return "Unknown";
 
         }
     }

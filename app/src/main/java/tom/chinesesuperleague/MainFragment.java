@@ -28,14 +28,19 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private static final String[] STAT_COLUMNS = {
 
-            StatContract.StatEntry.COLUMN_DATE,
             StatContract.StatEntry.COLUMN_TEAM,
-            StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry.COLUMN_CNAME,
+            StatContract.StatEntry.COLUMN_GOAL,
+            StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry._ID
     };
 
     private static final int STAT_LOADER = 0;
+
+    private static final int COL_TEAM = 0;
+    private static final int COL_GOAL = 2;
+    private static final int COL_CNAME = 1;
+    private static final int COL_PLAYER = 3;
 
 
     @Override
@@ -90,10 +95,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
-        String player = Utility.getPreferredPlayer(getActivity());
-        imageView.setImageResource(Utility.getImageForPlayer(player));
-
         final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
 
         textView.setOnClickListener(new OnClickListener() {
@@ -139,7 +140,37 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
+        if (!cursor.moveToFirst()) { return; }
 
+        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
+        String player = cursor.getString(COL_PLAYER);
+        imageView.setImageResource(Utility.getImageForPlayer(player));
+
+        TextView tv_cname = (TextView)getView().findViewById(R.id.main_name);
+        tv_cname.setText(cursor.getString(COL_CNAME));
+
+        TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
+        tv_team.setText(cursor.getString(COL_TEAM));
+
+        ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
+        String team = cursor.getString(COL_TEAM);
+        imageView1.setImageResource(Utility.getImageForTeam(team));
+
+        TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
+        String season_app = Integer.toString(cursor.getCount());
+        tv_app.setText("Season Appearance: "+ season_app);
+
+        int number_of_goals = 0;
+        try{
+            while(cursor.moveToNext()){
+                number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
+            }
+        }finally {
+            cursor.close();
+        }
+
+        TextView tv_goal = (TextView)getView().findViewById(R.id.main_goal);
+        tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
     }
 
     @Override
