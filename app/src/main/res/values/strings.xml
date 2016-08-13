@@ -29,4 +29,8 @@
     <string name="main_match_stat">See Match Stat</string>
     <string name="main_form">Current Form</string>
 
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">CSL</string>
+    <string name="content_authority">tom.ChineseSuperLeague</string>
+
 </resources>

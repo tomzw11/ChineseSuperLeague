@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.view.View.OnClickListener;
 
 import tom.chinesesuperleague.data.StatContract;
+import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
