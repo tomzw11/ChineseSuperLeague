@@ -9,42 +9,33 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
-import android.widget.AdapterView;
+import android.view.View.OnClickListener;
 
 import tom.chinesesuperleague.data.StatContract;
 
-public class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private StatAdapter mStatAdapter;
-    private static final int STAT_LOADER = 0;
+    public MainFragment(){
+
+    }
 
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_DATE,
             StatContract.StatEntry.COLUMN_TEAM,
-            StatContract.StatEntry.COLUMN_SCORE,
             StatContract.StatEntry.COLUMN_PLAYER,
-            StatContract.StatEntry.COLUMN_OPPONENT,
             StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry._ID
     };
 
-    static final int COL_STAT_DATE = 0;
-    static final int COL_STAT_TEAM = 1;
-    static final int COL_STAT_SCORE = 2;
-    static final int COL_STAT_PLAYER = 3;
-    static final int COL_STAT_OPPONENT = 4;
-    static final int COL_STAT_CNAME = 5;
+    private static final int STAT_LOADER = 0;
 
-
-    public FetchFragment(){
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +46,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.fetchfragment, menu);
+        inflater.inflate(R.menu.mainfragment, menu);
     }
 
     @Override
@@ -81,31 +72,30 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         return super.onOptionsItemSelected(item);
     }
 
+    private void updateStat(){
+
+        FetchStatTask statTask = new FetchStatTask(getActivity());
+        String player = Utility.getPreferredPlayer(getActivity());
+
+        getLoaderManager().restartLoader(STAT_LOADER,null,this);
+        statTask.execute(player);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mStatAdapter = new StatAdapter(getActivity(),null,0);
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
-        listView.setAdapter(mStatAdapter);
+        final TextView textView = (TextView) rootView.findViewById(R.id.match_stat);
 
-        // We'll call our MainActivity
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        textView.setOnClickListener(new OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // CursorAdapter returns a cursor at the correct position for getItem(), or null
-                // if it cannot seek to that position.
-                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
-                if (cursor != null) {
-                    Uri detailUri = StatContract.StatEntry.buildStatUriWithNameAndDate
-                            (cursor.getString(COL_STAT_PLAYER),cursor.getString(COL_STAT_DATE));
-                    Intent intent = new Intent(getActivity(), DetailStat.class)
-                            .setData(detailUri);
-                    startActivity(intent);
-                }
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), FetchActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -117,16 +107,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         getLoaderManager().initLoader(STAT_LOADER, null, this);
 
         super.onActivityCreated(savedInstanceState);
-    }
-
-    private void updateStat(){
-
-        FetchStatTask statTask = new FetchStatTask(getActivity());
-        String player = Utility.getPreferredPlayer(getActivity());
-//        System.out.println("Update stat player: "+player);
-
-        getLoaderManager().restartLoader(STAT_LOADER,null,this);
-        statTask.execute(player);
     }
 
     @Override
@@ -141,7 +121,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-        System.out.println("Main Page onCreateLoader uri: "+statForPlayerUri);
 
         return new CursorLoader(getActivity(),
                 statForPlayerUri,
@@ -154,13 +133,12 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        mStatAdapter.swapCursor(cursor);
+
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-        mStatAdapter.swapCursor(null);
     }
+
 
 }

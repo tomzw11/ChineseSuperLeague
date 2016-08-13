@@ -81,23 +81,23 @@ public class StatAdapter extends CursorAdapter{
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        viewHolder.playerView.setImageResource(Utility.getImageForPlayer(cursor.getString(FetchFragment.COL_STAT_PLAYER)));
+        viewHolder.playerView.setImageResource(Utility.getImageForPlayer(cursor.getString(FetchActivity.FetchFragment.COL_STAT_PLAYER)));
 
         viewHolder.iconView.setImageResource(R.drawable.csl);
 
-        String name = cursor.getString(FetchFragment.COL_STAT_CNAME);
+        String name = cursor.getString(FetchActivity.FetchFragment.COL_STAT_CNAME);
         viewHolder.nameView.setText(name);
 
-        String date = cursor.getString(FetchFragment.COL_STAT_DATE);
+        String date = cursor.getString(FetchActivity.FetchFragment.COL_STAT_DATE);
         viewHolder.dateView.setText(date);
 
-        String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
+        String team = cursor.getString(FetchActivity.FetchFragment.COL_STAT_TEAM);
         viewHolder.teamView.setText(team);
 
-        String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
+        String score = cursor.getString(FetchActivity.FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
 
-        String opponent = "vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
+        String opponent = "vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
         viewHolder.oppoView.setText(opponent);
 
     }

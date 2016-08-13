@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChineseSuperLeague</string>
+    <string name="app_name">Chinese SuperLeague</string>
     <string name="title_activity_detail_stat">DetailStat</string>
     <string name="action_settings">Settings</string>
     <string name="action_settings_button">Settings</string>
@@ -7,6 +7,7 @@
     <string name="action_settings_detail_fragment">Settings</string>
     <string name="action_refresh">Refresh</string>
     <string name="title_stat_detail">DetailStat</string>
+    <string name="fetch_activity">FetchActivity</string>
     <string name="p61034">拉尔夫</string>
     <string name="p168101">武磊</string>
     <string name="p116730">费尔南多</string>
@@ -25,5 +26,6 @@
     <string name="pref_player_name">Player</string>
     <string name="pref_name_key">Name</string>
     <string name="title_activity_settings">Setting</string>
+    <string name="match_stat">Match Stat</string>
 
 </resources>
