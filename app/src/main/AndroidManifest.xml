@@ -56,6 +56,12 @@
                 android:value="tom.chinesesuperleague.MainActivity" />
         </activity>
 
+        <provider
+            android:authorities="tom.chinesesuperleague.data.StatProvider"
+            android:name=".data.StatProvider"
+            android:exported="false"
+            android:syncable="true" />
+
         <!-- SyncAdapter's dummy authentication service -->
         <service android:name=".sync.CSLAuthenticatorService">
             <intent-filter>
@@ -79,12 +85,12 @@
                 android:resource="@xml/syncadapter" />
         </service>
 
-    <provider
-        android:authorities="tom.chinesesuperleague.data"
-        android:name=".data.StatProvider" />
+
 
 
 
     </application>
+
+
 
 </manifest>

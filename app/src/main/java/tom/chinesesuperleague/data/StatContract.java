@@ -6,7 +6,7 @@ import android.net.Uri;
 
 public class StatContract {
 
-    public static final String CONTENT_AUTHORITY = "tom.chinesesuperleague.data";
+    public static final String CONTENT_AUTHORITY = "tom.chinesesuperleague.data.StatProvider";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 

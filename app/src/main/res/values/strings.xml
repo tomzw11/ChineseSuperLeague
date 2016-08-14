@@ -31,6 +31,6 @@
 
     <!-- SyncAdapter related -->
     <string name="sync_account_type">CSL</string>
-    <string name="content_authority">tom.ChineseSuperLeague</string>
+    <string name="content_authority">tom.chinesesuperleague.data.StatProvider</string>
 
 </resources>

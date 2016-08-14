@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.widget.AdapterView;
 
 import tom.chinesesuperleague.data.StatContract;
+import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 
 public class FetchActivity extends AppCompatActivity {
@@ -153,13 +154,14 @@ public class FetchActivity extends AppCompatActivity {
             super.onActivityCreated(savedInstanceState);
         }
 
-        private void updateStat() {
+        private void updateStat(){
 
-            FetchStatTask statTask = new FetchStatTask(getActivity());
-            String player = Utility.getPreferredPlayer(getActivity());
-
-            getLoaderManager().restartLoader(STAT_LOADER, null, this);
-            statTask.execute(player);
+//        FetchStatTask statTask = new FetchStatTask(getActivity());
+//        String player = Utility.getPreferredPlayer(getActivity());
+//
+            getLoaderManager().restartLoader(STAT_LOADER,null,this);
+//        statTask.execute(player);
+            CSLSyncAdapter.syncImmediately(getActivity());
         }
 
         @Override

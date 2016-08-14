@@ -81,11 +81,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
-        FetchStatTask statTask = new FetchStatTask(getActivity());
-        String player = Utility.getPreferredPlayer(getActivity());
-
+//        FetchStatTask statTask = new FetchStatTask(getActivity());
+//        String player = Utility.getPreferredPlayer(getActivity());
+//
         getLoaderManager().restartLoader(STAT_LOADER,null,this);
-        statTask.execute(player);
+//        statTask.execute(player);
+        CSLSyncAdapter.syncImmediately(getActivity());
     }
 
 
@@ -141,7 +142,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        if (!cursor.moveToFirst()) { return; }
+        if (cursor == null || !cursor.moveToFirst()) { return; }
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
         String player = cursor.getString(COL_PLAYER);

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import tom.chinesesuperleague.sync.CSLSyncAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
+
+        CSLSyncAdapter.initializeSyncAdapter(this);
     }
 
     @Override
