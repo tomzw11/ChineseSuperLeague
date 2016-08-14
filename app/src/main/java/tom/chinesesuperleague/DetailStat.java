@@ -26,7 +26,10 @@ public class DetailStat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-
+        //TODO:Debug toolbar. DetailFragment disappears when toolbar is enabled.
+//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

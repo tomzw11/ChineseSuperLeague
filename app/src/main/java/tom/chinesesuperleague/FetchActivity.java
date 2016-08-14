@@ -28,14 +28,22 @@ public class FetchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
 
+
+
+        setContentView(R.layout.activity_stat);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new FetchFragment())
                     .commit();
         }
+
+//TODO:Debug toolbar. FetchFragment disappears when toolbar is enabled.
+//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -90,6 +98,8 @@ public class FetchActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             // Add this line in order for this fragment to handle main events.
             setHasOptionsMenu(true);
+
+
         }
 
         @Override
