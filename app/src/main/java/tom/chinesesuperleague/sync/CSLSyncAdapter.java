@@ -28,7 +28,7 @@ import tom.chinesesuperleague.data.StatContract;
 public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = CSLSyncAdapter.class.getSimpleName();
 
-    // Interval at which to sync with the weather, in seconds.
+    // Interval at which to sync, in seconds.
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 180;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;

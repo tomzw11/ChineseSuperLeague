@@ -156,6 +156,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         String team = cursor.getString(COL_TEAM);
+        //TODO:Switch to team badge.
         imageView1.setImageResource(Utility.getImageForTeam(team));
 
         TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);

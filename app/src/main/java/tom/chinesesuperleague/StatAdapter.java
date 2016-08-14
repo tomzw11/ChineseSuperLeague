@@ -84,6 +84,7 @@ public class StatAdapter extends CursorAdapter{
         viewHolder.playerView.setImageResource(Utility.getImageForPlayer(cursor.getString(FetchActivity.FetchFragment.COL_STAT_PLAYER)));
 
         viewHolder.iconView.setImageResource(R.drawable.csl);
+        //TODO:Add league/tournament icons.
 
         String name = cursor.getString(FetchActivity.FetchFragment.COL_STAT_CNAME);
         viewHolder.nameView.setText(name);
