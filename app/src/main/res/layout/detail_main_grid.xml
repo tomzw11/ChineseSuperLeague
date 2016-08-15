@@ -16,7 +16,7 @@
         android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
         android:textColor="@color/secondary_text"
         app:layout_columnWeight="1"
-        android:textSize="36sp"
+        android:textSize="24sp"
 
         android:text="Home" />
 
@@ -38,7 +38,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
         android:textColor="@color/secondary_text"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_columnWeight="1"
         android:text="Away" />
 

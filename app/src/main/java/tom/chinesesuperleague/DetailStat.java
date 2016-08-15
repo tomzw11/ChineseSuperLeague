@@ -151,16 +151,6 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");
-
-
-//            TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_team);
-//            tv_team.setText(getString(R.string.detail_item_team)+ " "+data.getString(COL_TEAM));
-//
-//            TextView tv_cname = (TextView)getView().findViewById(R.id.fragment_details_cname);
-//            tv_cname.setText(getString(R.string.detail_item_name) +" "+ data.getString(COL_CNAME));
-//
-//            TextView tv_score = (TextView)getView().findViewById(R.id.fragment_details_score);
-//            tv_score.setText(getString(R.string.detail_item_score)+" "+ data.getString(COL_SCORE));
 //
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(data.getString(COL_GOAL));
@@ -176,6 +166,15 @@ public class DetailStat extends AppCompatActivity {
 //
             TextView tv_cards = (TextView)getView().findViewById(R.id.fragment_details_cards);
             tv_cards.setText(data.getString(COL_YELLOW_CARD) +"/"+ data.getString(COL_RED_CARD));
+
+            TextView tv_home = (TextView) getView().findViewById(R.id.main_grid_home);
+            tv_home.setText(data.getString(COL_TEAM));
+
+            TextView tv_score = (TextView) getView().findViewById(R.id.main_grid_score);
+            tv_score.setText(data.getString(COL_SCORE));
+
+            TextView tv_away = (TextView) getView().findViewById(R.id.main_grid_away);
+            tv_away.setText(data.getString(COL_OPPONENT));
 
         }
 

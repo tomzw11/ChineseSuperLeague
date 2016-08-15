@@ -79,6 +79,7 @@ public class FetchActivity extends AppCompatActivity {
                 StatContract.StatEntry.COLUMN_PLAYER,
                 StatContract.StatEntry.COLUMN_OPPONENT,
                 StatContract.StatEntry.COLUMN_CNAME,
+                StatContract.StatEntry.COLUMN_HOME_AWAY,
                 StatContract.StatEntry._ID
         };
 
@@ -88,6 +89,7 @@ public class FetchActivity extends AppCompatActivity {
         static final int COL_STAT_PLAYER = 3;
         static final int COL_STAT_OPPONENT = 4;
         static final int COL_STAT_CNAME = 5;
+        static final int COL_STAT_HOME_AWAY = 6;
 
 
         public FetchFragment() {

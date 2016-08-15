@@ -26,8 +26,6 @@ public class StatAdapter extends CursorAdapter{
         public final TextView scoreView;
         public final TextView oppoView;
 
-
-
         public ViewHolder(View view) {
             iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
             playerView = (ImageView) view.findViewById(R.id.listview_stat_player);
@@ -36,6 +34,7 @@ public class StatAdapter extends CursorAdapter{
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
             oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
+
 
         }
     }
@@ -98,9 +97,13 @@ public class StatAdapter extends CursorAdapter{
         String score = cursor.getString(FetchActivity.FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
 
-        String opponent = "vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
+        String opponent;
+        if(cursor.getString(FetchActivity.FetchFragment.COL_STAT_HOME_AWAY).equals("主场")){
+            opponent = "Home vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
+        }else if(cursor.getString(FetchActivity.FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
+            opponent = "Away vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
+        }else opponent = "unknown";
         viewHolder.oppoView.setText(opponent);
-
     }
 
     @Override
