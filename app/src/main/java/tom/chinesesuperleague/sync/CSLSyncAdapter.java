@@ -51,17 +51,21 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             playerName = Utility.getPlayerName(playerTag);
 //            System.out.println("playerName"+ playerName+"playerTag"+playerTag);
 
-            if(playerTag.length()==0)return;
             Document doc = null;
+            Elements tableContentEles = null;
+
+            if(playerTag.length()==0)return;
+
             String url = Utility.urlBuilder(playerTag);
             try {
                 doc = Jsoup.connect(url).timeout(60000).get();
+                tableContentEles = doc.select("td");
+
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Elements tableContentEles = doc.select("td");
             int numberOfMatches = tableContentEles.size() / 19 - 1;
 
             for (int j = 0; j < numberOfMatches; j++) {

@@ -9,8 +9,8 @@
     <string name="title_stat_detail">DetailStat</string>
     <string name="fetch_activity">FetchActivity</string>
     <string name="p61034">拉尔夫</string>
-    <string name="p168101">武磊</string>
-    <string name="p116730">费尔南多</string>
+    <string name="p168101">费尔南多</string>
+    <string name="p116730">武磊</string>
     <string name="拉尔夫">61034</string>
     <string name="武磊">168101</string>
     <string name="费尔南多">116730</string>
@@ -26,6 +26,7 @@
     <string name="pref_player_name">Player</string>
     <string name="pref_name_key">Name</string>
     <string name="shots">Shots/On Target</string>
+    <string name="foul">Foul/Fouled</string>
     <string name="cards">Yellow/Red Card</string>
     <string name="takeon">Successful Takeon</string>
     <string name="title_activity_settings">Setting</string>

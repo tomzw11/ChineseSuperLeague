@@ -80,7 +80,9 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_YELLOW_CARD,
                 StatEntry.COLUMN_RED_CARD,
                 StatEntry.COLUMN_PLAYER,
-                StatEntry.COLUMN_CNAME
+                StatEntry.COLUMN_CNAME,
+                StatEntry.COLUMN_FOUL,
+                StatEntry.COLUMN_FOULED
         };
 
         // these constants correspond to the projection defined above, and must change if the
@@ -100,6 +102,8 @@ public class DetailStat extends AppCompatActivity {
         private static final int COL_RED_CARD = 12;
         private static final int COL_PLAYER = 13;
         private static final int COL_CNAME = 14;
+        private static final int COL_FOUL = 15;
+        private static final int COL_FOULED = 16;
 
 
 
@@ -151,7 +155,9 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");
-//
+
+//TODO:Modify team/player name strings to English.
+
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(data.getString(COL_GOAL));
 //
@@ -166,6 +172,9 @@ public class DetailStat extends AppCompatActivity {
 //
             TextView tv_cards = (TextView)getView().findViewById(R.id.fragment_details_cards);
             tv_cards.setText(data.getString(COL_YELLOW_CARD) +"/"+ data.getString(COL_RED_CARD));
+
+            TextView tv_foul = (TextView) getView().findViewById(R.id.fragment_details_foul);
+            tv_foul.setText(data.getString(COL_FOUL) + "/" + data.getString(COL_FOULED));
 
             TextView tv_home = (TextView) getView().findViewById(R.id.main_grid_home);
             tv_home.setText(data.getString(COL_TEAM));

@@ -20,13 +20,35 @@ public class Utility {
                 context.getString(R.string.pref_player_default));
     }
 
-    public static int getImageForTeam(String team){
+    public static int getImageForMatchType(String game){
+
+        switch (game){
+
+            case "中超":
+                return R.drawable.csl;
+
+            case "亚冠":
+                return R.drawable.afc;
+
+            default:return R.drawable.match_default;
+//TODO:Adjust size of images in listitem.xml.
+        }
+    }
+
+    public static int getBadgeForTeam(String team){
 
         switch (team){
 
             case "北京国安":
-                return R.drawable.beijing_guoan;
-            default:return 0;
+                return R.drawable.badge_beijing_guoan;
+
+            case "重庆力帆":
+                return R.drawable.badge_chongqing_lifan;
+
+            case "上海上港":
+                return R.drawable.badge_shanghai_shanggang;
+
+            default:return R.drawable.badge_default;
         }
     }
 
