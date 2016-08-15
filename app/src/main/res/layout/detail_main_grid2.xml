@@ -98,7 +98,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="@string/shots"
+        android:text="@string/cards"
         android:textColor="@color/detail_accent_label"
         android:textSize="20sp"
         app:layout_gravity="fill"
@@ -114,7 +114,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="@string/shots"
+        android:text="@string/foul"
         android:textColor="@color/detail_accent_label"
         android:textSize="20sp"
         app:layout_gravity="fill"
