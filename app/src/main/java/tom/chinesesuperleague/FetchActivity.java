@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 import android.widget.AdapterView;
+import android.support.v4.app.ActivityOptionsCompat;
+
 
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
@@ -154,7 +157,10 @@ public class FetchActivity extends AppCompatActivity {
                                 (cursor.getString(COL_STAT_PLAYER), cursor.getString(COL_STAT_DATE));
                         Intent intent = new Intent(getActivity(), DetailStat.class)
                                 .setData(detailUri);
-                        startActivity(intent);
+                        //startActivity(intent);
+                        ActivityOptionsCompat activityOptions =
+                                ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
+                        ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
                     }
                 }
             });
