@@ -9,7 +9,9 @@
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="@drawable/touch_selector">
+    android:background="@drawable/touch_selector"
+    android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+    android:paddingRight="@dimen/abc_list_item_padding_horizontal_material">
 
     <ImageView
         android:id="@+id/listview_stat_icon"

@@ -68,24 +68,39 @@ public class DetailStat extends AppCompatActivity {
 
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,
                 StatEntry.COLUMN_TEAM,
+                StatEntry.COLUMN_OPPONENT,
+                StatEntry.COLUMN_HOME_AWAY,
+                StatEntry.COLUMN_PLAY_TIME,
+                StatEntry.COLUMN_SHOT,
+                StatEntry.COLUMN_SHOT_ON_TARGET,
+                StatEntry.COLUMN_TAKEON,
                 StatEntry.COLUMN_GOAL,
                 StatEntry.COLUMN_SCORE,
                 StatEntry.COLUMN_KEY_PASS,
                 StatEntry.COLUMN_YELLOW_CARD,
                 StatEntry.COLUMN_RED_CARD,
-                StatEntry.COLUMN_PLAYER
+                StatEntry.COLUMN_PLAYER,
+                StatEntry.COLUMN_CNAME
         };
 
         // these constants correspond to the projection defined above, and must change if the
         // projection changes
         private static final int COL_TABLE_NAME = 0;
         private static final int COL_TEAM = 1;
-        private static final int COL_GOAL = 2;
-        private static final int COL_SCORE = 3;
-        private static final int COL_KEY_PASS = 4;
-        private static final int COL_YELLOW_CARD = 5;
-        private static final int COL_RED_CARD = 6;
-        private static final int COL_PLAYER = 7;
+        private static final int COL_OPPONENT = 2;
+        private static final int COL_HOME_AWAY = 3;
+        private static final int COL_PLAY_TIME = 4;
+        private static final int COL_SHOT = 5;
+        private static final int COL_SHOT_ON_TARGET = 6;
+        private static final int COL_TAKEON = 7;
+        private static final int COL_GOAL = 8;
+        private static final int COL_SCORE = 9;
+        private static final int COL_KEY_PASS = 10;
+        private static final int COL_YELLOW_CARD = 11;
+        private static final int COL_RED_CARD = 12;
+        private static final int COL_PLAYER = 13;
+        private static final int COL_CNAME = 14;
+
 
 
         public DetailFragment() {
@@ -131,29 +146,37 @@ public class DetailStat extends AppCompatActivity {
 
             if (!data.moveToFirst()) { return; }
 
-            ImageView tv_image = (ImageView)getView().findViewById(R.id.detail_player_icon);
-            tv_image.setImageResource(Utility.getImageForPlayer(data.getString(COL_PLAYER)));
-
-            TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_name);
-            tv_team.setText(getString(R.string.detail_item_name)+ " "+data.getString(COL_TEAM));
-
-            TextView tv_name = (TextView)getView().findViewById(R.id.fragment_details_team);
-            tv_name.setText(getString(R.string.detail_item_team) +" "+ data.getString(COL_PLAYER));
+//            ImageView tv_image = (ImageView)getView().findViewById(R.id.detail_player_icon);
+//            tv_image.setImageResource(Utility.getImageForPlayer(data.getString(COL_PLAYER)));
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
-            tv_pt.setText(getString(R.string.detail_item_score)+data.getString(COL_SCORE));
+            tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");
 
+
+//            TextView tv_team = (TextView)getView().findViewById(R.id.fragment_details_team);
+//            tv_team.setText(getString(R.string.detail_item_team)+ " "+data.getString(COL_TEAM));
+//
+//            TextView tv_cname = (TextView)getView().findViewById(R.id.fragment_details_cname);
+//            tv_cname.setText(getString(R.string.detail_item_name) +" "+ data.getString(COL_CNAME));
+//
+//            TextView tv_score = (TextView)getView().findViewById(R.id.fragment_details_score);
+//            tv_score.setText(getString(R.string.detail_item_score)+" "+ data.getString(COL_SCORE));
+//
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
-            tv_goal.setText(getString(R.string.detail_item_goal)+" "+ data.getString(COL_GOAL));
-
+            tv_goal.setText(data.getString(COL_GOAL));
+//
             TextView tv_kp = (TextView)getView().findViewById(R.id.fragment_details_keypass);
-            tv_kp.setText(getString(R.string.detail_item_kp) +" "+ data.getString(COL_KEY_PASS));
+            tv_kp.setText(data.getString(COL_KEY_PASS));
 
-            TextView tv_yc = (TextView)getView().findViewById(R.id.fragment_details_yellowcard);
-            tv_yc.setText(getString(R.string.detail_item_yc) +" "+ data.getString(COL_YELLOW_CARD));
+            TextView tv_shots = (TextView)getView().findViewById(R.id.fragment_details_shots);
+            tv_shots.setText(data.getString(COL_SHOT)+"/"+data.getString(COL_SHOT_ON_TARGET));
 
-            TextView tv_rc = (TextView)getView().findViewById(R.id.fragment_details_redcard);
-            tv_rc.setText(getString(R.string.detail_item_rc) +" "+ data.getString(COL_RED_CARD));
+            TextView tv_takeon = (TextView)getView().findViewById(R.id.fragment_details_takeon);
+            tv_takeon.setText(data.getString(COL_TAKEON));
+//
+            TextView tv_cards = (TextView)getView().findViewById(R.id.fragment_details_cards);
+            tv_cards.setText(data.getString(COL_YELLOW_CARD) +"/"+ data.getString(COL_RED_CARD));
+
         }
 
         @Override

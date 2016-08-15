@@ -1,0 +1,47 @@
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    app:columnCount="3">
+
+    <TextView
+        android:id="@+id/main_grid_home"
+        android:layout_width="0dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
+        android:textColor="@color/secondary_text"
+        app:layout_columnWeight="1"
+        android:textSize="36sp"
+
+        android:text="Home" />
+
+    <TextView
+        android:id="@+id/main_grid_score"
+        android:layout_width="0dp"
+        android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:textColor="@color/secondary_text"
+        android:textSize="36sp"
+        app:layout_columnWeight="1"
+        android:text="1 - 0" />
+
+    <TextView
+        android:id="@+id/main_grid_away"
+        android:layout_width="0dp"
+        android:layout_marginBottom="@dimen/abc_list_item_padding_horizontal_material"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:textColor="@color/secondary_text"
+        android:textSize="36sp"
+        app:layout_columnWeight="1"
+        android:text="Away" />
+
+
+
+</android.support.v7.widget.GridLayout>

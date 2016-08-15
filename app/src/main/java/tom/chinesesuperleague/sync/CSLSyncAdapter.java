@@ -30,7 +30,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
     // Interval at which to sync, in seconds.
     // 60 seconds (1 minute) * 180 = 3 hours
-    public static final int SYNC_INTERVAL = 60 * 180;
+    public static final int SYNC_INTERVAL = 60 * 180 * 5;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
 
 

@@ -25,6 +25,9 @@
     <string name="detail_item_rc">Red Card</string>
     <string name="pref_player_name">Player</string>
     <string name="pref_name_key">Name</string>
+    <string name="shots">Shots/On Target</string>
+    <string name="cards">Yellow/Red Card</string>
+    <string name="takeon">Successful Takeon</string>
     <string name="title_activity_settings">Setting</string>
     <string name="main_match_stat">See Match Stat</string>
     <string name="main_form">Current Form</string>
