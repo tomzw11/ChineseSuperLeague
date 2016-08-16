@@ -9,7 +9,7 @@
 
     <string-array name="pref_units_values">
         <item>@string/拉尔夫</item>
-        <item>@string/费尔南多</item>
         <item>@string/武磊</item>
+        <item>@string/费尔南多</item>
     </string-array>
 </resources>

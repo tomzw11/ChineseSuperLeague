@@ -36,7 +36,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.StatEntry._ID
     };
 
-    public static final int STAT_LOADER = 0;
+    public static final int STAT_LOADER_MAIN = 0;
 
     public static final int COL_TEAM = 0;
     public static final int COL_CNAME = 1;
@@ -81,14 +81,14 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
-        getLoaderManager().restartLoader(STAT_LOADER,null,this);
+        getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
     // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged( ) {
         updateStat();
-        getLoaderManager().restartLoader(STAT_LOADER, null, this);
+        getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        getLoaderManager().initLoader(STAT_LOADER, null, this);
+        getLoaderManager().initLoader(STAT_LOADER_MAIN, null, this);
 
         super.onActivityCreated(savedInstanceState);
     }
@@ -174,11 +174,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
             }
         }finally {
+            TextView tv_goal = (TextView)getView().findViewById(R.id.main_goal);
+            tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
             cursor.close();
         }
 
-        TextView tv_goal = (TextView)getView().findViewById(R.id.main_goal);
-        tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
+
     }
 
     @Override

@@ -72,7 +72,7 @@ public class FetchActivity extends AppCompatActivity {
     public static class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
         private StatAdapter mStatAdapter;
-        private static final int STAT_LOADER = 1;
+        private static final int STAT_LOADER_FETCH = 1;
 
         private static final String[] STAT_COLUMNS = {
 
@@ -175,7 +175,7 @@ public class FetchActivity extends AppCompatActivity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
 
-            getLoaderManager().initLoader(STAT_LOADER, null, this);
+            getLoaderManager().initLoader(STAT_LOADER_FETCH, null, this);
 
             super.onActivityCreated(savedInstanceState);
         }

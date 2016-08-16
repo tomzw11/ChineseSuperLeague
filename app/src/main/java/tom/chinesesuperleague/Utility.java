@@ -60,10 +60,10 @@ public class Utility {
                 return R.drawable.icon_ralf;
 
             case "168101":
-                return R.drawable.icon_wulei;
+                return R.drawable.icon_fernando;
 
             case "116730":
-                return R.drawable.icon_fernando;
+                return R.drawable.icon_wulei;
 
             default:return 0;
 
@@ -78,10 +78,10 @@ public class Utility {
                 return "拉尔夫";
 
             case "168101":
-                return "武磊";
+                return "费尔南多";
 
             case "116730":
-                return "费尔南多";
+                return "武磊";
 
             default:return "Unknown";
 
