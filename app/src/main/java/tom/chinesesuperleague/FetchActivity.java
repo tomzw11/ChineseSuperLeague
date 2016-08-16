@@ -125,7 +125,7 @@ public class FetchActivity extends AppCompatActivity {
             int id = item.getItemId();
             if (id == R.id.action_refresh) {
 
-                updateStat();
+                //updateStat();
                 return true;
             }
 
@@ -174,37 +174,37 @@ public class FetchActivity extends AppCompatActivity {
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
+
             getLoaderManager().initLoader(STAT_LOADER, null, this);
 
             super.onActivityCreated(savedInstanceState);
         }
 
-        private void updateStat(){
-
-//        FetchStatTask statTask = new FetchStatTask(getActivity());
-//        String player = Utility.getPreferredPlayer(getActivity());
+//        private void updateStat(){
 //
-            getLoaderManager().restartLoader(STAT_LOADER,null,this);
-//        statTask.execute(player);
-            CSLSyncAdapter.syncImmediately(getActivity());
-        }
+//
+//            getLoaderManager().restartLoader(STAT_LOADER,null,this);
+//            CSLSyncAdapter.syncImmediately(getActivity());
+//        }
 
         @Override
         public void onStart() {
 
             super.onStart();
-            updateStat();
         }
 
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
             String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-            Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-            System.out.println("Main Page onCreateLoader uri: " + statForPlayerUri);
+            //Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
+            //System.out.println("Main Page onCreateLoader uri: " + statForPlayerUri);
 
-            return new CursorLoader(getActivity(),
-                    statForPlayerUri,
+            Intent intent = getActivity().getIntent();
+
+            return new CursorLoader(
+                    getActivity(),
+                    intent.getData(),
                     STAT_COLUMNS,
                     null,
                     null,

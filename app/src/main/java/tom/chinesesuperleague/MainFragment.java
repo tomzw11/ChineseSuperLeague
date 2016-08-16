@@ -36,12 +36,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.StatEntry._ID
     };
 
-    private static final int STAT_LOADER = 0;
+    public static final int STAT_LOADER = 0;
 
-    private static final int COL_TEAM = 0;
-    private static final int COL_CNAME = 1;
-    private static final int COL_GOAL = 2;
-    private static final int COL_PLAYER = 3;
+    public static final int COL_TEAM = 0;
+    public static final int COL_CNAME = 1;
+    public static final int COL_GOAL = 2;
+    public static final int COL_PLAYER = 3;
 
 
     @Override
@@ -81,14 +81,15 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
-//        FetchStatTask statTask = new FetchStatTask(getActivity());
-//        String player = Utility.getPreferredPlayer(getActivity());
-//
         getLoaderManager().restartLoader(STAT_LOADER,null,this);
-//        statTask.execute(player);
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
+    // since we read the location when we create the loader, all we need to do is restart things
+    void onPlayerChanged( ) {
+        updateStat();
+        getLoaderManager().restartLoader(STAT_LOADER, null, this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,7 +104,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), FetchActivity.class);
+                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
+                //System.out.println("main frag to fetch: "+ playerUri);
+
+                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
                 startActivity(intent);
             }
         });
@@ -156,7 +160,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
         tv_team.setText(team);
-
+        System.out.println("main frag team: "+team);
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         imageView1.setImageResource(Utility.getBadgeForTeam(team));
 
