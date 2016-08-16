@@ -57,13 +57,13 @@ public class Utility {
         switch (playerId){
 
             case "61034":
-                return R.drawable.ralf;
+                return R.drawable.icon_ralf;
 
             case "168101":
-                return R.drawable.wulei;
+                return R.drawable.icon_wulei;
 
             case "116730":
-                return R.drawable.fernando;
+                return R.drawable.icon_fernando;
 
             default:return 0;
 

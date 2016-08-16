@@ -72,7 +72,7 @@ public class FetchActivity extends AppCompatActivity {
     public static class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
         private StatAdapter mStatAdapter;
-        private static final int STAT_LOADER = 0;
+        private static final int STAT_LOADER = 1;
 
         private static final String[] STAT_COLUMNS = {
 

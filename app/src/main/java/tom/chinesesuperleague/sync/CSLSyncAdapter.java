@@ -32,6 +32,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 180 * 5;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
+    //TODO: Increase SYNC interval.
 
 
     private ArrayList<String[]> playerStat = new ArrayList<>();

@@ -39,8 +39,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     private static final int STAT_LOADER = 0;
 
     private static final int COL_TEAM = 0;
-    private static final int COL_GOAL = 2;
     private static final int COL_CNAME = 1;
+    private static final int COL_GOAL = 2;
     private static final int COL_PLAYER = 3;
 
 
@@ -144,19 +144,20 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
 
-        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
         String player = cursor.getString(COL_PLAYER);
+        String team = cursor.getString(COL_TEAM);
+
+        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
+
         imageView.setImageResource(Utility.getImageForPlayer(player));
 
         TextView tv_cname = (TextView)getView().findViewById(R.id.main_name);
         tv_cname.setText(cursor.getString(COL_CNAME));
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
-        tv_team.setText(cursor.getString(COL_TEAM));
+        tv_team.setText(team);
 
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
-        String team = cursor.getString(COL_TEAM);
-
         imageView1.setImageResource(Utility.getBadgeForTeam(team));
 
         TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
