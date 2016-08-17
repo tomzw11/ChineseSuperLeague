@@ -3,13 +3,19 @@ package tom.chinesesuperleague;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.content.Context;
 
 
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
-    public PagerAdapter(FragmentManager fm) {
+    final int PAGE_COUNT = 2;
+    private String tabTitles[] = new String[] { "Player", "Match"};
+    private Context context;
+
+    public PagerAdapter(FragmentManager fm,Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override
@@ -23,6 +29,12 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return PAGE_COUNT;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        // Generate title based on item position
+        return tabTitles[position];
     }
 }

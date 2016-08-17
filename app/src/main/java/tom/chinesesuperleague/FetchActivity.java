@@ -95,8 +95,6 @@ public class FetchActivity extends AppCompatActivity {
         static final int COL_STAT_HOME_AWAY = 6;
         static final int COL_STAT_GAME = 7;
 
-
-
         public FetchFragment() {
             //setHasOptionsMenu(true);
         }

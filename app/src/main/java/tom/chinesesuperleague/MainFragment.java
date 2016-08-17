@@ -88,7 +88,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     void onPlayerChanged( ) {
         updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
-        System.out.println("loader restarted");
     }
 
     @Override
@@ -97,20 +96,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
-
-        textView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
-                System.out.println("main frag to fetch: "+ playerUri);
-
-                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
-                startActivity(intent);
-            }
-        });
 
         return rootView;
     }

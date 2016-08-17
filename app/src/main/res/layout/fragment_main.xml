@@ -72,17 +72,6 @@
 
                 />
 
-            <TextView
-                android:id="@+id/main_match_stat"
-                android:text="@string/main_match_stat"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:paddingBottom="10dp"
-                android:background="@drawable/touch_selector"
-                />
-
         </LinearLayout>
 
     </LinearLayout>
