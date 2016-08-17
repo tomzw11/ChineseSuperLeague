@@ -223,7 +223,7 @@ public class StatProvider extends ContentProvider{
         cursor.close();
         System.out.println("database size: "+cnt);
 
-                return returnCount;
+        return returnCount;
     }
 
     // You do not need to call this method. This is a method specifically to assist the testing

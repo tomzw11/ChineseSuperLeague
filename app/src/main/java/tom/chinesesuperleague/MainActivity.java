@@ -12,10 +12,15 @@ import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    String preferPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferPlayer = Utility.getPreferredPlayer(this);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         CSLSyncAdapter.initializeSyncAdapter(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String newPreferredPlayer = Utility.getPreferredPlayer( this );
+        // update the location in our second pane using the fragment manager
+        if ( preferPlayer != null && !preferPlayer.equals(newPreferredPlayer)) {
+            MainFragment ff = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+            if ( null != ff ) {
+                ff.onPlayerChanged();
+            }
+
+            preferPlayer = newPreferredPlayer;
+        }
     }
 
     @Override

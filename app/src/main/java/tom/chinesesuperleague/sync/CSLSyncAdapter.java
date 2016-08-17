@@ -35,7 +35,6 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     //TODO: Increase SYNC interval.
 
 
-    private ArrayList<String[]> playerStat = new ArrayList<>();
     private String playerName;
     private String playerTag;
 
@@ -47,7 +46,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
         //Log.d(LOG_TAG, "onPerformSync Called.");
-
+            ArrayList<String[]> playerStat = new ArrayList<>();
             playerTag = Utility.getPreferredPlayer(getContext());
             playerName = Utility.getPlayerName(playerTag);
 
@@ -62,8 +61,6 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 doc = Jsoup.connect(url).timeout(60000).get();
                 tableContentEles = doc.select("td");
                 numberOfMatches = tableContentEles.size() / 19 - 1;
-
-
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -123,8 +120,6 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         return;
 
     }
-
-
 
     /**
      * Helper method to have the sync adapter sync immediately

@@ -43,7 +43,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final int COL_GOAL = 2;
     public static final int COL_PLAYER = 3;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +80,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
-        getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
@@ -89,6 +87,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     void onPlayerChanged( ) {
         updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
+        System.out.println("loader restarted");
     }
 
     @Override
@@ -98,19 +97,19 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
+//        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
 
-        textView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
-                //System.out.println("main frag to fetch: "+ playerUri);
-
-                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
-                startActivity(intent);
-            }
-        });
+//        textView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
+//                System.out.println("main frag to fetch: "+ playerUri);
+//
+//                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
+//                startActivity(intent);
+//            }
+//        });
 
         return rootView;
     }
@@ -123,19 +122,13 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
     @Override
-    public void onStart(){
-
-        super.onStart();
-        updateStat();
-    }
-
-    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-
-        return new CursorLoader(getActivity(),
+        System.out.println("onloaderCreated Uri: "+statForPlayerUri);
+        return new CursorLoader(
+                getActivity(),
                 statForPlayerUri,
                 STAT_COLUMNS,
                 null,
@@ -145,6 +138,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
+        if (cursor==null)System.out.println("cursor null");
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
 
@@ -160,7 +155,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
         tv_team.setText(team);
-        System.out.println("main frag team: "+team);
+        System.out.println("main frag team: "+ team);
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         imageView1.setImageResource(Utility.getBadgeForTeam(team));
 
@@ -178,8 +173,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
             cursor.close();
         }
-
-
     }
 
     @Override

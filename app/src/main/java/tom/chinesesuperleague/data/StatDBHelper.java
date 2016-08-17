@@ -25,38 +25,39 @@ public class StatDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         final String SQL_CREATE_STAT_TABLE =
+
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
-                StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
+                        StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
                         StatEntry.COLUMN_CNAME + " REAL NOT NULL, " +
-                StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
-                StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
-                StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
-                StatEntry.COLUMN_OPPONENT + " REAL NOT NULL, " +
-                StatEntry.COLUMN_HOME_AWAY + " REAL NOT NULL, " +
-                StatEntry.COLUMN_SCORE + " REAL NOT NULL, " +
-                StatEntry.COLUMN_APPREARANCE + " REAL NOT NULL, " +
-                StatEntry.COLUMN_PLAY_TIME + " REAL NOT NULL, " +
-                StatEntry.COLUMN_SHOT + " REAL NOT NULL, " +
-                StatEntry.COLUMN_SHOT_ON_TARGET + " REAL NOT NULL, " +
-                StatEntry.COLUMN_GOAL + " REAL NOT NULL, " +
-                StatEntry.COLUMN_KEY_PASS + " REAL NOT NULL, " +
-                StatEntry.COLUMN_FOUL + " REAL NOT NULL, " +
-                StatEntry.COLUMN_FOULED + " REAL NOT NULL, " +
-                StatEntry.COLUMN_CLEARANCE + " REAL NOT NULL, " +
-                StatEntry.COLUMN_TAKEON + " REAL NOT NULL, " +
-                StatEntry.COLUMN_SAVE + " REAL NOT NULL, " +
-                StatEntry.COLUMN_YELLOW_CARD + " REAL NOT NULL, " +
-                StatEntry.COLUMN_RED_CARD + " REAL NOT NULL," +
-                        // To assure the application have just one weather entry per day
-                        // per location, it's created a UNIQUE constraint with REPLACE strategy
+                        StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_TEAM + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_OPPONENT + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_HOME_AWAY + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_SCORE + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_APPREARANCE + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_PLAY_TIME + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_SHOT + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_SHOT_ON_TARGET + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_GOAL + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_KEY_PASS + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_FOUL + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_FOULED + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_CLEARANCE + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_TAKEON + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_SAVE + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_YELLOW_CARD + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_RED_CARD + " REAL NOT NULL," +
+
+                        // To assure the application have just one match per day
+                        // per player, it's created a UNIQUE constraint with REPLACE strategy
 
                         " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_PLAYER +
-                         ") ON CONFLICT REPLACE);";
+                        ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
-
     }
 
     @Override
