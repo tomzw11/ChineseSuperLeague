@@ -32,8 +32,6 @@ public class FetchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_stat);
 
         if (savedInstanceState == null) {
@@ -100,6 +98,7 @@ public class FetchActivity extends AppCompatActivity {
 
 
         public FetchFragment() {
+            //setHasOptionsMenu(true);
         }
 
         @Override
@@ -107,8 +106,6 @@ public class FetchActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             // Add this line in order for this fragment to handle main events.
             setHasOptionsMenu(true);
-
-
         }
 
         @Override
@@ -123,13 +120,7 @@ public class FetchActivity extends AppCompatActivity {
             // as you specify a parent activity in AndroidManifest.xml.
 
             int id = item.getItemId();
-            if (id == R.id.action_refresh) {
 
-                //updateStat();
-                return true;
-            }
-
-            //noinspection SimplifiableIfStatement
             if (id == R.id.action_menu_settings) {
 
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
@@ -180,13 +171,6 @@ public class FetchActivity extends AppCompatActivity {
             super.onActivityCreated(savedInstanceState);
         }
 
-//        private void updateStat(){
-//
-//
-//            getLoaderManager().restartLoader(STAT_LOADER,null,this);
-//            CSLSyncAdapter.syncImmediately(getActivity());
-//        }
-
         @Override
         public void onStart() {
 
@@ -197,14 +181,13 @@ public class FetchActivity extends AppCompatActivity {
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
             String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-            //Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-            //System.out.println("Main Page onCreateLoader uri: " + statForPlayerUri);
 
-            Intent intent = getActivity().getIntent();
-
+            //Intent intent = getActivity().getIntent();
+            Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
+            System.out.println(statForPlayerUri+" fetch uri");
             return new CursorLoader(
                     getActivity(),
-                    intent.getData(),
+                    statForPlayerUri,
                     STAT_COLUMNS,
                     null,
                     null,

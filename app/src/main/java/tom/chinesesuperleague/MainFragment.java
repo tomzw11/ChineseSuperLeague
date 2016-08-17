@@ -62,6 +62,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
+        //TODO:Delete refresh button.
         if (id == R.id.action_refresh) {
 
             updateStat();
@@ -97,19 +98,19 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-//        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
+        final TextView textView = (TextView) rootView.findViewById(R.id.main_match_stat);
 
-//        textView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
-//                System.out.println("main frag to fetch: "+ playerUri);
-//
-//                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
-//                startActivity(intent);
-//            }
-//        });
+        textView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Uri playerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getContext()));
+                System.out.println("main frag to fetch: "+ playerUri);
+
+                Intent intent = new Intent(getActivity(), FetchActivity.class).setData(playerUri);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
@@ -126,7 +127,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
-        System.out.println("onloaderCreated Uri: "+statForPlayerUri);
+
         return new CursorLoader(
                 getActivity(),
                 statForPlayerUri,
@@ -138,8 +139,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-
-        if (cursor==null)System.out.println("cursor null");
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
 
