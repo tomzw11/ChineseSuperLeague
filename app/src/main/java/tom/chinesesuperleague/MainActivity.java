@@ -1,7 +1,7 @@
 package tom.chinesesuperleague;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -9,12 +9,9 @@ import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
 
-import android.support.v4.app.ActivityOptionsCompat;
-
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainActivity extends AppCompatActivity {
-
 
     String preferPlayer;
 
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             if ( null != ff ) {
                 ff.onPlayerChanged();
             }
-
+            System.out.println(preferPlayer+" has changed to  "+ newPreferredPlayer);
             preferPlayer = newPreferredPlayer;
         }
     }
@@ -71,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_menu_settings) {
+
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

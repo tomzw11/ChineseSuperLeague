@@ -32,6 +32,7 @@
     <string name="title_activity_settings">Setting</string>
     <string name="main_match_stat">See Match Stat</string>
     <string name="main_form">Current Form</string>
+    <string name="form_default">8.0</string>
 
     <!-- SyncAdapter related -->
     <string name="sync_account_type">CSL</string>

@@ -70,6 +70,24 @@ public class Utility {
         }
     }
 
+    public static int getKitForTeam(String team){
+
+        switch (team){
+
+            case "北京国安":
+                return R.drawable.kit_beijing_guoan;
+
+            case "重庆力帆":
+                return R.drawable.kit_chonqging_lifan;
+
+            case "上海上港":
+                return R.drawable.kit_shanghai_shanggang;
+
+            default:return R.drawable.kit_default;
+        }
+
+    }
+
     public static String getPlayerName(String playerId){
 
         switch (playerId){

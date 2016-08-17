@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -21,10 +20,7 @@ import android.content.Intent;
 import android.widget.AdapterView;
 import android.support.v4.app.ActivityOptionsCompat;
 
-
 import tom.chinesesuperleague.data.StatContract;
-import tom.chinesesuperleague.sync.CSLSyncAdapter;
-
 
 public class FetchActivity extends AppCompatActivity {
 
@@ -180,7 +176,6 @@ public class FetchActivity extends AppCompatActivity {
 
             String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
 
-            //Intent intent = getActivity().getIntent();
             Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
             System.out.println(statForPlayerUri+" fetch uri");
             return new CursorLoader(

@@ -16,7 +16,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
-import android.view.View.OnClickListener;
 
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
@@ -65,6 +64,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         //TODO:Delete refresh button.
         if (id == R.id.action_refresh) {
 
+            System.out.println("refresh");
             updateStat();
             return true;
         }
@@ -81,11 +81,13 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
+        System.out.println("updateStat");
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
     // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged( ) {
+        System.out.println("player setting changed");
         updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
     }
@@ -145,7 +147,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
         String season_app = Integer.toString(cursor.getCount());
-        tv_app.setText("Season Appearance: "+ season_app);
+        tv_app.setText("Season Appearances: "+ season_app);
 
         int number_of_goals = 0;
         try{

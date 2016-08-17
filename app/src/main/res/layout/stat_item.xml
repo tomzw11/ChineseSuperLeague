@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Layout for weather forecast list item for future day (not today) -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:orientation="horizontal"
-    android:background="@drawable/touch_selector"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:orientation="vertical"
+    android:background="@drawable/touch_selector">
 
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:gravity="fill_horizontal"
         >
 //TODO:Adjust item spacing.
         <ImageView
             android:id="@+id/listview_stat_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"/>
 
         <TextView
             android:id="@+id/listview_stat_date"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             />
 
         <TextView
@@ -37,29 +37,36 @@
             android:id="@+id/listview_stat_oppo"/>
 
         <TextView
-            android:id="@+id/listview_stat_score"
+            android:id="@+id/listview_stat_form"
             android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="wrap_content"/>
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/form_default"/>
 
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:id="@+id/listview_stat_player"
-        android:visibility="gone"/>
-
     <TextView
         android:id="@+id/listview_stat_name"
-        android:layout_width="1dp"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:visibility="gone"/>
 
     <TextView
         android:id="@+id/listview_stat_team"
-        android:layout_width="1dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/listview_stat_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/listview_stat_kit"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 

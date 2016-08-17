@@ -62,8 +62,6 @@ public class DetailStat extends AppCompatActivity {
 
         private static final int DETAIL_LOADER = 1;
 
-        private String mPlayer;
-
         private static final String[] STAT_COLUMNS = {
 
                 StatEntry.TABLE_NAME + "." + StatEntry._ID,

@@ -11,15 +11,13 @@ import android.widget.ImageView;
 
 public class StatAdapter extends CursorAdapter{
 
-
-
     private static final int VIEW_TYPE_COUNT = 2;
     private static final int VIEW_TYPE_SUMMARY = 0;
     private static final int VIEW_TYPE_ITEM = 1;
 
     public static class ViewHolder {
         public final ImageView iconView;
-        public final ImageView playerView;
+        public final ImageView kitView;
         public final TextView nameView;
         public final TextView dateView;
         public final TextView teamView;
@@ -27,14 +25,14 @@ public class StatAdapter extends CursorAdapter{
         public final TextView oppoView;
 
         public ViewHolder(View view) {
+
             iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
-            playerView = (ImageView) view.findViewById(R.id.listview_stat_player);
+            kitView = (ImageView) view.findViewById(R.id.listview_stat_kit);
             nameView = (TextView) view.findViewById(R.id.listview_stat_name);
             dateView = (TextView) view.findViewById(R.id.listview_stat_date);
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
             oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
-
 
         }
     }
@@ -75,12 +73,8 @@ public class StatAdapter extends CursorAdapter{
      */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        // our view is pretty simple here --- just a text view
-        // we'll keep the UI functional with a simple (and slow!) binding.
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
-
-        viewHolder.playerView.setImageResource(Utility.getImageForPlayer(cursor.getString(FetchActivity.FetchFragment.COL_STAT_PLAYER)));
 
         String match_type = cursor.getString(FetchActivity.FetchFragment.COL_STAT_GAME);
         viewHolder.iconView.setImageResource(Utility.getImageForMatchType(match_type));
@@ -94,6 +88,8 @@ public class StatAdapter extends CursorAdapter{
         String team = cursor.getString(FetchActivity.FetchFragment.COL_STAT_TEAM);
         viewHolder.teamView.setText(team);
 
+        viewHolder.kitView.setImageResource(Utility.getKitForTeam(team));
+
         String score = cursor.getString(FetchActivity.FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
 
@@ -102,7 +98,7 @@ public class StatAdapter extends CursorAdapter{
             opponent = "Home vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
         }else if(cursor.getString(FetchActivity.FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
             opponent = "Away vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
-        }else opponent = "unknown";
+        }else opponent = "Unknown";
         viewHolder.oppoView.setText(opponent);
     }
 
