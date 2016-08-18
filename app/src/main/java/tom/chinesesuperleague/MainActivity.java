@@ -1,6 +1,5 @@
 package tom.chinesesuperleague;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +13,8 @@ import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    String preferPlayer;
+    private String preferPlayer;
+    private String mTag,fTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(),
-                MainActivity.this));
+        viewPager.setOffscreenPageLimit(2);
+
+        PagerAdapter newPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
+                MainActivity.this);
+
+        viewPager.setAdapter(newPagerAdapter);
+
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
@@ -48,16 +54,20 @@ public class MainActivity extends AppCompatActivity {
         // update the location in our second pane using the fragment manager
         if ( preferPlayer != null && !preferPlayer.equals(newPreferredPlayer)) {
 
-            ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+            //ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-            MainFragment ff = (MainFragment) getSupportFragmentManager().findFragmentByTag
-                    ("android:switcher:"+R.id.viewpager+":"+viewPager.getCurrentItem());
+            MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag
+                    ("android:switcher:"+R.id.viewpager+":"+"0");
 
-            if ( null != ff ) {
-                ff.onPlayerChanged();
-            }else if(null ==ff)System.out.println("ff is null");
-            //System.out.println(preferPlayer+" has changed to  "+ newPreferredPlayer);
-            preferPlayer = newPreferredPlayer;
+            FetchFragment fetchFragment = (FetchFragment) getSupportFragmentManager().findFragmentByTag
+                    ("android:switcher:"+R.id.viewpager+":"+"1");
+
+                if (mainFragment != null && fetchFragment != null){
+
+                    mainFragment.onPlayerChanged();
+                    fetchFragment.onPlayerChanged();
+                    preferPlayer = newPreferredPlayer;
+                }
         }
     }
 

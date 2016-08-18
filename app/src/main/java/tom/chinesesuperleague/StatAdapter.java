@@ -76,28 +76,28 @@ public class StatAdapter extends CursorAdapter{
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        String match_type = cursor.getString(FetchActivity.FetchFragment.COL_STAT_GAME);
+        String match_type = cursor.getString(FetchFragment.COL_STAT_GAME);
         viewHolder.iconView.setImageResource(Utility.getImageForMatchType(match_type));
 
-        String name = cursor.getString(FetchActivity.FetchFragment.COL_STAT_CNAME);
+        String name = cursor.getString(FetchFragment.COL_STAT_CNAME);
         viewHolder.nameView.setText(name);
 
-        String date = cursor.getString(FetchActivity.FetchFragment.COL_STAT_DATE);
+        String date = cursor.getString(FetchFragment.COL_STAT_DATE);
         viewHolder.dateView.setText(date);
 
-        String team = cursor.getString(FetchActivity.FetchFragment.COL_STAT_TEAM);
+        String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
         viewHolder.teamView.setText(team);
 
         viewHolder.kitView.setImageResource(Utility.getKitForTeam(team));
 
-        String score = cursor.getString(FetchActivity.FetchFragment.COL_STAT_SCORE);
+        String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
 
         String opponent;
-        if(cursor.getString(FetchActivity.FetchFragment.COL_STAT_HOME_AWAY).equals("主场")){
-            opponent = "Home vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
-        }else if(cursor.getString(FetchActivity.FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
-            opponent = "Away vs. "+ cursor.getString(FetchActivity.FetchFragment.COL_STAT_OPPONENT);
+        if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("主场")){
+            opponent = "Home vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
+        }else if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
+            opponent = "Away vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
         }else opponent = "Unknown";
         viewHolder.oppoView.setText(opponent);
     }

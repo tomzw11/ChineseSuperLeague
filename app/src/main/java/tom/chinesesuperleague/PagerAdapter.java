@@ -13,6 +13,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
     private Context context;
     private Fragment mCurrentFragment;
 
+    private String main_tag,fetch_tag;
+
     public PagerAdapter(FragmentManager fm,Context context) {
         super(fm);
         this.context = context;
@@ -20,10 +22,12 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
+
         if (position == 0) {
             return new MainFragment();
         }  else {
-            return new FetchActivity.FetchFragment();
+            return new FetchFragment();
         }
     }
 
@@ -49,4 +53,38 @@ public class PagerAdapter extends FragmentPagerAdapter {
         }
         super.setPrimaryItem(container, position, object);
     }
+
+//    @Override
+//    public Object instantiateItem(ViewGroup container, int position) {
+//        Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
+//        // get the tags set by FragmentPagerAdapter
+//        switch (position) {
+//            case 0:
+//                main_tag = createdFragment.getTag();
+//                System.out.println("main_tag: " + main_tag);
+//                break;
+//            case 1:
+//                fetch_tag = createdFragment.getTag();
+//                System.out.println("fetch_tag: " + fetch_tag);
+//
+//                break;
+//        }
+//        // ... save the tags somewhere so you can reference them later
+//        return createdFragment;
+//    }
+//
+//    public String getMainPagerAdapterTag(){
+//
+//        return this.main_tag;
+//    }
+//
+//    public String getFetchPagerAdapterTag(){
+//
+//        return this.fetch_tag;
+//    }
+
+
+
+
+
 }

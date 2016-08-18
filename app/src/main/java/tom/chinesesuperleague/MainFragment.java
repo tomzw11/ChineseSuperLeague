@@ -17,6 +17,7 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 
+
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
@@ -47,6 +48,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -61,13 +63,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-        //TODO:Delete refresh button.
-        if (id == R.id.action_refresh) {
-
-            System.out.println("refresh");
-            updateStat();
-            return true;
-        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_menu_settings) {
@@ -81,13 +76,11 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private void updateStat(){
 
-        System.out.println("updateStat");
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
     // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged( ) {
-        System.out.println("player setting changed");
         updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
     }
