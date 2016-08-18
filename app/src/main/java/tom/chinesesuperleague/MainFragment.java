@@ -163,6 +163,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
+
+        System.out.println("loader reset");
     }
 
 

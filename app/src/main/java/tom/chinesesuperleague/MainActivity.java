@@ -1,5 +1,6 @@
 package tom.chinesesuperleague;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,11 +47,16 @@ public class MainActivity extends AppCompatActivity {
         String newPreferredPlayer = Utility.getPreferredPlayer( this );
         // update the location in our second pane using the fragment manager
         if ( preferPlayer != null && !preferPlayer.equals(newPreferredPlayer)) {
-            MainFragment ff = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+
+            ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+            MainFragment ff = (MainFragment) getSupportFragmentManager().findFragmentByTag
+                    ("android:switcher:"+R.id.viewpager+":"+viewPager.getCurrentItem());
+
             if ( null != ff ) {
                 ff.onPlayerChanged();
-            }
-            System.out.println(preferPlayer+" has changed to  "+ newPreferredPlayer);
+            }else if(null ==ff)System.out.println("ff is null");
+            //System.out.println(preferPlayer+" has changed to  "+ newPreferredPlayer);
             preferPlayer = newPreferredPlayer;
         }
     }
