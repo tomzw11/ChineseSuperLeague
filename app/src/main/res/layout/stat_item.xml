@@ -14,6 +14,8 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:gravity="fill_horizontal"
+        android:layout_marginLeft="8dp"
+
         >
 //TODO:Adjust item spacing.
         <ImageView

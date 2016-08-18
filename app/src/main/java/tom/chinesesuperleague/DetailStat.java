@@ -26,10 +26,9 @@ public class DetailStat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        //TODO:Debug toolbar. DetailFragment disappears when toolbar is enabled.
-//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -43,19 +42,6 @@ public class DetailStat extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_detail_settings) {
-            startActivity(new Intent(this, SettingsActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public static class DetailFragment extends Fragment implements LoaderCallbacks<Cursor> {
@@ -114,12 +100,15 @@ public class DetailStat extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView =  inflater.inflate(R.layout.fragment_details, container, false);
 
+
+
             return rootView;
         }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             getLoaderManager().initLoader(DETAIL_LOADER, null, this);
+
             super.onActivityCreated(savedInstanceState);
         }
 
@@ -147,18 +136,14 @@ public class DetailStat extends AppCompatActivity {
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
             if (!data.moveToFirst()) { return; }
-
-//            ImageView tv_image = (ImageView)getView().findViewById(R.id.detail_player_icon);
-//            tv_image.setImageResource(Utility.getImageForPlayer(data.getString(COL_PLAYER)));
+            //TODO:Modify team/player name strings to English.
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");
 
-//TODO:Modify team/player name strings to English.
-
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(data.getString(COL_GOAL));
-//
+
             TextView tv_kp = (TextView)getView().findViewById(R.id.fragment_details_keypass);
             tv_kp.setText(data.getString(COL_KEY_PASS));
 
@@ -167,21 +152,27 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_takeon = (TextView)getView().findViewById(R.id.fragment_details_takeon);
             tv_takeon.setText(data.getString(COL_TAKEON));
-//
+
             TextView tv_cards = (TextView)getView().findViewById(R.id.fragment_details_cards);
             tv_cards.setText(data.getString(COL_YELLOW_CARD) +"/"+ data.getString(COL_RED_CARD));
 
             TextView tv_foul = (TextView) getView().findViewById(R.id.fragment_details_foul);
             tv_foul.setText(data.getString(COL_FOUL) + "/" + data.getString(COL_FOULED));
 
-            TextView tv_home = (TextView) getView().findViewById(R.id.main_grid_home);
+            TextView tv_home = (TextView) getView().findViewById(R.id.detail_main_home_club_name);
             tv_home.setText(data.getString(COL_TEAM));
 
-            TextView tv_score = (TextView) getView().findViewById(R.id.main_grid_score);
+            TextView tv_score = (TextView) getView().findViewById(R.id.detail_main_score);
             tv_score.setText(data.getString(COL_SCORE));
 
-            TextView tv_away = (TextView) getView().findViewById(R.id.main_grid_away);
+            TextView tv_away = (TextView) getView().findViewById(R.id.detail_main_away_club_name);
             tv_away.setText(data.getString(COL_OPPONENT));
+
+            ImageView home_team = (ImageView) getView().findViewById(R.id.detail_main_home_club);
+            home_team.setImageResource(Utility.getBadgeForTeam(data.getString(COL_TEAM)));
+
+            ImageView away_team = (ImageView) getView().findViewById(R.id.detail_main_away_club);
+            away_team.setImageResource(Utility.getBadgeForTeam(data.getString(COL_OPPONENT)));
 
         }
 

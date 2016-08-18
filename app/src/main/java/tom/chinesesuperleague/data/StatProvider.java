@@ -12,9 +12,6 @@ import android.net.Uri;
 
 public class StatProvider extends ContentProvider{
 
-    //TODO:Convert stat_item and stat_item_latest to two gridview so that
-    //TODO:stat_item_latest shows more detailed info including match score and stat_item only show icon/date/opponent/rating.
-
     // The URI Matcher used by this content provider.
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private StatDBHelper mOpenHelper;

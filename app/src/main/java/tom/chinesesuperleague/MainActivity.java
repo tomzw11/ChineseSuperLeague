@@ -14,7 +14,7 @@ import tom.chinesesuperleague.sync.CSLSyncAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private String preferPlayer;
-    private String mTag,fTag;
+//TODO:Create round settings button on main screen.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(newPagerAdapter);
 
-
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        //TODO:Switch tab text to pictures.
 
         CSLSyncAdapter.initializeSyncAdapter(this);
     }

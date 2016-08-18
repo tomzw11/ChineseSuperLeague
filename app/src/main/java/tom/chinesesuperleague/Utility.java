@@ -31,7 +31,7 @@ public class Utility {
                 return R.drawable.afc;
 
             default:return R.drawable.match_default;
-//TODO:Adjust size of images in listitem.xml.
+        //TODO:Adjust size of images in listitem.xml.
         }
     }
 
@@ -47,6 +47,45 @@ public class Utility {
 
             case "上海上港":
                 return R.drawable.badge_shanghai_shanggang;
+
+            case "长春亚泰":
+                return R.drawable.badge_changchun_yatai;
+
+            case "广州富力":
+                return R.drawable.badge_guangzhou_fuli;
+
+            case "广州恒大":
+                return R.drawable.badge_guangzhou_hengda;
+
+            case "杭州绿城":
+                return R.drawable.badge_hangzhou_lvcheng;
+
+            case "河北华夏":
+                return R.drawable.badge_heibei_huaxia;
+
+            case "河南建业":
+                return R.drawable.badge_henan_jianye;
+
+            case "天津泰达":
+                return R.drawable.badge_tianjin_taida;
+
+            case "辽宁宏运":
+                return R.drawable.badge_liaoning_hongyun;
+
+            case "石家庄永昌":
+                return R.drawable.badge_shijiazhuang_yongchang;
+
+            case "山东鲁能":
+                return R.drawable.badge_shandong_luneng;
+
+            case "延边富德":
+                return R.drawable.badge_yanbian_fude;
+
+            case "江苏苏宁":
+                return R.drawable.badge_jiangsu_suning;
+
+            case "上海申花":
+                return R.drawable.badge_shanghai_shenhua;
 
             default:return R.drawable.badge_default;
         }
@@ -78,10 +117,49 @@ public class Utility {
                 return R.drawable.kit_beijing_guoan;
 
             case "重庆力帆":
-                return R.drawable.kit_chonqging_lifan;
+                return R.drawable.kit_chongqing_lifan;
 
             case "上海上港":
                 return R.drawable.kit_shanghai_shanggang;
+
+            case "长春亚泰":
+                return R.drawable.kit_changchun_yatai;
+
+            case "广州富力":
+                return R.drawable.kit_guangzhou_fuli;
+
+            case "广州恒大":
+                return R.drawable.kit_guangzhou_hengda;
+
+            case "杭州绿城":
+                return R.drawable.kit_hangzhou_lvcheng;
+
+            case "河北华夏":
+                return R.drawable.kit_hebei_huaxia;
+
+            case "河南建业":
+                return R.drawable.kit_henan_jianye;
+
+            case "天津泰达":
+                return R.drawable.kit_tianjin_taida;
+
+            case "辽宁宏运":
+                return R.drawable.kit_liaoning_hongyun;
+
+            case "石家庄永昌":
+                return R.drawable.kit_shijiazhuang_yongchang;
+
+            case "山东鲁能":
+                return R.drawable.kit_shandong_luneng;
+
+            case "延边富德":
+                return R.drawable.kit_yanbian_fude;
+
+            case "江苏苏宁":
+                return R.drawable.kit_jiangsu_suning;
+
+            case "上海申花":
+                return R.drawable.kit_shanghai_shenhua;
 
             default:return R.drawable.kit_default;
         }
