@@ -30,13 +30,17 @@
             android:id="@+id/listview_stat_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_text"
             />
 
         <TextView
             android:id="@+id/listview_stat_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_text"/>
 
     </LinearLayout>
 
@@ -63,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="48dp"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif"
             android:textColor="@color/primary_text"
             android:gravity="center_horizontal"
             />
@@ -71,18 +75,24 @@
         <TextView
             android:id="@+id/listview_stat_date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listview_stat_oppo"/>
+            android:id="@+id/listview_stat_oppo"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:id="@+id/listview_stat_form"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/form_default"/>
+            android:text="@string/form_default"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/primary_text"/>
 
         <ImageView
             android:layout_width="1dp"
