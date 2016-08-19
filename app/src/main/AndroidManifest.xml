@@ -28,19 +28,9 @@
         </activity>
 
         <activity
-            android:name=".FetchActivity"
-            android:label="@string/fetch_activity"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tom.chinesesuperleague.MainActivity" />
-        </activity>
-
-
-        <activity
             android:name=".DetailStat"
             android:label="@string/title_stat_detail"
-            android:parentActivityName=".FetchActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tom.chinesesuperleague.DetailStat" />
@@ -84,10 +74,6 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-
-
-
-
 
     </application>
 

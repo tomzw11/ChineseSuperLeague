@@ -93,6 +93,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         mStatAdapter = new StatAdapter(getActivity(), null, 0);
 
+
         View rootView = inflater.inflate(R.layout.fragment_stat, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
         listView.setAdapter(mStatAdapter);
@@ -109,7 +110,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                             (cursor.getString(COL_STAT_PLAYER), cursor.getString(COL_STAT_DATE));
                     Intent intent = new Intent(getActivity(), DetailStat.class)
                             .setData(detailUri);
-                    //startActivity(intent);
+
                     ActivityOptionsCompat activityOptions =
                             ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
                     ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());

@@ -1,13 +1,11 @@
 <resources>
-
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/light_blue</item>
-        <item name="colorPrimaryDark">@color/blue</item>
-        <item name="colorAccent">@color/grey</item>
-        <item name="android:toolbarStyle">@style/Toolbar</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:toolbarStyle">@style/ToolBarStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,17 +13,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- main activity toolbar style -->
-    <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">?attr/colorPrimaryDark</item>
-        <item name="popupTheme">@style/Theme.AppCompat.Light</item>
+    <!-- ToolBar -->
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="actionMenuTextColor">@color/colorPrimaryDark</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-
 
 </resources>

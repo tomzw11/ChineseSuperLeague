@@ -83,8 +83,4 @@ public class PagerAdapter extends FragmentPagerAdapter {
 //        return this.fetch_tag;
 //    }
 
-
-
-
-
 }

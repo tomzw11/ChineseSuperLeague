@@ -2,6 +2,8 @@ package tom.chinesesuperleague;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +44,6 @@ public class StatAdapter extends CursorAdapter{
         super(context, c, flags);
     }
 
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
 
@@ -67,6 +68,18 @@ public class StatAdapter extends CursorAdapter{
         return view;
     }
 
+    //This will override touchselector.
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        View view = super.getView(position, convertView, parent);
+//        if (position % 2 == 1) {
+//            view.setBackgroundColor(ContextCompat.getColor(mContext,R.color.light_blue));
+//        } else {
+//            view.setBackgroundColor(Color.WHITE);
+//        }
+//
+//        return view;
+//    }
 
     /*
         This is where we fill-in the views with the contents of the cursor.

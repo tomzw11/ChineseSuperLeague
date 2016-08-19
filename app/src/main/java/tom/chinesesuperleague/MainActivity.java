@@ -2,19 +2,21 @@ package tom.chinesesuperleague;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
+import android.view.View;
 
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private String preferPlayer;
-//TODO:Create round settings button on main screen.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(2);//Might not be necessary?
 
         PagerAdapter newPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
                 MainActivity.this);
@@ -82,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-
 
         int id = item.getItemId();
 
