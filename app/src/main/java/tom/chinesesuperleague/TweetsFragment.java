@@ -43,10 +43,4 @@ public class TweetsFragment extends ListFragment{
         return inflater.inflate(R.layout.fragment_tweet, container, false);
     }
 
-
-
-
-
-
-
 }

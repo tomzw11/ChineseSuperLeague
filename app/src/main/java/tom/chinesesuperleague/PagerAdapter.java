@@ -3,9 +3,12 @@ package tom.chinesesuperleague;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.view.ViewGroup;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.text.Spannable;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
@@ -15,6 +18,12 @@ public class PagerAdapter extends FragmentPagerAdapter {
     private Fragment mCurrentFragment;
 
     private String main_tag,fetch_tag;
+
+    private int[] imageResId = {
+            R.drawable.ic_textsms_white_24dp,
+            R.drawable.ic_person_white_24dp,
+            R.drawable.ic_assessment_white_24dp
+    };
 
     public PagerAdapter(FragmentManager fm,Context context) {
         super(fm);
@@ -37,10 +46,15 @@ public class PagerAdapter extends FragmentPagerAdapter {
         return PAGE_COUNT;
     }
 
-    @Override
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
-        return tabTitles[position];
+        Drawable image = context.getResources().getDrawable(imageResId[position]);
+        image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+        // Replace blank spaces with image icon
+        SpannableString sb = new SpannableString("   " + tabTitles[position]);
+        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
+        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return sb;
     }
 
     public Fragment getCurrentFragment() {

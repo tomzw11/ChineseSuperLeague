@@ -31,7 +31,7 @@ public class Utility {
                 return R.drawable.afc;
 
             default:return R.drawable.match_default;
-        //TODO:Adjust size of images in listitem.xml.
+
         }
     }
 
@@ -104,7 +104,7 @@ public class Utility {
             case "116730":
                 return R.drawable.icon_wulei;
 
-            default:return 0;
+            default:return R.drawable.icon_default;
 
         }
     }

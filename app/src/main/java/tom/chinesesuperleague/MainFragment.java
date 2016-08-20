@@ -1,10 +1,8 @@
 package tom.chinesesuperleague;
 
-import android.app.ListFragment;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -20,20 +17,7 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.tweetui.SearchTimeline;
-import com.twitter.sdk.android.tweetui.TweetUtils;
-import com.twitter.sdk.android.tweetui.TweetView;
-import io.fabric.sdk.android.Fabric;
 import tom.chinesesuperleague.data.StatContract;
-import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
-import com.twitter.sdk.android.tweetui.UserTimeline;
-
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
@@ -108,26 +92,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-
-
-//        final LinearLayout mLinearLayout = (LinearLayout) rootView.findViewById(R.id.twitter_view);
-//        if(mLinearLayout==null)System.out.println("mLinearLayout null");
-//
-//        // TODO: Base this Tweet ID on some data from elsewhere in your app
-//        long tweetId = 631879971628183552L;
-//        TweetUtils.loadTweet(tweetId, new Callback<Tweet>() {
-//            @Override
-//            public void success(Result<Tweet> result) {
-//                TweetView tweetView = new TweetView(getActivity(),result.data);
-//
-//                mLinearLayout.addView(tweetView);
-//            }
-//            @Override
-//            public void failure(TwitterException exception) {
-//                Log.d("TwitterKit", "Load Tweet failure", exception);
-//            }
-//        });
-
         return rootView;
     }
 
@@ -195,6 +159,5 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         System.out.println("loader reset");
     }
-
 
 }
