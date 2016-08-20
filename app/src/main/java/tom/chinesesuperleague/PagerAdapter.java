@@ -3,13 +3,14 @@ package tom.chinesesuperleague;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.view.ViewGroup;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[] {"Player", "Match"};
+    final int PAGE_COUNT = 3;
+    private String tabTitles[] = new String[] {"News","Player", "Match"};
     private Context context;
     private Fragment mCurrentFragment;
 
@@ -25,10 +26,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
         if (position == 0) {
+            return new TweetsFragment();
+        }  else if(position == 1){
             return new MainFragment();
-        }  else {
-            return new FetchFragment();
-        }
+        }else return new FetchFragment();
     }
 
     @Override

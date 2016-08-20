@@ -64,7 +64,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         setHasOptionsMenu(true);
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fetchfragment, menu);
