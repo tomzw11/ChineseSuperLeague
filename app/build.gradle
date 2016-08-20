@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 24
@@ -26,7 +41,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.1.1'
     compile 'com.android.support:gridlayout-v7:24.1.0'
-    compile('com.twitter.sdk.android:twitter-core:2.0.0@aar') {
+    compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true;}
 
 }
+
