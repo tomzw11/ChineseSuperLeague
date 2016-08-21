@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        viewPager.setOffscreenPageLimit(2);//Might not be necessary?
+        viewPager.setOffscreenPageLimit(3);//Might not be necessary?
 
         PagerAdapter newPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
                 MainActivity.this);
@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
             //ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
             MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag
-                    ("android:switcher:"+R.id.viewpager+":"+"0");
+                    ("android:switcher:"+R.id.viewpager+":"+"1");
 
             FetchFragment fetchFragment = (FetchFragment) getSupportFragmentManager().findFragmentByTag
-                    ("android:switcher:"+R.id.viewpager+":"+"1");
+                    ("android:switcher:"+R.id.viewpager+":"+"2");
 
                 if (mainFragment != null && fetchFragment != null){
 
