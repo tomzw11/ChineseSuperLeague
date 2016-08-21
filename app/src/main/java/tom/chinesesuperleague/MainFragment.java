@@ -106,7 +106,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-        Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
+        Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
 
         return new CursorLoader(
                 getActivity(),
@@ -127,7 +127,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
 
-        imageView.setImageResource(Utility.getImageForPlayer(player));
+        imageView.setImageResource(Roster.getImageForPlayer(player));
 
         TextView tv_cname = (TextView)getView().findViewById(R.id.main_name);
         tv_cname.setText(cursor.getString(COL_CNAME));
@@ -136,7 +136,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_team.setText(team);
         System.out.println("main frag team: "+ team);
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
-        imageView1.setImageResource(Utility.getBadgeForTeam(team));
+        imageView1.setImageResource(Roster.getBadgeForTeam(team));
 
         TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
         String season_app = Integer.toString(cursor.getCount());

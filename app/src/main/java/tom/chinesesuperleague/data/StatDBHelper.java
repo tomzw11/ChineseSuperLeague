@@ -50,6 +50,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         StatEntry.COLUMN_SAVE + " REAL NOT NULL, " +
                         StatEntry.COLUMN_YELLOW_CARD + " REAL NOT NULL, " +
                         StatEntry.COLUMN_RED_CARD + " REAL NOT NULL," +
+                        StatEntry.COLUMN_RATING + " REAL NOT NULL," +
 
                         // To assure the application have just one match per day
                         // per player, it's created a UNIQUE constraint with REPLACE strategy

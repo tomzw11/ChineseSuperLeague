@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
@@ -169,10 +168,10 @@ public class DetailStat extends AppCompatActivity {
             tv_away.setText(data.getString(COL_OPPONENT));
 
             ImageView home_team = (ImageView) getView().findViewById(R.id.detail_main_home_club);
-            home_team.setImageResource(Utility.getBadgeForTeam(data.getString(COL_TEAM)));
+            home_team.setImageResource(Roster.getBadgeForTeam(data.getString(COL_TEAM)));
 
             ImageView away_team = (ImageView) getView().findViewById(R.id.detail_main_away_club);
-            away_team.setImageResource(Utility.getBadgeForTeam(data.getString(COL_OPPONENT)));
+            away_team.setImageResource(Roster.getBadgeForTeam(data.getString(COL_OPPONENT)));
 
         }
 

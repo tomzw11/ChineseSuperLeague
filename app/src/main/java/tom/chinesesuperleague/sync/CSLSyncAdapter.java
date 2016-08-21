@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import tom.chinesesuperleague.R;
-import tom.chinesesuperleague.Utility;
+import tom.chinesesuperleague.Ratings;
+import tom.chinesesuperleague.Roster;
 import tom.chinesesuperleague.data.StatContract;
 
 public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
@@ -32,7 +33,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 180 * 5;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
-    //TODO: Increase SYNC interval.
+    //TODO: Research and reset SYNC interval.
 
 
     private String playerName;
@@ -47,8 +48,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
         //Log.d(LOG_TAG, "onPerformSync Called.");
             ArrayList<String[]> playerStat = new ArrayList<>();
-            playerTag = Utility.getPreferredPlayer(getContext());
-            playerName = Utility.getPlayerName(playerTag);
+            playerTag = Roster.getPreferredPlayer(getContext());
+            playerName = Roster.getPlayerName(playerTag);
 
             Document doc;
             Elements tableContentEles = null;
@@ -56,7 +57,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
             if(playerTag.length()==0)return;
 
-            String url = Utility.urlBuilder(playerTag);
+            String url = Roster.urlBuilder(playerTag);
             try {
                 doc = Jsoup.connect(url).timeout(60000).get();
                 tableContentEles = doc.select("td");
@@ -105,6 +106,10 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             statValues.put(StatContract.StatEntry.COLUMN_SAVE,playerStat.get(i)[16]);
             statValues.put(StatContract.StatEntry.COLUMN_YELLOW_CARD,playerStat.get(i)[17]);
             statValues.put(StatContract.StatEntry.COLUMN_RED_CARD,playerStat.get(i)[18]);
+            statValues.put(StatContract.StatEntry.COLUMN_RATING, Ratings.getRating(playerStat.get(i)[5],playerStat.get(i)[4],
+                    playerStat.get(i)[6],playerStat.get(i)[7],playerStat.get(i)[8],playerStat.get(i)[9],playerStat.get(i)[10],
+            playerStat.get(i)[11],playerStat.get(i)[12],playerStat.get(i)[13],playerStat.get(i)[14],playerStat.get(i)[15],
+            playerStat.get(i)[17],playerStat.get(i)[18]));
 
             statVector.add(statValues);
         }

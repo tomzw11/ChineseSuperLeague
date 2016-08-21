@@ -70,6 +70,7 @@ public class StatContract {
         public static final String COLUMN_SAVE = "save";
         public static final String COLUMN_YELLOW_CARD = "yellow_card";
         public static final String COLUMN_RED_CARD = "red_card";
+        public static final String COLUMN_RATING = "rating";
 
     }
 

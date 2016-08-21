@@ -2,8 +2,6 @@ package tom.chinesesuperleague;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +23,7 @@ public class StatAdapter extends CursorAdapter{
         public final TextView teamView;
         public final TextView scoreView;
         public final TextView oppoView;
+        public final TextView ratingView;
 
         public ViewHolder(View view) {
 
@@ -35,6 +34,7 @@ public class StatAdapter extends CursorAdapter{
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
             oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
+            ratingView = (TextView) view.findViewById(R.id.listview_stat_rating);
 
         }
     }
@@ -90,7 +90,7 @@ public class StatAdapter extends CursorAdapter{
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
         String match_type = cursor.getString(FetchFragment.COL_STAT_GAME);
-        viewHolder.iconView.setImageResource(Utility.getImageForMatchType(match_type));
+        viewHolder.iconView.setImageResource(Roster.getImageForMatchType(match_type));
 
         String name = cursor.getString(FetchFragment.COL_STAT_CNAME);
         viewHolder.nameView.setText(name);
@@ -101,7 +101,7 @@ public class StatAdapter extends CursorAdapter{
         String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
         viewHolder.teamView.setText(team);
 
-        viewHolder.kitView.setImageResource(Utility.getKitForTeam(team));
+        viewHolder.kitView.setImageResource(Roster.getKitForTeam(team));
 
         String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
@@ -113,6 +113,9 @@ public class StatAdapter extends CursorAdapter{
             opponent = "Away vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
         }else opponent = "Unknown";
         viewHolder.oppoView.setText(opponent);
+
+        String rating = cursor.getString(FetchFragment.COL_STAT_RATING);
+        viewHolder.ratingView.setText(rating);
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.preference.PreferenceManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class Utility {
+public class Roster {
 
     public static String urlBuilder(String id){
 

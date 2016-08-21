@@ -3,8 +3,6 @@ package tom.chinesesuperleague;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.ActivityCompat;
 import android.view.Menu;
 import android.view.View;
@@ -40,6 +38,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry.COLUMN_HOME_AWAY,
             StatContract.StatEntry.COLUMN_GAME,
+            StatContract.StatEntry.COLUMN_RATING,
 
             StatContract.StatEntry._ID
     };
@@ -52,6 +51,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     static final int COL_STAT_CNAME = 5;
     static final int COL_STAT_HOME_AWAY = 6;
     static final int COL_STAT_GAME = 7;
+    static final int COL_STAT_RATING = 8;
 
     public FetchFragment() {
         //setHasOptionsMenu(true);
@@ -150,7 +150,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
 
-        Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Utility.getPreferredPlayer(getActivity()));
+        Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
         System.out.println(statForPlayerUri+" fetch uri");
         return new CursorLoader(
                 getActivity(),

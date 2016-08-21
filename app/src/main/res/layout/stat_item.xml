@@ -39,7 +39,7 @@
             android:id="@+id/listview_stat_oppo"/>
 
         <TextView
-            android:id="@+id/listview_stat_form"
+            android:id="@+id/listview_stat_rating"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

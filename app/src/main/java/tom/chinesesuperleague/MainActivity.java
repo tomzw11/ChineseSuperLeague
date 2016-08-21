@@ -20,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        preferPlayer = Utility.getPreferredPlayer(this);
+        preferPlayer = Roster.getPreferredPlayer(this);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //TODO:Change toolbar app name font.
 
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String newPreferredPlayer = Utility.getPreferredPlayer( this );
+        String newPreferredPlayer = Roster.getPreferredPlayer( this );
         // update the location in our second pane using the fragment manager
         if ( preferPlayer != null && !preferPlayer.equals(newPreferredPlayer)) {
 
