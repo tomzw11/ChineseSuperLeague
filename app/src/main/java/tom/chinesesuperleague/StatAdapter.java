@@ -2,15 +2,12 @@ package tom.chinesesuperleague;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.graphics.drawable.GradientDrawable;
 
 
 public class StatAdapter extends CursorAdapter{
@@ -22,6 +19,7 @@ public class StatAdapter extends CursorAdapter{
     public static class ViewHolder {
         public final ImageView iconView;
         public final ImageView kitView;
+        //public final ImageView badgeView;
         public final TextView nameView;
         public final TextView dateView;
         public final TextView teamView;
@@ -31,6 +29,7 @@ public class StatAdapter extends CursorAdapter{
 
         public ViewHolder(View view) {
 
+            //badgeView = (ImageView) view.findViewById(R.id.listview_stat_badge);
             iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
             kitView = (ImageView) view.findViewById(R.id.listview_stat_kit);
             nameView = (TextView) view.findViewById(R.id.listview_stat_name);
@@ -38,7 +37,7 @@ public class StatAdapter extends CursorAdapter{
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
             oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
-            ratingView = (RatingView) view.findViewById(R.id.ratingView);
+            ratingView = (RatingView) view.findViewById(R.id.listview_stat_ratingView);
 
         }
     }
@@ -104,6 +103,8 @@ public class StatAdapter extends CursorAdapter{
             opponent = "Away vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
         }else opponent = "Unknown";
         viewHolder.oppoView.setText(opponent);
+
+        //viewHolder.badgeView.setImageResource(Roster.getBadgeForTeam(cursor.getString(FetchFragment.COL_STAT_OPPONENT)));
 
         String rating = cursor.getString(FetchFragment.COL_STAT_RATING);
         viewHolder.ratingView.setText(rating);

@@ -171,9 +171,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             cursor.close();
         }
 
-
-
-
     }
 
     @Override

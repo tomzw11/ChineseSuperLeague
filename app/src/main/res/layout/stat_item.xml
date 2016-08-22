@@ -25,29 +25,52 @@
             android:layout_height="40dp"
             android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:id="@+id/listview_stat_date"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="Home vs.重庆力帆"
+                android:textColor="@color/primary_text"
+
+                android:layout_height="wrap_content"
+                android:id="@+id/listview_stat_oppo"/>
+
+            <TextView
+                android:id="@+id/listview_stat_date"
+                android:text="2013-3-3"
+                android:textColor="@color/primary_text"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            />
+            android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1.5"
-            android:layout_height="wrap_content"
-            android:id="@+id/listview_stat_oppo"/>
+            <tom.chinesesuperleague.RatingView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="H"
+                android:textSize="15dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:id="@+id/listview_stat_ratingView" />
 
-        <tom.chinesesuperleague.RatingView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="H"
-            android:textSize="20dp"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            android:id="@+id/ratingView" />
 
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -63,17 +86,20 @@
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/listview_stat_score"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/listview_stat_kit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/listview_stat_score"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        />
 
 
 </LinearLayout>
