@@ -109,7 +109,6 @@ public class StatAdapter extends CursorAdapter{
         String rating = cursor.getString(FetchFragment.COL_STAT_RATING);
         viewHolder.ratingView.setText(rating);
 
-
         if(Double.valueOf(rating)>=8){
 
             viewHolder.ratingView.setSolidColor("#4CAF50");

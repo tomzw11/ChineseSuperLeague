@@ -3,7 +3,6 @@ import java.lang.*;
 
 public class Ratings {
 
-    //TODO:Find customized font to show ratings.
     //TODO:Improve rating algorithm.
 
     public static String getRating(

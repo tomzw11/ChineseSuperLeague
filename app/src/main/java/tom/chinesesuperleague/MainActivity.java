@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        //TODO:Switch tab text to pictures.
-
 
         CSLSyncAdapter.initializeSyncAdapter(this);
     }

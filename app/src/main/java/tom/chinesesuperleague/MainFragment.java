@@ -31,13 +31,14 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public MainFragment(){
 
     }
-
+//TODO:Add more detailed player bio to main fragment.
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry.COLUMN_GOAL,
             StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_RATING,
             StatContract.StatEntry._ID
     };
 
@@ -47,14 +48,13 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final int COL_CNAME = 1;
     public static final int COL_GOAL = 2;
     public static final int COL_PLAYER = 3;
+    public static final int COL_RATING = 4;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
-
-
 
     }
 
@@ -161,13 +161,34 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_app.setText("Season Appearances: "+ season_app);
 
         int number_of_goals = 0;
+        double rating_sum = 0;
+        int rating_counter= 0;
         try{
             while(cursor.moveToNext()){
                 number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
+                rating_sum += Double.valueOf(cursor.getString(COL_RATING));
+                rating_counter++;
             }
         }finally {
             TextView tv_goal = (TextView)getView().findViewById(R.id.main_goal);
             tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
+
+            String avg_rating = String.format("%.1f",rating_sum/rating_counter);
+            RatingView main_rating = (RatingView) getView().findViewById(R.id.main_ratingView);
+            main_rating.setText(avg_rating);
+
+            if(Double.valueOf(avg_rating)>=8){
+
+                main_rating.setSolidColor("#4CAF50");
+                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.green));
+            }else if (Double.valueOf(avg_rating)>=6){
+                main_rating.setSolidColor("#FF9800");
+                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
+            }else{
+                main_rating.setSolidColor("#F44336");
+                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.red));
+            }
+
             cursor.close();
         }
 

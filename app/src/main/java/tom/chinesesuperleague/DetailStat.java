@@ -19,7 +19,7 @@ import android.support.v7.widget.Toolbar;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
 public class DetailStat extends AppCompatActivity {
-
+//TODO:Add toast message to notify detail stat view on list items.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +65,8 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_PLAYER,
                 StatEntry.COLUMN_CNAME,
                 StatEntry.COLUMN_FOUL,
-                StatEntry.COLUMN_FOULED
+                StatEntry.COLUMN_FOULED,
+                StatEntry.COLUMN_CLEARANCE
         };
 
         // these constants correspond to the projection defined above, and must change if the
@@ -87,6 +88,7 @@ public class DetailStat extends AppCompatActivity {
         private static final int COL_CNAME = 14;
         private static final int COL_FOUL = 15;
         private static final int COL_FOULED = 16;
+        private static final int COL_CLEARANCE = 17;
 
 
 
@@ -166,6 +168,9 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_away = (TextView) getView().findViewById(R.id.detail_main_away_club_name);
             tv_away.setText(data.getString(COL_OPPONENT));
+
+            TextView tv_clearance = (TextView) getView().findViewById(R.id.fragment_details_clearance);
+            tv_clearance.setText(data.getString(COL_CLEARANCE));
 
             ImageView home_team = (ImageView) getView().findViewById(R.id.detail_main_home_club);
             home_team.setImageResource(Roster.getBadgeForTeam(data.getString(COL_TEAM)));

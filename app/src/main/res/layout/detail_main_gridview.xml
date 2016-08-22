@@ -98,14 +98,14 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="@string/cards"
+        android:text="@string/clearance"
         android:textColor="@color/detail_accent_label"
         android:textSize="20sp"
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
 
     <TextView
-        android:id="@+id/fragment_details_cards"
+        android:id="@+id/fragment_details_clearance"
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
@@ -126,5 +126,23 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
         app:layout_gravity="fill" />
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="@string/cards"
+        android:textColor="@color/detail_accent_label"
+        android:textSize="20sp"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_details_cards"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:layout_gravity="fill" />
+
+
 
 </android.support.v7.widget.GridLayout>

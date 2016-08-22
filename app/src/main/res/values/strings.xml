@@ -25,6 +25,7 @@
     <string name="pref_name_key">Name</string>
     <string name="shots">Shots/On Target</string>
     <string name="foul">Foul/Fouled</string>
+    <string name="clearance">Clearance</string>
     <string name="cards">Yellow/Red Card</string>
     <string name="takeon">Successful Takeon</string>
     <string name="title_activity_settings">Set Player</string>

@@ -29,6 +29,7 @@
 
                 <TextView
                     android:id="@+id/main_name"
+                    android:text="拉尔夫"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -66,6 +67,7 @@
 
                 <TextView
                     android:id="@+id/main_appearance"
+                    android:text="season apperance: 30"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -78,13 +80,37 @@
                 <TextView
                     android:id="@+id/main_goal"
                     android:layout_width="match_parent"
+                    android:text="season goals: 10"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingBottom="10dp"
                     android:fontFamily="sans-serif"
                     android:textColor="@color/primary_text"
-
                     />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/primary_text"
+                        android:text="Season Rating avg.:"/>
+
+                    <tom.chinesesuperleague.RatingView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:text="H"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        android:id="@+id/main_ratingView" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
