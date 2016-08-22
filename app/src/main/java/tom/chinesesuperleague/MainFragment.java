@@ -31,7 +31,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public MainFragment(){
 
     }
-//TODO:Add more detailed player bio to main fragment.
+    //TODO:Add more detailed player bio to main fragment.
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,
@@ -99,17 +99,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        GraphView graph = (GraphView) rootView.findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series);
-
-
         return rootView;
     }
 
@@ -160,13 +149,20 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         String season_app = Integer.toString(cursor.getCount());
         tv_app.setText("Season Appearances: "+ season_app);
 
+        GraphView graph = (GraphView) getView().findViewById(R.id.graph);
+
         int number_of_goals = 0;
         double rating_sum = 0;
         int rating_counter= 0;
+        double[] recent_rating = new double[cursor.getCount()];
+
         try{
+            cursor.moveToPosition(-1);
             while(cursor.moveToNext()){
                 number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
                 rating_sum += Double.valueOf(cursor.getString(COL_RATING));
+                recent_rating[rating_counter] = Double.valueOf(cursor.getString(COL_RATING));
+                //System.out.println("counter"+rating_counter+"rating"+recent_rating[rating_counter]);
                 rating_counter++;
             }
         }finally {
@@ -180,17 +176,28 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             if(Double.valueOf(avg_rating)>=8){
 
                 main_rating.setSolidColor("#4CAF50");
-                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.green));
             }else if (Double.valueOf(avg_rating)>=6){
                 main_rating.setSolidColor("#FF9800");
-                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
             }else{
                 main_rating.setSolidColor("#F44336");
-                //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.red));
             }
 
             cursor.close();
         }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(9, recent_rating[0]),
+                new DataPoint(8, recent_rating[1]),
+                new DataPoint(7, recent_rating[2]),
+                new DataPoint(6, recent_rating[3]),
+                new DataPoint(5, recent_rating[4]),
+                new DataPoint(4, recent_rating[5]),
+                new DataPoint(3, recent_rating[6]),
+                new DataPoint(2, recent_rating[7]),
+                new DataPoint(1, recent_rating[8]),
+                new DataPoint(0, recent_rating[9]),
+        });
+        graph.addSeries(series);
 
     }
 

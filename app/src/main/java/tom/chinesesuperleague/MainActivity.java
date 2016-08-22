@@ -14,7 +14,7 @@ import tom.chinesesuperleague.sync.CSLSyncAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private String preferPlayer;
-
+//TODO:Add a splash screen at intro.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
