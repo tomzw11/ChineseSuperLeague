@@ -39,18 +39,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/listview_stat_oppo"/>
 
-        <TextView
-            android:id="@+id/listview_stat_rating"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="@string/form_default"
+        <tom.chinesesuperleague.RatingView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H"
             android:textSize="20dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/white"
-            android:background="@color/primary_text"
-            android:fontFamily="sans-serif"
-            />
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:id="@+id/ratingView" />
 
 
     </LinearLayout>

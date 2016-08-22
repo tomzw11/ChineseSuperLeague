@@ -86,15 +86,14 @@
             android:fontFamily="sans-serif"
             android:textColor="@color/primary_text"/>
 
-        <TextView
-            android:id="@+id/listview_stat_rating"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:text="@string/form_default"
-            android:textSize="20dp"
-            android:gravity="center_horizontal"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/primary_text"/>
+        <tom.chinesesuperleague.RatingView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:id="@+id/ratingView" />
 
         <ImageView
             android:layout_width="1dp"

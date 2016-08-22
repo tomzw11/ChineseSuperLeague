@@ -1,8 +1,10 @@
 package tom.chinesesuperleague;
 
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -16,6 +18,9 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.GraphView;
 
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
@@ -48,6 +53,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
+
+
 
     }
 
@@ -91,6 +98,17 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        GraphView graph = (GraphView) rootView.findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series);
+
 
         return rootView;
     }
@@ -152,6 +170,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
             cursor.close();
         }
+
+
+
+
     }
 
     @Override

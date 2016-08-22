@@ -3,7 +3,6 @@ package tom.chinesesuperleague;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.support.annotation.IntegerRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
@@ -11,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.graphics.drawable.GradientDrawable;
+
 
 public class StatAdapter extends CursorAdapter{
 
@@ -26,7 +27,7 @@ public class StatAdapter extends CursorAdapter{
         public final TextView teamView;
         public final TextView scoreView;
         public final TextView oppoView;
-        public final TextView ratingView;
+        public final RatingView ratingView;
 
         public ViewHolder(View view) {
 
@@ -37,7 +38,7 @@ public class StatAdapter extends CursorAdapter{
             teamView = (TextView) view.findViewById(R.id.listview_stat_team);
             scoreView = (TextView) view.findViewById(R.id.listview_stat_score);
             oppoView = (TextView) view.findViewById(R.id.listview_stat_oppo);
-            ratingView = (TextView) view.findViewById(R.id.listview_stat_rating);
+            ratingView = (RatingView) view.findViewById(R.id.ratingView);
 
         }
     }
@@ -106,12 +107,18 @@ public class StatAdapter extends CursorAdapter{
 
         String rating = cursor.getString(FetchFragment.COL_STAT_RATING);
         viewHolder.ratingView.setText(rating);
+
+
         if(Double.valueOf(rating)>=8){
-            viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.green));
+
+            viewHolder.ratingView.setSolidColor("#4CAF50");
+            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.green));
         }else if (Double.valueOf(rating)>=6){
-            viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
+            viewHolder.ratingView.setSolidColor("#FF9800");
+            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
         }else{
-            viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.red));
+            viewHolder.ratingView.setSolidColor("#F44336");
+            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.red));
         }
     }
 

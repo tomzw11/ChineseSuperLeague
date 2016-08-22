@@ -43,6 +43,8 @@ dependencies {
     compile 'com.android.support:gridlayout-v7:24.1.0'
     compile('com.twitter.sdk.android:twitter:2.0.0@aar') {
         transitive = true;}
+    compile 'com.jjoe64:graphview:4.1.1'
+
 
 }
 
