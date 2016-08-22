@@ -28,13 +28,15 @@
             />
 
         <TextView
+            android:id="@+id/listview_stat_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listview_stat_oppo"
             android:fontFamily="sans-serif"
-            android:text="home vs real madrid"
-            android:gravity="center_horizontal"
-            android:textColor="@color/primary_text"/>
+            android:text="2013-4-16"
+            android:textSize="16dp"
+            android:textColor="@color/primary_text"
+            android:gravity="center_horizontal"/>
+
 
     </LinearLayout>
 
@@ -106,13 +108,15 @@
                     />
 
                 <TextView
-                    android:id="@+id/listview_stat_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/listview_stat_oppo"
                     android:fontFamily="sans-serif"
-                    android:text="2011-1-1"
-                    android:textColor="@color/primary_text"
-                    android:gravity="center_horizontal"/>
+                    android:text="home vs real madrid"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/primary_text"/>
+
+
 
             </LinearLayout>
 

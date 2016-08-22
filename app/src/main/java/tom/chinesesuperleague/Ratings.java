@@ -37,7 +37,7 @@ public class Ratings {
         }else if(score_us > score_them){
 
 
-            base_rating = 7;
+            base_rating = 6.5;
             rating = base_rating + num_of_goal*0.6 + num_of_shot*num_of_goal*0.3 + num_of_shot_on_target*0.1
                     +num_of_keypass*0.2 + num_of_fouled*0.1 + num_of_foul*(-0.2) + num_of_takeon*0.2 + num_of_clearance*0.2
                     +num_of_yellowcard*(-0.3) + num_of_redcard*(-2.5);
