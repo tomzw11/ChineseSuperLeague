@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 import android.view.Menu;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -18,9 +18,16 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
+
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.Series;
+import com.jjoe64.graphview.series.DataPointInterface;
+
 
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
@@ -184,20 +191,62 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
             cursor.close();
         }
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(9, recent_rating[0]),
-                new DataPoint(8, recent_rating[1]),
-                new DataPoint(7, recent_rating[2]),
-                new DataPoint(6, recent_rating[3]),
-                new DataPoint(5, recent_rating[4]),
-                new DataPoint(4, recent_rating[5]),
-                new DataPoint(3, recent_rating[6]),
-                new DataPoint(2, recent_rating[7]),
-                new DataPoint(1, recent_rating[8]),
+//TODO:Make graph under folding/floating fragment.
+        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, recent_rating[9]),
+                new DataPoint(1, recent_rating[8]),
+                new DataPoint(2, recent_rating[7]),
+                new DataPoint(3, recent_rating[6]),
+                new DataPoint(4, recent_rating[5]),
+                new DataPoint(5, recent_rating[4]),
+                new DataPoint(6, recent_rating[3]),
+                new DataPoint(7, recent_rating[2]),
+                new DataPoint(8, recent_rating[1]),
+                new DataPoint(9, recent_rating[0]),
         });
+
+        LineGraphSeries<DataPoint> series_line = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, recent_rating[9]),
+                new DataPoint(1, recent_rating[8]),
+                new DataPoint(2, recent_rating[7]),
+                new DataPoint(3, recent_rating[6]),
+                new DataPoint(4, recent_rating[5]),
+                new DataPoint(5, recent_rating[4]),
+                new DataPoint(6, recent_rating[3]),
+                new DataPoint(7, recent_rating[2]),
+                new DataPoint(8, recent_rating[1]),
+                new DataPoint(9, recent_rating[0]),
+        });
+
+        series_line.setThickness(3);
+        series.setColor(Color.BLUE);
+        series.setSize(10);
+
+        series.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series, DataPointInterface dataPoint) {
+                Toast.makeText(getActivity(), "Series1: On Data Point clicked: "+ dataPoint.getY(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         graph.addSeries(series);
+        graph.addSeries(series_line);
+        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+        graph.getGridLabelRenderer().setVerticalLabelsVisible(false);
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(-1);
+        graph.getViewport().setMaxX(10);
+
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(4);
+        graph.getViewport().setMaxY(12);
+
+//        graph.setTitle("Recent Form");
+//        graph.setTitleColor(R.color.primary_text);
+//        graph.setTitleTextSize(10);
+
 
     }
 
