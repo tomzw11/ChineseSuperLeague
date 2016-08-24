@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ListView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -23,7 +24,7 @@ import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
 public class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-
+//TODO:Use viewstub for hidden views in listitem/latestitem.
     private StatAdapter mStatAdapter;
     private String preferPlayer;
     private static final int STAT_LOADER_FETCH = 1;
@@ -92,7 +93,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         mStatAdapter = new StatAdapter(getActivity(), null, 0);
 
-
         View rootView = inflater.inflate(R.layout.fragment_stat, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
         listView.setAdapter(mStatAdapter);
@@ -116,6 +116,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
                 }
             }
         });
+
+
 
         return rootView;
     }

@@ -32,6 +32,8 @@
     <string name="main_match_stat">See Match Stat</string>
     <string name="main_form">Current Form</string>
     <string name="form_default">8.0</string>
+    <string name="alert_dialog_ok">Ok</string>
+    <string name="alert_dialog_cancel">Cancel</string>
 
     <!-- SyncAdapter related -->
     <string name="sync_account_type">CSL</string>

@@ -62,6 +62,13 @@
                         android:textColor="@color/primary_text"
                         />
 
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/main_button"
+                        android:onClick="displayGraph"
+                        />
+
                 </LinearLayout>
 
 
@@ -116,30 +123,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:gravity="center_horizontal"
-                android:background="@color/detail_accent_pane_background"
-                android:text="Player Form"/>
-
-
-            <com.jjoe64.graphview.GraphView
-                android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:background="@drawable/field_background"
-                android:id="@+id/graph" />
-
-
-        </LinearLayout>
 
 
     </LinearLayout>

@@ -2,12 +2,14 @@ package tom.chinesesuperleague;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
+import android.view.View;
 
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        //TODO:Change toolbar app name font.
+        //TODO:Use a special toolbar app name font.
 
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
+
+
 
         CSLSyncAdapter.initializeSyncAdapter(this);
     }
@@ -92,5 +96,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void displayGraph(View view) {
+
+            FragmentManager fm = getSupportFragmentManager();
+            FormFragment formFragment = FormFragment.newInstance();
+            formFragment.show(fm, "fragment_alert");
     }
 }
