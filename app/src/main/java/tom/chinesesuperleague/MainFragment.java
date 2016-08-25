@@ -3,6 +3,7 @@ package tom.chinesesuperleague;
 import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -31,7 +32,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public MainFragment(){
 
     }
-    //TODO:Add more detailed player bio to main fragment.
+
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,
@@ -99,6 +100,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
+        fab.setSize(FloatingActionButton.SIZE_MINI);
 
         return rootView;
     }

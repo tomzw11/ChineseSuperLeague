@@ -27,6 +27,7 @@ import tom.chinesesuperleague.data.StatContract;
 
 public class FormFragment extends android.support.v4.app.DialogFragment {
 
+    //TODO:Add more detailed player bio to form fragment.
 
     int mNum;
 
