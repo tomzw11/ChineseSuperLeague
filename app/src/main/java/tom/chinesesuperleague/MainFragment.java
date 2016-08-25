@@ -1,14 +1,18 @@
 package tom.chinesesuperleague;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.View;
@@ -50,6 +54,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final int COL_GOAL = 2;
     public static final int COL_PLAYER = 3;
     public static final int COL_RATING = 4;
+
+    public static final String MAIN_RATING_PREF = "MainRatingPreferences";
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +109,28 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
         fab.setSize(FloatingActionButton.SIZE_MINI);
+
+        sharedPreferences = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
+        final EditText ratingInput = (EditText)rootView.findViewById(R.id.main_predict_input);
+        final Button ratingButton = (Button)rootView.findViewById(R.id.main_predict_button);
+        final String ratedPlayer = Roster.getPreferredPlayer(getContext());
+
+        ratingButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                String rating = ratingInput.getText().toString();
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(ratedPlayer,rating);
+                ratingButton.setText(rating);
+                editor.commit();
+                Toast.makeText(getActivity(),"Rating Recorded",Toast.LENGTH_LONG).show();
+
+            }
+
+        });
 
         return rootView;
     }
