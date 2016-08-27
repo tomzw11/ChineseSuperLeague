@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.widget.SeekBar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -117,6 +118,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
 
+
         return rootView;
     }
 
@@ -173,6 +175,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         int number_of_goals = 0;
         double rating_sum = 0;
         int rating_counter= 0;
+        String rating;
         double[] recent_rating = new double[cursor.getCount()];
 
         try{
@@ -233,8 +236,34 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         }
 
-        final EditText ratingInput = (EditText) getView().findViewById(R.id.main_predict_input);
+        SeekBar seekBar = (SeekBar) getView().findViewById(R.id.main_predict_input);
+
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int seekBarProgress = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBarProgress = progress;
+
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+//                textView.setText("Progress: " + seekBarProgress + " / " + seekBar.getMax());
+
+                ratingButton.setText(String.valueOf(seekBarProgress));
+                Toast.makeText(getActivity(), "SeekBar Touch Stop ", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
+
 
         //TODO:Change edittext to slider or other views.
         ratingButton.setOnClickListener(new View.OnClickListener(){
@@ -242,7 +271,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             @Override
             public void onClick(View v){
 
-                String rating = ratingInput.getText().toString();
+                String rating = "0.0";
 
                 SharedPreferences.Editor editor_player = sharedPreferences_rating.edit();
                 editor_player.putString(player,rating);
