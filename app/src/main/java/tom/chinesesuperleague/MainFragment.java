@@ -59,7 +59,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final String COIN = "Coin";
     public static final String SIZE = "Size";
 
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences_size;
+    SharedPreferences sharedPreferences_rating;
+    SharedPreferences sharedPreferences_coin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,7 +110,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        //TODO:Move button to onLoadFinished.
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
         fab.setSize(FloatingActionButton.SIZE_MINI);
@@ -145,13 +147,11 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        int cursor_size = 0;
-
         if (cursor == null || !cursor.moveToFirst()) { return; }
 
-        cursor_size = cursor.getColumnCount();
-        String player = cursor.getString(COL_PLAYER);
+        final String player = cursor.getString(COL_PLAYER);
         String team = cursor.getString(COL_TEAM);
+        String rating_last = (cursor.getString(COL_RATING));
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
 
@@ -169,7 +169,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
         String season_app = Integer.toString(cursor.getCount());
         tv_app.setText("Season Appearances: "+ season_app);
-
 
         int number_of_goals = 0;
         double rating_sum = 0;
@@ -204,22 +203,39 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
             cursor.close();
         }
+        //TODO:Clear size when player setting switches.
+        sharedPreferences_size = getContext().getSharedPreferences(SIZE, Context.MODE_PRIVATE);
+        sharedPreferences_rating = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
+        sharedPreferences_coin = getContext().getSharedPreferences(COIN, Context.MODE_PRIVATE);
 
-        sharedPreferences = getContext().getSharedPreferences(SIZE, Context.MODE_PRIVATE);
-        if(cursor_size > sharedPreferences.getInt(SIZE,0)){
+
+        if(rating_counter < sharedPreferences_size.getInt(SIZE,0)){
 
             Toast.makeText(getActivity(),"New Match Updated",Toast.LENGTH_LONG).show();
-            SharedPreferences.Editor editor_size = sharedPreferences.edit();
-            editor_size.putInt(SIZE,cursor_size);
+            SharedPreferences.Editor editor_size = sharedPreferences_size.edit();
+            editor_size.putInt(SIZE,rating_counter);
+            editor_size.commit();
+
+            if(sharedPreferences_rating.getString(player,null) != null &&
+                    sharedPreferences_rating.getString(player,null).equals(rating_last)){
+
+                Toast.makeText(getActivity(),"Congratulations! Prediction Correct",Toast.LENGTH_LONG).show();
+                //TODO:Use a dialog instead.
+
+                int current_coin = sharedPreferences_coin.getInt(COIN,0);
+                SharedPreferences.Editor editor_coin = sharedPreferences_coin.edit();
+                editor_coin.putInt(COIN,20 + current_coin);
+                editor_coin.commit();
+                TextView tv_coin = (TextView)getView().findViewById(R.id.main_coin);
+                tv_coin.setText(String.valueOf(sharedPreferences_coin.getInt(COIN,0)));
+
+            }
 
         }
 
-        //TODO:Put in separate class.
-        sharedPreferences = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
-
         final EditText ratingInput = (EditText) getView().findViewById(R.id.main_predict_input);
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
-        final String ratedPlayer = Roster.getPreferredPlayer(getContext());
+
         //TODO:Change edittext to slider or other views.
         ratingButton.setOnClickListener(new View.OnClickListener(){
 
@@ -228,15 +244,17 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
                 String rating = ratingInput.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(ratedPlayer,rating);
+                SharedPreferences.Editor editor_player = sharedPreferences_rating.edit();
+                editor_player.putString(player,rating);
                 ratingButton.setText(rating);
-                editor.commit();
-                Toast.makeText(getActivity(),"Rating Updated",Toast.LENGTH_LONG).show();
+                editor_player.commit();
+                Toast.makeText(getActivity(),"Rating Saved",Toast.LENGTH_LONG).show();
 
             }
 
         });
+
+
     }
 
     @Override
