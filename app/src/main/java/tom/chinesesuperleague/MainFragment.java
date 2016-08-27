@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.content.Intent;
 
@@ -116,9 +118,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
         fab.setSize(FloatingActionButton.SIZE_MINI);
 
-
-
-
         return rootView;
     }
 
@@ -175,7 +174,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         int number_of_goals = 0;
         double rating_sum = 0;
         int rating_counter= 0;
-        String rating;
         double[] recent_rating = new double[cursor.getCount()];
 
         try{
@@ -211,7 +209,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         sharedPreferences_rating = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
         sharedPreferences_coin = getContext().getSharedPreferences(COIN, Context.MODE_PRIVATE);
 
-
         if(rating_counter < sharedPreferences_size.getInt(SIZE,0)){
 
             Toast.makeText(getActivity(),"New Match Updated",Toast.LENGTH_LONG).show();
@@ -222,22 +219,31 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             if(sharedPreferences_rating.getString(player,null) != null &&
                     sharedPreferences_rating.getString(player,null).equals(rating_last)){
 
-                Toast.makeText(getActivity(),"Congratulations! Prediction Correct",Toast.LENGTH_LONG).show();
-                //TODO:Use a dialog instead.
+                double saved_rating_double = Double.parseDouble(sharedPreferences_rating.getString(player,null));
+                double current_rating_double = Double.parseDouble(rating_last);
 
-                int current_coin = sharedPreferences_coin.getInt(COIN,0);
-                SharedPreferences.Editor editor_coin = sharedPreferences_coin.edit();
-                editor_coin.putInt(COIN,20 + current_coin);
-                editor_coin.commit();
-                TextView tv_coin = (TextView)getView().findViewById(R.id.main_coin);
-                tv_coin.setText(String.valueOf(sharedPreferences_coin.getInt(COIN,0)));
+                if(Math.abs(saved_rating_double - current_rating_double) < 1){
+
+                    //                Toast.makeText(getActivity(),"Congratulations! Prediction Correct",Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                    alertDialogBuilder.setMessage("Congratulations! You have earned 20 coins.");
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+                    int current_coin = sharedPreferences_coin.getInt(COIN,0);
+                    SharedPreferences.Editor editor_coin = sharedPreferences_coin.edit();
+                    editor_coin.putInt(COIN,20 + current_coin);
+                    editor_coin.commit();
+                    TextView tv_coin = (TextView)getView().findViewById(R.id.main_coin);
+                    tv_coin.setText(String.valueOf(sharedPreferences_coin.getInt(COIN,0)));
+
+                }
 
             }
 
         }
 
         SeekBar seekBar = (SeekBar) getView().findViewById(R.id.main_predict_input);
-
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -246,7 +252,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 seekBarProgress = progress;
 
-
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -254,35 +259,30 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-//                textView.setText("Progress: " + seekBarProgress + " / " + seekBar.getMax());
 
-                ratingButton.setText(String.valueOf(seekBarProgress));
-                Toast.makeText(getActivity(), "SeekBar Touch Stop ", Toast.LENGTH_SHORT).show();
+                double seekBarProgress_double = seekBarProgress;
+
+                ratingButton.setText(String.valueOf(seekBarProgress_double/10));
+
             }
 
         });
 
-
-
-
-        //TODO:Change edittext to slider or other views.
         ratingButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
 
-                String rating = "0.0";
-
                 SharedPreferences.Editor editor_player = sharedPreferences_rating.edit();
-                editor_player.putString(player,rating);
-                ratingButton.setText(rating);
+
+                editor_player.putString(player,String.valueOf(ratingButton.getText()));
                 editor_player.commit();
+                ratingButton.setText(String.valueOf(ratingButton.getText()));
                 Toast.makeText(getActivity(),"Rating Saved",Toast.LENGTH_LONG).show();
 
             }
 
         });
-
 
     }
 
