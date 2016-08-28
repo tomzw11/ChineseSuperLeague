@@ -1,0 +1,71 @@
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_main_grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="2"
+    android:background="@color/detail_accent_pane_background"
+    android:paddingBottom="@dimen/abc_list_item_padding_horizontal_material"
+    android:paddingTop="@dimen/abc_list_item_padding_horizontal_material"
+    android:paddingLeft="@dimen/csl_detail_horizontal_padding"
+    android:paddingStart="@dimen/csl_detail_horizontal_padding"
+    android:paddingRight="@dimen/csl_detail_horizontal_padding"
+    android:paddingEnd="@dimen/csl_detail_horizontal_padding">
+
+    <TextView
+        android:text="Season Appearance"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/detail_accent_label"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_main_appearance"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:layout_gravity="fill"/>
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Season Goal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/detail_accent_label"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1"/>
+
+    <TextView
+        android:id="@+id/fragment_main_goal"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:layout_gravity="fill"/>
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Season Average Rating"
+        android:textColor="@color/detail_accent_label"
+        android:textSize="20sp"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <tom.chinesesuperleague.RatingView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="H"
+        android:textSize="40dp"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:layout_gravity="fill"
+        android:gravity="center_vertical"
+        android:id="@+id/main_ratingView" />
+
+</android.support.v7.widget.GridLayout>

@@ -167,9 +167,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         imageView1.setImageResource(Roster.getBadgeForTeam(team));
 
-        TextView tv_app = (TextView)getView().findViewById(R.id.main_appearance);
+        TextView tv_app = (TextView)getView().findViewById(R.id.fragment_main_appearance);
         String season_app = Integer.toString(cursor.getCount());
-        tv_app.setText("Season Appearances: "+ season_app);
+        tv_app.setText(season_app);
 
         int number_of_goals = 0;
         double rating_sum = 0;
@@ -186,17 +186,17 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 rating_counter++;
             }
         }finally {
-            TextView tv_goal = (TextView)getView().findViewById(R.id.main_goal);
-            tv_goal.setText("Season Goals: " + Integer.toString(number_of_goals));
+            TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_main_goal);
+            tv_goal.setText(Integer.toString(number_of_goals));
 
             String avg_rating = String.format("%.1f",rating_sum/rating_counter);
             RatingView main_rating = (RatingView) getView().findViewById(R.id.main_ratingView);
             main_rating.setText(avg_rating);
 
-            if(Double.valueOf(avg_rating)>=8){
+            if(Double.valueOf(avg_rating)>=7){
 
                 main_rating.setSolidColor("#4CAF50");
-            }else if (Double.valueOf(avg_rating)>=6){
+            }else if (Double.valueOf(avg_rating)>=5.5){
                 main_rating.setSolidColor("#FF9800");
             }else{
                 main_rating.setSolidColor("#F44336");
@@ -245,6 +245,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         SeekBar seekBar = (SeekBar) getView().findViewById(R.id.main_predict_input);
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
+        final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int seekBarProgress = 0;
@@ -261,8 +262,20 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 double seekBarProgress_double = seekBarProgress;
+                String current_saved_rating = String.valueOf(seekBarProgress_double/10);
 
-                ratingButton.setText(String.valueOf(seekBarProgress_double/10));
+//                ratingButton.setText(String.valueOf(seekBarProgress_double/10));
+
+                main_predict_rating.setText(String.valueOf(current_saved_rating));
+
+                if(Double.valueOf(current_saved_rating)>=7){
+
+                    main_predict_rating.setSolidColor("#4CAF50");
+                }else if (Double.valueOf(current_saved_rating)>=5.5){
+                    main_predict_rating.setSolidColor("#FF9800");
+                }else{
+                    main_predict_rating.setSolidColor("#F44336");
+                }
 
             }
 
@@ -277,7 +290,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
                 editor_player.putString(player,String.valueOf(ratingButton.getText()));
                 editor_player.commit();
-                ratingButton.setText(String.valueOf(ratingButton.getText()));
+
                 Toast.makeText(getActivity(),"Rating Saved",Toast.LENGTH_LONG).show();
 
             }

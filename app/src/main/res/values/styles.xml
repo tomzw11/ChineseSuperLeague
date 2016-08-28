@@ -28,4 +28,10 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <!-- Button -->
+    <style name="Button" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/deep_purple</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+    </style>
+
 </resources>
