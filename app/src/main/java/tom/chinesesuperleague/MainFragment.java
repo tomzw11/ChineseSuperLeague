@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.util.Log;
 import android.graphics.Color;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -66,12 +68,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     SharedPreferences sharedPreferences_rating;
     SharedPreferences sharedPreferences_coin;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
-
 
     }
 
@@ -113,15 +115,17 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         //TODO:Move button to onLoadFinished.
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
         fab.setSize(FloatingActionButton.SIZE_MINI);
 
+        RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
+
+
         return rootView;
     }
-
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -243,28 +247,16 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         }
 
-        SeekBar seekBar = (SeekBar) getView().findViewById(R.id.main_predict_input);
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
-        final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int seekBarProgress = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 seekBarProgress = progress;
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+                Log.d("DEBUG","progress: " + progress);
                 double seekBarProgress_double = seekBarProgress;
                 String current_saved_rating = String.valueOf(seekBarProgress_double/10);
-
-//                ratingButton.setText(String.valueOf(seekBarProgress_double/10));
 
                 main_predict_rating.setText(String.valueOf(current_saved_rating));
 
@@ -276,6 +268,18 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 }else{
                     main_predict_rating.setSolidColor("#F44336");
                 }
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+
 
             }
 
