@@ -68,7 +68,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     SharedPreferences sharedPreferences_rating;
     SharedPreferences sharedPreferences_coin;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,16 +115,11 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                              Bundle savedInstanceState) {
 
 
-        //TODO:Move button to onLoadFinished.
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.displayGraph);
-        fab.setSize(FloatingActionButton.SIZE_MINI);
-
-        RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
-
 
         return rootView;
     }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -157,6 +151,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         final String player = cursor.getString(COL_PLAYER);
         String team = cursor.getString(COL_TEAM);
         String rating_last = (cursor.getString(COL_RATING));
+
+        final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
+        main_predict_rating.setSolidColor("#FF9800");
+
+        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.displayGraph);
+        fab.setSize(FloatingActionButton.SIZE_MINI);
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
 
@@ -247,14 +247,16 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         }
 
+        SeekBar seekBar = (SeekBar) getView().findViewById(R.id.main_predict_input);
         final Button ratingButton = (Button) getView().findViewById(R.id.main_predict_button);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int seekBarProgress = 0;
+            int seekBarProgress;
 
+            @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 seekBarProgress = progress;
-                Log.d("DEBUG","progress: " + progress);
+
                 double seekBarProgress_double = seekBarProgress;
                 String current_saved_rating = String.valueOf(seekBarProgress_double/10);
 
@@ -270,16 +272,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 }
 
             }
-
+            @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
-
-
             }
-
+            @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
-
 
             }
 
