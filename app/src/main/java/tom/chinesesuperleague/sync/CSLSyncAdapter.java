@@ -49,7 +49,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         //Log.d(LOG_TAG, "onPerformSync Called.");
             ArrayList<String[]> playerStat = new ArrayList<>();
             playerTag = Roster.getPreferredPlayer(getContext());
-            playerName = Roster.getPlayerName(playerTag);
+            playerName = Roster.roster.get(playerTag);
 
             Document doc;
             Elements tableContentEles = null;

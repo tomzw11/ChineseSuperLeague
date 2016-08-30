@@ -1,15 +1,857 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <string-array name="options_evergrande">
 
-    <string-array name="pref_units_options">
-        <item>@string/p61034</item>
-        <item>@string/p116730</item>
-        <item>@string/p168101</item>
+        <item>"方镜淇"</item>
+        <item>"曾诚"</item>
+        <item>"刘殿座"</item>
+        <item>"梅方"</item>
+        <item>"张琳芃"</item>
+        <item>"冯潇霆"</item>
+        <item>"韩鹏飞"</item>
+        <item>"金英权"</item>
+        <item>"荣昊"</item>
+        <item>"吴裕多"</item>
+        <item>"李学鹏"</item>
+        <item>"胡睿宝"</item>
+        <item>"陈泽鹏"</item>
+        <item>"廖力生"</item>
+        <item>"徐新"</item>
+        <item>"保利尼奥"</item>
+        <item>"郑智"</item>
+        <item>"高拉特"</item>
+        <item>"张文钊"</item>
+        <item>"黄博文"</item>
+        <item>"于汉超"</item>
+        <item>"邹正"</item>
+        <item>"郑龙"</item>
+        <item>"张奥凯"</item>
+        <item>"阿兰"</item>
+        <item>"马丁内斯"</item>
+        <item>"郜林"</item>
+
     </string-array>
 
-    <string-array name="pref_units_values">
-        <item>@string/拉尔夫</item>
-        <item>@string/武磊</item>
-        <item>@string/费尔南多</item>
+    <string-array name="values_evergrande">
+
+        <item>"156229"</item>
+        <item>"61627"</item>
+        <item>"113495"</item>
+        <item>"155966"</item>
+        <item>"81801"</item>
+        <item>"61630"</item>
+        <item>"223673"</item>
+        <item>"98762"</item>
+        <item>"61632"</item>
+        <item>"223975"</item>
+        <item>"61635"</item>
+        <item>"230381"</item>
+        <item>"205304"</item>
+        <item>"156225"</item>
+        <item>"185324"</item>
+        <item>"100534"</item>
+        <item>"27581"</item>
+        <item>"61622"</item>
+        <item>"113074"</item>
+        <item>"86553"</item>
+        <item>"61642"</item>
+        <item>"113210"</item>
+        <item>"113186"</item>
+        <item>"230434"</item>
+        <item>"51565"</item>
+        <item>"77064"</item>
+        <item>"37441"</item>
+
     </string-array>
+    
+    <string-array name="options_suning">
+
+        <item>"顾超"</item>
+        <item>"姜灏"</item>
+        <item>"张思鹏"</item>
+        <item>"李昂"</item>
+        <item>"周云"</item>
+        <item>"圣斯伯里"</item>
+        <item>"许有志"</item>
+        <item>"吴曦"</item>
+        <item>"任航"</item>
+        <item>"洪正好"</item>
+        <item>"杨笑天"</item>
+        <item>"刘伟"</item>
+        <item>"拉米雷斯"</item>
+        <item>"刘建业"</item>
+        <item>"谢鹏飞"</item>
+        <item>"张晓彬"</item>
+        <item>"曹康"</item>
+        <item>"杨昊"</item>
+        <item>"张新林"</item>
+        <item>"李智超"</item>
+        <item>"吉翔"</item>
+        <item>"杨家威"</item>
+        <item>"曹文"</item>
+        <item>"若"</item>
+        <item>"特谢拉"</item>
+        <item>"陶源"</item>
+        <item>"马丁内斯"</item>
+        <item>"戈伟"</item>
+
+    </string-array>
+
+    <string-array name="values_suning">
+        <item>"113301"</item>
+        <item>"113128"</item>
+        <item>"86529"</item>
+        <item>"180465"</item>
+        <item>"113231"</item>
+        <item>"102909"</item>
+        <item>"113230"</item>
+        <item>"113460"</item>
+        <item>"113240"</item>
+        <item>"77864"</item>
+        <item>"113271"</item>
+        <item>"223575"</item>
+        <item>"53392"</item>
+        <item>"81799"</item>
+        <item>"113300"</item>
+        <item>"180468"</item>
+        <item>"180470"</item>
+        <item>"61641"</item>
+        <item>"180467"</item>
+        <item>"113136"</item>
+        <item>"113266"</item>
+        <item>"113496"</item>
+        <item>"223626"</item>
+        <item>"39461"</item>
+        <item>"52304"</item>
+        <item>"180469"</item>
+        <item>"168506"</item>
+        <item>"121175"</item>
+    </string-array>
+
+    <string-array name="options_shanghai">
+        <item>"耿晓锋"</item>
+        <item>"邱盛炯"</item>
+        <item>"李帅"</item>
+        <item>"熊飞"</item>
+        <item>"李建滨"</item>
+        <item>"金基熙"</item>
+        <item>"李文博"</item>
+        <item>"李运秋"</item>
+        <item>"郑凯木"</item>
+        <item>"柏佳俊"</item>
+        <item>"邓卓翔"</item>
+        <item>"小王林"</item>
+        <item>"陶金"</item>
+        <item>"王寿挺"</item>
+        <item>"张璐"</item>
+        <item>"莫雷诺"</item>
+        <item>"吕征"</item>
+        <item>"瓜林"</item>
+        <item>"王赟"</item>
+        <item>"秦升"</item>
+        <item>"曹赟定"</item>
+        <item>"徐骏敏"</item>
+        <item>"登巴巴"</item>
+        <item>"战怡麟"</item>
+        <item>"马丁斯"</item>
+        <item>"高迪"</item>
+        <item>"毕津浩"</item>
+
+
+    </string-array>
+
+    <string-array name="values_shanghai">
+        <item>"113385"</item>
+        <item>"113462"</item>
+        <item>"27564"</item>
+        <item>"113448"</item>
+        <item>"113211"</item>
+        <item>"120764"</item>
+        <item>"113165"</item>
+        <item>"155919"</item>
+        <item>"113459"</item>
+        <item>"120162"</item>
+        <item>"81803"</item>
+        <item>"113450"</item>
+        <item>"113468"</item>
+        <item>"113325"</item>
+        <item>"113338"</item>
+        <item>"77063"</item>
+        <item>"113439"</item>
+        <item>"37399"</item>
+        <item>"113489"</item>
+        <item>"113205"</item>
+        <item>"113467"</item>
+        <item>"212911"</item>
+        <item>"47412"</item>
+        <item>"155897"</item>
+        <item>"14934"</item>
+        <item>"113386"</item>
+        <item>"113336"</item>
+
+    </string-array>
+
+    <string-array name="options_eastasia">
+        <item>"颜骏凌"</item>
+        <item>"孙乐"</item>
+        <item>"施晓东"</item>
+        <item>"张卫"</item>
+        <item>"王燊超"</item>
+        <item>"汪佳捷"</item>
+        <item>"蔡慧康"</item>
+        <item>"金周荣"</item>
+        <item>"杨世元"</item>
+        <item>"傅欢"</item>
+        <item>"石柯"</item>
+        <item>"贺惯"</item>
+        <item>"孙祥"</item>
+        <item>"杨博宇"</item>
+        <item>"武磊"</item>
+        <item>"达维"</item>
+        <item>"孔卡"</item>
+        <item>"张一"</item>
+        <item>"王佳玉"</item>
+        <item>"于海"</item>
+        <item>"朱征宇"</item>
+        <item>"郑致云"</item>
+        <item>"孙峻岗"</item>
+        <item>"吉安"</item>
+        <item>"埃尔克森"</item>
+        <item>"吕文君"</item>
+        <item>"李浩文"</item>
+        <item>"朱峥嵘"</item>
+        <item>"林创益"</item>
+        <item>"胡靖航"</item>
+
+    </string-array>
+
+    <string-array name="values_eastasia">
+        <item>"155917"</item>
+        <item>"155969"</item>
+        <item>"223356"</item>
+        <item>"180492"</item>
+        <item>"155922"</item>
+        <item>"155924"</item>
+        <item>"155926"</item>
+        <item>"154693"</item>
+        <item>"180500"</item>
+        <item>"155938"</item>
+        <item>"113276"</item>
+        <item>"180501"</item>
+        <item>"27568"</item>
+        <item>"113125"</item>
+        <item>"116730"</item>
+        <item>"61073"</item>
+        <item>"51566"</item>
+        <item>"180498"</item>
+        <item>"113485"</item>
+        <item>"41337"</item>
+        <item>"223603"</item>
+        <item>"180503"</item>
+        <item>"180505"</item>
+        <item>"33223"</item>
+        <item>"61165"</item>
+        <item>"155947"</item>
+        <item>"180497"</item>
+        <item>"155934"</item>
+        <item>"155958"</item>
+        <item>"223602"</item>
+
+    </string-array>
+
+    <string-array name="options_fuli">
+        <item>"程月磊"</item>
+        <item>"张世昌"</item>
+        <item>"于洋"</item>
+        <item>"张耀坤"</item>
+        <item>"杨挺"</item>
+        <item>"张贤秀"</item>
+        <item>"付云龙"</item>
+        <item>"黄政宇"</item>
+        <item>"古斯塔夫-斯文松"</item>
+        <item>"王晓龙"</item>
+        <item>"姜至鹏"</item>
+        <item>"宁安"</item>
+        <item>"唐淼"</item>
+        <item>"常飞亚"</item>
+        <item>"卢琳"</item>
+        <item>"扎哈维"</item>
+        <item>"向嘉弛"</item>
+        <item>"侯俊杰"</item>
+        <item>"王嘉楠"</item>
+        <item>"雷纳迪尼奥"</item>
+        <item>"陈志钊"</item>
+        <item>"汪嵩"</item>
+        <item>"黎宇扬"</item>
+        <item>"吉安努"</item>
+        <item>"肖智"</item>
+
+
+    </string-array>
+
+    <string-array name="values_fuli">
+        <item>"113162"</item>
+        <item>"180452"</item>
+        <item>"113051"</item>
+        <item>"113126"</item>
+        <item>"185322"</item>
+        <item>"103782"</item>
+        <item>"167852"</item>
+        <item>"223978"</item>
+        <item>"51774"</item>
+        <item>"86556"</item>
+        <item>"113481"</item>
+        <item>"223976"</item>
+        <item>"113181"</item>
+        <item>"180790"</item>
+        <item>"113187"</item>
+        <item>"56838"</item>
+        <item>"223977"</item>
+        <item>"180528"</item>
+        <item>"113377"</item>
+        <item>"52667"</item>
+        <item>"116429"</item>
+        <item>"113329"</item>
+        <item>"223979"</item>
+        <item>"76266"</item>
+        <item>"113337"</item>
+    </string-array>
+
+    <string-array name="options_jianye">
+        <item>"王国明"</item>
+        <item>"吴龑"</item>
+        <item>"魏鹏"</item>
+        <item>"李晓明"</item>
+        <item>"戈麦斯"</item>
+        <item>"顾操"</item>
+        <item>"萨马尔季奇"</item>
+        <item>"买提江"</item>
+        <item>"麦克格文"</item>
+        <item>"张可"</item>
+        <item>"罗恒"</item>
+        <item>"路尧"</item>
+        <item>"龙成"</item>
+        <item>"冯卓毅"</item>
+        <item>"尹鸿博"</item>
+        <item>"伊沃"</item>
+        <item>"牟善韬"</item>
+        <item>"杨阔"</item>
+        <item>"潘嘉俊"</item>
+        <item>"王飞"</item>
+        <item>"钟晋宝"</item>
+        <item>"帕蒂尼奥"</item>
+        <item>"梁雨"</item>
+        <item>"奥斯曼"</item>
+        <item>"张帅"</item>
+        <item>"陈灏"</item>
+    </string-array>
+
+    <string-array name="values_jianye">
+        <item>"205812"</item>
+        <item>"155968"</item>
+        <item>"223941"</item>
+        <item>"212910"</item>
+        <item>"192101"</item>
+        <item>"113352"</item>
+        <item>"84745"</item>
+        <item>"113388"</item>
+        <item>"47659"</item>
+        <item>"113366"</item>
+        <item>"223989"</item>
+        <item>"213414"</item>
+        <item>"213201"</item>
+        <item>"156047"</item>
+        <item>"180460"</item>
+        <item>"116255"</item>
+        <item>"223939"</item>
+        <item>"180459"</item>
+        <item>"223940"</item>
+        <item>"223990"</item>
+        <item>"180461"</item>
+        <item>"100925"</item>
+        <item>"155965"</item>
+        <item>"114625"</item>
+        <item>"180466"</item>
+        <item>"155892"</item>
+    </string-array>
+
+    <string-array name="options_guoan">
+        <item>"杨智"</item>
+        <item>"侯森"</item>
+        <item>"张岩"</item>
+        <item>"克里梅茨"</item>
+        <item>"李磊"</item>
+        <item>"周挺"</item>
+        <item>"徐云龙"</item>
+        <item>"郎征"</item>
+        <item>"张辛昕"</item>
+        <item>"杨运"</item>
+        <item>"雷腾龙"</item>
+        <item>"赵和靖"</item>
+        <item>"魏鑫"</item>
+        <item>"盛鹏飞"</item>
+        <item>"拉尔夫"</item>
+        <item>"张晓彬"</item>
+        <item>"张池明"</item>
+        <item>"朴成"</item>
+        <item>"张稀哲"</item>
+        <item>"宋博轩"</item>
+        <item>"杜明洋"</item>
+        <item>"于大宝"</item>
+        <item>"雷纳托-奥古斯托"</item>
+        <item>"李翰博"</item>
+        <item>"谢尔盖耶夫"</item>
+        <item>"伊尔马兹"</item>
+        <item>"单欢欢"</item>
+        <item>"张呈栋"</item>
+    </string-array>
+
+    <string-array name="values_guoan">
+
+        <item>"61626"</item>
+        <item>"86548"</item>
+        <item>"205009"</item>
+        <item>"155003"</item>
+        <item>"113474"</item>
+        <item>"27567"</item>
+        <item>"13107"</item>
+        <item>"86530"</item>
+        <item>"86557"</item>
+        <item>"86561"</item>
+        <item>"113060"</item>
+        <item>"113098"</item>
+        <item>"223943"</item>
+        <item>"230437"</item>
+        <item>"61034"</item>
+        <item>"102957"</item>
+        <item>"205797"</item>
+        <item>"113066"</item>
+        <item>"113053"</item>
+        <item>"113454"</item>
+        <item>"156056"</item>
+        <item>"46546"</item>
+        <item>"51538"</item>
+        <item>"113056"</item>
+        <item>"154690"</item>
+        <item>"39931"</item>
+        <item>"223942"</item>
+        <item>"80723"</item>
+    </string-array>
+
+    <string-array name="options_lifan">
+        <item>"邓小飞"</item>
+        <item>"王敏"</item>
+        <item>"陈安琪"</item>
+        <item>"李放"</item>
+        <item>"隋东陆"</item>
+        <item>"丁捷"</item>
+        <item>"刘宇"</item>
+        <item>"米洛维奇"</item>
+        <item>"陈雷"</item>
+        <item>"谭望嵩"</item>
+        <item>"王栋"</item>
+        <item>"吴庆"</item>
+        <item>"郑毅"</item>
+        <item>"郑又荣"</item>
+        <item>"徐洋"</item>
+        <item>"彭欣力"</item>
+        <item>"费尔南多"</item>
+        <item>"张诚"</item>
+        <item>"刘卫东"</item>
+        <item>"卡尔德克"</item>
+        <item>"吉利奥蒂"</item>
+    </string-array>
+
+    <string-array name="values_lifan">
+        <item>"113227"</item>
+        <item>"223949"</item>
+        <item>"223950"</item>
+        <item>"223946"</item>
+        <item>"113163"</item>
+        <item>"113244"</item>
+        <item>"113108"</item>
+        <item>"85304"</item>
+        <item>"61628"</item>
+        <item>"113353"</item>
+        <item>"37502"</item>
+        <item>"113101"</item>
+        <item>"223947"</item>
+        <item>"201436"</item>
+        <item>"113355"</item>
+        <item>"113213"</item>
+        <item>"168101"</item>
+        <item>"223948"</item>
+        <item>"113084"</item>
+        <item>"52303"</item>
+        <item>"84645"</item>
+    </string-array>
+
+    <string-array name="options_luneng">
+        <item>"刘震理"</item>
+        <item>"韩镕泽"</item>
+        <item>"王大雷"</item>
+        <item>"李松益"</item>
+        <item>"多纳希门托"</item>
+        <item>"王彤"</item>
+        <item>"郑铮"</item>
+        <item>"齐天羽"</item>
+        <item>"陈哲超"</item>
+        <item>"刘洋"</item>
+        <item>"戴琳"</item>
+        <item>"王炯"</item>
+        <item>"赵明剑"</item>
+        <item>"祖斯利尔"</item>
+        <item>"王永珀"</item>
+        <item>"蒙蒂略"</item>
+        <item>"刘彬彬"</item>
+        <item>"张驰"</item>
+        <item>"李微"</item>
+        <item>"吴兴涵"</item>
+        <item>"蒿俊闵"</item>
+        <item>"宋龙"</item>
+        <item>"金敬道"</item>
+        <item>"李海龙"</item>
+        <item>"佩莱"</item>
+        <item>"塔尔德利"</item>
+        <item>"P-西塞"</item>
+        <item>"杨旭"</item>
+        <item>"郭田雨"</item>
+    </string-array>
+
+    <string-array name="values_luneng">
+        <item>"113207"</item>
+        <item>"155890"</item>
+        <item>"113447"</item>
+        <item>"117947"</item>
+        <item>"105722"</item>
+        <item>"113384"</item>
+        <item>"113390"</item>
+        <item>"167858"</item>
+        <item>"210565"</item>
+        <item>"230383"</item>
+        <item>"113451"</item>
+        <item>"222515"</item>
+        <item>"113132"</item>
+        <item>"61153"</item>
+        <item>"113383"</item>
+        <item>"100657"</item>
+        <item>"113437"</item>
+        <item>"113393"</item>
+        <item>"113438"</item>
+        <item>"114084"</item>
+        <item>"37499"</item>
+        <item>"113209"</item>
+        <item>"116731"</item>
+        <item>"230382"</item>
+        <item>"17784"</item>
+        <item>"28527"</item>
+        <item>"42758"</item>
+        <item>"83763"</item>
+        <item>"224061"</item>
+    </string-array>
+
+    <string-array name="options_lvcheng">
+        <item>"张磊"</item>
+        <item>"邹德海"</item>
+        <item>"刘洋"</item>
+        <item>"岳鑫"</item>
+        <item>"葛振"</item>
+        <item>"孙正傲"</item>
+        <item>"吴伟"</item>
+        <item>"陈晓"</item>
+        <item>"斯皮拉诺维奇"</item>
+        <item>"童磊"</item>
+        <item>"曹海清"</item>
+        <item>"王玚"</item>
+        <item>"吴范锡"</item>
+        <item>"臧一峰"</item>
+        <item>"陈柏良"</item>
+        <item>"罗竞"</item>
+        <item>"冯刚"</item>
+        <item>"吴伟"</item>
+        <item>"赵宇豪"</item>
+        <item>"董宇"</item>
+        <item>"黄希扬"</item>
+        <item>"程谋义"</item>
+        <item>"陈中流"</item>
+        <item>"宋海旺"</item>
+        <item>"加比奥内塔"</item>
+        <item>"庄佳杰"</item>
+        <item>"谈杨"</item>
+        <item>"高华泽"</item>
+    </string-array>
+
+    <string-array name="values_lvcheng">
+
+        <item>"205803"</item>
+        <item>"113330"</item>
+        <item>"113318"</item>
+        <item>"180438"</item>
+        <item>"155899"</item>
+        <item>"119080"</item>
+        <item>"113226"</item>
+        <item>"223980"</item>
+        <item>"40539"</item>
+        <item>"223982"</item>
+        <item>"113316"</item>
+        <item>"223983"</item>
+        <item>"51240"</item>
+        <item>"115113"</item>
+        <item>"180526"</item>
+        <item>"167854"</item>
+        <item>"113287"</item>
+        <item>"223981"</item>
+        <item>"156028"</item>
+        <item>"113298"</item>
+        <item>"113351"</item>
+        <item>"87287"</item>
+        <item>"113280"</item>
+        <item>"180454"</item>
+        <item>"49802"</item>
+        <item>"156025"</item>
+        <item>"221261"</item>
+        <item>"223984"</item>
+    </string-array>
+
+    <string-array name="options_hongyun">
+
+        <item>"刘伟国"</item>
+        <item>"张振强"</item>
+        <item>"石笑天"</item>
+        <item>"吴高俊"</item>
+        <item>"杨善平"</item>
+        <item>"郑涛"</item>
+        <item>"宋琛"</item>
+        <item>"张天龙"</item>
+        <item>"阿萨尼"</item>
+        <item>"王亮"</item>
+        <item>"芦强"</item>
+        <item>"泽威特"</item>
+        <item>"孙世林"</item>
+        <item>"杨宇"</item>
+        <item>"张野"</item>
+        <item>"肇俊哲"</item>
+        <item>"王亮"</item>
+        <item>"倪玉崧"</item>
+        <item>"张靖洋"</item>
+        <item>"金泰延"</item>
+        <item>"王峤"</item>
+        <item>"胡延强"</item>
+        <item>"王珐"</item>
+        <item>"刘尚坤"</item>
+        <item>"詹姆斯"</item>
+        <item>"王皓"</item>
+        <item>"冯伯元"</item>
+        <item>"图雷"</item>
+        <item>"雷永驰"</item>
+    </string-array>
+
+    <string-array name="values_hongyun">
+        <item>"118372"</item>
+        <item>"155900"</item>
+        <item>"113172"</item>
+        <item>"113245"</item>
+        <item>"113246"</item>
+        <item>"113286"</item>
+        <item>"113320"</item>
+        <item>"223993"</item>
+        <item>"48764"</item>
+        <item>"27570"</item>
+        <item>"113253"</item>
+        <item>"20309"</item>
+        <item>"155981"</item>
+        <item>"113247"</item>
+        <item>"113322"</item>
+        <item>"30951"</item>
+        <item>"113161"</item>
+        <item>"113144"</item>
+        <item>"113525"</item>
+        <item>"113248"</item>
+        <item>"223994"</item>
+        <item>"113296"</item>
+        <item>"155988"</item>
+        <item>"155920"</item>
+        <item>"37387"</item>
+        <item>"113307"</item>
+        <item>"224059"</item>
+        <item>"111534"</item>
+        <item>"203224"</item>
+    </string-array>
+
+    <string-array name="options_yongchang">
+        <item>"邵镤亮"</item>
+        <item>"关震"</item>
+        <item>"姜积弘"</item>
+        <item>"赵容亨"</item>
+        <item>"许博"</item>
+        <item>"李凯"</item>
+        <item>"吕建军"</item>
+        <item>"糜昊伦"</item>
+        <item>"李春郁"</item>
+        <item>"毛剑卿"</item>
+        <item>"崔鹏"</item>
+        <item>"鲁本"</item>
+        <item>"高增翔"</item>
+        <item>"孙昊晟"</item>
+        <item>"王军辉"</item>
+        <item>"郭松"</item>
+        <item>"李提香"</item>
+        <item>"隆东"</item>
+        <item>"门迪"</item>
+        <item>"毛里西奥"</item>
+        <item>"马修斯"</item>
+    </string-array>
+
+    <string-array name="values_yongchang">
+        <item>"113444"</item>
+        <item>"81796"</item>
+        <item>"113141"</item>
+        <item>"82359"</item>
+        <item>"113167"</item>
+        <item>"113258"</item>
+        <item>"113075"</item>
+        <item>"167856"</item>
+        <item>"113243"</item>
+        <item>"113061"</item>
+        <item>"83762"</item>
+        <item>"52698"</item>
+        <item>"113182"</item>
+        <item>"113105"</item>
+        <item>"180483"</item>
+        <item>"215839"</item>
+        <item>"113062"</item>
+        <item>"76156"</item>
+        <item>"40367"</item>
+        <item>"100158"</item>
+        <item>"38586"</item>
+    </string-array>
+
+    <string-array name="options_yatai">
+        <item>"吴亚轲"</item>
+        <item>"祎凡"</item>
+        <item>"宋振瑜"</item>
+        <item>"积施利"</item>
+        <item>"阎世鹏"</item>
+        <item>"伊斯梅洛夫"</item>
+        <item>"殷亚吉"</item>
+        <item>"邵帅"</item>
+        <item>"孙捷"</item>
+        <item>"范晓冬"</item>
+        <item>"左伊滕"</item>
+        <item>"车凯"</item>
+        <item>"裴帅"</item>
+        <item>"马季奇"</item>
+        <item>"格里乌斯"</item>
+        <item>"蒋哲"</item>
+        <item>"杜震宇"</item>
+        <item>"何超"</item>
+        <item>"张笑飞"</item>
+        <item>"阎峰"</item>
+        <item>"李光"</item>
+        <item>"刘奇鸣"</item>
+        <item>"韩德明"</item>
+        <item>"奥泽戈维奇"</item>
+        <item>"M-莫雷诺"</item>
+        <item>"杨贺"</item>
+        <item>"李尚"</item>
+        <item>"程长城"</item>
+    </string-array>
+
+    <string-array name="values_yatai">
+
+        <item>"155902"</item>
+        <item>"208332"</item>
+        <item>"113505"</item>
+        <item>"167100"</item>
+        <item>"155891"</item>
+        <item>"79027"</item>
+        <item>"223944"</item>
+        <item>"180406"</item>
+        <item>"113078"</item>
+        <item>"113290"</item>
+        <item>"223945"</item>
+        <item>"113089"</item>
+        <item>"113093"</item>
+        <item>"86537"</item>
+        <item>"54069"</item>
+        <item>"113079"</item>
+        <item>"27583"</item>
+        <item>"180441"</item>
+        <item>"113087"</item>
+        <item>"83761"</item>
+        <item>"113092"</item>
+        <item>"155913"</item>
+        <item>"180413"</item>
+        <item>"112642"</item>
+        <item>"48824"</item>
+        <item>"155911"</item>
+        <item>"113085"</item>
+        <item>"113080"</item>
+    </string-array>
+
+    <string-array name="options_teda">
+        <item>"宗磊"</item>
+        <item>"杜佳"</item>
+        <item>"杨启鹏"</item>
+        <item>"杨泽翔"</item>
+        <item>"儒尼奥尔"</item>
+        <item>"潘喜明"</item>
+        <item>"约万诺维奇"</item>
+        <item>"周海滨"</item>
+        <item>"聊博超"</item>
+        <item>"白岳峰"</item>
+        <item>"聂涛"</item>
+        <item>"苑维玮"</item>
+        <item>"曹阳"</item>
+        <item>"李本舰"</item>
+        <item>"胡人天"</item>
+        <item>"王秋明"</item>
+        <item>"郭毅"</item>
+        <item>"郭皓"</item>
+        <item>"曲波"</item>
+        <item>"李源一"</item>
+        <item>"周通"</item>
+        <item>"蒂亚戈内"</item>
+        <item>"蒙特罗"</item>
+        <item>"惠家康"</item>
+        <item>"埃沃纳"</item>
+        <item>"范柏群"</item>
+        <item>"李志斌"</item>
+    </string-array>
+
+    <string-array name="values_teda">
+        <item>@string/宗磊</item>
+        <item>@string/杜佳</item>
+        <item>@string/杨启鹏</item>
+        <item>@string/杨泽翔</item>
+        <item>@string/儒尼奥尔</item>
+        <item>@string/潘喜明</item>
+        <item>@string/约万诺维奇</item>
+        <item>@string/周海滨</item>
+        <item>@string/聊博超</item>
+        <item>@string/白岳峰</item>
+        <item>@string/聂涛</item>
+        <item>@string/苑维玮</item>
+        <item>@string/曹阳</item>
+        <item>@string/李本舰</item>
+        <item>@string/胡人天</item>
+        <item>@string/王秋明</item>
+        <item>@string/郭毅</item>
+        <item>@string/郭皓</item>
+        <item>@string/曲波</item>
+        <item>@string/李源一</item>
+        <item>@string/周通</item>
+        <item>@string/蒂亚戈内 </item>
+        <item>@string/蒙特罗</item>
+        <item>@string/惠家康</item>
+        <item>@string/埃沃纳</item>
+        <item>@string/范柏群</item>
+        <item>@string/李志斌</item>
+
+    </string-array>
+
+
+
+
 </resources>

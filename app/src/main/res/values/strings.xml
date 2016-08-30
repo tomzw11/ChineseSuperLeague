@@ -35,6 +35,35 @@
     <string name="alert_dialog_ok">Ok</string>
     <string name="alert_dialog_cancel">Cancel</string>
 
+    <!-- Tianjin Teda -->
+    <string name="宗磊">113067</string>
+    <string name="杜佳">180532</string>
+    <string name="杨启鹏">113512</string>
+    <string name="杨泽翔">155932</string>
+    <string name="儒尼奥尔">80353</string>
+    <string name="潘喜明">210564</string>
+    <string name="约万诺维奇">109441</string>
+    <string name="周海滨">36476</string>
+    <string name="聊博超">102821</string>
+    <string name="白岳峰">83759</string>
+    <string name="聂涛">102959</string>
+    <string name="苑维玮">113389</string>
+    <string name="曹阳">27578</string>
+    <string name="李本舰">102816</string>
+    <string name="胡人天">102817</string>
+    <string name="王秋明">155951</string>
+    <string name="郭毅">185319</string>
+    <string name="郭皓">155935</string>
+    <string name="曲波">13119</string>
+    <string name="李源一">185328</string>
+    <string name="周通">113103</string>
+    <string name="蒂亚戈内">164011</string>
+    <string name="蒙特罗">57252</string>
+    <string name="惠家康">113509</string>
+    <string name="埃沃纳">144130</string>
+    <string name="范柏群">102961</string>
+    <string name="李志斌">155954</string>
+
     <!-- SyncAdapter related -->
     <string name="sync_account_type">CSL</string>
     <string name="content_authority">tom.chinesesuperleague.data.StatProvider</string>
