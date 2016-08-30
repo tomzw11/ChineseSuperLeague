@@ -59,9 +59,6 @@
                             android:onClick="displayGraph"
                             android:src="@drawable/ic_player_info_white_24dp" />
 
-
-
-
                     </LinearLayout>
 
                     <LinearLayout

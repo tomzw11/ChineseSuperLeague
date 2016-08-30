@@ -2,6 +2,8 @@ package tom.chinesesuperleague;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,10 +12,15 @@ import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
 import android.view.View;
+import android.app.SearchManager;
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.app.ActionBarActivity;
 
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     private String preferPlayer;
 //TODO:Add a splash screen at intro.
@@ -24,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         preferPlayer = Roster.getPreferredPlayer(this);
 
+
+        //TODO:Use a special toolbar app name font.
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        //TODO:Use a special toolbar app name font.
 
         // Find the view pager that will allow the user to swipe between fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -77,7 +85,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the main; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+
         return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // User pressed the search button
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        // User changed the text
+        return false;
     }
 
     @Override
@@ -100,8 +122,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayGraph(View view) {
 
-            FragmentManager fm = getSupportFragmentManager();
-            FormFragment formFragment = FormFragment.newInstance();
-            formFragment.show(fm, "fragment_alert");
+        Intent intent = new Intent(this, SearchActivity.class);
+
+        ActivityOptionsCompat activityOptions =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
+
+//            FragmentManager fm = getSupportFragmentManager();
+//            FormFragment formFragment = FormFragment.newInstance();
+//            formFragment.show(fm, "fragment_alert");
     }
+
+
 }

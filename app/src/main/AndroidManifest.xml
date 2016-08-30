@@ -46,6 +46,16 @@
                 android:value="tom.chinesesuperleague.MainActivity" />
         </activity>
 
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Activity_Search_Theme"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tom.chinesesuperleague.MainActivity" />
+        </activity>
+
         <provider
             android:authorities="tom.chinesesuperleague.data.StatProvider"
             android:name=".data.StatProvider"

@@ -233,7 +233,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                     alertDialogBuilder.setMessage("Congratulations! You have earned 20 coins.");
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
-//TODO:Restore saved rating.
+//TODO:Restore saved rating.             
                     int current_coin = sharedPreferences_coin.getInt(COIN,0);
                     SharedPreferences.Editor editor_coin = sharedPreferences_coin.edit();
                     editor_coin.putInt(COIN,20 + current_coin);
