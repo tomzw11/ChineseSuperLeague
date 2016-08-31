@@ -122,15 +122,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     public void displayGraph(View view) {
 
-        Intent intent = new Intent(this, SearchActivity.class);
+//        Intent intent = new Intent(this, SearchActivity.class);
+//
+//        ActivityOptionsCompat activityOptions =
+//                ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+//        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
 
-        ActivityOptionsCompat activityOptions =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(this);
-        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
-
-//            FragmentManager fm = getSupportFragmentManager();
-//            FormFragment formFragment = FormFragment.newInstance();
-//            formFragment.show(fm, "fragment_alert");
+            FragmentManager fm = getSupportFragmentManager();
+            FormFragment formFragment = FormFragment.newInstance();
+            formFragment.show(fm, "fragment_alert");
     }
 
 

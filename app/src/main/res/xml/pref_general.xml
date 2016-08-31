@@ -83,6 +83,12 @@
         android:entries="@array/options_yongchang" />
 
     <ListPreference
+        android:title="河北华夏"
+        android:key="@string/pref_name_key"
+        android:entryValues="@array/values_huaxia"
+        android:entries="@array/options_huaxia" />
+
+    <ListPreference
         android:title="长春亚泰"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_yatai"

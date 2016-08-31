@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <string-array name="options_huaxia">
+
+        <item>"热尔维尼奥"</item>
+        <item>"姆比亚"</item>
+        <item>"董学升"</item>
+
+
+    </string-array>
+
+    <string-array name="values_huaxia">
+
+        <item>"43274"</item>
+        <item>"27671"</item>
+        <item>"113119"</item>
+
+    </string-array>
+    
     <string-array name="options_evergrande">
 
         <item>"方镜淇"</item>
