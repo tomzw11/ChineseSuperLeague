@@ -1,20 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string-array name="options_fude">
+
+        <item>"尹光"</item>
+        <item>"池文一"</item>
+        <item>"董佳林"</item>
+        <item>"李峻宇"</item>
+        <item>"韩轩"</item>
+        <item>"赵铭"</item>
+        <item>"彼得科维奇"</item>
+        <item>"姜洪权"</item>
+        <item>"吴永春"</item>
+        <item>"崔民"</item>
+        <item>"金贤"</item>
+        <item>"金弘宇"</item>
+        <item>"田依浓"</item>
+        <item>"李勋"</item>
+        <item>"韩光徽"</item>
+        <item>"池忠国"</item>
+        <item>"金胜大"</item>
+        <item>"崔仁"</item>
+        <item>"金波"</item>
+        <item>"尹比加林"</item>
+        <item>"王志鹏"</item>
+        <item>"朴世豪"</item>
+        <item>"李浩"</item>
+        <item>"裴育文"</item>
+        <item>"李浩杰"</item>
+        <item>"文学"</item>
+        <item>"艾合买提-艾克拜尔"</item>
+        <item>"尹昌吉"</item>
+        <item>"孙君"</item>
+        <item>"特拉沃利"</item>
+        <item>"河太均"</item>
+    </string-array>
+
+    <string-array name="values_fude">
+
+        <item>"id=223919"</item>
+        <item>"id=223929"</item>
+        <item>"id=155971"</item>
+        <item>"id=223936"</item>
+        <item>"id=223920"</item>
+        <item>"id=113190"</item>
+        <item>"id=42596"</item>
+        <item>"id=223921"</item>
+        <item>"id=223924"</item>
+        <item>"id=223927"</item>
+        <item>"id=223928"</item>
+        <item>"id=223932"</item>
+        <item>"id=224063"</item>
+        <item>"id=224062"</item>
+        <item>"id=221344"</item>
+        <item>"id=205896"</item>
+        <item>"id=155130"</item>
+        <item>"id=205897"</item>
+        <item>"id=223922"</item>
+        <item>"id=98766"</item>
+        <item>"id=223923"</item>
+        <item>"id=223925"</item>
+        <item>"id=223926"</item>
+        <item>"id=223930"</item>
+        <item>"id=223931"</item>
+        <item>"id=223933"</item>
+        <item>"id=223934"</item>
+        <item>"id=223935"</item>
+        <item>"id=223937"</item>
+        <item>"id=202915"</item>
+        <item>"id=223918"</item>
+    </string-array>
     
     <string-array name="options_huaxia">
 
-        <item>"热尔维尼奥"</item>
+        <item>"欧亚"</item>
+        <item>"苏维超"</item>
+        <item>"杨程"</item>
+        <item>"周煜辰"</item>
+        <item>"杜文洋"</item>
+        <item>"金洋洋"</item>
+        <item>"杜威"</item>
+        <item>"廖均健"</item>
+        <item>"芦洋"</item>
+        <item>"居吕姆"</item>
+        <item>"许小龙"</item>
+        <item>"杨文吉"</item>
+        <item>"丁海峰"</item>
+        <item>"高准翼"</item>
+        <item>"钟炬展"</item>
+        <item>"宋文杰"</item>
+        <item>"车世伟"</item>
+        <item>"章艮"</item>
+        <item>"罗森文"</item>
+        <item>"姜宁"</item>
+        <item>"贾晓琛"</item>
+        <item>"李浩然"</item>
+        <item>"汪泉"</item>
+        <item>"朱海威"</item>
+        <item>"汪洋"</item>
+        <item>"卡库塔"</item>
         <item>"姆比亚"</item>
+        <item>"耿袈岂"</item>
+        <item>"张利峰"</item>
+        <item>"李行"</item>
+        <item>"姜文骏"</item>
+        <item>"阿洛伊西奥"</item>
         <item>"董学升"</item>
-
+        <item>"拉维齐"</item>
+        <item>"桂宏"</item>
+        <item>"热尔维尼奥"</item>
+        <item>"高云飞"</item>
 
     </string-array>
 
     <string-array name="values_huaxia">
 
-        <item>"43274"</item>
+        <item>"223892"</item>
+        <item>"223897"</item>
+        <item>"113382"</item>
+        <item>"223988"</item>
+        <item>"113292"</item>
+        <item>"113121"</item>
+        <item>"13103"</item>
+        <item>"185327"</item>
+        <item>"223901"</item>
+        <item>"46534"</item>
+        <item>"223902"</item>
+        <item>"223987"</item>
+        <item>"180519"</item>
+        <item>"212909"</item>
+        <item>"229708"</item>
+        <item>"113203"</item>
+        <item>"223906"</item>
+        <item>"223904"</item>
+        <item>"155888"</item>
+        <item>"61644"</item>
+        <item>"223894"</item>
+        <item>"223898"</item>
+        <item>"223895"</item>
+        <item>"223900"</item>
+        <item>"66752"</item>
+        <item>"59325"</item>
         <item>"27671"</item>
+        <item>"155961"</item>
+        <item>"223896"</item>
+        <item>"223986"</item>
+        <item>"113109"</item>
+        <item>"100817"</item>
         <item>"113119"</item>
+        <item>"45154"</item>
+        <item>"223985"</item>
+        <item>"43274"</item>
+        <item>"223899"</item>
 
     </string-array>
     
