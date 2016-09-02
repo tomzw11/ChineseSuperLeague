@@ -33,7 +33,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 BioEntry.COLUMN_CNAME + " REAL NOT NULL, " +
                 BioEntry.COLUMN_LNAME + " REAL NOT NULL, " +
                 BioEntry.COLUMN_NATION + " REAL NOT NULL, " +
-                BioEntry.COLUMN_AGE + " REAL NOT NULL " +
+                BioEntry.COLUMN_AGE + " REAL NOT NULL, " +
                 BioEntry.COLUMN_POSITION + " REAL NOT NULL, " +
                 BioEntry.COLUMN_HEIGHT + " REAL NOT NULL " +
                 " );";

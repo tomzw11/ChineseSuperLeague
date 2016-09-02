@@ -76,7 +76,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 playerStat.add(playerMatchStat);
             }
             getPlayerStat(playerStat);
-            addPlayerBio(playerTag,getPlayerBio(playerTag));
+            addPlayerBio(playerTag);
+
         }
 
     private void getPlayerStat(ArrayList<String[]> playerStat){
@@ -135,9 +136,10 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         Document doc_bio;
         Elements tableContentEles_bio = null;
 
-        if(playerTag.length()==0)return null;
+        if(playerTag.length()==0) return null;
 
-        String url = Roster.urlBuilder(playerTag);
+        String url = Roster.urlBioBuilder(playerTag);
+
         try {
             doc_bio = Jsoup.connect(url).timeout(60000).get();
             tableContentEles_bio = doc_bio.select(".t dd");
@@ -152,21 +154,28 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             playerBio[i] = tableContentEles_bio.get(i).unwrap().toString();
         }
         return playerBio;
-
     }
 
-    private void addPlayerBio(String playerTag,String[] playerBio) {
+    private void addPlayerBio(String playerTag) {
 
+        String[] playerBio = getPlayerBio(playerTag);
 
         ContentValues bioValues = new ContentValues();
 
         // First, check if the bio with this city name exists in the db
-            Cursor bioCursor = getContext().getContentResolver().query(
-                    StatContract.BioEntry.CONTENT_URI,
-                    new String[]{StatContract.BioEntry.COLUMN_TAG},
-                    StatContract.BioEntry.COLUMN_TAG + " = ?",
-                    new String[]{playerTag},
-                    null);
+//            Cursor bioCursor = getContext().getContentResolver().query(
+//                    StatContract.BioEntry.CONTENT_URI,
+//                    new String[]{StatContract.BioEntry.COLUMN_TAG},
+//                    StatContract.BioEntry.COLUMN_TAG + " = ?",
+//                    new String[]{playerTag},
+//                    null);
+        Cursor bioCursor = getContext().getContentResolver().query(
+                StatContract.BioEntry.CONTENT_URI,
+                new String[]{StatContract.BioEntry.COLUMN_TAG},
+                StatContract.BioEntry.COLUMN_TAG + " = ?",
+                new String[]{playerTag},
+                null);
+        Log.d(LOG_TAG,playerTag);
 
             if (bioCursor.moveToFirst()) {
                 Log.d(LOG_TAG,"player bio exists.");

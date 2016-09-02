@@ -26,6 +26,10 @@ public class StatContract {
             return CONTENT_URI.buildUpon().appendPath(tag).build();
         }
 
+        public static String getBioSettingFromUri(Uri uri) {
+            return uri.getPathSegments().get(0);
+        }
+
         // Table name
         public static final String TABLE_NAME = "bio";
 

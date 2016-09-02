@@ -484,6 +484,13 @@ public class Roster {
         return url;
     }
 
+    public static String urlBioBuilder(String id){
+
+        String url = "http://match.sports.sina.com.cn/football/player.php?id="+id+"&dpc=1";
+        return url;
+    }
+
+
     public static String getPreferredPlayer(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(context.getString(R.string.pref_name_key),
