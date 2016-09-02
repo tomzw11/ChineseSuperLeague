@@ -75,8 +75,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 }
                 playerStat.add(playerMatchStat);
             }
-            getPlayerStat(playerStat);
-            addPlayerBio(playerTag);
+        addPlayerBio(playerTag);
+        getPlayerStat(playerStat);
 
         }
 
@@ -158,17 +158,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
     private void addPlayerBio(String playerTag) {
 
-        String[] playerBio = getPlayerBio(playerTag);
-
         ContentValues bioValues = new ContentValues();
 
-        // First, check if the bio with this city name exists in the db
-//            Cursor bioCursor = getContext().getContentResolver().query(
-//                    StatContract.BioEntry.CONTENT_URI,
-//                    new String[]{StatContract.BioEntry.COLUMN_TAG},
-//                    StatContract.BioEntry.COLUMN_TAG + " = ?",
-//                    new String[]{playerTag},
-//                    null);
         Cursor bioCursor = getContext().getContentResolver().query(
                 StatContract.BioEntry.CONTENT_URI,
                 new String[]{StatContract.BioEntry.COLUMN_TAG},
@@ -180,6 +171,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             if (bioCursor.moveToFirst()) {
                 Log.d(LOG_TAG,"player bio exists.");
             } else {
+                Log.d(LOG_TAG,"new player.");
+                String[] playerBio = getPlayerBio(playerTag);
                 // Now that the content provider is set up, inserting rows of data is pretty simple.
                 // First create a ContentValues object to hold the data you want to insert.
 
@@ -194,16 +187,17 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 bioValues.put(StatContract.BioEntry.COLUMN_NATION, playerBio[8]);
                 bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7]);
 
+                // add to database
+                Uri inserted = null;
+                if ( bioValues.size() > 0 ) {
+
+                    inserted = getContext().getContentResolver().insert(StatContract.BioEntry.CONTENT_URI, bioValues);
+                }
+                Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
             }
             bioCursor.close();
             // Wait, that worked?  Yes!
-        // add to database
-        Uri inserted = null;
-        if ( bioValues.size() > 0 ) {
 
-            inserted = getContext().getContentResolver().insert(StatContract.BioEntry.CONTENT_URI, bioValues);
-        }
-        Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
         return;
         }
 
