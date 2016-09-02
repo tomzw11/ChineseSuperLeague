@@ -49,6 +49,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.StatEntry.COLUMN_GOAL,
             StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry.COLUMN_RATING,
+            StatContract.BioEntry.COLUMN_POSITION,
             StatContract.StatEntry._ID
     };
 
@@ -59,6 +60,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final int COL_GOAL = 2;
     public static final int COL_PLAYER = 3;
     public static final int COL_RATING = 4;
+    public static final int COL_POSITION = 5;
 
     public static final String MAIN_RATING_PREF = "MainRatingPreferences";
     public static final String COIN = "Coin";
@@ -150,6 +152,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         final String player = cursor.getString(COL_PLAYER);
         String team = cursor.getString(COL_TEAM);
+        String position = cursor.getString(COL_POSITION);
         String rating_last = (cursor.getString(COL_RATING));
 
         final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
