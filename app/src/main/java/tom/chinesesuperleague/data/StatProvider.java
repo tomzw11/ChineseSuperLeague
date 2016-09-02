@@ -47,7 +47,7 @@ public class StatProvider extends ContentProvider{
         // For each type of URI you want to add, create a corresponding code.
         matcher.addURI(authority, StatContract.PATH_PLAYER + "/*", PLAYER);
         matcher.addURI(authority, StatContract.PATH_PLAYER + "/*/*", PLAYER_WITH_DATE);
-        matcher.addURI(authority, StatContract.PATH_BIO, BIO);
+        matcher.addURI(authority, StatContract.PATH_BIO + "/*", BIO);
 
 
         return matcher;
@@ -55,10 +55,11 @@ public class StatProvider extends ContentProvider{
 
     private Cursor getBioByPlayer(Uri uri, String[] projection, String sortOrder) {
 
-        String playerSetting = StatContract.BioEntry.getBioSettingFromUri(uri);
+        System.out.println(uri+" getbio uri " + projection);
+        String bioSetting = StatContract.BioEntry.getBioSettingFromUri(uri);
 
         String[] selectionArgs;
-        selectionArgs = new String[]{playerSetting};
+        selectionArgs = new String[]{bioSetting};
 
         String selection = sBioSettingSelection;
 

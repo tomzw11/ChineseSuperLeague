@@ -27,7 +27,7 @@ public class StatContract {
         }
 
         public static String getBioSettingFromUri(Uri uri) {
-            return uri.getPathSegments().get(0);
+            return uri.getPathSegments().get(1);
         }
 
         // Table name

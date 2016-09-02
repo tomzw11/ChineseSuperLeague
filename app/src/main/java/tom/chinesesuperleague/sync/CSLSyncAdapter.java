@@ -161,12 +161,12 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         ContentValues bioValues = new ContentValues();
 
         Cursor bioCursor = getContext().getContentResolver().query(
-                StatContract.BioEntry.CONTENT_URI,
+                //StatContract.BioEntry.CONTENT_URI,
+                StatContract.BioEntry.buildBioUri(playerTag),
                 new String[]{StatContract.BioEntry.COLUMN_TAG},
                 StatContract.BioEntry.COLUMN_TAG + " = ?",
                 new String[]{playerTag},
                 null);
-        Log.d(LOG_TAG,playerTag);
 
             if (bioCursor.moveToFirst()) {
                 Log.d(LOG_TAG,"player bio exists.");
@@ -191,7 +191,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 Uri inserted = null;
                 if ( bioValues.size() > 0 ) {
 
-                    inserted = getContext().getContentResolver().insert(StatContract.BioEntry.CONTENT_URI, bioValues);
+                    inserted = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(playerTag), bioValues);
                 }
                 Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
             }

@@ -31,7 +31,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
 
         return true;
     }
-
+//TODO:set the preference to directly return to main menu when player is reset.
     /**
      * Attaches a listener so the summary is always updated with the preference value.
      * Also fires the listener once, to initialize the summary (so it shows up before the value
