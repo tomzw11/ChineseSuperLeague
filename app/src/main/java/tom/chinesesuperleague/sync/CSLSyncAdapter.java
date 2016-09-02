@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.SyncRequest;
 import android.os.Build;
+import android.database.Cursor;
+import android.net.Uri;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -46,7 +48,6 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
-        //Log.d(LOG_TAG, "onPerformSync Called.");
             ArrayList<String[]> playerStat = new ArrayList<>();
             playerTag = Roster.getPreferredPlayer(getContext());
             playerName = Roster.roster.get(playerTag);
@@ -75,6 +76,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 playerStat.add(playerMatchStat);
             }
             getPlayerStat(playerStat);
+            addPlayerBio(playerTag,getPlayerBio(playerTag));
         }
 
     private void getPlayerStat(ArrayList<String[]> playerStat){
@@ -125,6 +127,76 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         return;
 
     }
+
+    private String[] getPlayerBio(String playerTag){
+
+        String[] playerBio = new String[11];
+
+        Document doc_bio;
+        Elements tableContentEles_bio = null;
+
+        if(playerTag.length()==0)return null;
+
+        String url = Roster.urlBuilder(playerTag);
+        try {
+            doc_bio = Jsoup.connect(url).timeout(60000).get();
+            tableContentEles_bio = doc_bio.select(".t dd");
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0;i < 11; i++){
+
+            playerBio[i] = tableContentEles_bio.get(i).unwrap().toString();
+        }
+        return playerBio;
+
+    }
+
+    private void addPlayerBio(String playerTag,String[] playerBio) {
+
+
+        ContentValues bioValues = new ContentValues();
+
+        // First, check if the bio with this city name exists in the db
+            Cursor bioCursor = getContext().getContentResolver().query(
+                    StatContract.BioEntry.CONTENT_URI,
+                    new String[]{StatContract.BioEntry.COLUMN_TAG},
+                    StatContract.BioEntry.COLUMN_TAG + " = ?",
+                    new String[]{playerTag},
+                    null);
+
+            if (bioCursor.moveToFirst()) {
+                Log.d(LOG_TAG,"player bio exists.");
+            } else {
+                // Now that the content provider is set up, inserting rows of data is pretty simple.
+                // First create a ContentValues object to hold the data you want to insert.
+
+                // Then add the data, along with the corresponding name of the data type,
+                // so the content provider knows what kind of value is being inserted.
+                bioValues.put(StatContract.BioEntry.COLUMN_TAG, playerTag);
+                bioValues.put(StatContract.BioEntry.COLUMN_ENAME, playerBio[2]);
+                bioValues.put(StatContract.BioEntry.COLUMN_CNAME, playerBio[0]);
+                bioValues.put(StatContract.BioEntry.COLUMN_LNAME, playerBio[1]);
+                bioValues.put(StatContract.BioEntry.COLUMN_AGE, playerBio[6]);
+                bioValues.put(StatContract.BioEntry.COLUMN_HEIGHT, playerBio[4]);
+                bioValues.put(StatContract.BioEntry.COLUMN_NATION, playerBio[8]);
+                bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7]);
+
+            }
+            bioCursor.close();
+            // Wait, that worked?  Yes!
+        // add to database
+        Uri inserted = null;
+        if ( bioValues.size() > 0 ) {
+
+            inserted = getContext().getContentResolver().insert(StatContract.BioEntry.CONTENT_URI, bioValues);
+        }
+        Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
+        return;
+        }
 
     /**
      * Helper method to have the sync adapter sync immediately

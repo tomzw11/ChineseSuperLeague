@@ -167,7 +167,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
         tv_team.setText(team);
-        System.out.println("main frag team: "+ team);
+
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         imageView1.setImageResource(Roster.getBadgeForTeam(team));
 
@@ -304,7 +304,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
-        System.out.println("loader reset");
     }
 
 }

@@ -3,6 +3,7 @@ package tom.chinesesuperleague.data;
 import android.provider.BaseColumns;
 import android.content.ContentResolver;
 import android.net.Uri;
+import android.content.ContentUris;
 
 public class StatContract {
 
@@ -11,6 +12,35 @@ public class StatContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String PATH_PLAYER = "player";
+    public static final String PATH_BIO = "bio";
+
+    public static final class BioEntry implements BaseColumns {
+
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_BIO).build();
+
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_BIO;
+
+        public static Uri buildBioUri(String tag) {
+            return CONTENT_URI.buildUpon().appendPath(tag).build();
+        }
+
+        // Table name
+        public static final String TABLE_NAME = "bio";
+
+
+        public static final String COLUMN_TAG = "player_tag";
+        public static final String COLUMN_ENAME = "player_english_name";
+        public static final String COLUMN_CNAME = "player_chinsese_name";
+        public static final String COLUMN_LNAME = "player_last_name";
+        public static final String COLUMN_NATION = "player_nationality";
+        public static final String COLUMN_AGE = "player_age";
+        public static final String COLUMN_POSITION = "player_position";
+        public static final String COLUMN_HEIGHT = "player_height";
+
+
+    }
 
     /* Inner class that defines the contents of the stat table */
     public static final class StatEntry implements BaseColumns {

@@ -9,6 +9,7 @@ import java.util.Vector;
 
 
 import tom.chinesesuperleague.data.StatContract.StatEntry;
+import tom.chinesesuperleague.data.StatContract.BioEntry;
 
 public class StatDBHelper extends SQLiteOpenHelper {
 
@@ -21,8 +22,21 @@ public class StatDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+        final String SQL_CREATE_BIO_TABLE = "CREATE TABLE " + BioEntry.TABLE_NAME + " (" +
+                BioEntry.COLUMN_TAG + " INTEGER PRIMARY KEY," +
+                BioEntry.COLUMN_ENAME + " REAL NOT NULL, " +
+                BioEntry.COLUMN_CNAME + " REAL NOT NULL, " +
+                BioEntry.COLUMN_LNAME + " REAL NOT NULL, " +
+                BioEntry.COLUMN_NATION + " REAL NOT NULL, " +
+                BioEntry.COLUMN_AGE + " REAL NOT NULL " +
+                BioEntry.COLUMN_POSITION + " REAL NOT NULL, " +
+                BioEntry.COLUMN_HEIGHT + " REAL NOT NULL " +
+                " );";
 
         final String SQL_CREATE_STAT_TABLE =
 
@@ -59,6 +73,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_BIO_TABLE);
     }
 
     @Override
@@ -71,6 +86,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
         // should be your top priority before modifying this method.
 
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StatEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + BioEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

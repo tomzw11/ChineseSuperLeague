@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
+import tom.chinesesuperleague.Roster;
+
 public class StatProvider extends ContentProvider{
 
     // The URI Matcher used by this content provider.
@@ -19,6 +21,7 @@ public class StatProvider extends ContentProvider{
     static final int DATE = 300;
     static final int PLAYER = 100;
     static final int PLAYER_WITH_DATE = 101;
+    static final int BIO = 200;
 
     private static final String sPlayerSettingSelection =
             StatContract.StatEntry.TABLE_NAME+
@@ -136,16 +139,30 @@ public class StatProvider extends ContentProvider{
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-
+        final int match = sUriMatcher.match(uri);
         Uri returnUri;
 
-                long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, values);
+        switch (match) {
+
+            case BIO: {
+                long _id = db.insert(StatContract.BioEntry.TABLE_NAME, null, values);
                 if ( _id > 0 )
-                    returnUri = StatContract.StatEntry.buildDateUri(_id);
+                    returnUri = StatContract.BioEntry.buildBioUri(Roster.getPreferredPlayer(getContext()));
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
-
+                break;
+            }
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
         getContext().getContentResolver().notifyChange(uri, null);
+
+        String countQuery = "SELECT  * FROM " + StatContract.BioEntry.TABLE_NAME;
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        System.out.println("player bio database size: "+cnt);
+
         return returnUri;
     }
 
@@ -214,11 +231,11 @@ public class StatProvider extends ContentProvider{
                 }
                 getContext().getContentResolver().notifyChange(uri, null);
 
-        String countQuery = "SELECT  * FROM " + StatContract.StatEntry.TABLE_NAME;
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int cnt = cursor.getCount();
-        cursor.close();
-        System.out.println("database size: "+cnt);
+//        String countQuery = "SELECT  * FROM " + StatContract.StatEntry.TABLE_NAME;
+//        Cursor cursor = db.rawQuery(countQuery, null);
+//        int cnt = cursor.getCount();
+//        cursor.close();
+//        System.out.println("database size: "+cnt);
 
         return returnCount;
     }
