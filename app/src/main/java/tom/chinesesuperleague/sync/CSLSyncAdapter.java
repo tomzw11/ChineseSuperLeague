@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SyncResult;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.SyncRequest;
@@ -27,6 +28,7 @@ import tom.chinesesuperleague.R;
 import tom.chinesesuperleague.Ratings;
 import tom.chinesesuperleague.Roster;
 import tom.chinesesuperleague.data.StatContract;
+import tom.chinesesuperleague.data.StatDBHelper;
 
 public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = CSLSyncAdapter.class.getSimpleName();
@@ -37,9 +39,9 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
     //TODO: Research and reset SYNC interval.
 
-
     private String playerName;
     private String playerTag;
+    StatDBHelper mOpenHelper;
 
     public CSLSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -51,6 +53,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             ArrayList<String[]> playerStat = new ArrayList<>();
             playerTag = Roster.getPreferredPlayer(getContext());
             playerName = Roster.roster.get(playerTag);
+
 
             Document doc;
             Elements tableContentEles = null;
@@ -75,10 +78,10 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 }
                 playerStat.add(playerMatchStat);
             }
-        addPlayerBio(playerTag);
         getPlayerStat(playerStat);
+        addPlayerBio(playerTag);
 
-        }
+    }
 
     private void getPlayerStat(ArrayList<String[]> playerStat){
 
@@ -160,17 +163,21 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
         ContentValues bioValues = new ContentValues();
 
-        Cursor bioCursor = getContext().getContentResolver().query(
-                //StatContract.BioEntry.CONTENT_URI,
-                StatContract.BioEntry.buildBioUri(playerTag),
-                new String[]{StatContract.BioEntry.COLUMN_TAG},
-                StatContract.BioEntry.COLUMN_TAG + " = ?",
-                new String[]{playerTag},
-                null);
+//
+//        SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+//        Cursor biocheck = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"+"bio"+"'", null);
 
-            if (bioCursor.moveToFirst()) {
-                Log.d(LOG_TAG,"player bio exists.");
-            } else {
+//        Cursor bioCursor = getContext().getContentResolver().query(
+//                //StatContract.BioEntry.CONTENT_URI,
+//                StatContract.BioEntry.buildBioUri(playerTag),
+//                new String[]{StatContract.BioEntry.COLUMN_TAG},
+//                StatContract.BioEntry.COLUMN_TAG + " = ?",
+//                new String[]{playerTag},
+//                null);
+
+//            if (bioCursor.moveToFirst()) {
+//                Log.d(LOG_TAG,"player bio exists.");
+//            } else {
                 Log.d(LOG_TAG,"new player.");
                 String[] playerBio = getPlayerBio(playerTag);
                 // Now that the content provider is set up, inserting rows of data is pretty simple.
@@ -194,9 +201,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                     inserted = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(playerTag), bioValues);
                 }
                 Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
-            }
-            bioCursor.close();
-            // Wait, that worked?  Yes!
+            //}
+            //bioCursor.close();
 
         return;
         }

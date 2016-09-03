@@ -1,0 +1,83 @@
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_main_grid_bio"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="2"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:text="Nation"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_main_nation"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/primary_text"
+        android:text="中国"
+        app:layout_gravity="fill"/>
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Age"
+        android:textSize="20dp"
+        android:textColor="@color/primary_text"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1"/>
+
+    <TextView
+        android:id="@+id/fragment_main_age"
+        android:gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="25"
+        app:layout_gravity="center"/>
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Potision"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_main_position"
+        android:gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="forward"
+        app:layout_gravity="center"/>
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="Height"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_main_height"
+        android:gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="176cm"
+        app:layout_gravity="center"/>
+
+</android.support.v7.widget.GridLayout>

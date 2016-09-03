@@ -13,7 +13,7 @@ import android.text.Spannable;
 public class PagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] {"News","Player", "Match"};
+    private String tabTitles[] = new String[] {"NEWS","PLAYER", "MATCH"};
     private Context context;
     private Fragment mCurrentFragment;
 

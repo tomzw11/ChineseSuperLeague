@@ -42,8 +42,8 @@ public class StatProvider extends ContentProvider{
         sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
 
         sPlayerWithBioSettingQueryBuilder.setTables(
-                StatContract.StatEntry.TABLE_NAME + " INNER JOIN " +
-                        StatContract.BioEntry.TABLE_NAME +
+                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
+                        StatContract.StatEntry.TABLE_NAME +
                         " ON " + StatContract.StatEntry.TABLE_NAME +
                         "." + StatContract.StatEntry.COLUMN_PLAYER +
                         " = " + StatContract.BioEntry.TABLE_NAME +
@@ -63,7 +63,6 @@ public class StatProvider extends ContentProvider{
         matcher.addURI(authority, StatContract.PATH_PLAYER + "/*/*", PLAYER_WITH_DATE);
         matcher.addURI(authority, StatContract.PATH_BIO + "/*", BIO);
 
-
         return matcher;
     }
 
@@ -75,52 +74,36 @@ public class StatProvider extends ContentProvider{
         selectionArgs = new String[]{bioSetting};
 
         String selection = sBioSettingSelection;
-
-        //System.out.println("StatProvider player selection: "+selection);
-
+//
+//        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
+//                projection,
+//                selection,
+//                selectionArgs,
+//                null,
+//                null,
+//                sortOrder
+//        );
+//
         return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
                 projection,
                 selection,
                 selectionArgs,
                 null,
                 null,
-                sortOrder
+                null
         );
     }
 
-    //Replaced by getPlayerWithBio which includes more information on player.
     private Cursor getStatByPlayer(Uri uri, String[] projection, String sortOrder) {
 
         String playerSetting = StatContract.StatEntry.getPlayerSettingFromUri(uri);
-        //System.out.println("playerSetting: "+playerSetting);
 
         String[] selectionArgs;
         selectionArgs = new String[]{playerSetting};
 
         String selection = sPlayerSettingSelection;
 
-        //System.out.println("StatProvider player selection: "+selection);
-
         return mOpenHelper.getReadableDatabase().query(StatContract.StatEntry.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder
-        );
-    }
-
-    private Cursor getPlayerWithBio(Uri uri, String[] projection, String sortOrder) {
-        String playerSetting = StatContract.StatEntry.getPlayerSettingFromUri(uri);
-
-        String[] selectionArgs;
-        String selection;
-
-            selection = sPlayerSettingSelection;
-            selectionArgs = new String[]{playerSetting};
-
-        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
                 selection,
                 selectionArgs,
@@ -186,8 +169,7 @@ public class StatProvider extends ContentProvider{
         Cursor retCursor;
         switch (sUriMatcher.match(uri)){
             case PLAYER:{
-//                retCursor = getStatByPlayer(uri,projection,sortOrder);
-                retCursor = getPlayerWithBio(uri,projection,sortOrder);
+                retCursor = getStatByPlayer(uri,projection,sortOrder);
                 break;
             }
             case BIO:{

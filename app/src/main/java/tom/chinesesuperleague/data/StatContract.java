@@ -14,10 +14,12 @@ public class StatContract {
     public static final String PATH_PLAYER = "player";
     public static final String PATH_BIO = "bio";
 
+
     public static final class BioEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_BIO).build();
+
 
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_BIO;
@@ -26,14 +28,13 @@ public class StatContract {
             return CONTENT_URI.buildUpon().appendPath(tag).build();
         }
 
+
         public static String getBioSettingFromUri(Uri uri) {
             return uri.getPathSegments().get(1);
         }
 
         // Table name
         public static final String TABLE_NAME = "bio";
-
-
         public static final String COLUMN_TAG = "player_tag";
         public static final String COLUMN_ENAME = "player_english_name";
         public static final String COLUMN_CNAME = "player_chinsese_name";
@@ -52,10 +53,6 @@ public class StatContract {
 
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLAYER).build();
-
-        public static Uri buildDateUri(long id) {
-            return CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
-        }
 
         public static Uri buildStatUriWithName(String name){
 
@@ -77,9 +74,6 @@ public class StatContract {
 
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
-
-//        public static final String CONTENT_ITEM_TYPE =
-//                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PLAYER;
 
         public static final String TABLE_NAME = "stat";
 
@@ -107,5 +101,4 @@ public class StatContract {
         public static final String COLUMN_RATING = "rating";
 
     }
-
 }

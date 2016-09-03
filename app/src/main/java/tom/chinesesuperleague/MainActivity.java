@@ -120,18 +120,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return super.onOptionsItemSelected(item);
     }
 
-    public void displayGraph(View view) {
-
-//        Intent intent = new Intent(this, SearchActivity.class);
+//    //For action button.
+//    public void displayGraph(View view) {
 //
-//        ActivityOptionsCompat activityOptions =
-//                ActivityOptionsCompat.makeSceneTransitionAnimation(this);
-//        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
-
-            FragmentManager fm = getSupportFragmentManager();
-            FormFragment formFragment = FormFragment.newInstance();
-            formFragment.show(fm, "fragment_alert");
-    }
+////        Intent intent = new Intent(this, SearchActivity.class);
+////
+////        ActivityOptionsCompat activityOptions =
+////                ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+////        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
+//
+//            FragmentManager fm = getSupportFragmentManager();
+//            FormFragment formFragment = FormFragment.newInstance();
+//            formFragment.show(fm, "fragment_alert");
+//    }
 
 
 }
