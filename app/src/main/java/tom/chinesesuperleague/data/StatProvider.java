@@ -1,6 +1,5 @@
 package tom.chinesesuperleague.data;
 
-
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -36,19 +35,19 @@ public class StatProvider extends ContentProvider{
                     "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? AND "
             + StatContract.StatEntry.COLUMN_DATE + " = ? ";
 
-    private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
-
-    static{
-        sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
-
-        sPlayerWithBioSettingQueryBuilder.setTables(
-                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
-                        StatContract.StatEntry.TABLE_NAME +
-                        " ON " + StatContract.StatEntry.TABLE_NAME +
-                        "." + StatContract.StatEntry.COLUMN_PLAYER +
-                        " = " + StatContract.BioEntry.TABLE_NAME +
-                        "." + StatContract.BioEntry.COLUMN_TAG);
-    }
+//    private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
+//
+//    static{
+//        sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
+//
+//        sPlayerWithBioSettingQueryBuilder.setTables(
+//                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
+//                        StatContract.StatEntry.TABLE_NAME +
+//                        " ON " + StatContract.StatEntry.TABLE_NAME +
+//                        "." + StatContract.StatEntry.COLUMN_PLAYER +
+//                        " = " + StatContract.BioEntry.TABLE_NAME +
+//                        "." + StatContract.BioEntry.COLUMN_TAG);
+//    }
 
     static UriMatcher buildUriMatcher() {
 
@@ -74,7 +73,7 @@ public class StatProvider extends ContentProvider{
         selectionArgs = new String[]{bioSetting};
 
         String selection = sBioSettingSelection;
-//
+
 //        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
 //                projection,
 //                selection,
@@ -83,7 +82,7 @@ public class StatProvider extends ContentProvider{
 //                null,
 //                sortOrder
 //        );
-//
+
         return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
                 projection,
                 selection,

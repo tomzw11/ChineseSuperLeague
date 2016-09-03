@@ -45,7 +45,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="sans-serif"
                             android:textStyle="bold"
-                            android:gravity="bottom|center_horizontal"
+                            android:gravity="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
                             android:textColor="@color/primary_text"
                             />
@@ -58,7 +58,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
                             android:textStyle="bold"
-                            android:gravity="top|center_horizontal"
+                            android:gravity="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
                             android:textColor="@color/primary_text"
                             />
@@ -86,7 +86,7 @@
                             android:id="@+id/main_team_icon"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_gravity="left|center"
+                            android:layout_gravity="center"
                             android:layout_height="40dp"
                             />
 
@@ -96,7 +96,7 @@
                             android:gravity="center|left"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="2"
+                            android:layout_weight="1"
                             android:textSize="16dp"
                             android:fontFamily="sans-serif"
                             android:textColor="@color/primary_text"
