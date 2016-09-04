@@ -48,10 +48,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.StatEntry.COLUMN_GOAL,
             StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry.COLUMN_RATING,
-            StatContract.StatEntry._ID
-    };
 
-    private static final String[] BIO_COLUMNS = {
 
             StatContract.BioEntry.COLUMN_POSITION,
             StatContract.BioEntry.COLUMN_AGE,
@@ -63,20 +60,18 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     };
 
     public static final int STAT_LOADER_MAIN = 0;
-    public static final int BIO_LOADER_MAIN = 1;
-
 
     public static final int COL_TEAM = 0;
     public static final int COL_GOAL = 1;
     public static final int COL_PLAYER = 2;
     public static final int COL_RATING = 3;
 
-    public static final int COL_POSITION = 0;
-    public static final int COL_AGE = 1;
-    public static final int COL_HEIGHT = 2;
-    public static final int COL_NATION = 3;
-    public static final int COL_LNAME = 4;
-    public static final int COL_CNAME = 5;
+    public static final int COL_POSITION = 4;
+    public static final int COL_AGE = 5;
+    public static final int COL_HEIGHT = 6;
+    public static final int COL_NATION = 7;
+    public static final int COL_LNAME = 8;
+    public static final int COL_CNAME = 9;
 
 
 
@@ -128,7 +123,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     void onPlayerChanged( ) {
         updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
-        getLoaderManager().restartLoader(BIO_LOADER_MAIN, null, this);
 
     }
 
@@ -146,7 +140,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         getLoaderManager().initLoader(STAT_LOADER_MAIN, null, this);
-        getLoaderManager().initLoader(BIO_LOADER_MAIN, null, this);
 
 
         super.onActivityCreated(savedInstanceState);
@@ -155,9 +148,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     @Override
     public Loader<Cursor> onCreateLoader(int loader_id, Bundle bundle) {
 
-        if(loader_id == STAT_LOADER_MAIN ){
-            String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-            Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
+
+            Uri statForPlayerUri = StatContract.BioEntry.buildBioUri(Roster.getPreferredPlayer(getActivity()));
 
             return new CursorLoader(
                     getActivity(),
@@ -165,52 +157,55 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                     STAT_COLUMNS,
                     null,
                     null,
-                    sortOrder);
-        }else{
-
-            String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
-            Uri statForPlayerUri = StatContract.BioEntry.buildBioUri(Roster.getPreferredPlayer(getActivity()));
-
-            return new CursorLoader(
-                    getActivity(),
-                    statForPlayerUri,
-                    BIO_COLUMNS,
-                    null,
-                    null,
-                    sortOrder);
-        }
+                    null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
-        if(cursorLoader.getId() == STAT_LOADER_MAIN){
+        if (cursor == null || !cursor.moveToFirst()) { return; }
 
-            if (cursor == null || !cursor.moveToFirst()) { return; }
+        final String player = cursor.getString(COL_PLAYER);
+        String team = cursor.getString(COL_TEAM);
+        String rating_last = (cursor.getString(COL_RATING));
 
-            final String player = cursor.getString(COL_PLAYER);
-            String team = cursor.getString(COL_TEAM);
-            String rating_last = (cursor.getString(COL_RATING));
-
-            final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
-            main_predict_rating.setSolidColor("#FF9800");
+        final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
+        main_predict_rating.setSolidColor("#FF9800");
 
 //        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.displayGraph);
 //        fab.setSize(FloatingActionButton.SIZE_MINI);
 
-            ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
+        TextView tv_lname = (TextView)getView().findViewById(R.id.main_lname);
+        tv_lname.setText(cursor.getString(COL_LNAME));
 
-            imageView.setImageResource(Roster.getImageForPlayer(player));
+        TextView tv_cname = (TextView)getView().findViewById(R.id.main_cname);
+        tv_cname.setText(cursor.getString(COL_CNAME));
 
-            TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
-            tv_team.setText(team);
+        TextView tv_nation = (TextView)getView().findViewById(R.id.fragment_main_nation);
+        tv_nation.setText(cursor.getString(COL_NATION));
 
-            ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
-            imageView1.setImageResource(Roster.getBadgeForTeam(team));
+        TextView tv_position = (TextView)getView().findViewById(R.id.fragment_main_position);
+        tv_position.setText(cursor.getString(COL_POSITION));
 
-            TextView tv_app = (TextView)getView().findViewById(R.id.fragment_main_appearance);
-            String season_app = Integer.toString(cursor.getCount());
-            tv_app.setText(season_app);
+        TextView tv_age = (TextView)getView().findViewById(R.id.fragment_main_age);
+        tv_age.setText(cursor.getString(COL_AGE));
+
+        TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
+        tv_height.setText(cursor.getString(COL_HEIGHT));
+
+        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
+
+        imageView.setImageResource(Roster.getImageForPlayer(player));
+
+        TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
+        tv_team.setText(team);
+
+        ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
+        imageView1.setImageResource(Roster.getBadgeForTeam(team));
+
+        TextView tv_app = (TextView)getView().findViewById(R.id.fragment_main_appearance);
+        String season_app = Integer.toString(cursor.getCount());
+        tv_app.setText(season_app);
 
             int number_of_goals = 0;
             double rating_sum = 0;
@@ -335,30 +330,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 }
 
             });
-
-        }else{
-
-            if (cursor == null || !cursor.moveToFirst()) { return; }
-
-            TextView tv_lname = (TextView)getView().findViewById(R.id.main_lname);
-            tv_lname.setText(cursor.getString(COL_LNAME));
-
-            TextView tv_cname = (TextView)getView().findViewById(R.id.main_cname);
-            tv_cname.setText(cursor.getString(COL_CNAME));
-
-            TextView tv_nation = (TextView)getView().findViewById(R.id.fragment_main_nation);
-            tv_nation.setText(cursor.getString(COL_NATION));
-
-            TextView tv_position = (TextView)getView().findViewById(R.id.fragment_main_position);
-            tv_position.setText(cursor.getString(COL_POSITION));
-
-            TextView tv_age = (TextView)getView().findViewById(R.id.fragment_main_age);
-            tv_age.setText(cursor.getString(COL_AGE));
-
-            TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
-            tv_height.setText(cursor.getString(COL_HEIGHT));
-
-        }
 
     }
 

@@ -14,7 +14,7 @@ import tom.chinesesuperleague.data.StatContract.BioEntry;
 public class StatDBHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 6;
 
     static final String DATABASE_NAME = "stat.db";
 
@@ -27,7 +27,8 @@ public class StatDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         final String SQL_CREATE_BIO_TABLE = "CREATE TABLE " + BioEntry.TABLE_NAME + " (" +
-                BioEntry.COLUMN_TAG + " INTEGER PRIMARY KEY," +
+                BioEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                BioEntry.COLUMN_TAG + " REAL NOT NULL," +
                 BioEntry.COLUMN_ENAME + " REAL NOT NULL, " +
                 BioEntry.COLUMN_CNAME + " REAL NOT NULL, " +
                 BioEntry.COLUMN_LNAME + " REAL NOT NULL, " +

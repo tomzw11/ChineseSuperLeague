@@ -14,7 +14,6 @@ public class Roster {
     public static final Map<String,String> roster = new HashMap<String,String>(){
 
         {
-
             //天津泰达
             put("113067","宗磊");
             put("180532","杜佳");

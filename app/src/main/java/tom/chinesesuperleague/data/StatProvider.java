@@ -34,21 +34,21 @@ public class StatProvider extends ContentProvider{
     private static final String sPlayerSettingAndDateSelection =
             StatContract.StatEntry.TABLE_NAME+
                     "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? AND "
-            + StatContract.StatEntry.COLUMN_DATE + " = ? ";
+                    + StatContract.StatEntry.COLUMN_DATE + " = ? ";
 
-//    private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
-//
-//    static{
-//        sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
-//
-//        sPlayerWithBioSettingQueryBuilder.setTables(
-//                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
-//                        StatContract.StatEntry.TABLE_NAME +
-//                        " ON " + StatContract.StatEntry.TABLE_NAME +
-//                        "." + StatContract.StatEntry.COLUMN_PLAYER +
-//                        " = " + StatContract.BioEntry.TABLE_NAME +
-//                        "." + StatContract.BioEntry.COLUMN_TAG);
-//    }
+    private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
+
+    static{
+        sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
+
+        sPlayerWithBioSettingQueryBuilder.setTables(
+                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
+                        StatContract.StatEntry.TABLE_NAME +
+                        " ON " + StatContract.StatEntry.TABLE_NAME +
+                        "." + StatContract.StatEntry.COLUMN_PLAYER +
+                        " = " + StatContract.BioEntry.TABLE_NAME +
+                        "." + StatContract.BioEntry.COLUMN_TAG);
+    }
 
     static UriMatcher buildUriMatcher() {
 
@@ -75,23 +75,23 @@ public class StatProvider extends ContentProvider{
 
         String selection = sBioSettingSelection;
 
-//        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
-//                projection,
-//                selection,
-//                selectionArgs,
-//                null,
-//                null,
-//                sortOrder
-//        );
-
-        return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
+        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
                 selection,
                 selectionArgs,
                 null,
                 null,
-                null
+                sortOrder
         );
+
+//        return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
+//                projection,
+//                selection,
+//                selectionArgs,
+//                null,
+//                null,
+//                null
+//        );
     }
 
     private Cursor getStatByPlayer(Uri uri, String[] projection, String sortOrder) {
@@ -272,22 +272,22 @@ public class StatProvider extends ContentProvider{
     @Override
     public int bulkInsert(Uri uri, ContentValues[] values) {
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-                db.beginTransaction();
-                int returnCount = 0;
-                try {
-                    for (ContentValues value : values) {
+        db.beginTransaction();
+        int returnCount = 0;
+        try {
+            for (ContentValues value : values) {
 
-                        long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, value);
+                long _id = db.insert(StatContract.StatEntry.TABLE_NAME, null, value);
 
-                        if (_id != -1) {
-                            returnCount++;
-                        }
-                    }
-                    db.setTransactionSuccessful();
-                } finally {
-                    db.endTransaction();
+                if (_id != -1) {
+                    returnCount++;
                 }
-                getContext().getContentResolver().notifyChange(uri, null);
+            }
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+        getContext().getContentResolver().notifyChange(uri, null);
 
 //        String countQuery = "SELECT  * FROM " + StatContract.StatEntry.TABLE_NAME;
 //        Cursor cursor = db.rawQuery(countQuery, null);
