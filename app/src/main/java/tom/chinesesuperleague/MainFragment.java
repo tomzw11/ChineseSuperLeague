@@ -45,7 +45,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,
-            StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry.COLUMN_GOAL,
             StatContract.StatEntry.COLUMN_PLAYER,
             StatContract.StatEntry.COLUMN_RATING,
@@ -59,7 +58,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.BioEntry.COLUMN_HEIGHT,
             StatContract.BioEntry.COLUMN_NATION,
             StatContract.BioEntry.COLUMN_LNAME,
-            StatContract.BioEntry.COLUMN_ENAME,
+            StatContract.BioEntry.COLUMN_CNAME
 
     };
 
@@ -68,17 +67,16 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
     public static final int COL_TEAM = 0;
-    public static final int COL_CNAME = 1;
-    public static final int COL_GOAL = 2;
-    public static final int COL_PLAYER = 3;
-    public static final int COL_RATING = 4;
+    public static final int COL_GOAL = 1;
+    public static final int COL_PLAYER = 2;
+    public static final int COL_RATING = 3;
 
     public static final int COL_POSITION = 0;
     public static final int COL_AGE = 1;
     public static final int COL_HEIGHT = 2;
     public static final int COL_NATION = 3;
     public static final int COL_LNAME = 4;
-    public static final int COL_ENAME = 5;
+    public static final int COL_CNAME = 5;
 
 
 
@@ -203,9 +201,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
 
             imageView.setImageResource(Roster.getImageForPlayer(player));
-
-            TextView tv_cname = (TextView)getView().findViewById(R.id.main_cname);
-            tv_cname.setText(cursor.getString(COL_CNAME));
 
             TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
             tv_team.setText(team);
@@ -347,6 +342,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
             TextView tv_lname = (TextView)getView().findViewById(R.id.main_lname);
             tv_lname.setText(cursor.getString(COL_LNAME));
+
+            TextView tv_cname = (TextView)getView().findViewById(R.id.main_cname);
+            tv_cname.setText(cursor.getString(COL_CNAME));
 
             TextView tv_nation = (TextView)getView().findViewById(R.id.fragment_main_nation);
             tv_nation.setText(cursor.getString(COL_NATION));

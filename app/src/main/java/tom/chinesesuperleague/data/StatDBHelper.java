@@ -72,9 +72,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);
-        System.out.println("stat table created");
         sqLiteDatabase.execSQL(SQL_CREATE_BIO_TABLE);
-        System.out.println("bio table created");
     }
 
     @Override

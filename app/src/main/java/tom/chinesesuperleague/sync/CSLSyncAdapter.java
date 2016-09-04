@@ -50,39 +50,38 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
-            ArrayList<String[]> playerStat = new ArrayList<>();
-            playerTag = Roster.getPreferredPlayer(getContext());
-            playerName = Roster.roster.get(playerTag);
+        ArrayList<String[]> playerStat = new ArrayList<>();
+        playerTag = Roster.getPreferredPlayer(getContext());
+        playerName = Roster.roster.get(playerTag);
+        //TODO:remove playerName.
+
 
         addPlayerBio(playerTag);
 
+        Document doc;
+        Elements tableContentEles = null;
+        int numberOfMatches = 0;
 
-            Document doc;
-            Elements tableContentEles = null;
-            int numberOfMatches = 0;
+        if(playerTag.length()==0)return;
 
-            if(playerTag.length()==0)return;
+        String url = Roster.urlBuilder(playerTag);
+        try {
+            doc = Jsoup.connect(url).timeout(60000).get();
+            tableContentEles = doc.select("td");
+            numberOfMatches = tableContentEles.size() / 19 - 1;
 
-            String url = Roster.urlBuilder(playerTag);
-            try {
-                doc = Jsoup.connect(url).timeout(60000).get();
-                tableContentEles = doc.select("td");
-                numberOfMatches = tableContentEles.size() / 19 - 1;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            } catch (IOException e) {
-                e.printStackTrace();
+        for (int j = 0; j < numberOfMatches; j++) {
+            String[] playerMatchStat = new String[19];
+            for (int i = 0; i < 19; i++) {
+                playerMatchStat[i] = tableContentEles.get(i + j * 19).text();
             }
-
-            for (int j = 0; j < numberOfMatches; j++) {
-                String[] playerMatchStat = new String[19];
-                for (int i = 0; i < 19; i++) {
-                    playerMatchStat[i] = tableContentEles.get(i + j * 19).text();
-                }
-                playerStat.add(playerMatchStat);
-            }
+            playerStat.add(playerMatchStat);
+        }
         getPlayerStat(playerStat);
-
-
 
     }
 
@@ -96,6 +95,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
             statValues.put(StatContract.StatEntry.COLUMN_PLAYER,playerTag);
             statValues.put(StatContract.StatEntry.COLUMN_CNAME,playerName);
+            //TODO:remove CNAME since it is replaced by bio now.
             statValues.put(StatContract.StatEntry.COLUMN_DATE,playerStat.get(i)[0]);
             statValues.put(StatContract.StatEntry.COLUMN_GAME,playerStat.get(i)[1]);
             statValues.put(StatContract.StatEntry.COLUMN_TEAM,playerStat.get(i)[2]);
@@ -130,7 +130,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             statVector.toArray(cvArray);
             inserted = getContext().getContentResolver().bulkInsert(StatContract.StatEntry.CONTENT_URI, cvArray);
         }
-        Log.d(LOG_TAG, "SyncAdapter FetchStatTask Complete. " + inserted + " Inserted");
+        Log.d(LOG_TAG, "SyncAdapter Complete. " + inserted + " Stat Inserted");
         return;
 
     }
@@ -149,7 +149,6 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         try {
             doc_bio = Jsoup.connect(url).timeout(60000).get();
             tableContentEles_bio = doc_bio.select(".t dd");
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,9 +174,9 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                 null);
 
             if (bioCursor.moveToFirst()) {
-                Log.d(LOG_TAG,"player bio exists.");
+//                Log.d(LOG_TAG,"player bio exists.");
             } else {
-                Log.d(LOG_TAG,"new player.");
+//                Log.d(LOG_TAG,"new player.");
                 String[] playerBio = getPlayerBio(playerTag);
                 // Now that the content provider is set up, inserting rows of data is pretty simple.
                 // First create a ContentValues object to hold the data you want to insert.
@@ -199,7 +198,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
                     inserted = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(playerTag), bioValues);
                 }
-                Log.d(LOG_TAG, "SyncAdapter BioStatTask Complete. " + inserted + " Inserted Uri");
+//                Log.d(LOG_TAG, "SyncAdapter Complete. " + inserted + " Bio Inserted Uri");
             }
             bioCursor.close();
 

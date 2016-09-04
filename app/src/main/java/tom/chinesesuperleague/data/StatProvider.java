@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
@@ -135,7 +136,14 @@ public class StatProvider extends ContentProvider{
     @Override
     public boolean onCreate() {
         mOpenHelper = new StatDBHelper(getContext());
-        return true;
+
+        try {
+            mOpenHelper.getReadableDatabase();
+        }
+        catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return false;
     }
 
     @Override
