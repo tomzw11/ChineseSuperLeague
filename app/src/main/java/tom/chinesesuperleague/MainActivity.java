@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     ("android:switcher:"+R.id.viewpager+":"+"2");
 
                 if (mainFragment != null && fetchFragment != null){
+System.out.println("onresumed");
 
                     mainFragment.onPlayerChanged();
                     fetchFragment.onPlayerChanged();

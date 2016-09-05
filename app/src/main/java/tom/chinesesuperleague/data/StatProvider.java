@@ -75,23 +75,23 @@ public class StatProvider extends ContentProvider{
 
         String selection = sBioSettingSelection;
 
-//        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
-//                projection,
-//                selection,
-//                selectionArgs,
-//                null,
-//                null,
-//                sortOrder
-//        );
-
-        return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
+        return sPlayerWithBioSettingQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
                 selection,
                 selectionArgs,
                 null,
                 null,
-                null
+                sortOrder
         );
+
+//        return mOpenHelper.getReadableDatabase().query(StatContract.BioEntry.TABLE_NAME,
+//                projection,
+//                selection,
+//                selectionArgs,
+//                null,
+//                null,
+//                null
+//        );
     }
 
     private Cursor getStatByPlayer(Uri uri, String[] projection, String sortOrder) {

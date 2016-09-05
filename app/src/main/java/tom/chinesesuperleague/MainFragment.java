@@ -2,6 +2,7 @@ package tom.chinesesuperleague;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
@@ -62,6 +63,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     };
 
     public static final int STAT_LOADER_MAIN = 0;
+    public static final int STAT_LOADER_MAIN_REFRESH = 1;
+
 
 //    public static final int COL_TEAM = 0;
 //    public static final int COL_GOAL = 1;
@@ -128,10 +131,13 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged( ) {
         updateStat();
+        System.out.println("onplayerchanged");
 
-        getLoaderManager().restartLoader(STAT_LOADER_MAIN, null, this);
-        Log.d(LOG_TAG,"loader restart");
 
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.detach(this).attach(this).commit();
+//        getLoaderManager().initLoader(STAT_LOADER_MAIN, null, this);
+        getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
 
 
     }
@@ -160,9 +166,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
             Uri statForPlayerUri = StatContract.BioEntry.buildBioUri(Roster.getPreferredPlayer(getActivity()));
-            System.out.println("oncreate Uri "+statForPlayerUri);
 
-            return new CursorLoader(
+        System.out.println(statForPlayerUri+" bio uri");
+
+        return new CursorLoader(
                     getActivity(),
                     statForPlayerUri,
                     STAT_COLUMNS,
@@ -175,7 +182,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
-
+System.out.println("onloaderfinished");
 //
 //        System.out.println("On finished " + cursor.getString(COL_CNAME));
 //
@@ -346,8 +353,11 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     }
 
+
+
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
+
 
     }
 

@@ -153,7 +153,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
 
         Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
-        System.out.println(statForPlayerUri+" fetch uri");
+
         return new CursorLoader(
                 getActivity(),
                 statForPlayerUri,
