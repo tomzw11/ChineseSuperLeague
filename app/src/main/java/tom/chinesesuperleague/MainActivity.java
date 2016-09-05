@@ -78,6 +78,8 @@ System.out.println("onresumed");
                     mainFragment.onPlayerChanged();
                     fetchFragment.onPlayerChanged();
                     preferPlayer = newPreferredPlayer;
+                    super.onResume();
+                    this.recreate();
                 }
         }
     }

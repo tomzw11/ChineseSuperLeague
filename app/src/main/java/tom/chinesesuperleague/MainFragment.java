@@ -136,8 +136,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 //        FragmentTransaction ft = getFragmentManager().beginTransaction();
 //        ft.detach(this).attach(this).commit();
-//        getLoaderManager().initLoader(STAT_LOADER_MAIN, null, this);
+//        getLoaderManager().initLoader(STAT_LOADER_MAIN_REFRESH, null, this);
+
+
+
         getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
+
 
 
     }
