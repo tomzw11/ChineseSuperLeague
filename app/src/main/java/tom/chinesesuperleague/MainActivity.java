@@ -73,13 +73,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     ("android:switcher:"+R.id.viewpager+":"+"2");
 
                 if (mainFragment != null && fetchFragment != null){
-System.out.println("onresumed");
 
                     mainFragment.onPlayerChanged();
                     fetchFragment.onPlayerChanged();
                     preferPlayer = newPreferredPlayer;
-                    super.onResume();
-                    this.recreate();
+
                 }
         }
     }
@@ -136,6 +134,8 @@ System.out.println("onresumed");
 //            FormFragment formFragment = FormFragment.newInstance();
 //            formFragment.show(fm, "fragment_alert");
 //    }
+
+
 
 
 }

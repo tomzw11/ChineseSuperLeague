@@ -14,7 +14,7 @@ import tom.chinesesuperleague.data.StatContract.BioEntry;
 public class StatDBHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 8;
 
     static final String DATABASE_NAME = "stat.db";
 
@@ -65,6 +65,13 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         StatEntry.COLUMN_YELLOW_CARD + " REAL NOT NULL, " +
                         StatEntry.COLUMN_RED_CARD + " REAL NOT NULL," +
                         StatEntry.COLUMN_RATING + " REAL NOT NULL," +
+
+                        StatEntry.COLUMN_LNAME + " REAL," +
+                        StatEntry.COLUMN_NATION + " REAL," +
+                        StatEntry.COLUMN_AGE + " REAL," +
+                        StatEntry.COLUMN_POSITION + " REAL," +
+                        StatEntry.COLUMN_HEIGHT + " REAL," +
+
 
                         // To assure the application have just one match per day
                         // per player, it's created a UNIQUE constraint with REPLACE strategy

@@ -55,7 +55,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         playerName = Roster.roster.get(playerTag);
         //TODO:remove playerName.
 
-        addPlayerBio(playerTag);
+        String[] outputBio = addPlayerBio(playerTag);
 
         Document doc;
         Elements tableContentEles = null;
@@ -80,11 +80,11 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             }
             playerStat.add(playerMatchStat);
         }
-        getPlayerStat(playerStat);
+        getPlayerStat(playerStat,outputBio);
 
     }
 
-    private void getPlayerStat(ArrayList<String[]> playerStat){
+    private void getPlayerStat(ArrayList<String[]> playerStat,String[] outputBio){
 
         Vector<ContentValues> statVector = new Vector<>(playerStat.size());
 
@@ -118,6 +118,11 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                     playerStat.get(i)[6],playerStat.get(i)[7],playerStat.get(i)[8],playerStat.get(i)[9],playerStat.get(i)[10],
                     playerStat.get(i)[11],playerStat.get(i)[12],playerStat.get(i)[13],playerStat.get(i)[14],playerStat.get(i)[15],
                     playerStat.get(i)[17],playerStat.get(i)[18]));
+            statValues.put(StatContract.StatEntry.COLUMN_LNAME,outputBio[0]);
+            statValues.put(StatContract.StatEntry.COLUMN_NATION,outputBio[1]);
+            statValues.put(StatContract.StatEntry.COLUMN_AGE,outputBio[2]);
+            statValues.put(StatContract.StatEntry.COLUMN_POSITION,outputBio[3]);
+            statValues.put(StatContract.StatEntry.COLUMN_HEIGHT,outputBio[4]);
 
             statVector.add(statValues);
         }
@@ -160,9 +165,10 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         return playerBio;
     }
 
-    private void addPlayerBio(String playerTag) {
+    private String[] addPlayerBio(String playerTag) {
 
         ContentValues bioValues = new ContentValues();
+        String[] outputBio = new String[5];
 
         Cursor bioCursor = getContext().getContentResolver().query(
                 //StatContract.BioEntry.CONTENT_URI,
@@ -180,6 +186,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             // Now that the content provider is set up, inserting rows of data is pretty simple.
             // First create a ContentValues object to hold the data you want to insert.
 
+            outputBio = new String[]{playerBio[1],playerBio[8],playerBio[6],playerBio[7],playerBio[4]};
             // Then add the data, along with the corresponding name of the data type,
             // so the content provider knows what kind of value is being inserted.
             bioValues.put(StatContract.BioEntry.COLUMN_TAG, playerTag);
@@ -200,7 +207,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 //                Log.d(LOG_TAG, "SyncAdapter Complete. " + inserted + " Bio Inserted Uri");
         }
         bioCursor.close();
-
+        return outputBio;
     }
 
     /**

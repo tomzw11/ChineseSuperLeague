@@ -62,16 +62,8 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
                             android:textColor="@color/primary_text"
                             />
-<!--
-                        <android.support.design.widget.FloatingActionButton
-                            android:id="@+id/displayGraph"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="40dp"
-                            android:layout_gravity="right|center"
-                            android:onClick="displayGraph"
-                            android:src="@drawable/ic_player_info_white_24dp" />
--->
+
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -156,6 +148,16 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         </LinearLayout>
+<!--
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/displayGraph"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right|bottom"
+            android:onClick="updateMain"
+            android:src="@drawable/ic_player_info_white_24dp" />
+
+            -->
 <!--
         <LinearLayout
             android:layout_width="match_parent"

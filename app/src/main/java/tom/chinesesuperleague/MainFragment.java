@@ -47,36 +47,34 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private static final String[] STAT_COLUMNS = {
 
-//            StatContract.StatEntry.COLUMN_TEAM,
-//            StatContract.StatEntry.COLUMN_GOAL,
-//            StatContract.StatEntry.COLUMN_PLAYER,
-//            StatContract.StatEntry.COLUMN_RATING,
+            StatContract.StatEntry.COLUMN_TEAM,
+            StatContract.StatEntry.COLUMN_GOAL,
+            StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_RATING,
 
-
-            StatContract.BioEntry.COLUMN_POSITION,
-            StatContract.BioEntry.COLUMN_AGE,
-            StatContract.BioEntry.COLUMN_HEIGHT,
-            StatContract.BioEntry.COLUMN_NATION,
-            StatContract.BioEntry.COLUMN_LNAME,
-            StatContract.BioEntry.COLUMN_CNAME
+            StatContract.StatEntry.COLUMN_POSITION,
+            StatContract.StatEntry.COLUMN_AGE,
+            StatContract.StatEntry.COLUMN_HEIGHT,
+            StatContract.StatEntry.COLUMN_NATION,
+            StatContract.StatEntry.COLUMN_LNAME,
+            StatContract.StatEntry.COLUMN_CNAME
 
     };
 
     public static final int STAT_LOADER_MAIN = 0;
-    public static final int STAT_LOADER_MAIN_REFRESH = 1;
 
 
-//    public static final int COL_TEAM = 0;
-//    public static final int COL_GOAL = 1;
-//    public static final int COL_PLAYER = 2;
-//    public static final int COL_RATING = 3;
+    public static final int COL_TEAM = 0;
+    public static final int COL_GOAL = 1;
+    public static final int COL_PLAYER = 2;
+    public static final int COL_RATING = 3;
 
-    public static final int COL_POSITION = 0;
-    public static final int COL_AGE = 1;
-    public static final int COL_HEIGHT = 2;
-    public static final int COL_NATION = 3;
-    public static final int COL_LNAME = 4;
-    public static final int COL_CNAME = 5;
+    public static final int COL_POSITION = 4;
+    public static final int COL_AGE = 5;
+    public static final int COL_HEIGHT = 6;
+    public static final int COL_NATION = 7;
+    public static final int COL_LNAME = 8;
+    public static final int COL_CNAME = 9;
 
     public static final String MAIN_RATING_PREF = "MainRatingPreferences";
     public static final String COIN = "Coin";
@@ -122,27 +120,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         CSLSyncAdapter.syncImmediately(getActivity());
     }
 
-    @Override
-    public void onStart() {
-
-        super.onStart();
-    }
 
     // since we read the location when we create the loader, all we need to do is restart things
-    void onPlayerChanged( ) {
+    void onPlayerChanged() {
         updateStat();
-        System.out.println("onplayerchanged");
-
-
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.detach(this).attach(this).commit();
-//        getLoaderManager().initLoader(STAT_LOADER_MAIN_REFRESH, null, this);
-
-
 
         getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
-
-
 
     }
 
@@ -169,9 +152,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public Loader<Cursor> onCreateLoader(int loader_id, Bundle bundle) {
 
 
-            Uri statForPlayerUri = StatContract.BioEntry.buildBioUri(Roster.getPreferredPlayer(getActivity()));
-
-        System.out.println(statForPlayerUri+" bio uri");
+            Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
 
         return new CursorLoader(
                     getActivity(),
@@ -186,13 +167,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
-System.out.println("onloaderfinished");
-//
-//        System.out.println("On finished " + cursor.getString(COL_CNAME));
-//
-//        final String player = cursor.getString(COL_PLAYER);
-//        String team = cursor.getString(COL_TEAM);
-//        String rating_last = (cursor.getString(COL_RATING));
+
+        final String player = cursor.getString(COL_PLAYER);
+        String team = cursor.getString(COL_TEAM);
+        String rating_last = (cursor.getString(COL_RATING));
 
 //        final RatingView main_predict_rating = (RatingView) getView().findViewById(R.id.main_predict_ratingView);
 //        main_predict_rating.setSolidColor("#FF9800");
@@ -218,52 +196,52 @@ System.out.println("onloaderfinished");
         TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
         tv_height.setText(cursor.getString(COL_HEIGHT));
 
-//        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
-//        imageView.setImageResource(Roster.getImageForPlayer(player));
-//
-//        TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
-//        tv_team.setText(team);
-//
-//        ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
-//        imageView1.setImageResource(Roster.getBadgeForTeam(team));
-//
-//        TextView tv_app = (TextView)getView().findViewById(R.id.fragment_main_appearance);
-//        String season_app = Integer.toString(cursor.getCount());
-//        tv_app.setText(season_app);
+        ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
+        imageView.setImageResource(Roster.getImageForPlayer(player));
+
+        TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
+        tv_team.setText(team);
+
+        ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
+        imageView1.setImageResource(Roster.getBadgeForTeam(team));
+
+        TextView tv_app = (TextView)getView().findViewById(R.id.fragment_main_appearance);
+        String season_app = Integer.toString(cursor.getCount());
+        tv_app.setText(season_app);
 
             int number_of_goals = 0;
             double rating_sum = 0;
             int rating_counter= 0;
             double[] recent_rating = new double[cursor.getCount()];
 
-//            try{
-//                cursor.moveToPosition(-1);
-//                while(cursor.moveToNext()){
-//                    number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
-//                    rating_sum += Double.valueOf(cursor.getString(COL_RATING));
-//                    recent_rating[rating_counter] = Double.valueOf(cursor.getString(COL_RATING));
-//                    //System.out.println("counter"+rating_counter+"rating"+recent_rating[rating_counter]);
-//                    rating_counter++;
-//                }
-//            }finally {
-//                TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_main_goal);
-//                tv_goal.setText(Integer.toString(number_of_goals));
-//
-//                String avg_rating = String.format("%.1f",rating_sum/rating_counter);
-//                RatingView main_rating = (RatingView) getView().findViewById(R.id.main_ratingView);
-//                main_rating.setText(avg_rating);
-//
-//                if(Double.valueOf(avg_rating)>=7){
-//
-//                    main_rating.setSolidColor("#4CAF50");
-//                }else if (Double.valueOf(avg_rating)>=5.5){
-//                    main_rating.setSolidColor("#FF9800");
-//                }else{
-//                    main_rating.setSolidColor("#F44336");
-//                }
-//
-//                cursor.close();
-//              }
+            try{
+                cursor.moveToPosition(-1);
+                while(cursor.moveToNext()){
+                    number_of_goals += Integer.valueOf(cursor.getString(COL_GOAL));
+                    rating_sum += Double.valueOf(cursor.getString(COL_RATING));
+                    recent_rating[rating_counter] = Double.valueOf(cursor.getString(COL_RATING));
+                    //System.out.println("counter"+rating_counter+"rating"+recent_rating[rating_counter]);
+                    rating_counter++;
+                }
+            }finally {
+                TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_main_goal);
+                tv_goal.setText(Integer.toString(number_of_goals));
+
+                String avg_rating = String.format("%.1f",rating_sum/rating_counter);
+                RatingView main_rating = (RatingView) getView().findViewById(R.id.main_ratingView);
+                main_rating.setText(avg_rating);
+
+                if(Double.valueOf(avg_rating)>=7){
+
+                    main_rating.setSolidColor("#4CAF50");
+                }else if (Double.valueOf(avg_rating)>=5.5){
+                    main_rating.setSolidColor("#FF9800");
+                }else{
+                    main_rating.setSolidColor("#F44336");
+                }
+
+                cursor.close();
+              }
 //            //TODO:Clear size when player setting switches.
 //            sharedPreferences_size = getContext().getSharedPreferences(SIZE, Context.MODE_PRIVATE);
 //            sharedPreferences_rating = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
@@ -356,8 +334,6 @@ System.out.println("onloaderfinished");
 //            });
 
     }
-
-
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {

@@ -99,6 +99,12 @@ public class StatContract {
         public static final String COLUMN_YELLOW_CARD = "yellow_card";
         public static final String COLUMN_RED_CARD = "red_card";
         public static final String COLUMN_RATING = "rating";
+        public static final String COLUMN_LNAME = "player_last_name";
+        public static final String COLUMN_NATION = "player_nationality";
+        public static final String COLUMN_AGE = "player_age";
+        public static final String COLUMN_POSITION = "player_position";
+        public static final String COLUMN_HEIGHT = "player_height";
+
 
     }
 }
