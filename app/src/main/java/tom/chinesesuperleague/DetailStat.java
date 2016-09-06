@@ -62,7 +62,7 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_KEY_PASS,
                 StatEntry.COLUMN_YELLOW_CARD,
                 StatEntry.COLUMN_RED_CARD,
-                StatEntry.COLUMN_PLAYER,
+                StatEntry.COLUMN_TAG,
                 StatEntry.COLUMN_CNAME,
                 StatEntry.COLUMN_FOUL,
                 StatEntry.COLUMN_FOULED,

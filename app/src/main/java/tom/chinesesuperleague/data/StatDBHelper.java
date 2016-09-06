@@ -14,7 +14,7 @@ import tom.chinesesuperleague.data.StatContract.BioEntry;
 public class StatDBHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     static final String DATABASE_NAME = "stat.db";
 
@@ -35,7 +35,9 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 BioEntry.COLUMN_NATION + " REAL NOT NULL, " +
                 BioEntry.COLUMN_AGE + " REAL NOT NULL, " +
                 BioEntry.COLUMN_POSITION + " REAL NOT NULL, " +
-                BioEntry.COLUMN_HEIGHT + " REAL NOT NULL " +
+                BioEntry.COLUMN_HEIGHT + " REAL NOT NULL, " +
+                BioEntry.COLUMN_NUMBER + " REAL NOT NULL " +
+
                 " );";
 
         final String SQL_CREATE_STAT_TABLE =
@@ -43,7 +45,7 @@ public class StatDBHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + StatEntry.TABLE_NAME + " (" +
 
                         StatEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        StatEntry.COLUMN_PLAYER + " REAL NOT NULL, " +
+                        StatEntry.COLUMN_TAG + " REAL NOT NULL, " +
                         StatEntry.COLUMN_CNAME + " REAL NOT NULL, " +
                         StatEntry.COLUMN_DATE + " REAL NOT NULL, " +
                         StatEntry.COLUMN_GAME + " REAL NOT NULL, " +
@@ -71,12 +73,12 @@ public class StatDBHelper extends SQLiteOpenHelper {
                         StatEntry.COLUMN_AGE + " REAL," +
                         StatEntry.COLUMN_POSITION + " REAL," +
                         StatEntry.COLUMN_HEIGHT + " REAL," +
-
+                        StatEntry.COLUMN_NUMBER + " REAL," +
 
                         // To assure the application have just one match per day
                         // per player, it's created a UNIQUE constraint with REPLACE strategy
 
-                        " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_PLAYER +
+                        " UNIQUE (" + StatEntry.COLUMN_DATE + "," + StatEntry.COLUMN_TAG +
                         ") ON CONFLICT REPLACE);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_STAT_TABLE);

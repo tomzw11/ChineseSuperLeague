@@ -43,7 +43,7 @@ public class StatContract {
         public static final String COLUMN_AGE = "player_age";
         public static final String COLUMN_POSITION = "player_position";
         public static final String COLUMN_HEIGHT = "player_height";
-
+        public static final String COLUMN_NUMBER = "player_number";
 
     }
 
@@ -78,7 +78,7 @@ public class StatContract {
         public static final String TABLE_NAME = "stat";
 
         public static final String COLUMN_CNAME = "cname";
-        public static final String COLUMN_PLAYER = "player";
+        public static final String COLUMN_TAG = "player_tag";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_GAME = "game";
         public static final String COLUMN_TEAM = "team";
@@ -104,6 +104,8 @@ public class StatContract {
         public static final String COLUMN_AGE = "player_age";
         public static final String COLUMN_POSITION = "player_position";
         public static final String COLUMN_HEIGHT = "player_height";
+        public static final String COLUMN_NUMBER = "player_number";
+
 
 
     }

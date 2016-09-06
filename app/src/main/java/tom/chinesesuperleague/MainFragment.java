@@ -49,7 +49,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_GOAL,
-            StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_RATING,
 
             StatContract.StatEntry.COLUMN_POSITION,
@@ -57,7 +57,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             StatContract.StatEntry.COLUMN_HEIGHT,
             StatContract.StatEntry.COLUMN_NATION,
             StatContract.StatEntry.COLUMN_LNAME,
-            StatContract.StatEntry.COLUMN_CNAME
+            StatContract.StatEntry.COLUMN_CNAME,
+            StatContract.StatEntry.COLUMN_NUMBER
 
     };
 
@@ -66,7 +67,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     public static final int COL_TEAM = 0;
     public static final int COL_GOAL = 1;
-    public static final int COL_PLAYER = 2;
+    public static final int COL_TAG = 2;
     public static final int COL_RATING = 3;
 
     public static final int COL_POSITION = 4;
@@ -75,6 +76,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final int COL_NATION = 7;
     public static final int COL_LNAME = 8;
     public static final int COL_CNAME = 9;
+    public static final int COL_NUMBER = 10;
+
 
     public static final String MAIN_RATING_PREF = "MainRatingPreferences";
     public static final String COIN = "Coin";
@@ -168,7 +171,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         if (cursor == null || !cursor.moveToFirst()) { return; }
 
-        final String player = cursor.getString(COL_PLAYER);
+        final String player_tag = cursor.getString(COL_TAG);
         String team = cursor.getString(COL_TEAM);
         String rating_last = (cursor.getString(COL_RATING));
 
@@ -184,7 +187,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         TextView tv_cname = (TextView)getView().findViewById(R.id.main_cname);
         tv_cname.setText(cursor.getString(COL_CNAME));
 
-        TextView tv_nation = (TextView)getView().findViewById(R.id.fragment_main_nation);
+        TextView tv_nation = (TextView)getView().findViewById(R.id.main_nation);
         tv_nation.setText(cursor.getString(COL_NATION));
 
         TextView tv_position = (TextView)getView().findViewById(R.id.fragment_main_position);
@@ -196,8 +199,14 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
         tv_height.setText(cursor.getString(COL_HEIGHT));
 
+        TextView tv_number = (TextView)getView().findViewById(R.id.fragment_main_number);
+        tv_number.setText(cursor.getString(COL_NUMBER));
+
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
-        imageView.setImageResource(Roster.getImageForPlayer(player));
+        imageView.setImageResource(Roster.getImageForPlayer(player_tag));
+
+        ImageView flagView  = (ImageView) getView().findViewById(R.id.main_nation_icon);
+        flagView.setImageResource(Roster.getFlagForNation(cursor.getString(COL_NATION)));
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
         tv_team.setText(team);

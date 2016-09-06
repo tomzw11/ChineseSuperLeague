@@ -36,7 +36,7 @@ public class FormFragment extends android.support.v4.app.DialogFragment {
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry.COLUMN_GOAL,
-            StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_RATING,
             StatContract.StatEntry._ID
     };

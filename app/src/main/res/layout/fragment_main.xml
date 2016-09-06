@@ -11,9 +11,9 @@
             android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:orientation="vertical"
-            android:layout_marginBottom="8dp"
+            android:background="@color/grey"
             >
 
             <LinearLayout
@@ -35,14 +35,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/main_cname"
                             android:text="拉尔夫"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:layout_height="match_parent"
                             android:fontFamily="sans-serif"
                             android:textStyle="bold"
                             android:gravity="center"
@@ -53,9 +53,9 @@
                         <TextView
                             android:id="@+id/main_lname"
                             android:text="RALF"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_weight="1"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:fontFamily="sans-serif"
                             android:textStyle="bold"
                             android:gravity="center"
@@ -96,18 +96,48 @@
                         
                     </LinearLayout>
 
-                    <include
-                        layout="@layout/fragment_main_gridview_bio"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="3"
-                        ></include>
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:id="@+id/main_nation_icon"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_height="40dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/main_nation"
+                            android:text="中国"
+                            android:gravity="center|left"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textSize="16dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/primary_text"
+                            />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+
+    <include
+        layout="@layout/fragment_main_gridview_bio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        ></include>
 
     <TextView
         android:background="@color/grey"
@@ -123,9 +153,10 @@
     <include layout="@layout/fragment_main_gridview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
+        android:layout_marginBottom="8dp"
         />
-
+<!--
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
@@ -148,7 +179,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         </LinearLayout>
-<!--
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/displayGraph"
             android:layout_width="40dp"
@@ -157,8 +188,8 @@
             android:onClick="updateMain"
             android:src="@drawable/ic_player_info_white_24dp" />
 
-            -->
-<!--
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,7 +267,7 @@
 
 
         </LinearLayout>
-        -->
+
 
 
 
@@ -249,7 +280,7 @@
     </LinearLayout>
 
 
-
+-->
 
     </LinearLayout>
 

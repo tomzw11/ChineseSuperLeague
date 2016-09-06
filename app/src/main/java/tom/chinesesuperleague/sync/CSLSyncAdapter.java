@@ -52,8 +52,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
         ArrayList<String[]> playerStat = new ArrayList<>();
         playerTag = Roster.getPreferredPlayer(getContext());
-        playerName = Roster.roster.get(playerTag);
-        //TODO:remove playerName.
+        //playerName = Roster.roster.get(playerTag);
 
         String[] outputBio = addPlayerBio(playerTag);
 
@@ -92,9 +91,8 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
             ContentValues statValues = new ContentValues();
 
-            statValues.put(StatContract.StatEntry.COLUMN_PLAYER,playerTag);
-            statValues.put(StatContract.StatEntry.COLUMN_CNAME,playerName);
-            //TODO:remove CNAME since it is replaced by bio now.
+            statValues.put(StatContract.StatEntry.COLUMN_TAG,playerTag);
+            statValues.put(StatContract.StatEntry.COLUMN_CNAME,outputBio[0]);
             statValues.put(StatContract.StatEntry.COLUMN_DATE,playerStat.get(i)[0]);
             statValues.put(StatContract.StatEntry.COLUMN_GAME,playerStat.get(i)[1]);
             statValues.put(StatContract.StatEntry.COLUMN_TEAM,playerStat.get(i)[2]);
@@ -118,11 +116,12 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
                     playerStat.get(i)[6],playerStat.get(i)[7],playerStat.get(i)[8],playerStat.get(i)[9],playerStat.get(i)[10],
                     playerStat.get(i)[11],playerStat.get(i)[12],playerStat.get(i)[13],playerStat.get(i)[14],playerStat.get(i)[15],
                     playerStat.get(i)[17],playerStat.get(i)[18]));
-            statValues.put(StatContract.StatEntry.COLUMN_LNAME,outputBio[0]);
-            statValues.put(StatContract.StatEntry.COLUMN_NATION,outputBio[1]);
-            statValues.put(StatContract.StatEntry.COLUMN_AGE,outputBio[2]);
-            statValues.put(StatContract.StatEntry.COLUMN_POSITION,outputBio[3]);
-            statValues.put(StatContract.StatEntry.COLUMN_HEIGHT,outputBio[4]);
+            statValues.put(StatContract.StatEntry.COLUMN_LNAME,outputBio[1]);
+            statValues.put(StatContract.StatEntry.COLUMN_NATION,outputBio[2]);
+            statValues.put(StatContract.StatEntry.COLUMN_AGE,outputBio[3]);
+            statValues.put(StatContract.StatEntry.COLUMN_POSITION,outputBio[4]);
+            statValues.put(StatContract.StatEntry.COLUMN_HEIGHT,outputBio[5]);
+            statValues.put(StatContract.StatEntry.COLUMN_NUMBER,outputBio[6]);
 
             statVector.add(statValues);
         }
@@ -168,45 +167,47 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     private String[] addPlayerBio(String playerTag) {
 
         ContentValues bioValues = new ContentValues();
-        String[] outputBio = new String[5];
+        String[] outputBio;
 
-        Cursor bioCursor = getContext().getContentResolver().query(
-                //StatContract.BioEntry.CONTENT_URI,
-                StatContract.BioEntry.buildBioUri(playerTag),
-                new String[]{StatContract.BioEntry.COLUMN_TAG},
-                StatContract.BioEntry.COLUMN_TAG + " = ?",
-                new String[]{playerTag},
-                null);
-
-        if (bioCursor.moveToFirst()) {
-//                Log.d(LOG_TAG,"player bio exists.");
-        } else {
-//                Log.d(LOG_TAG,"new player.");
+//        Cursor bioCursor = getContext().getContentResolver().query(
+//                //StatContract.BioEntry.CONTENT_URI,
+//                StatContract.BioEntry.buildBioUri(playerTag),
+//                new String[]{StatContract.BioEntry.COLUMN_TAG},
+//                StatContract.BioEntry.COLUMN_TAG + " = ?",
+//                new String[]{playerTag},
+//                null);
+//
+//        if (bioCursor.moveToFirst()) {
+////                Log.d(LOG_TAG,"player bio exists.");
+//        } else {
+////                Log.d(LOG_TAG,"new player.");
             String[] playerBio = getPlayerBio(playerTag);
-            // Now that the content provider is set up, inserting rows of data is pretty simple.
-            // First create a ContentValues object to hold the data you want to insert.
+//            // Now that the content provider is set up, inserting rows of data is pretty simple.
+//            // First create a ContentValues object to hold the data you want to insert.
 
-            outputBio = new String[]{playerBio[1],playerBio[8],playerBio[6],playerBio[7],playerBio[4]};
+            outputBio = new String[]{playerBio[0],playerBio[2],playerBio[8],playerBio[6],playerBio[7],playerBio[4],playerBio[10]};
             // Then add the data, along with the corresponding name of the data type,
             // so the content provider knows what kind of value is being inserted.
-            bioValues.put(StatContract.BioEntry.COLUMN_TAG, playerTag);
-            bioValues.put(StatContract.BioEntry.COLUMN_ENAME, playerBio[2]);
-            bioValues.put(StatContract.BioEntry.COLUMN_CNAME, playerBio[0]);
-            bioValues.put(StatContract.BioEntry.COLUMN_LNAME, playerBio[1]);
-            bioValues.put(StatContract.BioEntry.COLUMN_AGE, playerBio[6]);
-            bioValues.put(StatContract.BioEntry.COLUMN_HEIGHT, playerBio[4]);
-            bioValues.put(StatContract.BioEntry.COLUMN_NATION, playerBio[8]);
-            bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_TAG, playerTag);
+//            bioValues.put(StatContract.BioEntry.COLUMN_ENAME, playerBio[2]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_CNAME, playerBio[0]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_LNAME, playerBio[1]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_AGE, playerBio[6]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_HEIGHT, playerBio[4]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_NATION, playerBio[8]);
+//            bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7])
+//            bioValues.put(StatContract.BioEntry.COLUMN_NUMBER, playerBio[10]);
 
-            // add to database
-            Uri inserted = null;
-            if ( bioValues.size() > 0 ) {
 
-                inserted = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(playerTag), bioValues);
-            }
-//                Log.d(LOG_TAG, "SyncAdapter Complete. " + inserted + " Bio Inserted Uri");
-        }
-        bioCursor.close();
+//            // add to database
+//            Uri inserted = null;
+//            if ( bioValues.size() > 0 ) {
+//
+//                inserted = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(playerTag), bioValues);
+//            }
+////                Log.d(LOG_TAG, "SyncAdapter Complete. " + inserted + " Bio Inserted Uri");
+//        }
+//        bioCursor.close();
         return outputBio;
     }
 

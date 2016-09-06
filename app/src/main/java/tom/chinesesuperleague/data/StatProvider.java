@@ -25,7 +25,7 @@ public class StatProvider extends ContentProvider{
 
     private static final String sPlayerSettingSelection =
             StatContract.StatEntry.TABLE_NAME+
-                    "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? ";
+                    "." + StatContract.StatEntry.COLUMN_TAG + " = ? ";
 
     private static final String sBioSettingSelection =
             StatContract.BioEntry.TABLE_NAME+
@@ -33,7 +33,7 @@ public class StatProvider extends ContentProvider{
 
     private static final String sPlayerSettingAndDateSelection =
             StatContract.StatEntry.TABLE_NAME+
-                    "." + StatContract.StatEntry.COLUMN_PLAYER + " = ? AND "
+                    "." + StatContract.StatEntry.COLUMN_TAG + " = ? AND "
                     + StatContract.StatEntry.COLUMN_DATE + " = ? ";
 
     private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
@@ -45,7 +45,7 @@ public class StatProvider extends ContentProvider{
                 StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
                         StatContract.StatEntry.TABLE_NAME +
                         " ON " + StatContract.StatEntry.TABLE_NAME +
-                        "." + StatContract.StatEntry.COLUMN_PLAYER +
+                        "." + StatContract.StatEntry.COLUMN_TAG +
                         " = " + StatContract.BioEntry.TABLE_NAME +
                         "." + StatContract.BioEntry.COLUMN_TAG);
     }

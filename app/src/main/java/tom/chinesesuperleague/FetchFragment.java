@@ -34,7 +34,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_DATE,
             StatContract.StatEntry.COLUMN_TEAM,
             StatContract.StatEntry.COLUMN_SCORE,
-            StatContract.StatEntry.COLUMN_PLAYER,
+            StatContract.StatEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_OPPONENT,
             StatContract.StatEntry.COLUMN_CNAME,
             StatContract.StatEntry.COLUMN_HOME_AWAY,
