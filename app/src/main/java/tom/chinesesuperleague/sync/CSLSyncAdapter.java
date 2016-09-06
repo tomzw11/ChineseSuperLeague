@@ -114,7 +114,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             statValues.put(StatContract.StatEntry.COLUMN_RATING, Ratings.getRating(playerStat.get(i)[5],playerStat.get(i)[4],
                     playerStat.get(i)[6],playerStat.get(i)[7],playerStat.get(i)[8],playerStat.get(i)[9],playerStat.get(i)[10],
                     playerStat.get(i)[11],playerStat.get(i)[12],playerStat.get(i)[13],playerStat.get(i)[14],playerStat.get(i)[15],
-                    playerStat.get(i)[17],playerStat.get(i)[18]));
+                    playerStat.get(i)[17],playerStat.get(i)[18],outputBio[4],playerStat.get(i)[16]));
             statValues.put(StatContract.StatEntry.COLUMN_LNAME,outputBio[1]);
             statValues.put(StatContract.StatEntry.COLUMN_NATION,outputBio[2]);
             statValues.put(StatContract.StatEntry.COLUMN_AGE,outputBio[3]);
