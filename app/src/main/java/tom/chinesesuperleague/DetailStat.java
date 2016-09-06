@@ -144,7 +144,6 @@ public class DetailStat extends AppCompatActivity {
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
             if (!data.moveToFirst()) { return; }
-            //TODO:Modify team/player name strings to English.
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");

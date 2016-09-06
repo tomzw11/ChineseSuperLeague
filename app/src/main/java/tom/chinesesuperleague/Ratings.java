@@ -3,8 +3,6 @@ import java.lang.*;
 
 public class Ratings {
 
-    //TODO:Improve rating algorithm.
-
     public static String getRating(
                                 String score,String home_away,String appearance,String play_time,
                                 String shot,String shot_on_target,String goal,String keypass,

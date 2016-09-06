@@ -188,16 +188,16 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_cname.setText(cursor.getString(COL_CNAME));
 
         TextView tv_nation = (TextView)getView().findViewById(R.id.main_nation);
-        tv_nation.setText(cursor.getString(COL_NATION));
+        tv_nation.setText(Roster.translateNation(cursor.getString(COL_NATION)));
 
         TextView tv_position = (TextView)getView().findViewById(R.id.fragment_main_position);
-        tv_position.setText(cursor.getString(COL_POSITION));
+        tv_position.setText(Roster.translatePosition(cursor.getString(COL_POSITION)));
 
         TextView tv_age = (TextView)getView().findViewById(R.id.fragment_main_age);
         tv_age.setText(cursor.getString(COL_AGE));
 
         TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
-        tv_height.setText(cursor.getString(COL_HEIGHT));
+        tv_height.setText(cursor.getString(COL_HEIGHT) + "|" + Roster.convertHeight(cursor.getString(COL_HEIGHT)));
 
         TextView tv_number = (TextView)getView().findViewById(R.id.fragment_main_number);
         tv_number.setText(cursor.getString(COL_NUMBER));

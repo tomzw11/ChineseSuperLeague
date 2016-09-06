@@ -489,6 +489,25 @@ public class Roster {
         return url;
     }
 
+    public static String getPreferredPlayer(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(context.getString(R.string.pref_name_key),
+                context.getString(R.string.pref_player_default));
+    }
+
+    public static String translatePosition(String position){
+
+        switch(position){
+
+            case("门将"): return "Goadkeeper";
+            case("后卫"): return "Defender";
+            case("中场"): return "Midfielder";
+            case("前锋"): return "Forward";
+            default:return position;
+
+        }
+    }
+
     public static String translateGame(String game){
 
         switch (game){
@@ -537,12 +556,146 @@ public class Roster {
         }
     }
 
-    //TODO:translate nationality.
+    public static String translateNation(String nation){
 
-    public static String getPreferredPlayer(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getString(context.getString(R.string.pref_name_key),
-                context.getString(R.string.pref_player_default));
+        switch (nation){
+
+            case "中国":
+                return "China";
+
+            case "中华台北":
+                return "Taiwan";
+
+            case "中国香港":
+                return "Hong Kong";
+
+            case "乌兹别克":
+                return "Uzbekistan";
+
+            case "菲律宾":
+                return "Philippines";
+
+            case "法国":
+                return "France";
+
+            case "意大利":
+                return "Italy";
+
+            case "葡萄牙":
+                return "Portugal";
+
+            case "以色列":
+                return "Israel";
+
+            case "塞尔维亚":
+                return "Serbia";
+
+            case "波黑":
+                return "Bosnia and Herzegovina";
+
+            case "瑞典":
+                return "Sweden";
+
+            case "丹麦":
+                return "Denmark";
+
+            case "韩国":
+                return "South Korea";
+
+            case "朝鲜":
+                return "North Korea";
+
+            case "克罗地亚":
+                return "Croatia";
+
+            case "斯洛文尼亚":
+                return "Slovenia";
+
+            case "巴西":
+                return "Brazil";
+
+            case "阿根廷":
+                return "Argentina";
+
+            case "Venezuela":
+                return "Venezuela";
+
+            case "委内瑞拉":
+                return "Venezuela";
+
+            case "玻利维亚":
+                return "Bolivia";
+
+            case "智利":
+                return "Chile";
+
+            case "Senegal":
+                return "Senegal";
+
+            case "塞内加尔":
+                return "Senegal";
+
+            case "刚果":
+                return "Congo DR";
+
+            case "Congo DR":
+                return "Congo DR";
+
+            case "Gambia":
+                return "Gambia";
+
+            case "赞比亚":
+                return "Gambia";
+
+            case "Mozambique":
+                return "Mozambique";
+
+            case "莫桑比克":
+                return "Mozambique";
+
+            case "Gabon":
+                return "Gabon";
+
+            case "加蓬":
+                return "Gabon";
+
+            case "喀麦隆":
+                return "Cameroon";
+
+            case "科特迪瓦":
+                return "Ivory Coast";
+
+            case "哥伦比亚":
+                return "Columbia";
+
+            case "尼日利亚":
+                return "Nigeria";
+
+            case "澳大利亚":
+                return "Australia";
+
+            case "土耳其":
+                return "Turkey";
+
+            default:return nation;
+
+        }
+    }
+
+    public static String convertHeight(String height){
+
+        if(height=="Unknown"||height==null) return height;
+        Double height_parse = Double.valueOf(height.substring(0,2));
+
+        int feetPart = 0;
+        int inchesPart = 0;
+
+        if (String.valueOf(height_parse).trim().length() != 0) {
+            feetPart = (int) Math.floor((height_parse / 2.54) / 12);
+            inchesPart = (int) Math.ceil((height_parse / 2.54) - (feetPart * 12));
+        }
+        return String.format("%d' %d''", feetPart, inchesPart);
+
     }
 
     public static int getFlagForNation(String nation){
