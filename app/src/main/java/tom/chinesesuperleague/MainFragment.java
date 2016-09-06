@@ -209,7 +209,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         flagView.setImageResource(Roster.getFlagForNation(cursor.getString(COL_NATION)));
 
         TextView tv_team = (TextView)getView().findViewById(R.id.main_team);
-        tv_team.setText(team);
+        tv_team.setText(Roster.translateClub(team));
 
         ImageView imageView1 = (ImageView) getView().findViewById(R.id.main_team_icon);
         imageView1.setImageResource(Roster.getBadgeForTeam(team));

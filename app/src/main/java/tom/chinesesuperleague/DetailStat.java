@@ -67,7 +67,9 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_FOUL,
                 StatEntry.COLUMN_FOULED,
                 StatEntry.COLUMN_CLEARANCE,
-                StatEntry.COLUMN_DATE
+                StatEntry.COLUMN_DATE,
+                StatEntry.COLUMN_GAME,
+
         };
 
         // these constants correspond to the projection defined above, and must change if the
@@ -91,6 +93,8 @@ public class DetailStat extends AppCompatActivity {
         private static final int COL_FOULED = 16;
         private static final int COL_CLEARANCE = 17;
         private static final int COL_DATE = 18;
+        private static final int COL_GAME = 19;
+
 
 
 
@@ -148,6 +152,9 @@ public class DetailStat extends AppCompatActivity {
             TextView tv_date = (TextView)getView().findViewById(R.id.detail_main_date);
             tv_date.setText(data.getString(COL_DATE));
 
+            TextView tv_game = (TextView)getView().findViewById(R.id.detail_scoreview_game);
+            tv_game.setText(Roster.translateGame(data.getString(COL_GAME)));
+
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(data.getString(COL_GOAL));
 
@@ -167,13 +174,13 @@ public class DetailStat extends AppCompatActivity {
             tv_foul.setText(data.getString(COL_FOUL) + "/" + data.getString(COL_FOULED));
 
             TextView tv_home = (TextView) getView().findViewById(R.id.detail_main_home_club_name);
-            tv_home.setText(data.getString(COL_TEAM));
+            tv_home.setText(Roster.translateClub(data.getString(COL_TEAM)));
 
             TextView tv_score = (TextView) getView().findViewById(R.id.detail_main_score);
             tv_score.setText(data.getString(COL_SCORE));
 
             TextView tv_away = (TextView) getView().findViewById(R.id.detail_main_away_club_name);
-            tv_away.setText(data.getString(COL_OPPONENT));
+            tv_away.setText(Roster.translateClub(data.getString(COL_OPPONENT)));
 
             TextView tv_clearance = (TextView) getView().findViewById(R.id.fragment_details_clearance);
             tv_clearance.setText(data.getString(COL_CLEARANCE));

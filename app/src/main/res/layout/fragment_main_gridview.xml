@@ -13,7 +13,8 @@
 >
 
     <TextView
-        android:text="Season Appearance"
+        android:id="@+id/main_gridview_app"
+        android:text="@string/main_gridview_main"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
@@ -35,7 +36,7 @@
         android:fontFamily="sans-serif"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Season Goal"
+        android:text="@string/main_gridview_goal"
         android:textSize="20dp"
         android:textColor="@color/primary_text"
         app:layout_gravity="fill"
@@ -52,7 +53,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="Season Average Rating"
+        android:text="@string/main_gridview_rating"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         app:layout_gravity="fill"

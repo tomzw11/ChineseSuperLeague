@@ -14,7 +14,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="Age"
+        android:text="@string/main_gridview_age"
         android:textSize="20dp"
         android:textColor="@color/primary_text"
         app:layout_columnWeight="1"
@@ -32,7 +32,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="Potision"
+        android:text="@string/main_gridview_position"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         app:layout_gravity="fill"
@@ -49,7 +49,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="Height"
+        android:text="@string/main_gridview_height"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         app:layout_gravity="fill"
@@ -66,7 +66,7 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="Number"
+        android:text="@string/main_gridview_number"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         app:layout_gravity="fill"

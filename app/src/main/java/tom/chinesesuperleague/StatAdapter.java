@@ -89,7 +89,7 @@ public class StatAdapter extends CursorAdapter{
         viewHolder.dateView.setText(date);
 
         String team = cursor.getString(FetchFragment.COL_STAT_TEAM);
-        viewHolder.teamView.setText(team);
+        viewHolder.teamView.setText(Roster.translateClub(team));
 
         viewHolder.kitView.setImageResource(Roster.getKitForTeam(team));
 
@@ -102,7 +102,7 @@ public class StatAdapter extends CursorAdapter{
         }else if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
             opponent = "Away vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
         }else opponent = "Unknown";
-        viewHolder.oppoView.setText(opponent);
+        viewHolder.oppoView.setText(Roster.translateClub(opponent));
 
         //viewHolder.badgeView.setImageResource(Roster.getBadgeForTeam(cursor.getString(FetchFragment.COL_STAT_OPPONENT)));
 

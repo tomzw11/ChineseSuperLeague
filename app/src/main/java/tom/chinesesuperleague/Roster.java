@@ -489,6 +489,55 @@ public class Roster {
         return url;
     }
 
+    public static String translateGame(String game){
+
+        switch (game){
+
+            case("中超"):return "Chinese Super League";
+            case("亚冠"):return "Asian Super Cup";
+            default:return game;
+        }
+    }
+
+    public static String translateClub(String club){
+
+        switch (club){
+
+            case("北京国安"): return "Beijing Guoan";
+            case("重庆力帆"): return "Chongqing Lifan";
+            case("上海上港"): return "Shanghai SIPG";
+            case("长春亚泰"): return "Changchun Yatai";
+            case("广州富力"): return "Guangzhou R&F";
+            case("广州恒大"): return "Guangzhou Evergrande";
+            case("杭州绿城"): return "Hangzhou Greentown";
+            case("河北华夏"): return "Hebei China Fortune";
+            case("河南建业"): return "Henan Jianye";
+            case("天津泰达"): return "Tianjin Teda";
+            case("辽宁宏运"): return "Liaoning Whowin";
+            case("石家庄永昌"): return "Shijiazhuang Ever Bright";
+            case("山东鲁能"): return "Shandong Luneng";
+            case("延边富德"): return "Yanbian Funde";
+            case("江苏苏宁"): return "Jiangsu Suning";
+            case("上海申花"): return "Shanghai Shenhua";
+            case("全北现代"): return "Jeonbuk Hyundai";
+            case("东京FC"): return "F.C.Tokyo";
+            case("越南平阳"): return "Becamex Bình Dương";
+            case("首尔FC"): return "FC Seoul";
+            case("广岛三箭"): return "Sanfrecce Hiroshima";
+            case("武里南联"): return "Buriram United";
+            case("墨尔本胜利"): return "Melbourne Victory";
+            case("水原三星"): return "Suwon Samsung";
+            case("大阪钢巴"): return "Gamba Osaka";
+            case("悉尼FC"): return "Sydney FC";
+            case("浦和红钻"): return "Urawa Red Diamonds";
+            case("浦项制铁"): return "Pohang Steelers";
+
+            default:return club;
+
+        }
+    }
+
+    //TODO:translate nationality.
 
     public static String getPreferredPlayer(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
