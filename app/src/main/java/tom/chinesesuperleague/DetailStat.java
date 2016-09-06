@@ -66,7 +66,8 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_CNAME,
                 StatEntry.COLUMN_FOUL,
                 StatEntry.COLUMN_FOULED,
-                StatEntry.COLUMN_CLEARANCE
+                StatEntry.COLUMN_CLEARANCE,
+                StatEntry.COLUMN_DATE
         };
 
         // these constants correspond to the projection defined above, and must change if the
@@ -89,6 +90,8 @@ public class DetailStat extends AppCompatActivity {
         private static final int COL_FOUL = 15;
         private static final int COL_FOULED = 16;
         private static final int COL_CLEARANCE = 17;
+        private static final int COL_DATE = 18;
+
 
 
 
@@ -141,6 +144,9 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_pt = (TextView)getView().findViewById(R.id.fragment_details_playtime);
             tv_pt.setText(data.getString(COL_PLAY_TIME)+"'");
+
+            TextView tv_date = (TextView)getView().findViewById(R.id.detail_main_date);
+            tv_date.setText(data.getString(COL_DATE));
 
             TextView tv_goal = (TextView)getView().findViewById(R.id.fragment_details_goal);
             tv_goal.setText(data.getString(COL_GOAL));

@@ -693,7 +693,7 @@ public class Roster {
                 return R.drawable.badge_shanghai_shenhua;
 
             case "全北现代":
-                return R.drawable.badge_Jeonbuk;
+                return R.drawable.badge_jeonbuk;
 
             case "东京FC":
                 return R.drawable.badge_fctokyo;

@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -38,7 +38,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center_horizontal"
         >
 
@@ -46,12 +46,33 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/primary_text"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="Final Score"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorAccent"
+            android:textSize="54dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:id="@+id/detail_main_score"
+            android:text="1 - 1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:textColor="@color/primary_text"
-            android:textSize="48dp"
-            android:id="@+id/detail_main_score"
-            android:text="1 - 1"/>
+            android:textSize="18dp"
+            android:id="@+id/detail_main_date"
+            android:text="2016-12-12"/>
 
     </LinearLayout>
 

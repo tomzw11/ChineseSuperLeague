@@ -7,7 +7,9 @@
     app:columnCount="2"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    android:background="@color/white"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@color/grey"
 >
 
     <TextView
@@ -31,6 +33,7 @@
 
     <TextView
         android:fontFamily="sans-serif"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="Season Goal"
         android:textSize="20dp"
@@ -59,7 +62,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:text="H"
-        android:textSize="40dp"
+        android:textSize="36dp"
         android:layout_marginLeft="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"

@@ -102,8 +102,9 @@
                     android:layout_height="wrap_content"
                     android:textSize="60dp"
                     android:text="1-1"
+                    android:textStyle="bold"
                     android:fontFamily="sans-serif"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/colorAccent"
                     android:gravity="center_horizontal"
                     />
 
@@ -130,12 +131,12 @@
             >
 
             <tom.chinesesuperleague.RatingView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:text="H"
-                android:textSize="40dp"
+                android:textSize="48dp"
                 android:textColor="@android:color/white"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:id="@+id/listview_stat_ratingView" />
 
             <TextView
