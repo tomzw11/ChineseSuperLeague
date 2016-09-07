@@ -29,6 +29,8 @@ public class FormFragment extends android.support.v4.app.DialogFragment {
 
     int mNum;
 
+    //TODO:Add list to track listed players.
+    //TODO:Integrate an image library.
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,

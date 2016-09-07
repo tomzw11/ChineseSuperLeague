@@ -46,7 +46,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.5;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "后卫":
 
@@ -64,7 +64,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.3;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "中场":
 
@@ -80,7 +80,7 @@ public class Ratings {
                             num_of_redcard*(-2);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "前锋":
 
@@ -95,7 +95,8 @@ public class Ratings {
                             num_of_redcard*(-2);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    //return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 default:return "0";
 
@@ -122,7 +123,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.3;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "后卫":
 
@@ -140,7 +141,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.3;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "中场":
 
@@ -156,7 +157,7 @@ public class Ratings {
                             num_of_redcard*(-1.5);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "前锋":
 
@@ -171,7 +172,7 @@ public class Ratings {
                             num_of_redcard*(-1.5);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 default:return "0";
 
@@ -195,7 +196,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.3;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "后卫":
 
@@ -212,7 +213,7 @@ public class Ratings {
                     if(score_them>=3) rating-=0.5;
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "中场":
 
@@ -228,7 +229,7 @@ public class Ratings {
                             num_of_redcard*(-2.5);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 case "前锋":
 
@@ -243,7 +244,7 @@ public class Ratings {
                             num_of_redcard*(-2.5);
                     if (rating > 10)rating = 10;
                     if (rating < 0) rating = 0;
-                    return Double.toString(rating);
+                    return String.format("%.1f", rating);
 
                 default:return "0";
 

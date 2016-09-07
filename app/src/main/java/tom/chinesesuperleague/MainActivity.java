@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setContentView(R.layout.activity_main);
         preferPlayer = Roster.getPreferredPlayer(this);
 
-
         //TODO:Use a special toolbar app name font.
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-
 
         CSLSyncAdapter.initializeSyncAdapter(this);
     }

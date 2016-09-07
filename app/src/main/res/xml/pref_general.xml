@@ -5,97 +5,97 @@
     android:layout_height="match_parent">
 
     <ListPreference
-        android:title="天津泰达"
+        android:title="Tianjin Teda"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_teda"
         android:entries="@array/options_teda" />
 
     <ListPreference
-        android:title="广州恒大"
+        android:title="Guangzhou Evergrande"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_evergrande"
         android:entries="@array/options_evergrande" />
 
     <ListPreference
-        android:title="江苏苏宁"
+        android:title="Jiangsu Suning"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_suning"
         android:entries="@array/options_suning" />
 
     <ListPreference
-        android:title="上海申花"
+        android:title="Shanghai Shenhua"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_shanghai"
         android:entries="@array/options_shanghai" />
 
     <ListPreference
-        android:title="上海上港"
+        android:title="Shanghai SIPG"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_eastasia"
         android:entries="@array/options_eastasia" />
 
     <ListPreference
-        android:title="广州富力"
+        android:title="Guangzhou R&amp;F"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_fuli"
         android:entries="@array/options_fuli" />
 
     <ListPreference
-        android:title="河南建业"
+        android:title="Henan Jianye"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_jianye"
         android:entries="@array/options_jianye" />
 
     <ListPreference
-        android:title="北京国安"
+        android:title="Beijing Guoan"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_guoan"
         android:entries="@array/options_guoan" />
 
     <ListPreference
-        android:title="重庆力帆"
+        android:title="Chongqing Lifan"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_lifan"
         android:entries="@array/options_lifan" />
 
     <ListPreference
-        android:title="山东鲁能"
+        android:title="Shandong Luneng"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_luneng"
         android:entries="@array/options_luneng" />
 
     <ListPreference
-        android:title="杭州绿城"
+        android:title="Hangzhou Greentown"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_lvcheng"
         android:entries="@array/options_lvcheng" />
 
     <ListPreference
-        android:title="辽宁宏运"
+        android:title="Liaoning Whowin"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_hongyun"
         android:entries="@array/options_hongyun" />
 
     <ListPreference
-        android:title="石家庄永昌"
+        android:title="Shijiazhuang Ever Bright"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_yongchang"
         android:entries="@array/options_yongchang" />
 
     <ListPreference
-        android:title="河北华夏"
+        android:title="Hebei China Fortune"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_huaxia"
         android:entries="@array/options_huaxia" />
 
     <ListPreference
-        android:title="延边富德"
+        android:title="Yanbian Funde"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_fude"
         android:entries="@array/options_fude" />
 
     <ListPreference
-        android:title="长春亚泰"
+        android:title="Changchun Yatai"
         android:key="@string/pref_name_key"
         android:entryValues="@array/values_yatai"
         android:entries="@array/options_yatai" />

@@ -36,7 +36,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             StatContract.StatEntry.COLUMN_SCORE,
             StatContract.StatEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_OPPONENT,
-            StatContract.StatEntry.COLUMN_CNAME,
+            StatContract.StatEntry.COLUMN_LNAME,
             StatContract.StatEntry.COLUMN_HOME_AWAY,
             StatContract.StatEntry.COLUMN_GAME,
             StatContract.StatEntry.COLUMN_RATING,
@@ -49,7 +49,7 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     static final int COL_STAT_SCORE = 2;
     static final int COL_STAT_PLAYER = 3;
     static final int COL_STAT_OPPONENT = 4;
-    static final int COL_STAT_CNAME = 5;
+    static final int COL_STAT_LNAME = 5;
     static final int COL_STAT_HOME_AWAY = 6;
     static final int COL_STAT_GAME = 7;
     static final int COL_STAT_RATING = 8;

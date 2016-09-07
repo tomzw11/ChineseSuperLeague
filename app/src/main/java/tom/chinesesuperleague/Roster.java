@@ -685,7 +685,7 @@ public class Roster {
     public static String convertHeight(String height){
 
         if(height=="Unknown"||height==null) return height;
-        Double height_parse = Double.valueOf(height.substring(0,2));
+        Double height_parse = Double.valueOf(height.substring(0,3));
 
         int feetPart = 0;
         int inchesPart = 0;
@@ -693,9 +693,22 @@ public class Roster {
         if (String.valueOf(height_parse).trim().length() != 0) {
             feetPart = (int) Math.floor((height_parse / 2.54) / 12);
             inchesPart = (int) Math.ceil((height_parse / 2.54) - (feetPart * 12));
+
         }
         return String.format("%d' %d''", feetPart, inchesPart);
 
+    }
+
+    public static String convertAge(String age){
+
+        if(age=="Unknown"||age==null)return age;
+        return age.substring(0,2);
+    }
+
+    public static String convertNumber(String number){
+
+        if(number=="Unknown"||number==null)return number;
+        return number.substring(0,number.length()-1);
     }
 
     public static int getFlagForNation(String nation){

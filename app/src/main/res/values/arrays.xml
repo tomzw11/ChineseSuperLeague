@@ -3,37 +3,37 @@
 
     <string-array name="options_fude">
 
-        <item>"尹光"</item>
-        <item>"池文一"</item>
-        <item>"董佳林"</item>
-        <item>"李峻宇"</item>
-        <item>"韩轩"</item>
-        <item>"赵铭"</item>
-        <item>"彼得科维奇"</item>
-        <item>"姜洪权"</item>
-        <item>"吴永春"</item>
-        <item>"崔民"</item>
-        <item>"金贤"</item>
-        <item>"金弘宇"</item>
-        <item>"田依浓"</item>
-        <item>"李勋"</item>
-        <item>"韩光徽"</item>
-        <item>"池忠国"</item>
-        <item>"金胜大"</item>
-        <item>"崔仁"</item>
-        <item>"金波"</item>
-        <item>"尹比加林"</item>
-        <item>"王志鹏"</item>
-        <item>"朴世豪"</item>
-        <item>"李浩"</item>
-        <item>"裴育文"</item>
-        <item>"李浩杰"</item>
-        <item>"文学"</item>
-        <item>"艾合买提-艾克拜尔"</item>
-        <item>"尹昌吉"</item>
-        <item>"孙君"</item>
-        <item>"特拉沃利"</item>
-        <item>"河太均"</item>
+        <item>"尹光 | Yin Guang" </item>
+        <item>"池文一 | Chi Wenyi"</item>
+        <item>"董佳林 | Dong Jialin" </item>
+        <item>"李峻宇 | Li Junyu" </item>
+        <item>"韩轩 | Han Xuan" </item>
+        <item>"赵铭 | Zhao Ming" </item>
+        <item>"彼得科维奇 | Nikola Petkovic" </item>
+        <item>"姜洪权 | Jiang Hongquan" </item>
+        <item>"吴永春 | Wu Yongchun" </item>
+        <item>"崔民 | Cui Min" </item>
+        <item>"金贤 | Jin Xian" </item>
+        <item>"金弘宇 | Jin Hongyu" </item>
+        <item>"田依浓 | Yinong Tian" </item>
+        <item>"李勋 | Xun Li" </item>
+        <item>"韩光徽 | Han Guanghui" </item>
+        <item>"池忠国 | Chi Zhongguo" </item>
+        <item>"金胜大 | Kim Seung-Dae" </item>
+        <item>"崔仁 | Cui Ren" </item>
+        <item>"金波 | Jin Bo" </item>
+        <item>"尹比加林 | Yoon Bit-Garam" </item>
+        <item>"王志鹏 | Wang Zhipeng" </item>
+        <item>"朴世豪 | Piao Shihao" </item>
+        <item>"李浩 | Li Hao" </item>
+        <item>"裴育文 | Pei Yuwen" </item>
+        <item>"李浩杰 | Li Haojie" </item>
+        <item>"文学 | Wen Xue" </item>
+        <item>"艾合买提-艾克拜尔 | Ekber Exmetjan" </item>
+        <item>"尹昌吉 | Yin Changji" </item>
+        <item>"孙君 | Sun Jun" </item>
+        <item>"特拉沃利 | Bubacarr Trawally" </item>
+        <item>"河太均 | Ha Tae-Goon"</item>
     </string-array>
 
     <string-array name="values_fude">
@@ -72,44 +72,43 @@
     </string-array>
     
     <string-array name="options_huaxia">
-
-        <item>"欧亚"</item>
-        <item>"苏维超"</item>
-        <item>"杨程"</item>
-        <item>"周煜辰"</item>
-        <item>"杜文洋"</item>
-        <item>"金洋洋"</item>
-        <item>"杜威"</item>
-        <item>"廖均健"</item>
-        <item>"芦洋"</item>
-        <item>"居吕姆"</item>
-        <item>"许小龙"</item>
-        <item>"杨文吉"</item>
-        <item>"丁海峰"</item>
-        <item>"高准翼"</item>
-        <item>"钟炬展"</item>
-        <item>"宋文杰"</item>
-        <item>"车世伟"</item>
-        <item>"章艮"</item>
-        <item>"罗森文"</item>
-        <item>"姜宁"</item>
-        <item>"贾晓琛"</item>
-        <item>"李浩然"</item>
-        <item>"汪泉"</item>
-        <item>"朱海威"</item>
-        <item>"汪洋"</item>
-        <item>"卡库塔"</item>
-        <item>"姆比亚"</item>
-        <item>"耿袈岂"</item>
-        <item>"张利峰"</item>
-        <item>"李行"</item>
-        <item>"姜文骏"</item>
-        <item>"阿洛伊西奥"</item>
-        <item>"董学升"</item>
-        <item>"拉维齐"</item>
-        <item>"桂宏"</item>
-        <item>"热尔维尼奥"</item>
-        <item>"高云飞"</item>
+        <item>"欧亚 | Ou Ya"</item>
+        <item>"苏维超 | Su Weichao"</item>
+        <item>"杨程 | Yang Cheng"</item>
+        <item>"周煜辰 | Zhou Yuncheng"</item>
+        <item>"杜文洋 | Du Wenyang"</item>
+        <item>"金洋洋 | Jin Yangyang"</item>
+        <item>"杜威 | Du Wei"</item>
+        <item>"廖均健 | Liao Junjian"</item>
+        <item>"芦洋 | Lu Yang"</item>
+        <item>"居吕姆 | Ersan Gülüm"</item>
+        <item>"许小龙 | Xu Xiaolong"</item>
+        <item>"杨文吉 | Yang Wenji"</item>
+        <item>"丁海峰 | Ding Haifeng"</item>
+        <item>"高准翼 | Gao Zhunyi"</item>
+        <item>"钟炬展 | Zhong Juzhan"</item>
+        <item>"宋文杰 | Song Wenjie"</item>
+        <item>"车世伟 | Che Shiwei"</item>
+        <item>"章艮 | Zhang Gen"</item>
+        <item>"罗森文 | Luo Senwen"</item>
+        <item>"姜宁 | Jiang Ning"</item>
+        <item>"贾晓琛 | Jia Xiaochen"</item>
+        <item>"李浩然 | Li Haoran"</item>
+        <item>"汪泉 | Wang Quan"</item>
+        <item>"朱海威 | Zhu Haiwei"</item>
+        <item>"汪洋 | Wang Yang"</item>
+        <item>"卡库塔 | Gael Kakuta"</item>
+        <item>"姆比亚 | Stéphane Mbia"</item>
+        <item>"耿袈岂 | Jiaqi Geng"</item>
+        <item>"张利峰 | Zhang Lifeng"</item>
+        <item>"李行 | Li Hang"</item>
+        <item>"姜文骏 | Jiang Wenjun"</item>
+        <item>"阿洛伊西奥 | Aloísio"</item>
+        <item>"董学升 | Dong Xuesheng"</item>
+        <item>"拉维齐 | Ezequiel Lavezzi"</item>
+        <item>"桂宏 | Gui Hong"</item>
+        <item>"热尔维尼奥 | Gervinho"</item>
+        <item>"高云飞 | Gao Yunfei"</item>
 
     </string-array>
 
@@ -157,33 +156,33 @@
     
     <string-array name="options_evergrande">
 
-        <item>"方镜淇"</item>
-        <item>"曾诚"</item>
-        <item>"刘殿座"</item>
-        <item>"梅方"</item>
-        <item>"张琳芃"</item>
-        <item>"冯潇霆"</item>
-        <item>"韩鹏飞"</item>
-        <item>"金英权"</item>
-        <item>"荣昊"</item>
-        <item>"吴裕多"</item>
-        <item>"李学鹏"</item>
-        <item>"胡睿宝"</item>
-        <item>"陈泽鹏"</item>
-        <item>"廖力生"</item>
-        <item>"徐新"</item>
-        <item>"保利尼奥"</item>
-        <item>"郑智"</item>
-        <item>"高拉特"</item>
-        <item>"张文钊"</item>
-        <item>"黄博文"</item>
-        <item>"于汉超"</item>
-        <item>"邹正"</item>
-        <item>"郑龙"</item>
-        <item>"张奥凯"</item>
-        <item>"阿兰"</item>
-        <item>"马丁内斯"</item>
-        <item>"郜林"</item>
+        <item>"Fang Jingqi | 方镜淇"</item>
+        <item>"Zeng Cheng | 曾诚"</item>
+        <item>"Liu Dianzuo | 刘殿座"</item>
+        <item>"Mei Fang | 梅方"</item>
+        <item>"Zhang Linpeng | 张琳芃"</item>
+        <item>"Feng Xiaoting | 冯潇霆"</item>
+        <item>"Han Pengfei | 韩鹏飞"</item>
+        <item>"Kim Young-Kwon | 金英权"</item>
+        <item>"Rong Hao | 荣昊"</item>
+        <item>"Wu Yuduo | 吴裕多"</item>
+        <item>"Li Xuepeng | 李学鹏"</item>
+        <item>"Hu Ruibao | 胡睿宝"</item>
+        <item>"Chen Zepeng | 陈泽鹏"</item>
+        <item>"Liao Lisheng | 廖力生"</item>
+        <item>"Xu Xin | 徐新"</item>
+        <item>"Paulinho | 保利尼奥"</item>
+        <item>"Zheng Zhi | 郑智"</item>
+        <item>"Ricardo Goulart | 高拉特"</item>
+        <item>"Zhang Wenzhao | 张文钊"</item>
+        <item>"Huang Bowen | 黄博文"</item>
+        <item>"Yu Hanchao | 于汉超"</item>
+        <item>"Zou Zheng | 邹正"</item>
+        <item>"Zheng Long | 郑龙"</item>
+        <item>"Aokai Zhang | "</item>
+        <item>"Alan | 阿兰"</item>
+        <item>"Jackson Martinez | 马丁内斯"</item>
+        <item>"Gao Lin | 郜林"</item>
 
     </string-array>
 
@@ -221,34 +220,34 @@
     
     <string-array name="options_suning">
 
-        <item>"顾超"</item>
-        <item>"姜灏"</item>
-        <item>"张思鹏"</item>
-        <item>"李昂"</item>
-        <item>"周云"</item>
-        <item>"圣斯伯里"</item>
-        <item>"许有志"</item>
-        <item>"吴曦"</item>
-        <item>"任航"</item>
-        <item>"洪正好"</item>
-        <item>"杨笑天"</item>
-        <item>"刘伟"</item>
-        <item>"拉米雷斯"</item>
-        <item>"刘建业"</item>
-        <item>"谢鹏飞"</item>
-        <item>"张晓彬"</item>
-        <item>"曹康"</item>
-        <item>"杨昊"</item>
-        <item>"张新林"</item>
-        <item>"李智超"</item>
-        <item>"吉翔"</item>
-        <item>"杨家威"</item>
-        <item>"曹文"</item>
-        <item>"若"</item>
-        <item>"特谢拉"</item>
-        <item>"陶源"</item>
-        <item>"马丁内斯"</item>
-        <item>"戈伟"</item>
+        <item>"Gu Chao | 顾超"</item>
+        <item>"Jiang Hao | 姜灏"</item>
+        <item>"Zhang Sipeng | 张思鹏"</item>
+        <item>"Li Ang | 李昂"</item>
+        <item>"Zhou Yun | 周云"</item>
+        <item>"Trent Sainsbury | 圣斯伯里"</item>
+        <item>"Xu Youzhi | 许有志"</item>
+        <item>"Xi Wu | 吴曦"</item>
+        <item>"Ren Hang | 任航"</item>
+        <item>"Hong Jeong-Ho | 洪正好"</item>
+        <item>"Yang Xiaotian | 杨笑天"</item>
+        <item>"Liu Wei | 刘伟"</item>
+        <item>"Ramires | 拉米雷斯"</item>
+        <item>"Liu Jianye | 刘建业"</item>
+        <item>"Xie Pengfei | 谢鹏飞"</item>
+        <item>"Zhang Xiaobin | 张晓彬"</item>
+        <item>"Cao Kang | 曹康"</item>
+        <item>"Yang Hao | 杨昊"</item>
+        <item>"Zhang Xinlin | 张新林"</item>
+        <item>"Li Zhichao | 李智超"</item>
+        <item>"Ji Xiang | 吉翔"</item>
+        <item>"Yang Jiawei | 杨家威"</item>
+        <item>"Wen Cao | 曹文"</item>
+        <item>"Jo | 若"</item>
+        <item>"Alex Teixeira | 特谢拉"</item>
+        <item>"Tao Yuan | 陶源"</item>
+        <item>"Roger Martínez | 马丁内斯"</item>
+        <item>"Ge Wei | 戈伟"</item>
 
     </string-array>
 
@@ -284,34 +283,33 @@
     </string-array>
 
     <string-array name="options_shanghai">
-        <item>"耿晓锋"</item>
-        <item>"邱盛炯"</item>
-        <item>"李帅"</item>
-        <item>"熊飞"</item>
-        <item>"李建滨"</item>
-        <item>"金基熙"</item>
-        <item>"李文博"</item>
-        <item>"李运秋"</item>
-        <item>"郑凯木"</item>
-        <item>"柏佳俊"</item>
-        <item>"邓卓翔"</item>
-        <item>"小王林"</item>
-        <item>"陶金"</item>
-        <item>"王寿挺"</item>
-        <item>"张璐"</item>
-        <item>"莫雷诺"</item>
-        <item>"吕征"</item>
-        <item>"瓜林"</item>
-        <item>"王赟"</item>
-        <item>"秦升"</item>
-        <item>"曹赟定"</item>
-        <item>"徐骏敏"</item>
-        <item>"登巴巴"</item>
-        <item>"战怡麟"</item>
-        <item>"马丁斯"</item>
-        <item>"高迪"</item>
-        <item>"毕津浩"</item>
-
+        <item>"Geng Xiaofeng | 耿晓锋"</item>
+        <item>"Qiu Shengjiong | 邱盛炯"</item>
+        <item>"Li Shuai | 李帅"</item>
+        <item>"Xiong Fei | 熊飞"</item>
+        <item>"Li Jianbin | 李建滨"</item>
+        <item>"Kim Kee-Hee | 金基熙"</item>
+        <item>"Li Wenbo | 李文博"</item>
+        <item>"Li Yunqiu | 李运秋"</item>
+        <item>"Zheng Kaimu | 郑凯木"</item>
+        <item>"Bai Jiajun | 柏佳俊"</item>
+        <item>"Deng Zhuoxiang | 邓卓翔"</item>
+        <item>"Wang Lin | 小王林"</item>
+        <item>"Tao Jin | 陶金"</item>
+        <item>"Wang Shouting | 王寿挺"</item>
+        <item>"Zhang Lu | 张璐"</item>
+        <item>"Giovanni Moreno | 莫雷诺"</item>
+        <item>"Lü Zheng | 吕征"</item>
+        <item>"Fredy Guarín | 瓜林"</item>
+        <item>"Wang Yun | 王赟"</item>
+        <item>"Qin Sheng | 秦升"</item>
+        <item>"Cao Yunding | 曹赟定"</item>
+        <item>"Xu Junmin | 徐骏敏"</item>
+        <item>"Demba Ba | 登巴巴"</item>
+        <item>"Zhan Yilin | 战怡麟"</item>
+        <item>"Obafemi Martins | 马丁斯"</item>
+        <item>"Gao Di | 高迪"</item>
+        <item>"Bi Jinghao | 毕津浩"</item>
 
     </string-array>
 
@@ -347,36 +345,38 @@
     </string-array>
 
     <string-array name="options_eastasia">
-        <item>"颜骏凌"</item>
-        <item>"孙乐"</item>
-        <item>"施晓东"</item>
-        <item>"张卫"</item>
-        <item>"王燊超"</item>
-        <item>"汪佳捷"</item>
-        <item>"蔡慧康"</item>
-        <item>"金周荣"</item>
-        <item>"杨世元"</item>
-        <item>"傅欢"</item>
-        <item>"石柯"</item>
-        <item>"贺惯"</item>
-        <item>"孙祥"</item>
-        <item>"杨博宇"</item>
-        <item>"武磊"</item>
-        <item>"达维"</item>
-        <item>"孔卡"</item>
-        <item>"张一"</item>
-        <item>"王佳玉"</item>
-        <item>"于海"</item>
-        <item>"朱征宇"</item>
-        <item>"郑致云"</item>
-        <item>"孙峻岗"</item>
-        <item>"吉安"</item>
-        <item>"埃尔克森"</item>
-        <item>"吕文君"</item>
-        <item>"李浩文"</item>
-        <item>"朱峥嵘"</item>
-        <item>"林创益"</item>
-        <item>"胡靖航"</item>
+
+        <item>"Yan Junling | 颜骏凌"</item>
+        <item>"Sun Le | 孙乐"</item>
+        <item>"Shi Xiaodong | 施晓东"</item>
+        <item>"Zhang Wei | 张卫"</item>
+        <item>"Wang Shenchao | 王燊超"</item>
+        <item>"Wang Jaijie | 汪佳捷"</item>
+        <item>"Cai Huikang | 蔡慧康"</item>
+        <item>"Kim Ju-Young | 金周荣"</item>
+        <item>"Yang Shiyuan | 杨世元"</item>
+        <item>"Fu Huan | 傅欢"</item>
+        <item>"Shi Ke | 石柯"</item>
+        <item>"He Guan | 贺惯"</item>
+        <item>"Sun Xiang | 孙祥"</item>
+        <item>"Yang Boyu | 杨博宇"</item>
+        <item>"Wu Lei | 武磊"</item>
+        <item>"Davi | 达维"</item>
+        <item>"Darío Conca | 孔卡"</item>
+        <item>"Zhang Yi | 张一"</item>
+        <item>"Wang Jiayu | 王佳玉"</item>
+        <item>"Yu Hai | 于海"</item>
+        <item>"Zhu Zhengyu | 朱征宇"</item>
+        <item>"Zheng Zhiyun | 郑致云"</item>
+        <item>"Sun Jungang | 孙峻岗"</item>
+        <item>"Asamoah Gyan | 吉安"</item>
+        <item>"Elkeson | 埃尔克森"</item>
+        <item>"Lü Wenjun | 吕文君"</item>
+        <item>"Li Haowen | 李浩文"</item>
+        <item>"Zhu Zhenrong | 朱峥嵘"</item>
+        <item>"Lin Chuangyi | 林创益"</item>
+        <item>"Hu Jinghang | 胡靖航"</item>
+
 
     </string-array>
 
@@ -415,31 +415,31 @@
     </string-array>
 
     <string-array name="options_fuli">
-        <item>"程月磊"</item>
-        <item>"张世昌"</item>
-        <item>"于洋"</item>
-        <item>"张耀坤"</item>
-        <item>"杨挺"</item>
-        <item>"张贤秀"</item>
-        <item>"付云龙"</item>
-        <item>"黄政宇"</item>
-        <item>"古斯塔夫-斯文松"</item>
-        <item>"王晓龙"</item>
-        <item>"姜至鹏"</item>
-        <item>"宁安"</item>
-        <item>"唐淼"</item>
-        <item>"常飞亚"</item>
-        <item>"卢琳"</item>
-        <item>"扎哈维"</item>
-        <item>"向嘉弛"</item>
-        <item>"侯俊杰"</item>
-        <item>"王嘉楠"</item>
-        <item>"雷纳迪尼奥"</item>
-        <item>"陈志钊"</item>
-        <item>"汪嵩"</item>
-        <item>"黎宇扬"</item>
-        <item>"吉安努"</item>
-        <item>"肖智"</item>
+        <item>"Cheng Yuelei | 程月磊"</item>
+        <item>"Shichang Zhang | 张世昌"</item>
+        <item>"Yu Yang | 于洋"</item>
+        <item>"Zhang Yaokun | 张耀坤"</item>
+        <item>"Yang Ting | 杨挺"</item>
+        <item>"Jang Hyun-Soo | 张贤秀"</item>
+        <item>"Fu Yunlong | 付云龙"</item>
+        <item>"Huang Zhengyu | 黄政宇"</item>
+        <item>"Gustav Svensson | 古斯塔夫-斯文松"</item>
+        <item>"Wang Xiaolong | 王晓龙"</item>
+        <item>"Jiang Zhipeng | 姜至鹏"</item>
+        <item>"Ning An | 宁安"</item>
+        <item>"Tang Miao | 唐淼"</item>
+        <item>"Feiya Chang | 常飞亚"</item>
+        <item>"Lu Lin | 卢琳"</item>
+        <item>"Eran Zehavi | 扎哈维"</item>
+        <item>"Xiang Jiachi | 向嘉弛"</item>
+        <item>"Hou Junjie | 侯俊杰"</item>
+        <item>"Wang Jianan | 王嘉楠"</item>
+        <item>"Renatinho | 雷纳迪尼奥"</item>
+        <item>"Chen Zhizhao | 陈志钊"</item>
+        <item>"Wang Song | 汪嵩"</item>
+        <item>"Li Yuyang | 黎宇扬"</item>
+        <item>"Apostolos Giannou | 吉安努"</item>
+        <item>"Xiao Zhi | 肖智"</item>
 
 
     </string-array>
@@ -473,32 +473,32 @@
     </string-array>
 
     <string-array name="options_jianye">
-        <item>"王国明"</item>
-        <item>"吴龑"</item>
-        <item>"魏鹏"</item>
-        <item>"李晓明"</item>
-        <item>"戈麦斯"</item>
-        <item>"顾操"</item>
-        <item>"萨马尔季奇"</item>
-        <item>"买提江"</item>
-        <item>"麦克格文"</item>
-        <item>"张可"</item>
-        <item>"罗恒"</item>
-        <item>"路尧"</item>
-        <item>"龙成"</item>
-        <item>"冯卓毅"</item>
-        <item>"尹鸿博"</item>
-        <item>"伊沃"</item>
-        <item>"牟善韬"</item>
-        <item>"杨阔"</item>
-        <item>"潘嘉俊"</item>
-        <item>"王飞"</item>
-        <item>"钟晋宝"</item>
-        <item>"帕蒂尼奥"</item>
-        <item>"梁雨"</item>
-        <item>"奥斯曼"</item>
-        <item>"张帅"</item>
-        <item>"陈灏"</item>
+        <item>"Wang Guoming | 王国明"</item>
+        <item>"Wu Yan | 吴龑"</item>
+        <item>"Wei Peng | 魏鹏"</item>
+        <item>"Li Xiaoming | 李晓明"</item>
+        <item>"Eddi Gomes | 戈麦斯"</item>
+        <item>"Gu Cao | 顾操"</item>
+        <item>"Miral Samardzic | 萨马尔季奇"</item>
+        <item>"Mirahmetjan Muzepper | 买提江"</item>
+        <item>"Ryan McGowan | 麦克格文"</item>
+        <item>"Zhang Ke | 张可"</item>
+        <item>"Luo Heng | 罗恒"</item>
+        <item>"Lu Yao | 路尧"</item>
+        <item>"Long Cheng | 龙成"</item>
+        <item>"Zhuoyi Feng | 冯卓毅"</item>
+        <item>"Yin Hongbo | 尹鸿博"</item>
+        <item>"Ivo | 伊沃"</item>
+        <item>"Mou Shantao | 牟善韬"</item>
+        <item>"Yang Kuo | 杨阔"</item>
+        <item>"Pun Jiajun | 潘嘉俊"</item>
+        <item>"Wang Fei | 王飞"</item>
+        <item>"Zhong Jinbao | 钟晋宝"</item>
+        <item>"Javier Patino | 帕蒂尼奥"</item>
+        <item>"Liang Yu | 梁雨"</item>
+        <item>"Osman Sow | 奥斯曼"</item>
+        <item>"Zhang Shui | 张帅"</item>
+        <item>"Chen Hao | 陈灏"</item>
     </string-array>
 
     <string-array name="values_jianye">
@@ -531,34 +531,34 @@
     </string-array>
 
     <string-array name="options_guoan">
-        <item>"杨智"</item>
-        <item>"侯森"</item>
-        <item>"张岩"</item>
-        <item>"克里梅茨"</item>
-        <item>"李磊"</item>
-        <item>"周挺"</item>
-        <item>"徐云龙"</item>
-        <item>"郎征"</item>
-        <item>"张辛昕"</item>
-        <item>"杨运"</item>
-        <item>"雷腾龙"</item>
-        <item>"赵和靖"</item>
-        <item>"魏鑫"</item>
-        <item>"盛鹏飞"</item>
-        <item>"拉尔夫"</item>
-        <item>"张晓彬"</item>
-        <item>"张池明"</item>
-        <item>"朴成"</item>
-        <item>"张稀哲"</item>
-        <item>"宋博轩"</item>
-        <item>"杜明洋"</item>
-        <item>"于大宝"</item>
-        <item>"雷纳托-奥古斯托"</item>
-        <item>"李翰博"</item>
-        <item>"谢尔盖耶夫"</item>
-        <item>"伊尔马兹"</item>
-        <item>"单欢欢"</item>
-        <item>"张呈栋"</item>
+        <item>"Yang Zhi | 杨智"</item>
+        <item>"Hou Sen | 侯森"</item>
+        <item>"Yan Zhang | 张岩"</item>
+        <item>"Egor Krimets | 克里梅茨"</item>
+        <item>"Li Lei | 李磊"</item>
+        <item>"Zhou Ting | 周挺"</item>
+        <item>"Xu Yunlong | 徐云龙"</item>
+        <item>"Lang Zheng | 郎征"</item>
+        <item>"Zhang Xinxin | 张辛昕"</item>
+        <item>"Yang Yun | 杨运"</item>
+        <item>"Lei Tenglong | 雷腾龙"</item>
+        <item>"Zhao Hejing | 赵和靖"</item>
+        <item>"Xin Wei | 魏鑫"</item>
+        <item>"Sheng Pengfei | "</item>
+        <item>"Ralf | 拉尔夫"</item>
+        <item>"Zhang Xiaobin | 张晓彬"</item>
+        <item>"Zhang Chiming | 张池明"</item>
+        <item>"Piao Cheng | 朴成"</item>
+        <item>"Zhang Xizhe | 张稀哲"</item>
+        <item>"Song Boxuan | 宋博轩"</item>
+        <item>"Du Mingyang | 杜明洋"</item>
+        <item>"Yu Dabao | 于大宝"</item>
+        <item>"Renato Augusto | 雷纳托-奥古斯托"</item>
+        <item>"Li Hanbo | 李翰博"</item>
+        <item>"Igor Sergeev | 谢尔盖耶夫"</item>
+        <item>"Burak Yilmaz | 伊尔马兹"</item>
+        <item>"Huanhuan Shan | 单欢欢"</item>
+        <item>"Chengdong Zhang | 张呈栋"</item>
     </string-array>
 
     <string-array name="values_guoan">
@@ -594,27 +594,27 @@
     </string-array>
 
     <string-array name="options_lifan">
-        <item>"邓小飞"</item>
-        <item>"王敏"</item>
-        <item>"陈安琪"</item>
-        <item>"李放"</item>
-        <item>"隋东陆"</item>
-        <item>"丁捷"</item>
-        <item>"刘宇"</item>
-        <item>"米洛维奇"</item>
-        <item>"陈雷"</item>
-        <item>"谭望嵩"</item>
-        <item>"王栋"</item>
-        <item>"吴庆"</item>
-        <item>"郑毅"</item>
-        <item>"郑又荣"</item>
-        <item>"徐洋"</item>
-        <item>"彭欣力"</item>
-        <item>"费尔南多"</item>
-        <item>"张诚"</item>
-        <item>"刘卫东"</item>
-        <item>"卡尔德克"</item>
-        <item>"吉利奥蒂"</item>
+        <item>"Deng Xiaofei | 邓小飞"</item>
+        <item>"Min Wang | 王敏"</item>
+        <item>"Anqi Chen | 陈安琪"</item>
+        <item>"Fang Li | 李放"</item>
+        <item>"Sui Donglu | 隋东陆"</item>
+        <item>"Ding Jie | 丁捷"</item>
+        <item>"Liu Yu | 刘宇"</item>
+        <item>"Goran Milovic | 米洛维奇"</item>
+        <item>"Chen Lei | 陈雷"</item>
+        <item>"Tan Wangsong | 谭望嵩"</item>
+        <item>"Wang Dong | 王栋"</item>
+        <item>"Wu Qing | 吴庆"</item>
+        <item>"Zheng Yi | 郑毅"</item>
+        <item>"Jung Woo-Young | 郑又荣"</item>
+        <item>"Xu Yang | 徐洋"</item>
+        <item>"Peng Xinli | 彭欣力"</item>
+        <item>"Fernandinho | 费尔南多"</item>
+        <item>"Cheng Zhang | 张诚"</item>
+        <item>"Liu Weidong | 刘卫东"</item>
+        <item>"Alan Kardec | 卡尔德克"</item>
+        <item>"Emmanuel Gigliotti | 吉利奥蒂"</item>
     </string-array>
 
     <string-array name="values_lifan">
@@ -642,35 +642,35 @@
     </string-array>
 
     <string-array name="options_luneng">
-        <item>"刘震理"</item>
-        <item>"韩镕泽"</item>
-        <item>"王大雷"</item>
-        <item>"李松益"</item>
-        <item>"多纳希门托"</item>
-        <item>"王彤"</item>
-        <item>"郑铮"</item>
-        <item>"齐天羽"</item>
-        <item>"陈哲超"</item>
-        <item>"刘洋"</item>
-        <item>"戴琳"</item>
-        <item>"王炯"</item>
-        <item>"赵明剑"</item>
-        <item>"祖斯利尔"</item>
-        <item>"王永珀"</item>
-        <item>"蒙蒂略"</item>
-        <item>"刘彬彬"</item>
-        <item>"张驰"</item>
-        <item>"李微"</item>
-        <item>"吴兴涵"</item>
-        <item>"蒿俊闵"</item>
-        <item>"宋龙"</item>
-        <item>"金敬道"</item>
-        <item>"李海龙"</item>
-        <item>"佩莱"</item>
-        <item>"塔尔德利"</item>
-        <item>"P-西塞"</item>
-        <item>"杨旭"</item>
-        <item>"郭田雨"</item>
+        <item>"Liu Zhenli | 刘震理"</item>
+        <item>"Han Rongze | 韩镕泽"</item>
+        <item>"Wang Dalei | 王大雷"</item>
+        <item>"Li Songyi | 李松益"</item>
+        <item>"Carlos Do Nascimento | 多纳希门托"</item>
+        <item>"Wang Tong | 王彤"</item>
+        <item>"Zheng Zheng | 郑铮"</item>
+        <item>"Tiannyu Qi | 齐天羽"</item>
+        <item>"Zhechao Chen | 陈哲超"</item>
+        <item>"Yang Liu | 刘洋"</item>
+        <item>"Dai Lin | 戴琳"</item>
+        <item>"Wang Jiong | 王炯"</item>
+        <item>"Zhao Mingjian | 赵明剑"</item>
+        <item>"Jucilei | 祖斯利尔"</item>
+        <item>"Wang Yongpo | 王永珀"</item>
+        <item>"Walter Montillo | 蒙蒂略"</item>
+        <item>"Liu Binbin | 刘彬彬"</item>
+        <item>"Zhang Chi | 张驰"</item>
+        <item>"Li Wei | 李微"</item>
+        <item>"Wu Xinghan | 吴兴涵"</item>
+        <item>"Hao Junmin | 蒿俊闵"</item>
+        <item>"Song Long | 宋龙"</item>
+        <item>"Jin Jingdao | 金敬道"</item>
+        <item>"Lu Hailong | 李海龙"</item>
+        <item>"Graziano Pellè | 佩莱"</item>
+        <item>"Diego Tardelli | 塔尔德利"</item>
+        <item>"Papiss Demba Cissé | P-西塞"</item>
+        <item>"Yang Xu | 杨旭"</item>
+        <item>"Tianyu Guo | 郭田雨"</item>
     </string-array>
 
     <string-array name="values_luneng">
@@ -706,34 +706,34 @@
     </string-array>
 
     <string-array name="options_lvcheng">
-        <item>"张磊"</item>
-        <item>"邹德海"</item>
-        <item>"刘洋"</item>
-        <item>"岳鑫"</item>
-        <item>"葛振"</item>
-        <item>"孙正傲"</item>
-        <item>"吴伟"</item>
-        <item>"陈晓"</item>
-        <item>"斯皮拉诺维奇"</item>
-        <item>"童磊"</item>
-        <item>"曹海清"</item>
-        <item>"王玚"</item>
-        <item>"吴范锡"</item>
-        <item>"臧一峰"</item>
-        <item>"陈柏良"</item>
-        <item>"罗竞"</item>
-        <item>"冯刚"</item>
-        <item>"吴伟"</item>
-        <item>"赵宇豪"</item>
-        <item>"董宇"</item>
-        <item>"黄希扬"</item>
-        <item>"程谋义"</item>
-        <item>"陈中流"</item>
-        <item>"宋海旺"</item>
-        <item>"加比奥内塔"</item>
-        <item>"庄佳杰"</item>
-        <item>"谈杨"</item>
-        <item>"高华泽"</item>
+        <item>"Zhang Lei | 张磊"</item>
+        <item>"Zou Dehai | 邹德海"</item>
+        <item>"Liu Yang | 刘洋"</item>
+        <item>"Yue Xin | 岳鑫"</item>
+        <item>"Ge Zhen | 葛振"</item>
+        <item>"Sun Zhengao | 孙正傲"</item>
+        <item>"Wu Wei | 吴伟"</item>
+        <item>"Chen Xiao | 陈晓"</item>
+        <item>"Matthew Spiranovic | 斯皮拉诺维奇"</item>
+        <item>"Tong Lei | 童磊"</item>
+        <item>"Cao Haiqing | 曹海清"</item>
+        <item>"Wang Chang | 王玚"</item>
+        <item>"Oh Beom-Seok | 吴范锡"</item>
+        <item>"Yifeng Zang | 臧一峰"</item>
+        <item>"Chen Po-Liang | 陈柏良"</item>
+        <item>"Jing Luo | 罗竞"</item>
+        <item>"Feng Gang | 冯刚"</item>
+        <item>"Wu Wei | 吴伟"</item>
+        <item>"Zhao Yuhao | 赵宇豪"</item>
+        <item>"Dong Yu | 董宇"</item>
+        <item>"Huang Xiyang | 黄希扬"</item>
+        <item>"Cheng Mouyi | 程谋义"</item>
+        <item>"Chen Zhongliu | 陈中流"</item>
+        <item>"Song Haiwang | 宋海旺"</item>
+        <item>"Denilson Gabionetta | 加比奥内塔"</item>
+        <item>"Zhuang Jiajie | 庄佳杰"</item>
+        <item>"Tan Yang | 谈杨"</item>
+        <item>"Gao Huaze | 高华泽"</item>
     </string-array>
 
     <string-array name="values_lvcheng">
@@ -770,35 +770,35 @@
 
     <string-array name="options_hongyun">
 
-        <item>"刘伟国"</item>
-        <item>"张振强"</item>
-        <item>"石笑天"</item>
-        <item>"吴高俊"</item>
-        <item>"杨善平"</item>
-        <item>"郑涛"</item>
-        <item>"宋琛"</item>
-        <item>"张天龙"</item>
-        <item>"阿萨尼"</item>
-        <item>"王亮"</item>
-        <item>"芦强"</item>
-        <item>"泽威特"</item>
-        <item>"孙世林"</item>
-        <item>"杨宇"</item>
-        <item>"张野"</item>
-        <item>"肇俊哲"</item>
-        <item>"王亮"</item>
-        <item>"倪玉崧"</item>
-        <item>"张靖洋"</item>
-        <item>"金泰延"</item>
-        <item>"王峤"</item>
-        <item>"胡延强"</item>
-        <item>"王珐"</item>
-        <item>"刘尚坤"</item>
-        <item>"詹姆斯"</item>
-        <item>"王皓"</item>
-        <item>"冯伯元"</item>
-        <item>"图雷"</item>
-        <item>"雷永驰"</item>
+        <item>"Liu Weiguo | 刘伟国"</item>
+        <item>"Zhang Zhenqiang | 张振强"</item>
+        <item>"Shi Xiaotian | 石笑天"</item>
+        <item>"Wu Gaojun | 吴高俊"</item>
+        <item>"Yang Shanping | 杨善平"</item>
+        <item>"Zheng Tao | 郑涛"</item>
+        <item>"Song Chen | 宋琛"</item>
+        <item>"Tianlong Zhang | 张天龙"</item>
+        <item>"Assani Lukimya | 阿萨尼"</item>
+        <item>"Wang Liang | 王亮"</item>
+        <item>"Lu Qiang | 芦强"</item>
+        <item>"Michael Thwaite | 泽威特"</item>
+        <item>"Sun Shilin | 孙世林"</item>
+        <item>"Yang Yu | 杨宇"</item>
+        <item>"Zhang Ye | 张野"</item>
+        <item>"Junzhe Zhao | 肇俊哲"</item>
+        <item>"Wang Liang | 王亮"</item>
+        <item>"Ni Yusong | 倪玉崧"</item>
+        <item>"Zhang Jingyang | 张靖洋"</item>
+        <item>"Jin Taiyan | 金泰延"</item>
+        <item>"Wang Qiao | 王峤"</item>
+        <item>"Hu Yanqiang | 胡延强"</item>
+        <item>"Wang Fa | 王珐"</item>
+        <item>"Liu Shangkun | 刘尚坤"</item>
+        <item>"James Chamanga | 詹姆斯"</item>
+        <item>"Wang Hao | 王皓"</item>
+        <item>"Boyuan Feng | 冯伯元"</item>
+        <item>"Ibrahim Toure | 图雷"</item>
+        <item>"Lei Youngchi | 雷永驰"</item>
     </string-array>
 
     <string-array name="values_hongyun">
@@ -834,27 +834,28 @@
     </string-array>
 
     <string-array name="options_yongchang">
-        <item>"邵镤亮"</item>
-        <item>"关震"</item>
-        <item>"姜积弘"</item>
-        <item>"赵容亨"</item>
-        <item>"许博"</item>
-        <item>"李凯"</item>
-        <item>"吕建军"</item>
-        <item>"糜昊伦"</item>
-        <item>"李春郁"</item>
-        <item>"毛剑卿"</item>
-        <item>"崔鹏"</item>
-        <item>"鲁本"</item>
-        <item>"高增翔"</item>
-        <item>"孙昊晟"</item>
-        <item>"王军辉"</item>
-        <item>"郭松"</item>
-        <item>"李提香"</item>
-        <item>"隆东"</item>
-        <item>"门迪"</item>
-        <item>"毛里西奥"</item>
-        <item>"马修斯"</item>
+        <item>"Shao Puliang | 邵镤亮"</item>
+        <item>"Guan Zhen | 关震"</item>
+        <item>"Jiang Jihong | 姜积弘"</item>
+        <item>"Cho Yong-Hyung | 赵容亨"</item>
+        <item>"Xu Bo | 许博"</item>
+        <item>"Li Kai | 李凯"</item>
+        <item>"Lu Jianjun | 吕建军"</item>
+        <item>"Haolun Mi | 糜昊伦"</item>
+        <item>"Li Chunyu | 李春郁"</item>
+        <item>"Mao Jianqing | 毛剑卿"</item>
+        <item>"Cui Peng | 崔鹏"</item>
+        <item>"Ruben Micael | 鲁本"</item>
+        <item>"Gao Zengxiang | 高增翔"</item>
+        <item>"Sun Haosheng | 孙昊晟"</item>
+        <item>"Wang Junhai | 王军辉"</item>
+        <item>"Guo Song | 郭松"</item>
+        <item>"Li Tixiang | 李提香"</item>
+        <item>"Mario Rondon | 隆东"</item>
+        <item>"Jean Philippe Mendy | 门迪"</item>
+        <item>"Diego Mauricio | 毛里西奥"</item>
+        <item>"Matheus | 马修斯"</item>
+
     </string-array>
 
     <string-array name="values_yongchang">
@@ -882,34 +883,34 @@
     </string-array>
 
     <string-array name="options_yatai">
-        <item>"吴亚轲"</item>
-        <item>"祎凡"</item>
-        <item>"宋振瑜"</item>
-        <item>"积施利"</item>
-        <item>"阎世鹏"</item>
-        <item>"伊斯梅洛夫"</item>
-        <item>"殷亚吉"</item>
-        <item>"邵帅"</item>
-        <item>"孙捷"</item>
-        <item>"范晓冬"</item>
-        <item>"左伊滕"</item>
-        <item>"车凯"</item>
-        <item>"裴帅"</item>
-        <item>"马季奇"</item>
-        <item>"格里乌斯"</item>
-        <item>"蒋哲"</item>
-        <item>"杜震宇"</item>
-        <item>"何超"</item>
-        <item>"张笑飞"</item>
-        <item>"阎峰"</item>
-        <item>"李光"</item>
-        <item>"刘奇鸣"</item>
-        <item>"韩德明"</item>
-        <item>"奥泽戈维奇"</item>
-        <item>"M-莫雷诺"</item>
-        <item>"杨贺"</item>
-        <item>"李尚"</item>
-        <item>"程长城"</item>
+        <item>"Wu Yake | 吴亚轲"</item>
+        <item>"Fan Yi | 祎凡"</item>
+        <item>"Song Zhenyu | 宋振瑜"</item>
+        <item>"Jack Sealy | 积施利"</item>
+        <item>"Yang Shipeng | 阎世鹏"</item>
+        <item>"Anzar Ismailov | 伊斯梅洛夫"</item>
+        <item>"Yaki Yen | 殷亚吉"</item>
+        <item>"Shao Shuai | 邵帅"</item>
+        <item>"Sun Jie | 孙捷"</item>
+        <item>"Fan Xiaodong | 范晓冬"</item>
+        <item>"Zuo Yiteng | 左伊滕"</item>
+        <item>"Che Kai | 车凯"</item>
+        <item>"Pei Shuai | 裴帅"</item>
+        <item>"Darko Matic | 马季奇"</item>
+        <item>"Julien Gorius | 格里乌斯"</item>
+        <item>"Jiang Zhe | 蒋哲"</item>
+        <item>"Du Zhenyu | 杜震宇"</item>
+        <item>"He Chao | 何超"</item>
+        <item>"Zhang Xiaofei | 张笑飞"</item>
+        <item>"Yan Feng | 阎峰"</item>
+        <item>"Li Guang | 李光"</item>
+        <item>"Liu Qining | 刘奇鸣"</item>
+        <item>"Han Deming | 韩德明"</item>
+        <item>"Ognjen Ozegovic | 奥泽戈维奇"</item>
+        <item>"Marcelo Moreno | M-莫雷诺"</item>
+        <item>"Yang He | 杨贺"</item>
+        <item>"Li Shang | 李尚"</item>
+        <item>"Cheng Changcheng | 程长城"</item>
     </string-array>
 
     <string-array name="values_yatai">
@@ -945,33 +946,33 @@
     </string-array>
 
     <string-array name="options_teda">
-        <item>"宗磊"</item>
-        <item>"杜佳"</item>
-        <item>"杨启鹏"</item>
-        <item>"杨泽翔"</item>
-        <item>"儒尼奥尔"</item>
-        <item>"潘喜明"</item>
-        <item>"约万诺维奇"</item>
-        <item>"周海滨"</item>
-        <item>"聊博超"</item>
-        <item>"白岳峰"</item>
-        <item>"聂涛"</item>
-        <item>"苑维玮"</item>
-        <item>"曹阳"</item>
-        <item>"李本舰"</item>
-        <item>"胡人天"</item>
-        <item>"王秋明"</item>
-        <item>"郭毅"</item>
-        <item>"郭皓"</item>
-        <item>"曲波"</item>
-        <item>"李源一"</item>
-        <item>"周通"</item>
-        <item>"蒂亚戈内"</item>
-        <item>"蒙特罗"</item>
-        <item>"惠家康"</item>
-        <item>"埃沃纳"</item>
-        <item>"范柏群"</item>
-        <item>"李志斌"</item>
+        <item>"Zong Lei | 宗磊"</item>
+        <item>"Du Jia | 杜佳"</item>
+        <item>"Yang Qipeng | 杨启鹏"</item>
+        <item>"Yang Zexiang | 杨泽翔"</item>
+        <item>"Zainadine Junior | 儒尼奥尔"</item>
+        <item>"Ximing Pan | 潘喜明"</item>
+        <item>"Aleksandar Jovanovic | 约万诺维奇"</item>
+        <item>"Zhou Haibin | 周海滨"</item>
+        <item>"Liao Bochao | 聊博超"</item>
+        <item>"Bai Yuefeng | 白岳峰"</item>
+        <item>"Nie Tao | 聂涛"</item>
+        <item>"Yuan Weiwei | 苑维玮"</item>
+        <item>"Cao Yang | 曹阳"</item>
+        <item>"Li Benjian | 李本舰"</item>
+        <item>"Hu Rentian | 胡人天"</item>
+        <item>"Wang Qiuming | 王秋明"</item>
+        <item>"Guo Yi | 郭毅"</item>
+        <item>"Guo Hao | 郭皓"</item>
+        <item>"Qu Bo | 曲波"</item>
+        <item>"Li Yuanyi | 李源一"</item>
+        <item>"Zhou Tong | 周通"</item>
+        <item>"Mbaye Diagne | 蒂亚戈内 "</item>
+        <item>"Fredy Montero | 蒙特罗"</item>
+        <item>"Hui Jiakang | 惠家康"</item>
+        <item>"Malick Evouna | "</item>
+        <item>"Fan Baiqun | 范柏群"</item>
+        <item>"Li Zhibin | 李志斌"</item>
     </string-array>
 
     <string-array name="values_teda">

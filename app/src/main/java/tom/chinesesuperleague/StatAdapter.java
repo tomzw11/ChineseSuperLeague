@@ -82,7 +82,7 @@ public class StatAdapter extends CursorAdapter{
         String match_type = cursor.getString(FetchFragment.COL_STAT_GAME);
         viewHolder.iconView.setImageResource(Roster.getImageForMatchType(match_type));
 
-        String name = cursor.getString(FetchFragment.COL_STAT_CNAME);
+        String name = cursor.getString(FetchFragment.COL_STAT_LNAME);
         viewHolder.nameView.setText(name);
 
         String date = cursor.getString(FetchFragment.COL_STAT_DATE);
@@ -98,11 +98,11 @@ public class StatAdapter extends CursorAdapter{
 
         String opponent;
         if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("主场")){
-            opponent = "Home vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
+            opponent = "Home vs. "+ Roster.translateClub(cursor.getString(FetchFragment.COL_STAT_OPPONENT));
         }else if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("客场")){
-            opponent = "Away vs. "+ cursor.getString(FetchFragment.COL_STAT_OPPONENT);
+            opponent = "Away vs. "+ Roster.translateClub(cursor.getString(FetchFragment.COL_STAT_OPPONENT));
         }else opponent = "Unknown";
-        viewHolder.oppoView.setText(Roster.translateClub(opponent));
+        viewHolder.oppoView.setText(opponent);
 
         //viewHolder.badgeView.setImageResource(Roster.getBadgeForTeam(cursor.getString(FetchFragment.COL_STAT_OPPONENT)));
 
