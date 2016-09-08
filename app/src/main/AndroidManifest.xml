@@ -18,11 +18,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>
@@ -45,7 +55,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tom.chinesesuperleague.MainActivity" />
         </activity>
-
+<!--
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_settings"
@@ -55,6 +65,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tom.chinesesuperleague.MainActivity" />
         </activity>
+
+        -->
 
         <provider
             android:authorities="tom.chinesesuperleague.data.StatProvider"
@@ -89,7 +101,5 @@
             android:name="io.fabric.ApiKey"
             android:value="b67953381d03f75e9251be5cec39127758f981a2" />
     </application>
-
-
 
 </manifest>

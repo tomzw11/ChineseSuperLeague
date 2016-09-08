@@ -7,7 +7,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
-
+import android.content.SharedPreferences;
+import android.widget.Toast;
 
 
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener{
@@ -60,6 +61,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
             int prefIndex = listPreference.findIndexOfValue(stringValue);
             if (prefIndex >= 0) {
                 preference.setSummary(listPreference.getEntries()[prefIndex]);
+
             }
         } else {
             // For other preferences, set the summary to the value's simple string representation.
@@ -67,6 +69,8 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
         }
         return true;
     }
+
+
 
 
 

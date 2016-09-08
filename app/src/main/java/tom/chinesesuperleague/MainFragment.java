@@ -248,8 +248,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 }else{
                     main_rating.setSolidColor("#F44336");
                 }
-
-                cursor.close();
+                //TODO:Check if close cursor caused exception:attempt to open and already closed object.
+                //cursor.close();
               }
 //            //TODO:Clear size when player setting switches.
 //            sharedPreferences_size = getContext().getSharedPreferences(SIZE, Context.MODE_PRIVATE);
