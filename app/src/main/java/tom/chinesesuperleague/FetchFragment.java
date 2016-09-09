@@ -94,8 +94,13 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         mStatAdapter = new StatAdapter(getActivity(), null, 0);
 
         View rootView = inflater.inflate(R.layout.fragment_stat, container, false);
+
+        View emptyView = rootView.findViewById(R.id.listview_fetch_empty);
+
         ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_stat);
+        listView.setEmptyView(emptyView);
         listView.setAdapter(mStatAdapter);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

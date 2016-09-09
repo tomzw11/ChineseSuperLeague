@@ -6,6 +6,7 @@
     <string name="action_refresh">Refresh</string>
     <string name="title_stat_detail">DetailStat</string>
     <string name="fetch_activity">FetchActivity</string>
+    <string name="no_info_available">No Player Information Available</string>
     <string name="p61034">拉尔夫</string>
     <string name="p116730">武磊</string>
     <string name="p168101">费尔南多</string>
