@@ -19,7 +19,9 @@ import android.support.v7.widget.Toolbar;
 import tom.chinesesuperleague.data.StatContract.StatEntry;
 
 public class DetailStat extends AppCompatActivity {
-//TODO:Add toast message to notify detail stat view on list items.
+
+    //TODO:Add goalkeeper stats to detailstat.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

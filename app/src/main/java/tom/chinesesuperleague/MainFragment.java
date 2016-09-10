@@ -126,8 +126,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
     // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged() {
-        updateStat();
 
+        //updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
 
     }

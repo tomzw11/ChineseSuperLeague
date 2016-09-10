@@ -12,8 +12,10 @@ import android.content.SharedPreferences;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
-public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener{
+
+public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener,SharedPreferences.OnSharedPreferenceChangeListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,6 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
 //                }
 //            });
 
-
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes.
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_name_key)));
@@ -46,6 +47,23 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
 
         return true;
     }
+
+    // Registers a shared preference change listener that gets notified when preferences change
+    @Override
+    protected void onResume() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        sp.registerOnSharedPreferenceChangeListener(this);
+        super.onResume();
+    }
+
+    // Unregisters a shared preference change listener
+    @Override
+    protected void onPause() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        sp.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
 //TODO:set the preference to directly return to main menu when player is reset.
     /**
      * Attaches a listener so the summary is always updated with the preference value.
@@ -86,6 +104,14 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
         return true;
     }
 
+    // This gets called after the preference is changed, which is important because we
+    // start our synchronization here
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if ( key.equals(getString(R.string.pref_name_key)) ) {
+            CSLSyncAdapter.syncImmediately(this);
+        }
+    }
 
 
 
