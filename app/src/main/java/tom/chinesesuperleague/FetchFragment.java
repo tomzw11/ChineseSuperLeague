@@ -118,7 +118,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         listView.setEmptyView(emptyView);
         listView.setAdapter(mStatAdapter);
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
