@@ -68,7 +68,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
         app:layout_gravity="fill"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:id="@+id/main_ratingView" />
 
 </android.support.v7.widget.GridLayout>

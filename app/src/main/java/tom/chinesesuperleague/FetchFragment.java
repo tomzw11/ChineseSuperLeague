@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -19,11 +21,12 @@ import android.net.Uri;
 import android.content.Intent;
 import android.widget.AdapterView;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.widget.TextView;
 
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
-public class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class FetchFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,SharedPreferences.OnSharedPreferenceChangeListener {
 //TODO:Use viewstub for hidden views in listitem/latestitem.
     private StatAdapter mStatAdapter;
     private String preferPlayer;
@@ -63,6 +66,20 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle main events.
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        sp.registerOnSharedPreferenceChangeListener(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        sp.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
     }
 
     @Override
@@ -178,6 +195,42 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
         mStatAdapter.swapCursor(null);
+
+        updateEmptyView();
+    }
+    /*
+    Updates the empty list view with contextually relevant information that the user can
+    use to determine why they aren't seeing weather.
+ */
+    private void updateEmptyView() {
+        if ( mStatAdapter.getCount() == 0 ) {
+            TextView tv = (TextView) getView().findViewById(R.id.listview_fetch_empty);
+            if ( null != tv ) {
+                // if cursor is empty, why? do we have an invalid location
+                int message = R.string.no_info_available;
+                @CSLSyncAdapter.PlayerStatus int player = Roster.getPlayerStatus(getActivity());
+                switch (player) {
+                    case CSLSyncAdapter.PLAYER_STATUS_SERVER_DOWN:
+                        message = R.string.no_info_available_SERVER_DOWN;
+                        break;
+                    case CSLSyncAdapter.PLAYER_STATUS_SERVER_INVALID:
+                        message = R.string.no_info_available_SERVER_INVALID;
+                        break;
+                    default:
+                        if (!Roster.isNetworkAvailable(getActivity()) ) {
+                            message = R.string.no_info_available_NO_NETWORK;
+                        }
+                }
+                tv.setText(message);
+            }
+        }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if ( key.equals(getString(R.string.pref_player_status_key)) ) {
+            updateEmptyView();
+        }
     }
 
 }

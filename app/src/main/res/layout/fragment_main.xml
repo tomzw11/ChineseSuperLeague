@@ -83,14 +83,14 @@
 
                         <TextView
                             android:id="@+id/main_team"
-                            android:text="Shanghai Eastasia"
+                            android:text="Shanghai SIPG"
                             android:gravity="center|left"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textSize="16dp"
                             android:fontFamily="sans-serif"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/colorPrimaryDark"
                             />
                         
                     </LinearLayout>
@@ -113,14 +113,14 @@
 
                         <TextView
                             android:id="@+id/main_nation"
-                            android:text="中国"
+                            android:text="China"
                             android:gravity="center|left"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textSize="16dp"
                             android:fontFamily="sans-serif"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/colorPrimaryDark"
                             />
 
                     </LinearLayout>

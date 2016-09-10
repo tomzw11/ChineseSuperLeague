@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SyncResult;
+import android.preference.PreferenceManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,9 @@ import android.content.SyncRequest;
 import android.os.Build;
 import android.database.Cursor;
 import android.net.Uri;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import android.support.annotation.IntDef;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,10 +39,19 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = CSLSyncAdapter.class.getSimpleName();
 
     // Interval at which to sync, in seconds.
-    // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 60 * 10;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
-    //TODO: Research and reset SYNC interval.
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({PLAYER_STATUS_OK, PLAYER_STATUS_SERVER_DOWN, PLAYER_STATUS_SERVER_INVALID,  PLAYER_STATUS_UNKNOWN})
+    public @interface PlayerStatus {}
+
+    public static final int PLAYER_STATUS_OK = 0;
+    public static final int PLAYER_STATUS_SERVER_DOWN = 1;
+    public static final int
+            PLAYER_STATUS_SERVER_INVALID = 2;
+    public static final int
+            PLAYER_STATUS_UNKNOWN = 3;
 
     private String playerTag;
 
@@ -59,7 +72,11 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         Elements tableContentEles = null;
         int numberOfMatches = 0;
 
-        if(playerTag.length()==0)return;
+        if(playerTag.length()==0){
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_DOWN);
+            return;
+        }
 
         String url = Roster.urlBuilder(playerTag);
         try {
@@ -68,7 +85,14 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             numberOfMatches = tableContentEles.size() / 19 - 1;
 
         } catch (IOException e) {
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_DOWN);
             e.printStackTrace();
+
+        } catch (NullPointerException n){
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_INVALID);
+            n.printStackTrace();
         }
 
         for (int j = 0; j < numberOfMatches; j++) {
@@ -79,6 +103,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             playerStat.add(playerMatchStat);
         }
         getPlayerStat(playerStat,outputBio);
+
 
     }
 
@@ -144,7 +169,11 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
         Document doc_bio;
         Elements tableContentEles_bio = null;
 
-        if(playerTag.length()==0) return null;
+        if(playerTag.length()==0) {
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_DOWN);
+            return null;
+        }
 
         String url = Roster.urlBioBuilder(playerTag);
 
@@ -153,7 +182,14 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
             tableContentEles_bio = doc_bio.select(".t dd");
 
         } catch (IOException e) {
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_DOWN);
             e.printStackTrace();
+
+        } catch (NullPointerException n){
+
+            setPlayerStatus(getContext(),PLAYER_STATUS_SERVER_INVALID);
+            n.printStackTrace();
         }
 
         for(int i = 0;i < 11; i++){
@@ -300,5 +336,18 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
+    }
+
+    /**
+     * Sets the location status into shared preference.  This function should not be called from
+     * the UI thread because it uses commit to write to the shared preferences.
+     * @param c Context to get the PreferenceManager from.
+     * @param playerStatus The IntDef value to set
+     */
+    static private void setPlayerStatus(Context c, @PlayerStatus int playerStatus){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
+        SharedPreferences.Editor spe = sp.edit();
+        spe.putInt(c.getString(R.string.pref_player_status_key), playerStatus);
+        spe.commit();
     }
 }
