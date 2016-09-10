@@ -189,6 +189,9 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
 
         mStatAdapter.swapCursor(cursor);
+
+        updateEmptyView();
+
     }
 
     @Override
@@ -196,7 +199,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
 
         mStatAdapter.swapCursor(null);
 
-        updateEmptyView();
     }
     /*
     Updates the empty list view with contextually relevant information that the user can
