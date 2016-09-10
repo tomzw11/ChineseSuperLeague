@@ -138,7 +138,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
+        //TODO:Optomize layout for landscape view.
         return rootView;
     }
 
@@ -180,6 +180,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 //        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.displayGraph);
 //        fab.setSize(FloatingActionButton.SIZE_MINI);
+
+        TextView tv_title = (TextView)getView().findViewById(R.id.fragment_main_title);
+        tv_title.setText("Season Summary");
 
         TextView tv_lname = (TextView)getView().findViewById(R.id.main_lname);
         tv_lname.setText(cursor.getString(COL_LNAME));
