@@ -5,9 +5,11 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.content.SharedPreferences;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -16,8 +18,20 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Add 'general' preferences, defined in the XML file
         addPreferencesFromResource(R.xml.pref_general);
+        setContentView(R.layout.settings);
+
+//        Preference ps = findPreference("choose_club");
+//        ps.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                @Override
+//                public boolean onPreferenceClick(Preference preference) {
+//                    Toast.makeText(getApplicationContext(), "pref changed", Toast.LENGTH_LONG).show();
+//                    return true;
+//                }
+//            });
+
 
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes.
@@ -58,6 +72,8 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
             // For list preferences, look up the correct display value in
             // the preference's 'entries' list (since they have separate labels/values).
             ListPreference listPreference = (ListPreference) preference;
+
+
             int prefIndex = listPreference.findIndexOfValue(stringValue);
             if (prefIndex >= 0) {
                 preference.setSummary(listPreference.getEntries()[prefIndex]);
