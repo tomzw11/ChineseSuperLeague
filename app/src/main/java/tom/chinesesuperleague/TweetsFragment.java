@@ -15,8 +15,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class TweetsFragment extends ListFragment{
 
-    //TODO: Your consumer key and secret should be obfuscated in your source code before shipping.
-    //TODO: refresh tweet fragment when initial load fails (work in OnResume in mainactivity.
+    //TODO: refresh tweet fragment when initial load fails (work in OnResume in mainactivity).
     private static final String TWITTER_KEY = "tLJBanpU29SUx1hatvYOorAYT";
     private static final String TWITTER_SECRET = "jGDYPILQ27vEq0nd8pGitIbc0uXlog5AEBk9JqJdjsm7fwn00d";
 
