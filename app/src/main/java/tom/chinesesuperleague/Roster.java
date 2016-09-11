@@ -29,6 +29,12 @@ public class Roster {
         return sp.getInt(c.getString(R.string.pref_player_status_key), CSLSyncAdapter.PLAYER_STATUS_UNKNOWN);
     }
 
+    public static String imageUrlBuilder(String tag){
+
+        String url = "http://www.sinaimg.cn/ty/opta/players/" + tag + ".jpg";
+        return url;
+    }
+
     public static String urlBuilder(String id){
 
         String url = "http://match.sports.sina.com.cn/football/player_iframe.php?id=" + id + "&season=2016&dpc=1";

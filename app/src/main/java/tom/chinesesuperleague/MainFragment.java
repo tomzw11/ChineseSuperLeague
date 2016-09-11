@@ -140,6 +140,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
+        imageView.setImageResource(R.drawable.icon_default);
+
         //TODO:Optomize layout for landscape view.
         return rootView;
     }
@@ -209,8 +213,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
         //imageView.setImageResource(Roster.getImageForPlayer(player_tag));
-
-        Glide.with(this).load("http://goo.gl/gEgYUd").into(imageView);
+        Glide.with(this).load(Roster.imageUrlBuilder(player_tag)).into(imageView);
+        Glide.with(this).load(Roster.imageUrlBuilder(player_tag)).error(Roster.getImageForPlayer(player_tag));
 
         ImageView flagView  = (ImageView) getView().findViewById(R.id.main_nation_icon);
         flagView.setImageResource(Roster.getFlagForNation(cursor.getString(COL_NATION)));
