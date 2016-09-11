@@ -20,8 +20,6 @@ import tom.chinesesuperleague.data.StatContract.StatEntry;
 
 public class DetailStat extends AppCompatActivity {
 
-    //TODO:Add goalkeeper stats to detailstat.
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +69,7 @@ public class DetailStat extends AppCompatActivity {
                 StatEntry.COLUMN_CLEARANCE,
                 StatEntry.COLUMN_DATE,
                 StatEntry.COLUMN_GAME,
+                StatEntry.COLUMN_SAVE
 
         };
 
@@ -96,10 +95,7 @@ public class DetailStat extends AppCompatActivity {
         private static final int COL_CLEARANCE = 17;
         private static final int COL_DATE = 18;
         private static final int COL_GAME = 19;
-
-
-
-
+        private static final int COL_SAVE = 20;
 
         public DetailFragment() {
             setHasOptionsMenu(true);
@@ -152,6 +148,9 @@ public class DetailStat extends AppCompatActivity {
 
             TextView tv_date = (TextView)getView().findViewById(R.id.detail_main_date);
             tv_date.setText(data.getString(COL_DATE));
+
+            TextView tv_save = (TextView)getView().findViewById(R.id.fragment_details_save);
+            tv_save.setText(data.getString(COL_SAVE));
 
             TextView tv_game = (TextView)getView().findViewById(R.id.detail_scoreview_game);
             tv_game.setText(Roster.translateGame(data.getString(COL_GAME)));

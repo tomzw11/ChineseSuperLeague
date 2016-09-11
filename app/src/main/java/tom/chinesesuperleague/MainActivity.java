@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         preferPlayer = Roster.getPreferredPlayer(this);
 
         //TODO:Use a special toolbar app name font.
+        //TODO:Use Proguard to minimize unused code.
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);

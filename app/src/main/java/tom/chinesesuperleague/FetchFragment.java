@@ -138,8 +138,6 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
             }
         });
 
-
-
         return rootView;
     }
 

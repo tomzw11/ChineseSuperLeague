@@ -114,6 +114,22 @@
     <TextView
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
+        android:text="@string/save"
+        android:textColor="@color/detail_accent_label"
+        android:textSize="20sp"
+        app:layout_gravity="fill"
+        app:layout_rowWeight="1" />
+
+    <TextView
+        android:id="@+id/fragment_details_save"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/white"
+        app:layout_gravity="fill" />
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
         android:text="@string/foul"
         android:textColor="@color/detail_accent_label"
         android:textSize="20sp"

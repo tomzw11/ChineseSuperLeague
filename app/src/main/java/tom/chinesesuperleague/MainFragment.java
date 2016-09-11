@@ -34,6 +34,8 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.content.Intent;
 
+import com.bumptech.glide.Glide;
+
 import tom.chinesesuperleague.data.StatContract;
 import tom.chinesesuperleague.sync.CSLSyncAdapter;
 
@@ -206,7 +208,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_number.setText(Roster.convertNumber(cursor.getString(COL_NUMBER)));
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
-        imageView.setImageResource(Roster.getImageForPlayer(player_tag));
+        //imageView.setImageResource(Roster.getImageForPlayer(player_tag));
+
+        Glide.with(this).load("http://goo.gl/gEgYUd").into(imageView);
 
         ImageView flagView  = (ImageView) getView().findViewById(R.id.main_nation_icon);
         flagView.setImageResource(Roster.getFlagForNation(cursor.getString(COL_NATION)));
