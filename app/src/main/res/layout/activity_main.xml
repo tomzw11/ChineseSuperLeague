@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="tom.chinesesuperleague.MainActivity">
+    tools:context="tom.chinesefootballtracker.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,11 +15,7 @@
         android:background="@color/colorPrimary"
         app:theme="@style/ToolBarStyle"
         android:titleTextColor="@color/white">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/csl"
-            />
+
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout

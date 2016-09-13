@@ -57,7 +57,7 @@
         app:layout_gravity="fill"
         app:layout_rowWeight="1" />
 
-    <tom.chinesesuperleague.RatingView
+    <tom.chinesefootballtracker.RatingView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:textSize="36dp"

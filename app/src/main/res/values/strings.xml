@@ -56,7 +56,7 @@
 
     <!-- SyncAdapter related -->
     <string name="sync_account_type">CSL</string>
-    <string name="content_authority">tom.chinesesuperleague.data.StatProvider</string>
+    <string name="content_authority">tom.chinesefootballtracker.data.StatProvider</string>
 
     <string name="宗磊">113067</string>
     <string name="杜佳">180532</string>
