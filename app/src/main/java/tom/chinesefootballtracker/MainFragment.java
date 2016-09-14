@@ -11,12 +11,14 @@ import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -125,6 +127,19 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
         imageView.setImageResource(R.drawable.icon_default);
+
+        LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.fragment_main_switch_player);
+        linearLayout.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v){
+
+                    Toast.makeText(getActivity(),"Switch Player",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), SettingsActivity.class));
+
+                }
+            });
+
 
         //TODO:Optomize layout for landscape view.
         return rootView;

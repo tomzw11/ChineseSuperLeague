@@ -2,6 +2,7 @@ package tom.chinesefootballtracker;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +98,9 @@ public class StatAdapter extends CursorAdapter{
 
         String score = cursor.getString(FetchFragment.COL_STAT_SCORE);
         viewHolder.scoreView.setText(score);
+        if(Roster.getResultFromScore(score)=="Win")viewHolder.scoreView.setTextColor(Color.parseColor("#4CAF50"));
+        else if (Roster.getResultFromScore(score)=="Lose")viewHolder.scoreView.setTextColor(Color.parseColor("#F44336"));
+        else viewHolder.scoreView.setTextColor(Color.parseColor("#FF9800"));
 
         String opponent;
         if(cursor.getString(FetchFragment.COL_STAT_HOME_AWAY).equals("主场")){
@@ -113,14 +117,14 @@ public class StatAdapter extends CursorAdapter{
 
         if(Double.valueOf(rating)>=8){
 
-            viewHolder.ratingView.setSolidColor("#4CAF50");
-            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.green));
+            viewHolder.ratingView.setSolidColor("#4CAF50");//Green.
+
         }else if (Double.valueOf(rating)>=6){
-            viewHolder.ratingView.setSolidColor("#FF9800");
-            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
+
+            viewHolder.ratingView.setSolidColor("#FF9800");//Orange.
         }else{
-            viewHolder.ratingView.setSolidColor("#F44336");
-            //viewHolder.ratingView.setBackgroundColor(ContextCompat.getColor(context,R.color.red));
+
+            viewHolder.ratingView.setSolidColor("#F44336");//Red.
         }
     }
 

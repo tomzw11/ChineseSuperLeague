@@ -16,14 +16,7 @@
         android:gravity="center_horizontal"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-
         >
-
-        <ImageView
-            android:id="@+id/listview_stat_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,11 +25,24 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/listview_stat_score"
                 android:layout_width="0dp"
-                android:layout_weight="2"
-                android:text="Home vs.重庆力帆"
-                android:textColor="@color/primary_text"
+                android:layout_weight="1"
+                android:text="1-1"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/colorAccent"
+                android:gravity="center_horizontal"
+                />
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:text="Home vs.Chongqing Lifan"
+                android:textColor="@color/primary_text"
                 android:layout_height="wrap_content"
                 android:id="@+id/listview_stat_oppo"/>
 
@@ -45,7 +51,8 @@
                 android:text="2013-3-3"
                 android:textColor="@color/primary_text"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -80,30 +87,29 @@
         android:layout_height="1dp"
         android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/listview_stat_game"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/listview_stat_team"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
-
     <ImageView
         android:id="@+id/listview_stat_kit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
-
-    <TextView
-        android:id="@+id/listview_stat_score"
+    <ImageView
+        android:id="@+id/listview_stat_icon"
         android:layout_width="1dp"
         android:layout_height="1dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/listview_stat_game"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/listview_stat_team"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="gone"
         />
 

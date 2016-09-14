@@ -20,7 +20,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "tom.chinesesuperleague"
+        applicationId "tom.chinesefootballtracker"
         minSdkVersion 21
         targetSdkVersion 24
         versionCode 1
