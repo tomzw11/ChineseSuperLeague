@@ -445,18 +445,18 @@ public class Roster {
 
             case "北京国安":
                 return R.drawable.badge_beijing_guoan;
-//
-//            case "重庆力帆":
-//                return R.drawable.badge_chongqing_lifan;
+
+            case "重庆力帆":
+                return R.drawable.badge_chongqing_lifan;
 
             case "上海上港":
                 return R.drawable.badge_shanghai_shanggang;
 
             case "长春亚泰":
                 return R.drawable.badge_changchun_yatai;
-//
-//            case "广州富力":
-//                return R.drawable.badge_guangzhou_fuli;
+
+            case "广州富力":
+                return R.drawable.badge_guangzhou_fuli;
 
             case "广州恒大":
                 return R.drawable.badge_guangzhou_hengda;
@@ -466,15 +466,15 @@ public class Roster {
 
             case "河北华夏":
                 return R.drawable.badge_heibei_huaxia;
-//
-//            case "河南建业":
-//                return R.drawable.badge_henan_jianye;
+
+            case "河南建业":
+                return R.drawable.badge_henan_jianye;
 
             case "天津泰达":
                 return R.drawable.badge_tianjin_taida;
-//
-//            case "辽宁宏运":
-//                return R.drawable.badge_liaoning_hongyun;
+
+            case "辽宁宏运":
+                return R.drawable.badge_liaoning_hongyun;
 
             case "石家庄永昌":
                 return R.drawable.badge_shijiazhuang_yongchang;
@@ -487,42 +487,42 @@ public class Roster {
 
             case "江苏苏宁":
                 return R.drawable.badge_jiangsu_suning;
-//
-//            case "上海申花":
-//                return R.drawable.badge_shanghai_shenhua;
+
+            case "上海申花":
+                return R.drawable.badge_shanghai_shenhua;
 
             case "全北现代":
                 return R.drawable.badge_jeonbuk;
-//
-//            case "东京FC":
-//                return R.drawable.badge_fctokyo;
+
+            case "东京FC":
+                return R.drawable.badge_fc_tokyo;
 
             case "越南平阳":
                 return R.drawable.badge_becamex;
-//
-//            case "首尔FC":
-//                return R.drawable.badge_fcseoul;
-//
-//            case "广岛三箭":
-//                return R.drawable.badge_sanfrecce;
-//
-//            case "武里南联":
-//                return R.drawable.badge_buriram;
+
+            case "首尔FC":
+                return R.drawable.badge_fc_seoul;
+
+            case "广岛三箭":
+                return R.drawable.badge_sanfrecce;
+
+            case "武里南联":
+                return R.drawable.badge_buriram;
 
             case "墨尔本胜利":
                 return R.drawable.badge_melbourne;
 
             case "水原三星":
                 return R.drawable.badge_suwon;
-//
-//            case "大阪钢巴":
-//                return R.drawable.badge_gamba;
-//
-//            case "悉尼FC":
-//                return R.drawable.badge_sydney;
-//
-//            case "浦和红钻":
-//                return R.drawable.badge_urawareddiamond;
+
+            case "大阪钢巴":
+                return R.drawable.badge_gamba;
+
+            case "悉尼FC":
+                return R.drawable.badge_sydney;
+
+            case "浦和红钻":
+                return R.drawable.badge_urawareddiamond;
 
             case "浦项制铁":
                 return R.drawable.badge_pohang;

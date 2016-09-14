@@ -2,6 +2,7 @@ package tom.chinesefootballtracker;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 import android.widget.Toast;
+import android.support.design.widget.Snackbar;
 
 import com.bumptech.glide.Glide;
 
@@ -123,23 +126,24 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                              Bundle savedInstanceState) {
 
 
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
         imageView.setImageResource(R.drawable.icon_default);
 
-        LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.fragment_main_switch_player);
-        linearLayout.setOnClickListener(new View.OnClickListener(){
+        Button button = (Button) rootView.findViewById(R.id.fragment_main_switch_button);
+        button.setOnClickListener(new View.OnClickListener(){
 
                 @Override
                 public void onClick(View v){
 
-                    Toast.makeText(getActivity(),"Switch Player",Toast.LENGTH_SHORT).show();
+//                    Snackbar.make(v, "Select player from 16 CSL clubs.", Snackbar.LENGTH_SHORT)
+//                            .setAction("Action", null).show();
+                    Toast.makeText(getContext(),"Select player from 16 CSL clubs.",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), SettingsActivity.class));
 
                 }
             });
-
 
         //TODO:Optomize layout for landscape view.
         return rootView;
@@ -185,7 +189,10 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 //        fab.setSize(FloatingActionButton.SIZE_MINI);
 
         TextView tv_title = (TextView)getView().findViewById(R.id.fragment_main_title);
-        tv_title.setText("Season Summary");
+        tv_title.setText("PLAYER\nBIO");
+
+        TextView tv_title2 = (TextView)getView().findViewById(R.id.fragment_main_title2);
+        tv_title2.setText("SEASON\nSUMMARY");
 
         TextView tv_lname = (TextView)getView().findViewById(R.id.main_lname);
         tv_lname.setText(cursor.getString(COL_LNAME));
@@ -203,7 +210,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_age.setText(Roster.convertAge(cursor.getString(COL_AGE)));
 
         TextView tv_height = (TextView)getView().findViewById(R.id.fragment_main_height);
-        tv_height.setText(cursor.getString(COL_HEIGHT) + "|" + Roster.convertHeight(cursor.getString(COL_HEIGHT)));
+        tv_height.setText(cursor.getString(COL_HEIGHT) + " | " + Roster.convertHeight(cursor.getString(COL_HEIGHT)));
 
         TextView tv_number = (TextView)getView().findViewById(R.id.fragment_main_number);
         tv_number.setText(Roster.convertNumber(cursor.getString(COL_NUMBER)));
