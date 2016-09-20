@@ -21,7 +21,7 @@ public class ScoutAdapter extends CursorAdapter{
 
         public ViewHolder(View view) {
 
-            nameView = (TextView) view.findViewById(R.id.listview_stat_name);
+            nameView = (TextView) view.findViewById(R.id.listview_scout_name);
 
         }
     }
@@ -48,7 +48,7 @@ public class ScoutAdapter extends CursorAdapter{
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        String name = cursor.getString(FetchFragment.COL_STAT_LNAME);
+        String name = cursor.getString(ScoutFragment.COL_STAT_TAG);
         viewHolder.nameView.setText(name);
 
     }

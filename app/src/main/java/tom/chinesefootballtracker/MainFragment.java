@@ -148,8 +148,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 cv_added_player.put(StatContract.BioEntry.COLUMN_TAG,added_player);
                 Uri addPlayerUri = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(added_player),cv_added_player);
 
-                FormFragment formFragment = FormFragment.newInstance();
-                formFragment.show(getFragmentManager(), "fragment_alert");
+                ScoutFragment scoutFragment = ScoutFragment.newInstance();
+                scoutFragment.show(getFragmentManager(), "fragment_alert");
 
             }
         });

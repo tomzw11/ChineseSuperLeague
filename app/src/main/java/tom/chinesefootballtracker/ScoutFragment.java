@@ -15,17 +15,18 @@ import tom.chinesefootballtracker.data.StatContract;
 
 public class ScoutFragment extends android.support.v4.app.DialogFragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
+    //TODO:Remove scout player by swiping listitem.
     int mNum;
     private ScoutAdapter mScoutAdapter;
+    private static final int SCOUT_LOADER_FETCH = 1;
 
     String[] SCOUT_COLUMNS = {
 
-            StatContract.StatEntry.COLUMN_TAG,
-
-            StatContract.StatEntry._ID
+            StatContract.BioEntry.COLUMN_TAG,
+            StatContract.BioEntry._ID
     };
 
-    static final int COL_STAT_LNAME = 0;
+    static final int COL_STAT_TAG = 0;
 
     public ScoutFragment(){
 
@@ -53,19 +54,31 @@ public class ScoutFragment extends android.support.v4.app.DialogFragment impleme
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_scout, container, false);
-
         mScoutAdapter = new ScoutAdapter(getActivity(), null, 0);
 
         View rootView = inflater.inflate(R.layout.fragment_scout, container, false);
 
-        View emptyView = rootView.findViewById(R.id.listview_fetch_empty);
+//        View emptyView = rootView.findViewById(R.id.listview_fetch_empty);
 
         ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_scout);
-        listView.setEmptyView(emptyView);
+//        listView.setEmptyView(emptyView);
         listView.setAdapter(mScoutAdapter);
 
-        return v;
+        return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+
+        getLoaderManager().initLoader(SCOUT_LOADER_FETCH, null, this);
+
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
     }
 
     @Override
@@ -90,7 +103,6 @@ public class ScoutFragment extends android.support.v4.app.DialogFragment impleme
         mScoutAdapter.swapCursor(cursor);
 
 //        updateEmptyView();
-
     }
 
     @Override
