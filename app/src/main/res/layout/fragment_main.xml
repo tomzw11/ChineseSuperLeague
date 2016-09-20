@@ -205,9 +205,26 @@
         >
 
         <Button
+            android:id="@+id/fragment_main_list_button"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/add_to_list"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:elevation="3dp"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/colorAccent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:gravity="center"/>
+
+        <Button
             android:id="@+id/fragment_main_switch_button"
             android:background="@color/colorPrimary"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="@string/switch_player"
             android:fontFamily="sans-serif"

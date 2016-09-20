@@ -2,7 +2,6 @@ package tom.chinesefootballtracker;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -21,12 +19,11 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 import android.widget.Toast;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 
 import tom.chinesefootballtracker.data.StatContract;
-import tom.chinesefootballtracker.sync.CSLSyncAdapter;
 
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -108,15 +105,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         return super.onOptionsItemSelected(item);
     }
 
-//    private void updateStat(){
-//
-//        CSLSyncAdapter.syncImmediately(getActivity());
-//    }
-
-    // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged() {
 
-        //updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_MAIN,null,this);
 
     }
@@ -131,19 +121,31 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
         imageView.setImageResource(R.drawable.icon_default);
 
-        Button button = (Button) rootView.findViewById(R.id.fragment_main_switch_button);
-        button.setOnClickListener(new View.OnClickListener(){
+        Button button_switch = (Button) rootView.findViewById(R.id.fragment_main_switch_button);
+        Button button_list = (Button) rootView.findViewById(R.id.fragment_main_list_button);
 
-                @Override
-                public void onClick(View v){
+        button_switch.setOnClickListener(new View.OnClickListener(){
 
-//                    Snackbar.make(v, "Select player from 16 CSL clubs.", Snackbar.LENGTH_SHORT)
-//                            .setAction("Action", null).show();
-                    Toast.makeText(getContext(),"Select player from 16 CSL clubs.",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), SettingsActivity.class));
+            @Override
+            public void onClick(View v){
 
-                }
-            });
+                Toast.makeText(getContext(),"Select player from 16 CSL clubs.",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+
+            }
+        });
+
+        button_list.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                Toast.makeText(getContext(),"Add player to scout list.",Toast.LENGTH_SHORT).show();
+                FormFragment formFragment = FormFragment.newInstance();
+                formFragment.show(getFragmentManager(), "fragment_alert");
+
+            }
+        });
 
         //TODO:Optomize layout for landscape view.
         return rootView;
@@ -216,7 +218,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         tv_number.setText(Roster.convertNumber(cursor.getString(COL_NUMBER)));
 
         ImageView imageView  = (ImageView) getView().findViewById(R.id.main_player_icon);
-        //imageView.setImageResource(Roster.getImageForPlayer(player_tag));
         Glide.with(this).load(Roster.imageUrlBuilder(player_tag)).into(imageView);
         Glide.with(this).load(Roster.imageUrlBuilder(player_tag)).error(R.drawable.icon_default);
 

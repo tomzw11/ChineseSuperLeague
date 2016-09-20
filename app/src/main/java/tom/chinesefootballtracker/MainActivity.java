@@ -124,8 +124,4 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 //            FormFragment formFragment = FormFragment.newInstance();
 //            formFragment.show(fm, "fragment_alert");
 //    }
-
-
-
-
 }

@@ -7,6 +7,7 @@
     <string name="title_stat_detail">DetailStat</string>
     <string name="fetch_activity">FetchActivity</string>
     <string name="switch_player">SWITCH PLAYER</string>
+    <string name="add_to_list">ADD TO LIST</string>
 
     <string name="no_info_available">Loading Data...</string>
     <string name="no_info_available_NO_NETWORK">No Player Information Available. Network is not available.</string>
