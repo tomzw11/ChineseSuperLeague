@@ -226,7 +226,7 @@ public class CSLSyncAdapter extends AbstractThreadedSyncAdapter {
 //            bioValues.put(StatContract.BioEntry.COLUMN_AGE, playerBio[6]);
 //            bioValues.put(StatContract.BioEntry.COLUMN_HEIGHT, playerBio[4]);
 //            bioValues.put(StatContract.BioEntry.COLUMN_NATION, playerBio[8]);
-//            bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7])
+//            bioValues.put(StatContract.BioEntry.COLUMN_POSITION, playerBio[7]);
 //            bioValues.put(StatContract.BioEntry.COLUMN_NUMBER, playerBio[10]);
 
 

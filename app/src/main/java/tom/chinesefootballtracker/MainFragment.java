@@ -1,5 +1,6 @@
 package tom.chinesefootballtracker;
 
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import android.support.v4.app.FragmentManager;
 import com.bumptech.glide.Glide;
 
 import tom.chinesefootballtracker.data.StatContract;
+import tom.chinesefootballtracker.data.StatProvider;
 
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -51,7 +53,6 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     };
 
     public static final int STAT_LOADER_MAIN = 0;
-
 
     public static final int COL_TEAM = 0;
     public static final int COL_GOAL = 1;
@@ -141,6 +142,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onClick(View v){
 
                 Toast.makeText(getContext(),"Add player to scout list.",Toast.LENGTH_SHORT).show();
+
+                String added_player = Roster.getPreferredPlayer(getContext());
+                ContentValues cv_added_player = new ContentValues();
+                cv_added_player.put(StatContract.BioEntry.COLUMN_TAG,added_player);
+                Uri addPlayerUri = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(added_player),cv_added_player);
+
                 FormFragment formFragment = FormFragment.newInstance();
                 formFragment.show(getFragmentManager(), "fragment_alert");
 

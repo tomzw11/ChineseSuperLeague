@@ -154,15 +154,8 @@ public class FetchFragment extends Fragment implements LoaderManager.LoaderCallb
         super.onStart();
     }
 
-//    private void updateStat(){
-//
-//        CSLSyncAdapter.syncImmediately(getActivity());
-//    }
-
-    // since we read the location when we create the loader, all we need to do is restart things
     void onPlayerChanged( ) {
 
-        //updateStat();
         getLoaderManager().restartLoader(STAT_LOADER_FETCH, null, this);
     }
 

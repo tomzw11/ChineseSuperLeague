@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-
 public class StatAdapter extends CursorAdapter{
 
     private static final int VIEW_TYPE_COUNT = 2;
@@ -30,7 +29,6 @@ public class StatAdapter extends CursorAdapter{
 
         public ViewHolder(View view) {
 
-            //badgeView = (ImageView) view.findViewById(R.id.listview_stat_badge);
             iconView = (ImageView) view.findViewById(R.id.listview_stat_icon);
             kitView = (ImageView) view.findViewById(R.id.listview_stat_kit);
             nameView = (TextView) view.findViewById(R.id.listview_stat_name);
@@ -73,9 +71,6 @@ public class StatAdapter extends CursorAdapter{
         return view;
     }
 
-    /*
-        This is where we fill-in the views with the contents of the cursor.
-     */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
