@@ -153,7 +153,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 //                    sp_scout.edit().putString(SCOUT,Roster.getPreferredPlayer(getContext())).commit();
 //                }
 
-                Intent intent = new Intent(getActivity(), ScoutActivity.class).putExtra(SCOUT,Roster.getPreferredPlayer(getContext()));
+                Intent intent = new Intent(getActivity(), ScoutActivity.class);
 
                 ActivityOptionsCompat activityOptions =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
