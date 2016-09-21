@@ -62,6 +62,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tom.chinesefootballtracker.MainActivity" />
         </activity>
+
+        <activity
+            android:name="tom.chinesefootballtracker.ScoutActivity"
+            android:parentActivityName="tom.chinesefootballtracker.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tom.chinesefootballtracker.MainActivity" />
+        </activity>
 <!--
         <activity
             android:name=".SearchActivity"

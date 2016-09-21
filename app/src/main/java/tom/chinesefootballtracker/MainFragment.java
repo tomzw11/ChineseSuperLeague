@@ -3,6 +3,8 @@ package tom.chinesefootballtracker;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,9 +22,12 @@ import android.support.v4.content.Loader;
 import android.net.Uri;
 import android.content.Intent;
 import android.widget.Toast;
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
+
+import java.util.Set;
 
 import tom.chinesefootballtracker.data.StatContract;
 import tom.chinesefootballtracker.data.StatProvider;
@@ -70,6 +75,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public static final String MAIN_RATING_PREF = "MainRatingPreferences";
     public static final String COIN = "Coin";
     public static final String SIZE = "Size";
+    public static final String SCOUT = "Scout";
 
     SharedPreferences sharedPreferences_size;
     SharedPreferences sharedPreferences_rating;
@@ -142,14 +148,16 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onClick(View v){
 
                 Toast.makeText(getContext(),"Add player to scout list.",Toast.LENGTH_SHORT).show();
+//                sp_scout = getContext().getSharedPreferences(SCOUT, Context.MODE_PRIVATE);
+//                if (!sp_scout.contains(Roster.getPreferredPlayer(getContext()))){
+//                    sp_scout.edit().putString(SCOUT,Roster.getPreferredPlayer(getContext())).commit();
+//                }
 
-                String added_player = Roster.getPreferredPlayer(getContext());
-                ContentValues cv_added_player = new ContentValues();
-                cv_added_player.put(StatContract.BioEntry.COLUMN_TAG,added_player);
-                Uri addPlayerUri = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(added_player),cv_added_player);
+                Intent intent = new Intent(getActivity(), ScoutActivity.class).putExtra(SCOUT,Roster.getPreferredPlayer(getContext()));
 
-                ScoutFragment scoutFragment = ScoutFragment.newInstance();
-                scoutFragment.show(getFragmentManager(), "fragment_alert");
+                ActivityOptionsCompat activityOptions =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
+                ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
 
             }
         });

@@ -6,60 +6,55 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class ScoutAdapter extends CursorAdapter{
+import java.util.ArrayList;
+import java.util.Set;
+
+public class ScoutAdapter extends ArrayAdapter<String>{
 
 
-    private static final int VIEW_TYPE_COUNT = 2;
-    private static final int VIEW_TYPE_SUMMARY = 0;
-    private static final int VIEW_TYPE_ITEM = 1;
+    public ScoutAdapter(Context context, ArrayList<String> s) {
 
-    public static class ViewHolder {
-        public final TextView nameView;
-
-
-        public ViewHolder(View view) {
-
-            nameView = (TextView) view.findViewById(R.id.listview_scout_name);
-
-        }
-    }
-
-    public ScoutAdapter(Context context, Cursor c, int flags) {
-
-        super(context, c, flags);
+        super(context, 0, s);
     }
 
     @Override
-    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
+        // Get the data item for this position
+        String s = getItem(position);
+        // Check if an existing view is being reused, otherwise inflate the view
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.scout_item, parent, false);
+        }
+        TextView tv_scout = (TextView)view.findViewById(R.id.listview_scout_name);
+        tv_scout.setText(s);
 
-
-        View view = LayoutInflater.from(context).inflate(R.layout.scout_item, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(view);
-        view.setTag(viewHolder);
-
+        // Return the completed view to render on screen
         return view;
     }
 
-    @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+//    @Override
+//    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+//
+//
+//        View view = LayoutInflater.from(context).inflate(R.layout.scout_item, parent, false);
+//
+//        ViewHolder viewHolder = new ViewHolder(view);
+//        view.setTag(viewHolder);
+//
+//        return view;
+//    }
+//
+//    @Override
+//    public void bindView(View view, Context context, Cursor cursor) {
+//
+//        ViewHolder viewHolder = (ViewHolder) view.getTag();
+//
+//        String name = cursor.getString(ScoutFragment.COL_STAT_TAG);
+//        viewHolder.nameView.setText(name);
+//
+//    }
 
-        ViewHolder viewHolder = (ViewHolder) view.getTag();
-
-        String name = cursor.getString(ScoutFragment.COL_STAT_TAG);
-        viewHolder.nameView.setText(name);
-
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position == 0 ? VIEW_TYPE_SUMMARY : VIEW_TYPE_ITEM;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return VIEW_TYPE_COUNT;
-    }
 }
