@@ -153,6 +153,11 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 //                    sp_scout.edit().putString(SCOUT,Roster.getPreferredPlayer(getContext())).commit();
 //                }
 
+                String added_player = Roster.getPreferredPlayer(getContext());
+                ContentValues cv_added_player = new ContentValues();
+                cv_added_player.put(StatContract.BioEntry.COLUMN_TAG,added_player);
+                Uri addPlayerUri = getContext().getContentResolver().insert(StatContract.BioEntry.buildBioUri(added_player),cv_added_player);
+
                 Intent intent = new Intent(getActivity(), ScoutActivity.class);
 
                 ActivityOptionsCompat activityOptions =

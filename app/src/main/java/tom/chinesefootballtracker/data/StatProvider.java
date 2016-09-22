@@ -37,6 +37,19 @@ public class StatProvider extends ContentProvider{
                     + StatContract.StatEntry.COLUMN_DATE + " = ? ";
 
     private static final SQLiteQueryBuilder sPlayerWithBioSettingQueryBuilder;
+    private static final SQLiteQueryBuilder sScoutQueryBuilder;
+
+    static{
+        sScoutQueryBuilder = new SQLiteQueryBuilder();
+
+        sScoutQueryBuilder.setTables(
+                StatContract.BioEntry.TABLE_NAME + " INNER JOIN " +
+                        StatContract.StatEntry.TABLE_NAME +
+                        " ON " + StatContract.StatEntry.TABLE_NAME +
+                        "." + StatContract.StatEntry.COLUMN_TAG +
+                        " = " + StatContract.BioEntry.TABLE_NAME +
+                        "." + StatContract.BioEntry.COLUMN_TAG);
+    }
 
     static{
         sPlayerWithBioSettingQueryBuilder = new SQLiteQueryBuilder();
@@ -64,6 +77,19 @@ public class StatProvider extends ContentProvider{
         matcher.addURI(authority, StatContract.PATH_BIO + "/*", BIO);
 
         return matcher;
+    }
+
+    private Cursor getScout(Uri uri, String[] projection, String sortOrder) {
+
+        return sScoutQueryBuilder.query(mOpenHelper.getReadableDatabase(),
+                projection,
+                null,
+                null,
+                StatContract.BioEntry.TABLE_NAME + "." + StatContract.StatEntry.COLUMN_TAG,
+                null,
+                sortOrder
+        );
+
     }
 
     private Cursor getBioByPlayer(Uri uri, String[] projection, String sortOrder) {
@@ -179,12 +205,16 @@ public class StatProvider extends ContentProvider{
                 retCursor = getStatByPlayer(uri,projection,sortOrder);
                 break;
             }
-            case BIO:{
-                retCursor = getBioByPlayer(uri,projection,sortOrder);
-                break;
-            }
+//            case BIO:{
+//                retCursor = getBioByPlayer(uri,projection,sortOrder);
+//                break;
+//            }
             case PLAYER_WITH_DATE:{
                 retCursor = getStatByPlayerAndDate(uri,projection,sortOrder);
+                break;
+            }
+            case BIO:{
+                retCursor = getScout(uri,projection,sortOrder);
                 break;
             }
             default:

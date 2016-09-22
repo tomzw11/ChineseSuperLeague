@@ -12,7 +12,7 @@ public class StatContract {
 
     public static final String PATH_PLAYER = "player";
     public static final String PATH_BIO = "bio";
-
+    public static final String PATH_SCOUT = "scout";
 
     public static final class BioEntry implements BaseColumns {
 

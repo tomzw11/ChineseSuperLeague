@@ -43,7 +43,7 @@ public class ScoutAdapter extends CursorAdapter{
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        String name = cursor.getString(ScoutFragment.COL_STAT_TAG);
+        String name = cursor.getString(ScoutFragment.COL_STAT_TEAM);
         viewHolder.nameView.setText(name);
 
     }

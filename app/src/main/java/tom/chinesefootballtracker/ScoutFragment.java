@@ -1,11 +1,9 @@
 package tom.chinesefootballtracker;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -16,37 +14,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import tom.chinesefootballtracker.data.StatContract;
 
 public class ScoutFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
     //TODO:Remove scout player by swiping listitem.
 
-
     private CursorAdapter mScoutAdapter;
-    public static final String SCOUT = "Scout";
-    SharedPreferences sp_scout;
-
+    private String url_scout = "SCOUT";
     private static final int SCOUT_LOADER = 1;
-
 
     String[] SCOUT_COLUMNS = {
 
+            //StatContract.BioEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_TEAM,
-            StatContract.StatEntry._ID
 
+            StatContract.BioEntry.TABLE_NAME + "." + StatContract.BioEntry._ID
     };
 
     static final int COL_STAT_TAG = 0;
+    static final int COL_STAT_TEAM = 0;
 
     public ScoutFragment(){
 
@@ -61,10 +48,6 @@ public class ScoutFragment extends Fragment implements LoaderManager.LoaderCallb
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        String[] set_scout = {Roster.getPreferredPlayer(getContext())};
-        sp_scout = getContext().getSharedPreferences(SCOUT,Context.MODE_PRIVATE);
-        sp_scout.edit().putStringSet(SCOUT, new HashSet<String>(Arrays.asList(set_scout))).commit();
 
         mScoutAdapter = new ScoutAdapter(getActivity(), null, 0);
         View rootView = inflater.inflate(R.layout.fragment_scout, container, false);
@@ -94,7 +77,7 @@ public class ScoutFragment extends Fragment implements LoaderManager.LoaderCallb
 
         String sortOrder = StatContract.StatEntry.COLUMN_DATE + " DESC";
 
-        Uri statForPlayerUri = StatContract.StatEntry.buildStatUriWithName(Roster.getPreferredPlayer(getActivity()));
+        Uri statForPlayerUri = StatContract.BioEntry.buildBioUri(url_scout);
 
         return new CursorLoader(
                 getActivity(),

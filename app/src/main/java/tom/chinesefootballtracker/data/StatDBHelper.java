@@ -11,7 +11,7 @@ import tom.chinesefootballtracker.data.StatContract.BioEntry;
 public class StatDBHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 12;
 
     static final String DATABASE_NAME = "stat.db";
 
@@ -26,16 +26,18 @@ public class StatDBHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_BIO_TABLE = "CREATE TABLE " + BioEntry.TABLE_NAME + " (" +
                 BioEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 BioEntry.COLUMN_TAG + " REAL NOT NULL," +
-                BioEntry.COLUMN_ENAME + " REAL, " +
-                BioEntry.COLUMN_CNAME + " REAL, " +
-                BioEntry.COLUMN_LNAME + " REAL, " +
-                BioEntry.COLUMN_NATION + " REAL, " +
-                BioEntry.COLUMN_AGE + " REAL, " +
-                BioEntry.COLUMN_POSITION + " REAL, " +
-                BioEntry.COLUMN_HEIGHT + " REAL, " +
-                BioEntry.COLUMN_NUMBER + " REAL " +
+//                BioEntry.COLUMN_ENAME + " REAL, " +
+//                BioEntry.COLUMN_CNAME + " REAL, " +
+//                BioEntry.COLUMN_LNAME + " REAL, " +
+//                BioEntry.COLUMN_NATION + " REAL, " +
+//                BioEntry.COLUMN_AGE + " REAL, " +
+//                BioEntry.COLUMN_POSITION + " REAL, " +
+//                BioEntry.COLUMN_HEIGHT + " REAL, " +
+//                BioEntry.COLUMN_NUMBER + " REAL " +
+                " UNIQUE (" + BioEntry.COLUMN_TAG +
+                ") ON CONFLICT REPLACE);";
 
-                " );";
+//                " );";
 
         final String SQL_CREATE_STAT_TABLE =
 
