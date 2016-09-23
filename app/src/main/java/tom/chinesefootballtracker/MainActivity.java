@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.SearchView;
 
+import io.fabric.sdk.android.services.network.HttpRequest;
 import tom.chinesefootballtracker.sync.CSLSyncAdapter;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
@@ -51,10 +53,29 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     protected void onResume() {
         super.onResume();
         String newPreferredPlayer = Roster.getPreferredPlayer( this );
+        Intent intent_scout = getIntent();
+        String newp = intent_scout.getStringExtra("newPreference");
+
+        if(newp!=null){
+
+            Roster.setPreferredPlayer(this,newp);
+
+            MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag
+                    ("android:switcher:"+R.id.viewpager+":"+"1");
+
+            FetchFragment fetchFragment = (FetchFragment) getSupportFragmentManager().findFragmentByTag
+                    ("android:switcher:"+R.id.viewpager+":"+"2");
+
+            if (mainFragment != null && fetchFragment != null){
+                mainFragment.onPlayerChanged();
+                fetchFragment.onPlayerChanged();
+                preferPlayer = newp;
+                newPreferredPlayer = newp;
+            }
+        }
+
         // update the location in our second pane using the fragment manager
         if ( preferPlayer != null && !preferPlayer.equals(newPreferredPlayer)) {
-
-            //ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
             MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag
                     ("android:switcher:"+R.id.viewpager+":"+"1");
@@ -63,11 +84,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     ("android:switcher:"+R.id.viewpager+":"+"2");
 
                 if (mainFragment != null && fetchFragment != null){
-
                     mainFragment.onPlayerChanged();
                     fetchFragment.onPlayerChanged();
                     preferPlayer = newPreferredPlayer;
-
                 }
         }
     }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import tom.chinesefootballtracker.sync.CSLSyncAdapter;
 
@@ -48,6 +49,13 @@ public class Roster {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(context.getString(R.string.pref_name_key),
                 context.getString(R.string.pref_player_default));
+    }
+
+    public static void setPreferredPlayer(Context context,String tag) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(context.getString(R.string.pref_name_key),tag).commit();
+
     }
 
     public static String translatePosition(String position){

@@ -1,9 +1,12 @@
 package tom.chinesefootballtracker;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -12,6 +15,7 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import tom.chinesefootballtracker.data.StatContract;
@@ -26,14 +30,18 @@ public class ScoutFragment extends Fragment implements LoaderManager.LoaderCallb
 
     String[] SCOUT_COLUMNS = {
 
-            //StatContract.BioEntry.COLUMN_TAG,
+            StatContract.StatEntry.TABLE_NAME + "." + StatContract.BioEntry.COLUMN_TAG,
             StatContract.StatEntry.COLUMN_TEAM,
+            StatContract.StatEntry.COLUMN_LNAME,
+            StatContract.StatEntry.COLUMN_POSITION,
 
             StatContract.BioEntry.TABLE_NAME + "." + StatContract.BioEntry._ID
     };
 
     static final int COL_STAT_TAG = 0;
-    static final int COL_STAT_TEAM = 0;
+    static final int COL_STAT_TEAM = 1;
+    static final int COL_STAT_LNAME = 2;
+    static final int COL_STAT_POSITION = 3;
 
     public ScoutFragment(){
 
@@ -54,6 +62,24 @@ public class ScoutFragment extends Fragment implements LoaderManager.LoaderCallb
 
         ListView listView = (ListView) rootView.findViewById(R.id.listview_fragment_scout);
         listView.setAdapter(mScoutAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // CursorAdapter returns a cursor at the correct position for getItem(), or null
+                // if it cannot seek to that position.
+                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
+                if (cursor != null) {
+
+                    Intent intent = new Intent(getActivity(), MainActivity.class).putExtra("newPreference",cursor.getString(COL_STAT_TAG));
+
+                    ActivityOptionsCompat activityOptions =
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity());
+                    ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
+                }
+            }
+        });
 
         return rootView;
     }
