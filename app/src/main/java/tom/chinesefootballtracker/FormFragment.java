@@ -22,8 +22,6 @@ public class FormFragment extends android.support.v4.app.DialogFragment {
 
     int mNum;
 
-    //TODO:Add list to track listed players.
-    //TODO:Integrate an image library.
     private static final String[] STAT_COLUMNS = {
 
             StatContract.StatEntry.COLUMN_TEAM,
@@ -74,7 +72,7 @@ public class FormFragment extends android.support.v4.app.DialogFragment {
         View v = inflater.inflate(R.layout.form_fragment, container, false);
 
         GraphView graph = (GraphView) v.findViewById(R.id.graph);
-        double [] recent_rating = new double[10];//TODO:Temp variable. Delete later.
+        double [] recent_rating = new double[10];
 
         PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, recent_rating[9]),

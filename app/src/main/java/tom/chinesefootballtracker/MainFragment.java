@@ -122,7 +122,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        //TODO:Add spinner animation to emptyview.
         final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         ImageView imageView  = (ImageView) rootView.findViewById(R.id.main_player_icon);
@@ -284,10 +284,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
                 }else{
                     main_rating.setSolidColor("#F44336");
                 }
-                //TODO:Check if close cursor caused exception:attempt to open and already closed object.
-                //cursor.close();
               }
-//            //TODO:Clear size when player setting switches.
 //            sharedPreferences_size = getContext().getSharedPreferences(SIZE, Context.MODE_PRIVATE);
 //            sharedPreferences_rating = getContext().getSharedPreferences(MAIN_RATING_PREF, Context.MODE_PRIVATE);
 //            sharedPreferences_coin = getContext().getSharedPreferences(COIN, Context.MODE_PRIVATE);
