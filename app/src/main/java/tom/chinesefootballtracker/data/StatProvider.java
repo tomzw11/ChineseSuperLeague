@@ -262,9 +262,9 @@ public class StatProvider extends ContentProvider{
         // this makes delete all rows return the number of rows deleted
         if ( null == selection ) selection = "1";
         switch (match) {
-            case DATE:
+            case BIO:
                 rowsDeleted = db.delete(
-                        StatContract.StatEntry.TABLE_NAME, selection, selectionArgs);
+                        StatContract.BioEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
